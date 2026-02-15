@@ -27,3 +27,4 @@ node_modules/
 
 # Playwright MCP
 .playwright-mcp/
+.vercel
