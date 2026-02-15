@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【2026年版】検索API 5社徹底比較 - Algolia vs Elasticsearch vs Meilisearch | APIpedia</title>
+<meta name="description" content="Algolia, Elasticsearch, Meilisearch, Apache Solr, TypesenseのAPI検索エンジンをセットアップ容易さ・検索速度・日本語対応・料金で徹底比較。最適な全文検索APIの選び方。">
+<!-- OGP -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="【2026年版】検索API 5社徹底比較 | APIPedia">
+<meta property="og:description" content="Algolia, Elasticsearch, Meilisearch, Solr, Typesenseを速度・日本語対応・料金で徹底比較">
+<meta property="og:url" content="https://apipedia.dev/guides/search-api-comparison.html">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="【2026年版】検索API 5社徹底比較 | APIPedia">
+<meta name="twitter:description" content="Algolia, Elasticsearch, Meilisearch, Solr, Typesenseを速度・日本語対応・料金で徹底比較">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/guides/search-api-comparison.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "【2026年版】検索API 5社徹底比較",
+  "description": "Algolia, Elasticsearch, Meilisearch, Solr, Typesenseを速度・日本語対応・料金で徹底比較",
+  "datePublished": "2026-02-15",
+  "author": {"@type": "Organization", "name": "APIpedia"},
+  "publisher": {"@type": "Organization", "name": "APIpedia", "url": "https://apipedia.dev/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "APIpedia", "item": "https://apipedia.dev/"},
+    {"@type": "ListItem", "position": 2, "name": "ガイド", "item": "https://apipedia.dev/guides/"},
+    {"@type": "ListItem", "position": 3, "name": "検索API比較"}
+  ]
+}
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .guide-page { padding: calc(var(--header-height) + 24px) 0 80px; }
+  .guide-breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; }
+  .guide-breadcrumb a { color: var(--color-primary); text-decoration: none; }
+  .guide-breadcrumb a:hover { text-decoration: underline; }
+  .guide-header { margin-bottom: 40px; }
+  .guide-header__badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 4px 12px;
+    background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-pill); margin-bottom: 12px; }
+  .guide-header h1 { font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4; }
+  .guide-header__meta { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; }
+  .guide-content { max-width: 860px; }
+  .guide-content h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin: 40px 0 16px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); display: inline-block; }
+  .guide-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 28px 0 12px; }
+  .guide-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 16px; }
+  .guide-content ul, .guide-content ol { margin: 12px 0 20px 20px; }
+  .guide-content li { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .guide-content strong { color: var(--text-primary); }
+
+  .compare-matrix { overflow-x: auto; margin: 24px 0 32px; border-radius: var(--radius); border: 1px solid var(--border-color); }
+  .compare-matrix table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: var(--bg-card); min-width: 700px; }
+  .compare-matrix thead { background: var(--bg-secondary); }
+  .compare-matrix th { padding: 12px 14px; text-align: left; font-weight: 700; color: var(--text-primary);
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+  .compare-matrix td { padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); vertical-align: top; }
+  .compare-matrix tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-matrix .api-name { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+  .compare-matrix .api-name a { color: var(--color-primary); text-decoration: none; }
+  .compare-matrix .api-name a:hover { text-decoration: underline; }
+
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .pill--green { color: var(--color-success); background: var(--color-success-light); }
+  .pill--blue { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--amber { color: var(--color-warning); background: var(--color-warning-light); }
+  .pill--red { color: #ef4444; background: rgba(239,68,68,0.15); }
+
+  .recommend-card { background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(59,130,246,0.08) 100%);
+    border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius); padding: 24px; margin: 20px 0; }
+  .recommend-card__title { font-size: 0.95rem; font-weight: 700; color: var(--color-success); margin-bottom: 8px; }
+  .recommend-card p { margin-bottom: 8px; }
+
+  .code-block { background: #0d1117; border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    padding: 16px 20px; margin: 16px 0 24px; overflow-x: auto; }
+  .code-block code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #e6edf3; line-height: 1.6; }
+  .code-block .comment { color: #8b949e; }
+  .code-block .keyword { color: #ff7b72; }
+  .code-block .string { color: #a5d6ff; }
+  .code-block .func { color: #d2a8ff; }
+
+  .guide-nav { display: flex; justify-content: space-between; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-color); }
+  .guide-nav a { font-size: 0.85rem; color: var(--color-primary); text-decoration: none; font-weight: 600; }
+  .guide-nav a:hover { text-decoration: underline; }
+
+  .newsletter-cta { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius);
+    padding: 28px; margin: 40px 0; text-align: center; }
+  .newsletter-cta h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .newsletter-cta p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; }
+  .newsletter-cta .nl-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
+  .newsletter-cta .nl-form input { flex: 1; padding: 10px 14px; font-size: 0.85rem; font-family: inherit;
+    background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    color: var(--text-primary); outline: none; }
+  .newsletter-cta .nl-form input:focus { border-color: var(--color-primary); }
+  .newsletter-cta .nl-form input::placeholder { color: var(--text-muted); }
+  .newsletter-cta .nl-form button { padding: 10px 20px; font-size: 0.82rem; font-weight: 600; font-family: inherit;
+    background: var(--color-primary); color: #fff; border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap; }
+
+  @media (max-width: 768px) {
+    .guide-header h1 { font-size: 1.3rem; }
+    .guide-nav { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../compare.html" class="nav-link">比較表</a>
+      <a href="index.html" class="nav-link active">ガイド</a>
+      <a href="../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="guide-page">
+<div class="container">
+  <div class="guide-breadcrumb">
+    <a href="../index.html">APIpedia</a> &gt; <a href="index.html">ガイド</a> &gt; 検索API比較
+  </div>
+
+  <div class="guide-header">
+    <span class="guide-header__badge">比較ガイド</span>
+    <h1>【2026年版】検索API 5社徹底比較<br>Algolia / Elasticsearch / Meilisearch / Solr / Typesense</h1>
+    <div class="guide-header__meta">
+      <span>更新日: 2026-02-15</span>
+      <span>読了時間: 約12分</span>
+      <span>カテゴリ: 検索・全文検索</span>
+    </div>
+  </div>
+
+  <div class="guide-content">
+
+    <p>サイト内検索や商品検索の品質はユーザー体験に直結します。本ガイドでは、主要5つの検索API/エンジンを、<strong>セットアップ容易さ・検索速度・日本語対応・料金・セルフホスト可否</strong>の観点から徹底比較します。</p>
+
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#comparison" style="color: var(--color-primary);">比較サマリー</a></li>
+      <li><a href="#details" style="color: var(--color-primary);">各APIの特徴と強み</a></li>
+      <li><a href="#usecases" style="color: var(--color-primary);">ユースケース別おすすめ</a></li>
+      <li><a href="#code" style="color: var(--color-primary);">実装サンプルコード</a></li>
+      <li><a href="#summary" style="color: var(--color-primary);">まとめ</a></li>
+    </ol>
+
+    <h2 id="comparison">1. 比較サマリー</h2>
+
+    <div class="compare-matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>API</th>
+            <th>セットアップ</th>
+            <th>検索速度</th>
+            <th>日本語</th>
+            <th>料金</th>
+            <th>セルフホスト</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="api-name">Algolia</td>
+            <td><span class="pill pill--green">最速</span></td>
+            <td><span class="pill pill--green">&lt;10ms</span></td>
+            <td><span class="pill pill--green">対応</span></td>
+            <td>$1/1,000リクエスト〜</td>
+            <td><span class="pill pill--red">不可</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Elasticsearch</td>
+            <td><span class="pill pill--amber">複雑</span></td>
+            <td><span class="pill pill--green">&lt;20ms</span></td>
+            <td><span class="pill pill--green">Kuromoji</span></td>
+            <td>Elastic Cloud $95〜/月</td>
+            <td><span class="pill pill--green">可</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Meilisearch</td>
+            <td><span class="pill pill--green">簡単</span></td>
+            <td><span class="pill pill--green">&lt;50ms</span></td>
+            <td><span class="pill pill--green">対応</span></td>
+            <td>Cloud $30〜/月, OSS無料</td>
+            <td><span class="pill pill--green">可</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Apache Solr</td>
+            <td><span class="pill pill--red">難しい</span></td>
+            <td><span class="pill pill--green">&lt;20ms</span></td>
+            <td><span class="pill pill--green">Kuromoji</span></td>
+            <td>無料（OSS）</td>
+            <td><span class="pill pill--green">可</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Typesense</td>
+            <td><span class="pill pill--green">簡単</span></td>
+            <td><span class="pill pill--green">&lt;10ms</span></td>
+            <td><span class="pill pill--amber">限定的</span></td>
+            <td>Cloud $30〜/月, OSS無料</td>
+            <td><span class="pill pill--green">可</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="details">2. 各APIの特徴と強み</h2>
+
+    <h3>Algolia - 検索SaaSの王者</h3>
+    <p>世界17,000社以上が採用する検索SaaS。数行のコードで高品質な検索体験を実装可能。InstantSearch UIライブラリにより、リアルタイム検索・ファセット・ハイライトなどのUIを素早く構築できます。</p>
+    <ul>
+      <li><strong>強み:</strong> 圧倒的なセットアップ速度、InstantSearch UIライブラリ、AI Re-Ranking、分析ダッシュボード</li>
+      <li><strong>弱み:</strong> 料金が高い（検索リクエスト課金）、セルフホスト不可、大量データでコスト急増</li>
+      <li><strong>おすすめ:</strong> ECサイト検索、SaaSのサイト内検索、速度重視のプロジェクト</li>
+    </ul>
+
+    <h3>Elasticsearch - 最も柔軟な全文検索エンジン</h3>
+    <p>Apache Luceneベースの全文検索エンジン。検索だけでなく、ログ分析（ELK Stack）、APM、セキュリティ分析にも活用。Kibanaによる可視化、Kuromojiプラグインによる日本語形態素解析にも対応。</p>
+    <ul>
+      <li><strong>強み:</strong> 最も柔軟なクエリDSL、Kuromoji（日本語形態素解析）、ログ分析との統合、大規模データ対応</li>
+      <li><strong>弱み:</strong> セットアップ・運用が複雑、メモリ消費が大きい、チューニングに専門知識が必要</li>
+      <li><strong>おすすめ:</strong> 大規模サイト検索、ログ分析、複雑な検索要件</li>
+    </ul>
+
+    <h3>Meilisearch - 開発者体験重視のOSS検索</h3>
+    <p>Rust製の高速な全文検索エンジン。「5分でセットアップ」をコンセプトに、シンプルなREST APIと直感的な管理画面を提供。タイポ耐性、ファセット検索、日本語トークナイザーを標準搭載。</p>
+    <ul>
+      <li><strong>強み:</strong> セットアップの容易さ、Rust製で高速、タイポ耐性標準装備、日本語対応、OSS無料</li>
+      <li><strong>弱み:</strong> Elasticsearchほどの高度なクエリは不可、大規模データ（数百万件〜）では性能低下の可能性</li>
+      <li><strong>おすすめ:</strong> 中小規模サイト検索、個人開発、Algolia代替（コスト削減）</li>
+    </ul>
+
+    <h3>Apache Solr - エンタープライズ実績の検索エンジン</h3>
+    <p>Apache Luceneベースの全文検索プラットフォーム。Elasticsearchより歴史が長く、エンタープライズでの実績が豊富。SolrCloudによるスケーラブルな分散構成が可能。</p>
+    <ul>
+      <li><strong>強み:</strong> 長い実績と安定性、Kuromojiプラグイン、ファセット検索の高性能、完全OSS</li>
+      <li><strong>弱み:</strong> セットアップが複雑、コミュニティがElasticsearchに比べ縮小傾向、モダンなUIが少ない</li>
+      <li><strong>おすすめ:</strong> レガシーシステムの検索、安定性重視のエンタープライズ</li>
+    </ul>
+
+    <h3>Typesense - Algoliaの高速オープンソース代替</h3>
+    <p>C++製の超高速検索エンジン。「Algoliaのオープンソース代替」を標榜し、同等のレスポンス速度をセルフホストで実現。InstantSearchアダプタで Algolia用UIライブラリをそのまま使用可能。</p>
+    <ul>
+      <li><strong>強み:</strong> Algolia並みの速度、セルフホスト可能、低コスト、InstantSearch互換</li>
+      <li><strong>弱み:</strong> 日本語対応がMeilisearchに劣る、エコシステムが小さい、地理空間検索が限定的</li>
+      <li><strong>おすすめ:</strong> Algoliaからのコスト移行、英語中心のサービス、速度重視のプロジェクト</li>
+    </ul>
+
+    <h2 id="usecases">3. ユースケース別おすすめ</h2>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">ECサイト検索（速度重視） → Algolia</div>
+      <p>10ms以下のレスポンス、AIによるRe-Ranking、InstantSearch UIで、最高の検索体験を最短で実装。予算に余裕がある場合の最適解。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">日本語サイト検索（コスト重視） → Meilisearch</div>
+      <p>日本語トークナイザー標準搭載、OSS無料でセルフホスト可能。Algoliaの代替として人気急上昇中。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">大規模データ・ログ分析 → Elasticsearch</div>
+      <p>数十億ドキュメントの検索、ログ分析、APMを統合。Kuromoji で日本語も完全対応。エンタープライズの定番。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">Algolia代替（英語中心） → Typesense</div>
+      <p>Algoliaと同等の速度をセルフホストで実現。InstantSearchアダプタでAlgoliaからの移行も容易。月額$30〜のCloudプランも。</p>
+    </div>
+
+    <h2 id="code">4. 実装サンプルコード</h2>
+
+    <h3>Algolia（JavaScript SDK）</h3>
+    <div class="code-block"><code><span class="keyword">import</span> algoliasearch <span class="keyword">from</span> <span class="string">'algoliasearch'</span>;
+
+<span class="keyword">const</span> client = <span class="func">algoliasearch</span>(<span class="string">'YourAppID'</span>, <span class="string">'YourSearchAPIKey'</span>);
+<span class="keyword">const</span> index = client.<span class="func">initIndex</span>(<span class="string">'products'</span>);
+
+<span class="comment">// 検索の実行</span>
+<span class="keyword">const</span> { hits } = <span class="keyword">await</span> index.<span class="func">search</span>(<span class="string">'ワイヤレスイヤホン'</span>, {
+  hitsPerPage: 10,
+  facetFilters: [<span class="string">'category:Electronics'</span>],
+});
+console.<span class="func">log</span>(hits);</code></div>
+
+    <h3>Meilisearch（JavaScript SDK）</h3>
+    <div class="code-block"><code><span class="keyword">import</span> { MeiliSearch } <span class="keyword">from</span> <span class="string">'meilisearch'</span>;
+
+<span class="keyword">const</span> client = <span class="keyword">new</span> <span class="func">MeiliSearch</span>({
+  host: <span class="string">'http://localhost:7700'</span>,
+  apiKey: <span class="string">'your-master-key'</span>,
+});
+
+<span class="comment">// ドキュメントの追加</span>
+<span class="keyword">await</span> client.<span class="func">index</span>(<span class="string">'articles'</span>).<span class="func">addDocuments</span>([
+  { id: 1, title: <span class="string">'検索APIの選び方'</span>, body: <span class="string">'...'</span> },
+]);
+
+<span class="comment">// 検索の実行（日本語対応）</span>
+<span class="keyword">const</span> results = <span class="keyword">await</span> client.<span class="func">index</span>(<span class="string">'articles'</span>).<span class="func">search</span>(<span class="string">'検索API'</span>);
+console.<span class="func">log</span>(results.hits);</code></div>
+
+    <h3>Typesense（cURL）</h3>
+    <div class="code-block"><code><span class="comment"># Typesenseで検索実行</span>
+curl <span class="string">'http://localhost:8108/collections/products/documents/search?q=wireless+earbuds&query_by=title,description&sort_by=rating:desc'</span> \
+  -H <span class="string">'X-TYPESENSE-API-KEY: your-api-key'</span>
+
+<span class="comment"># レスポンス例:</span>
+<span class="comment"># {"found": 42, "hits": [{"document": {"title": "...", "rating": 4.8}}]}</span></code></div>
+
+    <h2 id="summary">5. まとめ：選び方フローチャート</h2>
+    <ol>
+      <li><strong>予算潤沢・最速で実装？</strong> → Yes: Algolia</li>
+      <li><strong>日本語検索・コスト重視？</strong> → Yes: Meilisearch</li>
+      <li><strong>大規模データ・ログ分析？</strong> → Yes: Elasticsearch</li>
+      <li><strong>Algolia代替・セルフホスト？</strong> → Yes: Typesense</li>
+      <li><strong>エンタープライズ・安定性？</strong> → Yes: Apache Solr</li>
+    </ol>
+    <p>2026年現在、日本語検索ではMeilisearchが急速にシェアを伸ばしています。OSS無料で手軽に始められるので、まずMeilisearchで試してみて、スケールが必要になったらElasticsearch/Algoliaへ移行するアプローチがおすすめです。</p>
+
+    <div class="newsletter-cta">
+      <h3>この記事が役に立ちましたか？</h3>
+      <p>APIpediaニュースレターで最新の比較ガイドを受け取りましょう。</p>
+      <form class="nl-form" action="https://formspree.io/f/placeholder" method="POST">
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <button type="submit">登録</button>
+      </form>
+    </div>
+
+    <div class="guide-nav">
+      <a href="storage-api-comparison.html">&larr; ストレージAPI比較ガイド</a>
+      <a href="index.html">ガイド一覧に戻る &rarr;</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../index.html">トップ</a>
+        <a href="../compare.html">比較表</a>
+        <a href="index.html">ガイド</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

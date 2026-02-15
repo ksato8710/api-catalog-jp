@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Teams API (Graph API) - APIpedia | 日本語APIカタログ</title>
+<meta name="description" content="Microsoft Graph API経由でTeamsのチャット、チャネル、会議、ファイル共有等を操作するAPI。メッセージ送受信、チーム管理、ユーザープレゼンス取得、通話制御などが可能。Microsoft 365エコシステムとのシームレスな連携により、企業向けコミュニケーション自動化の中核を担う。">
+<!-- OGP -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Microsoft Teams API (Graph API) — APIpedia | 日本語APIカタログ">
+<meta property="og:description" content="Microsoft Graph API経由でTeamsのチャット、チャネル、会議、ファイル共有等を操作するAPI。メッセージ送受信、チーム管理、ユーザープレゼンス取得、通話制御などが可能。Microsoft 365エコシステムとのシームレスな連携により、企業向けコミュニケーション自動化の中核を担う。">
+<meta property="og:url" content="https://apipedia.dev/api/microsoft-teams/">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Microsoft Teams API (Graph API) — APIpedia">
+<meta name="twitter:description" content="Microsoft Graph API経由でTeamsのチャット、チャネル、会議、ファイル共有等を操作するAPI。メッセージ送受信、チーム管理、ユーザープレゼンス取得、通話制御などが可能。Microsoft 365エコシステムとのシームレスな連携により、企業向けコミュニケーション自動化の中核を担う。">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/api/microsoft-teams/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Microsoft Teams API (Graph API)", "description": "Microsoft Graph API経由でTeamsのチャット、チャネル、会議、ファイル共有等を操作するAPI。メッセージ送受信、チーム管理、ユーザープレゼンス取得、通話制御などが可能。Microsoft 365エコシステムとのシームレスな連携により、企業向けコミュニケーション自動化の中核を担う。", "url": "https://www.microsoft.com/ja-jp/microsoft-teams/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "", "priceCurrency": "JPY", "description": "Teams無料版あり。Microsoft 365 Business Basic $6/ユーザー/月〜。API自体は追加費用なし"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Microsoft Teams API (Graph API)", "item": "https://apipedia.dev/api/microsoft-teams/"}]}</script>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
+  .breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-secondary); }
+  .breadcrumb a:hover { color: var(--color-primary); }
+  .api-hero { margin-bottom: 32px; }
+  .api-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+  .api-hero .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .badge { display: inline-flex; align-items: center; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .badge--pricing { color: var(--color-primary); background: var(--color-primary-light); }
+  .badge--region { color: var(--color-accent); background: var(--color-accent-light); }
+  .badge--category { color: var(--color-secondary); background: var(--color-secondary-light); }
+  .badge--difficulty { color: var(--text-secondary); background: rgba(255,255,255,0.06); }
+  .badge--featured { color: var(--color-warning); background: var(--color-warning-light); }
+  .api-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px; }
+  .score-hero { display: flex; align-items: center; gap: 24px; padding: 24px; background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(139,92,246,0.06)); border: 1px solid var(--border-color); border-radius: var(--radius); margin-bottom: 32px; }
+  .score-number { font-size: 3.5rem; font-weight: 800; line-height: 1; }
+  .score-detail { flex: 1; }
+  .score-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+  .score-bar-outer { width: 100%; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 5px; }
+  .score-reason { font-size: 0.88rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.7; }
+  .section-block { margin-bottom: 32px; }
+  .section-heading { font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: 8px; }
+  .detail-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .metric-card { padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metric-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .metric-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+  .adopters-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .adopter-chip { padding: 6px 14px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-pill); }
+  .sources-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .source-link { display: block; padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; color: var(--color-primary); font-size: 0.85rem; font-weight: 500; transition: all var(--transition); }
+  .source-link:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .spec-item { padding: 14px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .spec-item .label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .spec-item .value { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+  .spec-item--full { grid-column: 1 / -1; }
+  .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
+  .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
+  .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
+  @media (max-width: 768px) {
+    .api-hero h1 { font-size: 1.5rem; }
+    .score-hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .score-number { font-size: 2.5rem; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .action-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../../compare.html" class="nav-link">比較表</a>
+      <a href="../../guides/" class="nav-link">ガイド</a>
+      <a href="../../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="api-detail">
+  <div class="breadcrumb">
+    <a href="../../index.html">APIpedia</a> &rsaquo;
+    <a href="../../index.html#catalog">カタログ</a> &rsaquo;
+    Microsoft Teams API (Graph API)
+  </div>
+
+  <div class="api-hero">
+    <h1>Microsoft Teams API (Graph API)</h1>
+    <div class="subtitle">Microsoft Teams API（Graph API経由）</div>
+    <div class="badge-row">
+      <span class="badge badge--pricing">フリーミアム</span>
+      <span class="badge badge--region">グローバル</span>
+      <span class="badge badge--category">📹 コミュニケーション</span>
+      <span class="badge badge--difficulty">上級</span>
+      <span class="badge badge--featured">&#x2B50; 注目</span>
+    </div>
+  </div>
+
+  <p class="api-desc">Microsoft Graph API経由でTeamsのチャット、チャネル、会議、ファイル共有等を操作するAPI。メッセージ送受信、チーム管理、ユーザープレゼンス取得、通話制御などが可能。Microsoft 365エコシステムとのシームレスな連携により、企業向けコミュニケーション自動化の中核を担う。</p>
+
+  <div class="score-hero">
+    <div class="score-number" style="color:var(--color-success);">92</div>
+    <div class="score-detail">
+      <div class="score-label">人気スコア（100点満点）</div>
+      <div class="score-bar-outer"><div class="score-bar-fill" style="width:92%;background:linear-gradient(90deg,var(--color-success), #4ade80);"></div></div>
+      <div class="score-reason">Microsoft 365の普及により企業導入率が非常に高い。Graph APIによる統合的なデータアクセスが強み</div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">詳細分析</h2><div class="detail-text">Microsoft TeamsはGraph APIの一部として提供され、Outlook、SharePoint、OneDrive等とのシームレスな連携が最大の強み。企業のDXにおいて中心的な役割を果たしている。</div></div>
+
+  <div class="section-block"><h2 class="section-heading">利用実績・指標</h2><div class="metrics-grid"><div class="metric-card"><div class="metric-label">APIコール数</div><div class="metric-value">数百億リクエスト/月（Graph API全体）</div></div><div class="metric-card"><div class="metric-label">npm ダウンロード</div><div class="metric-value">@microsoft/microsoft-graph-client 約200,000/週</div></div><div class="metric-card"><div class="metric-label">GitHub Stars</div><div class="metric-value">microsoft-graph-sdk 約1,500+</div></div></div></div>
+  <div class="section-block"><h2 class="section-heading">主な利用企業・サービス</h2><div class="adopters-wrap"><span class="adopter-chip">Fortune 500企業の大多数</span><span class="adopter-chip">政府機関</span><span class="adopter-chip">教育機関</span><span class="adopter-chip">Accenture</span></div></div>
+  <div class="section-block"><h2 class="section-heading">根拠・参照元</h2><ul class="sources-list"><li><a href="https://learn.microsoft.com/en-us/graph/api/resources/teams-api-overview" target="_blank" rel="noopener" class="source-link">Microsoft Teams API Overview</a></li><li><a href="https://learn.microsoft.com/en-us/graph/throttling-limits" target="_blank" rel="noopener" class="source-link">Graph API スロットリング</a></li></ul></div>
+
+  <div class="section-block">
+    <h2 class="section-heading">API仕様</h2>
+    <div class="spec-grid">
+      <div class="spec-item"><div class="label">認証方式</div><div class="value">OAuth 2.0</div></div>
+      <div class="spec-item"><div class="label">レスポンス形式</div><div class="value">JSON</div></div>
+      <div class="spec-item"><div class="label">レート制限</div><div class="value">チーム単位: 4リクエスト/秒/アプリ。チャネル: 1リクエスト/秒/テナント。メッセージ投稿: 1リクエスト/秒/ユーザー</div></div>
+      <div class="spec-item"><div class="label">料金</div><div class="value">Teams無料版あり。Microsoft 365 Business Basic $6/ユーザー/月〜。API自体は追加費用なし</div></div>
+      <div class="spec-item spec-item--full"><div class="label">SDK</div><div class="value">JavaScript, Python, C#, Java</div></div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">チャットボット構築</span><span class="usecase-tag">会議の自動スケジュール</span><span class="usecase-tag">通知・アラート配信</span><span class="usecase-tag">ワークフロー自動化</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">チャット</span><span class="tag">ビデオ会議</span><span class="tag">チーム連携</span><span class="tag">Microsoft 365</span><span class="tag">エンタープライズ</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（📹 コミュニケーション）</h2><div class="related-apis-grid"><a href="../whatsapp-business/" class="related-api-card"><div class="related-api-name">WhatsApp Business API</div><div class="related-api-desc">Meta社が提供するWhatsAppのビジネス向けAPI。テンプレートメッセージ、インタラクティブメッセージ、メディア送...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>93点</span></div></a><a href="../zoom-api/" class="related-api-card"><div class="related-api-name">Zoom API</div><div class="related-api-desc">ビデオ会議プラットフォームZoomのREST API。会議の作成・管理、参加者管理、録画操作、レポート取得などが可能。W...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>88点</span></div></a><a href="../telegram-bot/" class="related-api-card"><div class="related-api-name">Telegram Bot API</div><div class="related-api-desc">Telegramメッセンジャーのボット開発API。メッセージ送受信、インラインキーボード、ファイル送信、決済機能、ミニア...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>88点</span></div></a><a href="../webex-api/" class="related-api-card"><div class="related-api-name">Webex API</div><div class="related-api-desc">Cisco Webexのビデオ会議・メッセージング・通話機能を操作するAPI。ミーティング管理、メッセージ送受信、ユーザ...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>72点</span></div></a><a href="../lark-feishu/" class="related-api-card"><div class="related-api-name">Lark/Feishu API</div><div class="related-api-desc">ByteDance（TikTok親会社）が提供するオールインワン業務プラットフォームのAPI。メッセージング、ドキュメン...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--medium>68点</span></div></a></div></div>
+
+  <div class="action-buttons">
+    <a href="https://learn.microsoft.com/en-us/graph/api/resources/teams-api-overview" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
+    <a href="https://www.microsoft.com/ja-jp/microsoft-teams/" target="_blank" rel="noopener" class="btn btn--ghost">公式サイト</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../../index.html">トップ</a>
+        <a href="../../compare.html">比較表</a>
+        <a href="../../guides/">ガイド</a>
+        <a href="../../lean-canvas.html">コンセプト</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

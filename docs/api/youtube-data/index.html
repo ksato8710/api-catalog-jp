@@ -26,6 +26,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://apipedia.dev/api/youtube-data/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "YouTube Data API", "description": "YouTube動画・チャンネル・プレイリストの情報取得や管理ができるAPI。検索やアップロードにも対応", "url": "https://developers.google.com/youtube/v3", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "無料（1日あたり10,000ユニットのクォータ制限）"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "YouTube Data API", "item": "https://apipedia.dev/api/youtube-data/"}]}</script>
 <link rel="stylesheet" href="../../assets/style.css">
 <style>
   .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
@@ -69,6 +70,20 @@
   .spec-item--full { grid-column: 1 / -1; }
   .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
   .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
   .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
   .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
   @media (max-width: 768px) {
@@ -145,6 +160,8 @@
   <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">動画検索</span><span class="usecase-tag">チャンネル分析</span><span class="usecase-tag">プレイリスト管理</span><span class="usecase-tag">動画アップロード</span></div></div>
 
   <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">動画</span><span class="tag">YouTube</span><span class="tag">検索</span><span class="tag">チャンネル</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（💬 SNS・ソーシャル）</h2><div class="related-apis-grid"><a href="../tiktok-api/" class="related-api-card"><div class="related-api-name">TikTok API</div><div class="related-api-desc">ショート動画プラットフォームTikTokの開発者向けAPI群。Login Kit、Share Kit、Content P...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>90点</span></div></a><a href="../discord-api/" class="related-api-card"><div class="related-api-name">Discord API</div><div class="related-api-desc">ゲーマー・開発者コミュニティで人気のチャットプラットフォームDiscordの公式API。Bot作成、メッセージ送信、サー...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>88点</span></div></a><a href="../slack-api/" class="related-api-card"><div class="related-api-name">Slack API</div><div class="related-api-desc">ビジネス向けチームコラボレーションツールSlackの公式API。メッセージ送信、チャンネル管理、ファイル共有、ワークフロ...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>85点</span></div></a><a href="../reddit/" class="related-api-card"><div class="related-api-name">Reddit API</div><div class="related-api-desc">世界最大の掲示板型SNS「Reddit」のData API。投稿・コメントの取得、サブレディットの管理、ユーザー情報取得...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>82点</span></div></a><a href="../line-messaging/" class="related-api-card"><div class="related-api-name">LINE Messaging API</div><div class="related-api-desc">LINEプラットフォームでボットやメッセージング機能を構築するためのAPI。リッチメニューやFlex Messageに対...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>75点</span></div></a></div></div>
 
   <div class="action-buttons">
     <a href="https://developers.google.com/youtube/v3/docs" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas LMS API - APIpedia | 日本語APIカタログ</title>
+<meta name="description" content="Instructure社が開発する学習管理システム「Canvas LMS」のREST API。コース管理、課題・クイズ管理、成績管理、ユーザー管理、ファイルアップロード、ディスカッション、カレンダーなど、LMSの全機能をAPI経由で操作可能。リーキーバケットアルゴリズムによる柔軟なレート制限を採用し、APIトークン単位でクォータが管理される。高等教育機関での採用が多い。">
+<!-- OGP -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas LMS API — APIpedia | 日本語APIカタログ">
+<meta property="og:description" content="Instructure社が開発する学習管理システム「Canvas LMS」のREST API。コース管理、課題・クイズ管理、成績管理、ユーザー管理、ファイルアップロード、ディスカッション、カレンダーなど、LMSの全機能をAPI経由で操作可能。リーキーバケットアルゴリズムによる柔軟なレート制限を採用し、APIトークン単位でクォータが管理される。高等教育機関での採用が多い。">
+<meta property="og:url" content="https://apipedia.dev/api/canvas-lms-api/">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Canvas LMS API — APIpedia">
+<meta name="twitter:description" content="Instructure社が開発する学習管理システム「Canvas LMS」のREST API。コース管理、課題・クイズ管理、成績管理、ユーザー管理、ファイルアップロード、ディスカッション、カレンダーなど、LMSの全機能をAPI経由で操作可能。リーキーバケットアルゴリズムによる柔軟なレート制限を採用し、APIトークン単位でクォータが管理される。高等教育機関での採用が多い。">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/api/canvas-lms-api/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Canvas LMS API", "description": "Instructure社が開発する学習管理システム「Canvas LMS」のREST API。コース管理、課題・クイズ管理、成績管理、ユーザー管理、ファイルアップロード、ディスカッション、カレンダーなど、LMSの全機能をAPI経由で操作可能。リーキーバケットアルゴリズムによる柔軟なレート制限を採用し、APIトークン単位でクォータが管理される。高等教育機関での採用が多い。", "url": "https://www.instructure.com/canvas", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "", "priceCurrency": "JPY", "description": "Canvas LMSのライセンス契約が必要。APIはライセンスに含まれる"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Canvas LMS API", "item": "https://apipedia.dev/api/canvas-lms-api/"}]}</script>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
+  .breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-secondary); }
+  .breadcrumb a:hover { color: var(--color-primary); }
+  .api-hero { margin-bottom: 32px; }
+  .api-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+  .api-hero .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .badge { display: inline-flex; align-items: center; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .badge--pricing { color: var(--color-primary); background: var(--color-primary-light); }
+  .badge--region { color: var(--color-accent); background: var(--color-accent-light); }
+  .badge--category { color: var(--color-secondary); background: var(--color-secondary-light); }
+  .badge--difficulty { color: var(--text-secondary); background: rgba(255,255,255,0.06); }
+  .badge--featured { color: var(--color-warning); background: var(--color-warning-light); }
+  .api-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px; }
+  .score-hero { display: flex; align-items: center; gap: 24px; padding: 24px; background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(139,92,246,0.06)); border: 1px solid var(--border-color); border-radius: var(--radius); margin-bottom: 32px; }
+  .score-number { font-size: 3.5rem; font-weight: 800; line-height: 1; }
+  .score-detail { flex: 1; }
+  .score-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+  .score-bar-outer { width: 100%; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 5px; }
+  .score-reason { font-size: 0.88rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.7; }
+  .section-block { margin-bottom: 32px; }
+  .section-heading { font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: 8px; }
+  .detail-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .metric-card { padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metric-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .metric-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+  .adopters-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .adopter-chip { padding: 6px 14px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-pill); }
+  .sources-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .source-link { display: block; padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; color: var(--color-primary); font-size: 0.85rem; font-weight: 500; transition: all var(--transition); }
+  .source-link:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .spec-item { padding: 14px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .spec-item .label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .spec-item .value { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+  .spec-item--full { grid-column: 1 / -1; }
+  .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
+  .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
+  .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
+  @media (max-width: 768px) {
+    .api-hero h1 { font-size: 1.5rem; }
+    .score-hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .score-number { font-size: 2.5rem; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .action-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../../compare.html" class="nav-link">比較表</a>
+      <a href="../../guides/" class="nav-link">ガイド</a>
+      <a href="../../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="api-detail">
+  <div class="breadcrumb">
+    <a href="../../index.html">APIpedia</a> &rsaquo;
+    <a href="../../index.html#catalog">カタログ</a> &rsaquo;
+    Canvas LMS API
+  </div>
+
+  <div class="api-hero">
+    <h1>Canvas LMS API</h1>
+    <div class="subtitle">Canvas LMS REST API</div>
+    <div class="badge-row">
+      <span class="badge badge--pricing">有料</span>
+      <span class="badge badge--region">グローバル</span>
+      <span class="badge badge--category">📚 教育・学習</span>
+      <span class="badge badge--difficulty">中級</span>
+      
+    </div>
+  </div>
+
+  <p class="api-desc">Instructure社が開発する学習管理システム「Canvas LMS」のREST API。コース管理、課題・クイズ管理、成績管理、ユーザー管理、ファイルアップロード、ディスカッション、カレンダーなど、LMSの全機能をAPI経由で操作可能。リーキーバケットアルゴリズムによる柔軟なレート制限を採用し、APIトークン単位でクォータが管理される。高等教育機関での採用が多い。</p>
+
+  <div class="score-hero">
+    <div class="score-number" style="color:var(--color-success);">70</div>
+    <div class="score-detail">
+      <div class="score-label">人気スコア（100点満点）</div>
+      <div class="score-bar-outer"><div class="score-bar-fill" style="width:70%;background:linear-gradient(90deg,var(--color-success), #4ade80);"></div></div>
+      <div class="score-reason">北米の大学・高等教育機関で最も利用されているLMSの一つ。APIドキュメントが充実しており、開発者コミュニティも活発</div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">詳細分析</h2><div class="detail-text">Canvas LMSは北米高等教育市場でBlackboardと並ぶ主要LMS。オープンソースとSaaS両方で提供されており、REST APIは全機能をカバーしている。</div></div>
+
+  <div class="section-block"><h2 class="section-heading">利用実績・指標</h2><div class="metrics-grid"><div class="metric-card"><div class="metric-label">APIコール数</div><div class="metric-value">非公開</div></div><div class="metric-card"><div class="metric-label">npm ダウンロード</div><div class="metric-value">N/A</div></div><div class="metric-card"><div class="metric-label">GitHub Stars</div><div class="metric-value">N/A</div></div></div></div>
+  <div class="section-block"><h2 class="section-heading">主な利用企業・サービス</h2><div class="adopters-wrap"><span class="adopter-chip">米国主要大学</span><span class="adopter-chip">K-12学校</span><span class="adopter-chip">企業研修</span><span class="adopter-chip">Instructureパートナー</span></div></div>
+  <div class="section-block"><h2 class="section-heading">根拠・参照元</h2><ul class="sources-list"><li><a href="https://canvas.instructure.com/doc/api/" target="_blank" rel="noopener" class="source-link">Canvas LMS REST API</a></li><li><a href="https://canvas.instructure.com/doc/api/file.throttling.html" target="_blank" rel="noopener" class="source-link">Canvas レート制限</a></li></ul></div>
+
+  <div class="section-block">
+    <h2 class="section-heading">API仕様</h2>
+    <div class="spec-grid">
+      <div class="spec-item"><div class="label">認証方式</div><div class="value">Bearer Token</div></div>
+      <div class="spec-item"><div class="label">レスポンス形式</div><div class="value">JSON</div></div>
+      <div class="spec-item"><div class="label">レート制限</div><div class="value">リーキーバケットアルゴリズム。トークン単位で管理。初期コスト50ユニット/リクエスト。X-Rate-Limit-Remainingヘッダーで残量確認可能</div></div>
+      <div class="spec-item"><div class="label">料金</div><div class="value">Canvas LMSのライセンス契約が必要。APIはライセンスに含まれる</div></div>
+      <div class="spec-item spec-item--full"><div class="label">SDK</div><div class="value">JavaScript, Python, Ruby</div></div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">LMS統合</span><span class="usecase-tag">成績自動集計</span><span class="usecase-tag">コース管理自動化</span><span class="usecase-tag">学習分析</span><span class="usecase-tag">カスタムLMSダッシュボード</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">LMS</span><span class="tag">教育</span><span class="tag">高等教育</span><span class="tag">成績管理</span><span class="tag">コース管理</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（📚 教育・学習）</h2><div class="related-apis-grid"><a href="../google-classroom-api/" class="related-api-card"><div class="related-api-name">Google Classroom API</div><div class="related-api-desc">Google Workspaceの教育向けプラットフォーム「Google Classroom」のREST API。コース...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>82点</span></div></a><a href="../moodle-web-services-api/" class="related-api-card"><div class="related-api-name">Moodle Web Services API</div><div class="related-api-desc">世界で最も広く利用されているオープンソースLMS「Moodle」のWeb Services API。REST、SOAP、...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>68点</span></div></a><a href="../coursera-api/" class="related-api-card"><div class="related-api-name">Coursera API</div><div class="related-api-desc">世界トップクラスの大学と連携するオンライン学習プラットフォーム「Coursera」の開発者向けAPI。コースカタログメタ...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>65点</span></div></a><a href="../udemy-api/" class="related-api-card"><div class="related-api-name">Udemy Instructor API</div><div class="related-api-desc">世界最大級のオンライン学習プラットフォーム「Udemy」のインストラクター向けREST API。コース情報の取得、受講生...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>60点</span></div></a><a href="../duolingo-api/" class="related-api-card"><div class="related-api-name">Duolingo API (Unofficial)</div><div class="related-api-desc">世界最大の語学学習プラットフォーム「Duolingo」の非公式API。ユーザープロフィール、学習進捗、ストリーク情報、リ...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>52点</span></div></a></div></div>
+
+  <div class="action-buttons">
+    <a href="https://canvas.instructure.com/doc/api/" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
+    <a href="https://www.instructure.com/canvas" target="_blank" rel="noopener" class="btn btn--ghost">公式サイト</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../../index.html">トップ</a>
+        <a href="../../compare.html">比較表</a>
+        <a href="../../guides/">ガイド</a>
+        <a href="../../lean-canvas.html">コンセプト</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

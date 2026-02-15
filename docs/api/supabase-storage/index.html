@@ -26,6 +26,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://apipedia.dev/api/supabase-storage/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Supabase Storage", "description": "PostgreSQLベースのオープンソースFirebase代替。S3互換ストレージに組み込みアクセス制御、REST API、CDN機能を統合。開発者フレンドリーな設計。", "url": "https://supabase.com/storage", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "", "priceCurrency": "JPY", "description": "無料枠1GB、Pro $25/月（100GB含む）、超過分$0.021/GB、転送$0.09/GB"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Supabase Storage", "item": "https://apipedia.dev/api/supabase-storage/"}]}</script>
 <link rel="stylesheet" href="../../assets/style.css">
 <style>
   .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
@@ -69,6 +70,20 @@
   .spec-item--full { grid-column: 1 / -1; }
   .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
   .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
   .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
   .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
   @media (max-width: 768px) {
@@ -145,6 +160,8 @@
   <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">ユーザーアバター保存</span><span class="usecase-tag">メディアファイル管理</span><span class="usecase-tag">フルスタックアプリ開発</span></div></div>
 
   <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">ストレージ</span><span class="tag">オープンソース</span><span class="tag">Firebase代替</span><span class="tag">PostgreSQL</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（☁️ ストレージ）</h2><div class="related-apis-grid"><a href="../aws-s3/" class="related-api-card"><div class="related-api-name">AWS S3</div><div class="related-api-desc">Amazon Web Servicesが提供する業界標準のオブジェクトストレージ。99.999999999%の耐久性、無...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>98点</span></div></a><a href="../google-cloud-storage/" class="related-api-card"><div class="related-api-name">Google Cloud Storage</div><div class="related-api-desc">Googleのグローバルインフラを活用したオブジェクトストレージ。強力な暗号化、自動ライフサイクル管理、マルチリージョン...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>85点</span></div></a><a href="../minio-api/" class="related-api-card"><div class="related-api-name">MinIO API</div><div class="related-api-desc">高性能なS3互換オープンソースオブジェクトストレージ「MinIO」のAPI。AWS S3 APIとIAM APIに100...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>82点</span></div></a><a href="../r2-storage/" class="related-api-card"><div class="related-api-name">Cloudflare R2</div><div class="related-api-desc">S3互換のオブジェクトストレージAPI。エグレス（送信）料金が無料という画期的な料金体系。Workers AIとの統合で...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>72点</span></div></a><a href="../backblaze-b2-api/" class="related-api-card"><div class="related-api-name">Backblaze B2 API</div><div class="related-api-desc">S3互換の低コストクラウドオブジェクトストレージ「Backblaze B2」のAPI。S3互換APIとB2ネイティブAP...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>70点</span></div></a></div></div>
 
   <div class="action-buttons">
     <a href="https://supabase.com/docs/guides/storage" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>

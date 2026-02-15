@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【2026年版】ストレージAPI 5社徹底比較 - AWS S3 vs GCS vs Cloudflare R2 | APIpedia</title>
+<meta name="description" content="AWS S3, Google Cloud Storage, Cloudflare R2, Supabase Storage, Backblaze B2のストレージAPIを料金・エグレス・CDN統合・難易度で徹底比較。最適なクラウドストレージの選び方。">
+<!-- OGP -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="【2026年版】ストレージAPI 5社徹底比較 | APIPedia">
+<meta property="og:description" content="S3, GCS, R2, Supabase, Backblaze B2を料金・エグレス・CDN統合で徹底比較">
+<meta property="og:url" content="https://apipedia.dev/guides/storage-api-comparison.html">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="【2026年版】ストレージAPI 5社徹底比較 | APIPedia">
+<meta name="twitter:description" content="S3, GCS, R2, Supabase, Backblaze B2を料金・エグレス・CDN統合で徹底比較">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/guides/storage-api-comparison.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "【2026年版】ストレージAPI 5社徹底比較",
+  "description": "S3, GCS, R2, Supabase, Backblaze B2を料金・エグレス・CDN統合で徹底比較",
+  "datePublished": "2026-02-15",
+  "author": {"@type": "Organization", "name": "APIpedia"},
+  "publisher": {"@type": "Organization", "name": "APIpedia", "url": "https://apipedia.dev/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "APIpedia", "item": "https://apipedia.dev/"},
+    {"@type": "ListItem", "position": 2, "name": "ガイド", "item": "https://apipedia.dev/guides/"},
+    {"@type": "ListItem", "position": 3, "name": "ストレージAPI比較"}
+  ]
+}
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .guide-page { padding: calc(var(--header-height) + 24px) 0 80px; }
+  .guide-breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; }
+  .guide-breadcrumb a { color: var(--color-primary); text-decoration: none; }
+  .guide-breadcrumb a:hover { text-decoration: underline; }
+  .guide-header { margin-bottom: 40px; }
+  .guide-header__badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 4px 12px;
+    background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-pill); margin-bottom: 12px; }
+  .guide-header h1 { font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4; }
+  .guide-header__meta { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; }
+  .guide-content { max-width: 860px; }
+  .guide-content h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin: 40px 0 16px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); display: inline-block; }
+  .guide-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 28px 0 12px; }
+  .guide-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 16px; }
+  .guide-content ul, .guide-content ol { margin: 12px 0 20px 20px; }
+  .guide-content li { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .guide-content strong { color: var(--text-primary); }
+
+  .compare-matrix { overflow-x: auto; margin: 24px 0 32px; border-radius: var(--radius); border: 1px solid var(--border-color); }
+  .compare-matrix table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: var(--bg-card); min-width: 700px; }
+  .compare-matrix thead { background: var(--bg-secondary); }
+  .compare-matrix th { padding: 12px 14px; text-align: left; font-weight: 700; color: var(--text-primary);
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+  .compare-matrix td { padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); vertical-align: top; }
+  .compare-matrix tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-matrix .api-name { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+  .compare-matrix .api-name a { color: var(--color-primary); text-decoration: none; }
+  .compare-matrix .api-name a:hover { text-decoration: underline; }
+
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .pill--green { color: var(--color-success); background: var(--color-success-light); }
+  .pill--blue { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--amber { color: var(--color-warning); background: var(--color-warning-light); }
+  .pill--red { color: #ef4444; background: rgba(239,68,68,0.15); }
+
+  .recommend-card { background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(59,130,246,0.08) 100%);
+    border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius); padding: 24px; margin: 20px 0; }
+  .recommend-card__title { font-size: 0.95rem; font-weight: 700; color: var(--color-success); margin-bottom: 8px; }
+  .recommend-card p { margin-bottom: 8px; }
+
+  .code-block { background: #0d1117; border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    padding: 16px 20px; margin: 16px 0 24px; overflow-x: auto; }
+  .code-block code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #e6edf3; line-height: 1.6; }
+  .code-block .comment { color: #8b949e; }
+  .code-block .keyword { color: #ff7b72; }
+  .code-block .string { color: #a5d6ff; }
+  .code-block .func { color: #d2a8ff; }
+
+  .guide-nav { display: flex; justify-content: space-between; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-color); }
+  .guide-nav a { font-size: 0.85rem; color: var(--color-primary); text-decoration: none; font-weight: 600; }
+  .guide-nav a:hover { text-decoration: underline; }
+
+  .newsletter-cta { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius);
+    padding: 28px; margin: 40px 0; text-align: center; }
+  .newsletter-cta h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .newsletter-cta p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; }
+  .newsletter-cta .nl-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
+  .newsletter-cta .nl-form input { flex: 1; padding: 10px 14px; font-size: 0.85rem; font-family: inherit;
+    background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    color: var(--text-primary); outline: none; }
+  .newsletter-cta .nl-form input:focus { border-color: var(--color-primary); }
+  .newsletter-cta .nl-form input::placeholder { color: var(--text-muted); }
+  .newsletter-cta .nl-form button { padding: 10px 20px; font-size: 0.82rem; font-weight: 600; font-family: inherit;
+    background: var(--color-primary); color: #fff; border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap; }
+
+  @media (max-width: 768px) {
+    .guide-header h1 { font-size: 1.3rem; }
+    .guide-nav { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../compare.html" class="nav-link">比較表</a>
+      <a href="index.html" class="nav-link active">ガイド</a>
+      <a href="../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="guide-page">
+<div class="container">
+  <div class="guide-breadcrumb">
+    <a href="../index.html">APIpedia</a> &gt; <a href="index.html">ガイド</a> &gt; ストレージAPI比較
+  </div>
+
+  <div class="guide-header">
+    <span class="guide-header__badge">比較ガイド</span>
+    <h1>【2026年版】ストレージAPI 5社徹底比較<br>AWS S3 / GCS / Cloudflare R2 / Supabase / Backblaze B2</h1>
+    <div class="guide-header__meta">
+      <span>更新日: 2026-02-15</span>
+      <span>読了時間: 約10分</span>
+      <span>カテゴリ: ストレージ・インフラ</span>
+    </div>
+  </div>
+
+  <div class="guide-content">
+
+    <p>画像・動画・ドキュメントなどのファイルをクラウドに保存・配信するためのストレージAPI。コストを大きく左右するエグレス（送信）料金が近年注目されています。本ガイドでは、主要5つのストレージAPIを、<strong>料金（保存・転送）・エグレス料金・CDN統合・SDK・難易度</strong>の観点から徹底比較します。</p>
+
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#comparison" style="color: var(--color-primary);">比較サマリー</a></li>
+      <li><a href="#details" style="color: var(--color-primary);">各APIの特徴と強み</a></li>
+      <li><a href="#usecases" style="color: var(--color-primary);">ユースケース別おすすめ</a></li>
+      <li><a href="#code" style="color: var(--color-primary);">実装サンプルコード</a></li>
+      <li><a href="#summary" style="color: var(--color-primary);">まとめ</a></li>
+    </ol>
+
+    <h2 id="comparison">1. 比較サマリー</h2>
+
+    <div class="compare-matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>API</th>
+            <th>保存料金/GB</th>
+            <th>エグレス/GB</th>
+            <th>CDN統合</th>
+            <th>SDK</th>
+            <th>難易度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="api-name">AWS S3</td>
+            <td>$0.025</td>
+            <td>$0.09</td>
+            <td><span class="pill pill--green">CloudFront</span></td>
+            <td><span class="pill pill--green">充実</span></td>
+            <td><span class="pill pill--blue">中級</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Google Cloud Storage</td>
+            <td>$0.020</td>
+            <td>$0.12</td>
+            <td><span class="pill pill--green">Cloud CDN</span></td>
+            <td><span class="pill pill--green">充実</span></td>
+            <td><span class="pill pill--blue">中級</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Cloudflare R2</td>
+            <td>$0.015</td>
+            <td><span class="pill pill--green">無料</span></td>
+            <td><span class="pill pill--green">Cloudflare CDN</span></td>
+            <td><span class="pill pill--green">S3互換</span></td>
+            <td><span class="pill pill--green">初級</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Supabase Storage</td>
+            <td>$0.021</td>
+            <td>$0.09</td>
+            <td><span class="pill pill--amber">Smart CDN</span></td>
+            <td><span class="pill pill--green">JS SDK</span></td>
+            <td><span class="pill pill--green">初級</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Backblaze B2</td>
+            <td>$0.006</td>
+            <td>$0.01</td>
+            <td><span class="pill pill--amber">Cloudflare連携</span></td>
+            <td><span class="pill pill--green">S3互換</span></td>
+            <td><span class="pill pill--green">初級</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="details">2. 各APIの特徴と強み</h2>
+
+    <h3>AWS S3 - 業界標準のオブジェクトストレージ</h3>
+    <p>クラウドストレージのデファクトスタンダード。S3 API は事実上の業界標準となり、多くのサービスがS3互換APIを提供。ストレージクラス（Standard, IA, Glacier等）を使い分けることでコスト最適化が可能。</p>
+    <ul>
+      <li><strong>強み:</strong> 最も成熟したエコシステム、99.999999999%の耐久性、豊富なストレージクラス、Lambda連携</li>
+      <li><strong>弱み:</strong> エグレス料金が高い($0.09/GB)、料金体系が複雑、初期設定がやや難しい</li>
+      <li><strong>おすすめ:</strong> エンタープライズ、AWS環境の既存ユーザー、大規模データ保存</li>
+    </ul>
+
+    <h3>Google Cloud Storage - GCPエコシステム統合</h3>
+    <p>BigQuery, Cloud Functions, AI/MLサービスとのシームレスな連携が強み。Nearline/Coldline/Archiveのストレージクラスでコスト最適化。Firebaseとの統合でモバイルアプリからの直接アップロードも容易。</p>
+    <ul>
+      <li><strong>強み:</strong> GCPサービスとの統合、Firebase連携、BigQueryへの直接分析、高いパフォーマンス</li>
+      <li><strong>弱み:</strong> エグレス料金が最も高い($0.12/GB)、GCPロックインのリスク</li>
+      <li><strong>おすすめ:</strong> GCP環境、データ分析連携、Firebaseアプリ</li>
+    </ul>
+
+    <h3>Cloudflare R2 - エグレス無料の革命児</h3>
+    <p>2022年に登場し、エグレス（送信）料金を完全無料にした革命的サービス。S3互換APIで既存のS3ツールがそのまま使え、Cloudflare CDNと自動統合。画像配信の多いサービスでは圧倒的なコスト削減を実現。</p>
+    <ul>
+      <li><strong>強み:</strong> エグレス完全無料、S3互換API、Cloudflare CDN自動統合、Workers連携</li>
+      <li><strong>弱み:</strong> S3の全機能は未サポート、ストレージクラスが少ない、Cloudflareエコシステム依存</li>
+      <li><strong>おすすめ:</strong> 画像・動画配信、エグレスコスト削減、S3からの移行</li>
+    </ul>
+
+    <h3>Supabase Storage - BaaS統合のファイルストレージ</h3>
+    <p>Supabaseのバックエンド機能（Auth, Database, Edge Functions）と統合されたストレージ。RLS（Row Level Security）でファイルのアクセス制御が可能。画像変換（リサイズ・フォーマット変換）も組み込み。</p>
+    <ul>
+      <li><strong>強み:</strong> Supabase統合、RLSによるアクセス制御、画像変換機能内蔵、JavaScript SDKが使いやすい</li>
+      <li><strong>弱み:</strong> Supabase依存、大容量データには不向き、S3互換ではない独自API</li>
+      <li><strong>おすすめ:</strong> Supabaseプロジェクト、ユーザーアップロード機能、プロトタイプ開発</li>
+    </ul>
+
+    <h3>Backblaze B2 - 最安クラスのストレージ</h3>
+    <p>保存料金$0.006/GBは業界最安クラス。S3互換APIを提供し、Cloudflare CDNとの連携でエグレス料金も実質無料にできる。大量のデータを安く保存したい場合の最有力候補。</p>
+    <ul>
+      <li><strong>強み:</strong> 業界最安の保存料金、S3互換API、Cloudflare連携でエグレス無料化可能</li>
+      <li><strong>弱み:</strong> リージョンが限定的、エコシステムが小さい、高度な機能が少ない</li>
+      <li><strong>おすすめ:</strong> 大容量バックアップ、メディアアーカイブ、コスト重視のプロジェクト</li>
+    </ul>
+
+    <h2 id="usecases">3. ユースケース別おすすめ</h2>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">画像・動画の配信 → Cloudflare R2</div>
+      <p>エグレス無料 + Cloudflare CDN自動統合で、画像・動画の配信コストを劇的に削減。S3互換なので移行も容易。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">エンタープライズ → AWS S3</div>
+      <p>最も成熟したエコシステム。IAM、暗号化、バージョニング、ライフサイクルポリシーなど、企業に必要な機能がすべて揃う。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">個人開発・スタートアップ → Supabase Storage</div>
+      <p>認証・DB・ストレージが一つのプラットフォームで完結。無料枠（1GBストレージ）でMVP開発に最適。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">大容量バックアップ → Backblaze B2 + Cloudflare</div>
+      <p>保存$0.006/GB + Cloudflare連携でエグレス無料。TBクラスのデータ保存でも月額コストを最小限に。</p>
+    </div>
+
+    <h2 id="code">4. 実装サンプルコード</h2>
+
+    <h3>AWS S3（JavaScript SDK v3）</h3>
+    <div class="code-block"><code><span class="keyword">import</span> { S3Client, PutObjectCommand } <span class="keyword">from</span> <span class="string">'@aws-sdk/client-s3'</span>;
+
+<span class="keyword">const</span> s3 = <span class="keyword">new</span> <span class="func">S3Client</span>({ region: <span class="string">'ap-northeast-1'</span> });
+
+<span class="comment">// ファイルアップロード</span>
+<span class="keyword">await</span> s3.<span class="func">send</span>(<span class="keyword">new</span> <span class="func">PutObjectCommand</span>({
+  Bucket: <span class="string">'my-bucket'</span>,
+  Key: <span class="string">'images/photo.jpg'</span>,
+  Body: fileBuffer,
+  ContentType: <span class="string">'image/jpeg'</span>,
+}));</code></div>
+
+    <h3>Cloudflare R2（S3互換 SDK）</h3>
+    <div class="code-block"><code><span class="keyword">import</span> { S3Client, PutObjectCommand } <span class="keyword">from</span> <span class="string">'@aws-sdk/client-s3'</span>;
+
+<span class="comment">// R2はS3互換なので同じSDKが使える</span>
+<span class="keyword">const</span> r2 = <span class="keyword">new</span> <span class="func">S3Client</span>({
+  region: <span class="string">'auto'</span>,
+  endpoint: <span class="string">'https://&lt;account-id&gt;.r2.cloudflarestorage.com'</span>,
+  credentials: {
+    accessKeyId: <span class="string">'your-access-key'</span>,
+    secretAccessKey: <span class="string">'your-secret-key'</span>,
+  },
+});
+
+<span class="keyword">await</span> r2.<span class="func">send</span>(<span class="keyword">new</span> <span class="func">PutObjectCommand</span>({
+  Bucket: <span class="string">'my-bucket'</span>,
+  Key: <span class="string">'images/photo.jpg'</span>,
+  Body: fileBuffer,
+}));</code></div>
+
+    <h3>Supabase Storage（JavaScript SDK）</h3>
+    <div class="code-block"><code><span class="keyword">import</span> { createClient } <span class="keyword">from</span> <span class="string">'@supabase/supabase-js'</span>;
+
+<span class="keyword">const</span> supabase = <span class="func">createClient</span>(<span class="string">'https://xxx.supabase.co'</span>, <span class="string">'your-anon-key'</span>);
+
+<span class="comment">// ファイルアップロード</span>
+<span class="keyword">const</span> { data, error } = <span class="keyword">await</span> supabase.storage
+  .<span class="func">from</span>(<span class="string">'avatars'</span>)
+  .<span class="func">upload</span>(<span class="string">'user1/avatar.png'</span>, file, {
+    contentType: <span class="string">'image/png'</span>,
+  });</code></div>
+
+    <h2 id="summary">5. まとめ：選び方フローチャート</h2>
+    <ol>
+      <li><strong>エグレスコストを削減したい？</strong> → Yes: Cloudflare R2</li>
+      <li><strong>AWS環境で運用中？</strong> → Yes: AWS S3</li>
+      <li><strong>GCP/Firebase環境？</strong> → Yes: Google Cloud Storage</li>
+      <li><strong>BaaS統合が欲しい？</strong> → Yes: Supabase Storage</li>
+      <li><strong>最安で大量保存？</strong> → Yes: Backblaze B2</li>
+    </ol>
+    <p>2026年現在、エグレス無料のCloudflare R2がコスト面で最も注目されています。S3互換APIなので既存のS3プロジェクトからの移行も容易です。まずは無料枠で試してみましょう。</p>
+
+    <div class="newsletter-cta">
+      <h3>この記事が役に立ちましたか？</h3>
+      <p>APIpediaニュースレターで最新の比較ガイドを受け取りましょう。</p>
+      <form class="nl-form" action="https://formspree.io/f/placeholder" method="POST">
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <button type="submit">登録</button>
+      </form>
+    </div>
+
+    <div class="guide-nav">
+      <a href="translation-api-comparison.html">&larr; 翻訳API比較ガイド</a>
+      <a href="search-api-comparison.html">検索API比較ガイド &rarr;</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../index.html">トップ</a>
+        <a href="../compare.html">比較表</a>
+        <a href="index.html">ガイド</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

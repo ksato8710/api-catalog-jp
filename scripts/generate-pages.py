@@ -35,7 +35,7 @@ AUTH_LABEL = {'apiKey': 'APIキー', 'oauth2': 'OAuth 2.0', 'bearer': 'Bearer To
 REGION_LABEL = {'japan': '日本', 'global': 'グローバル', 'both': '日本 / グローバル'}
 DIFFICULTY_LABEL = {'easy': '初級', 'medium': '中級', 'hard': '上級'}
 
-def generate_page(api, categories):
+def generate_page(api, categories, all_apis=None):
     cat = next((c for c in categories if c['id'] == api['category']), None)
     pop = api.get('popularity', {})
     score = pop.get('score', 0)
@@ -75,6 +75,37 @@ def generate_page(api, categories):
             "description": api.get('pricingDetail', '')
         }
     }, ensure_ascii=False)
+
+    # BreadcrumbList JSON-LD
+    breadcrumb_jsonld = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"},
+            {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"},
+            {"@type": "ListItem", "position": 3, "name": api['name'], "item": f"https://apipedia.dev/api/{api['id']}/"}
+        ]
+    }, ensure_ascii=False)
+
+    # Related APIs (same category, excluding self, sorted by popularity, top 5)
+    related_html = ''
+    if all_apis and cat:
+        related = [a for a in all_apis if a['category'] == api['category'] and a['id'] != api['id']]
+        related.sort(key=lambda a: (a.get('popularity', {}).get('score', 0)), reverse=True)
+        related = related[:5]
+        if related:
+            items = ''.join(
+                f'<a href="../{escape(a["id"])}/" class="related-api-card">'
+                f'<div class="related-api-name">{escape(a["name"])}</div>'
+                f'<div class="related-api-desc">{escape(a["description"][:60])}{"..." if len(a["description"]) > 60 else ""}</div>'
+                f'<div class="related-api-meta">'
+                f'<span class="pill pill--{a.get("pricing", "")}">{PRICING_LABEL.get(a.get("pricing", ""), "")}</span>'
+                f'{"<span class=score-mini score-mini--" + get_popularity_class(a.get("popularity", {}).get("score", 0)) + ">" + str(a["popularity"]["score"]) + "点</span>" if a.get("popularity", {}).get("score") else ""}'
+                f'</div>'
+                f'</a>'
+                for a in related
+            )
+            related_html = f'<div class="section-block"><h2 class="section-heading">関連API（{cat_icon} {cat_name}）</h2><div class="related-apis-grid">{items}</div></div>'
 
     # Build metrics HTML
     metrics_html = ''
@@ -144,6 +175,7 @@ def generate_page(api, categories):
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://apipedia.dev/api/{api["id"]}/">
 <script type="application/ld+json">{jsonld}</script>
+<script type="application/ld+json">{breadcrumb_jsonld}</script>
 <link rel="stylesheet" href="../../assets/style.css">
 <style>
   .api-detail {{ max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }}
@@ -187,6 +219,20 @@ def generate_page(api, categories):
   .spec-item--full {{ grid-column: 1 / -1; }}
   .usecases-wrap, .tags-wrap {{ display: flex; flex-wrap: wrap; gap: 8px; }}
   .usecase-tag {{ padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }}
+  .related-apis-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }}
+  .related-api-card {{ display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }}
+  .related-api-card:hover {{ border-color: var(--color-primary); transform: translateY(-2px); }}
+  .related-api-name {{ font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }}
+  .related-api-desc {{ font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }}
+  .related-api-meta {{ display: flex; align-items: center; gap: 8px; }}
+  .pill {{ display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }}
+  .pill--free {{ color: var(--color-success); background: var(--color-success-light); }}
+  .pill--freemium {{ color: var(--color-primary); background: var(--color-primary-light); }}
+  .pill--paid {{ color: var(--color-warning); background: var(--color-warning-light); }}
+  .score-mini {{ font-size: 0.75rem; font-weight: 700; }}
+  .score-mini--high {{ color: var(--color-success); }}
+  .score-mini--medium {{ color: var(--color-warning); }}
+  .score-mini--low {{ color: #94a3b8; }}
   .action-buttons {{ display: flex; gap: 12px; margin-top: 40px; }}
   .action-buttons .btn {{ flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }}
   @media (max-width: 768px) {{
@@ -264,6 +310,8 @@ def generate_page(api, categories):
 
   {f'<div class="section-block"><h2 class="section-heading">タグ</h2>{tags_html}</div>' if tags else ''}
 
+  {related_html}
+
   <div class="action-buttons">
     <a href="{escape(api.get('docsUrl') or api.get('url', '#'))}" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
     <a href="{escape(api.get('url', '#'))}" target="_blank" rel="noopener" class="btn btn--ghost">公式サイト</a>
@@ -336,7 +384,7 @@ def main():
     for api in apis:
         api_dir = os.path.join(API_DIR, api['id'])
         os.makedirs(api_dir, exist_ok=True)
-        page_html = generate_page(api, categories)
+        page_html = generate_page(api, categories, all_apis=apis)
         page_path = os.path.join(api_dir, 'index.html')
         with open(page_path, 'w', encoding='utf-8') as f:
             f.write(page_html)

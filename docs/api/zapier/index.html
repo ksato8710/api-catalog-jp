@@ -26,6 +26,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://apipedia.dev/api/zapier/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Zapier API", "description": "7,000以上のアプリを接続するワークフロー自動化プラットフォーム。Workflow APIでZapの管理や外部トリガーの発火が可能。プログラミング不要でアプリ間連携を構築でき、開発者向けにはカスタムインテグレーション作成も提供", "url": "https://zapier.com/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "", "priceCurrency": "JPY", "description": "無料プラン: 100タスク/月、5つのZap。Starter: $19.99/月（750タスク）。Professional: $49/月（2,000タスク）。Team: $69/月。Enterprise: カスタム"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Zapier API", "item": "https://apipedia.dev/api/zapier/"}]}</script>
 <link rel="stylesheet" href="../../assets/style.css">
 <style>
   .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
@@ -69,6 +70,20 @@
   .spec-item--full { grid-column: 1 / -1; }
   .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
   .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
   .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
   .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
   @media (max-width: 768px) {
@@ -145,6 +160,8 @@
   <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">業務アプリ間の自動連携</span><span class="usecase-tag">データ同期の自動化</span><span class="usecase-tag">通知・アラートワークフロー</span><span class="usecase-tag">リード獲得の自動化</span></div></div>
 
   <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">自動化</span><span class="tag">ワークフロー</span><span class="tag">アプリ連携</span><span class="tag">ノーコード</span><span class="tag">インテグレーション</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（⚡ NoCode・自動化）</h2><div class="related-apis-grid"><a href="../n8n/" class="related-api-card"><div class="related-api-name">n8n API</div><div class="related-api-desc">オープンソースのワークフロー自動化プラットフォーム。セルフホスト可能でデータの完全管理が可能。400以上のインテグレーシ...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>82点</span></div></a><a href="../make/" class="related-api-card"><div class="related-api-name">Make (Integromat) API</div><div class="related-api-desc">ビジュアルなワークフロー自動化プラットフォーム。ドラッグ&amp;ドロップでシナリオ（ワークフロー）を構築でき、APIでシナリオ...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>75点</span></div></a><a href="../bubble/" class="related-api-card"><div class="related-api-name">Bubble API</div><div class="related-api-desc">ビジュアルWebアプリ開発プラットフォームのAPI。Data API（データ操作）とWorkflow API（ワークフロ...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>72点</span></div></a></div></div>
 
   <div class="action-buttons">
     <a href="https://docs.zapier.com/" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>

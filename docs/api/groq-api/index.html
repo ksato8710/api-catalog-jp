@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Groq API - APIpedia | 日本語APIカタログ</title>
+<meta name="description" content="独自開発のLPU（Language Processing Unit）チップによる超高速AI推論を提供するクラウドAPI。Llama、Mistral、Gemmaなどのオープンソースモデルを驚異的な速度で実行可能。トークン/秒の生成速度でGPU推論の数倍〜数十倍のパフォーマンスを実現。OpenAI互換のChat Completions APIで利用でき、バッチAPI（50%割引）やプロンプトキャッシング（50%割引）にも対応。">
+<!-- OGP -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Groq API — APIpedia | 日本語APIカタログ">
+<meta property="og:description" content="独自開発のLPU（Language Processing Unit）チップによる超高速AI推論を提供するクラウドAPI。Llama、Mistral、Gemmaなどのオープンソースモデルを驚異的な速度で実行可能。トークン/秒の生成速度でGPU推論の数倍〜数十倍のパフォーマンスを実現。OpenAI互換のChat Completions APIで利用でき、バッチAPI（50%割引）やプロンプトキャッシング（50%割引）にも対応。">
+<meta property="og:url" content="https://apipedia.dev/api/groq-api/">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Groq API — APIpedia">
+<meta name="twitter:description" content="独自開発のLPU（Language Processing Unit）チップによる超高速AI推論を提供するクラウドAPI。Llama、Mistral、Gemmaなどのオープンソースモデルを驚異的な速度で実行可能。トークン/秒の生成速度でGPU推論の数倍〜数十倍のパフォーマンスを実現。OpenAI互換のChat Completions APIで利用でき、バッチAPI（50%割引）やプロンプトキャッシング（50%割引）にも対応。">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/api/groq-api/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Groq API", "description": "独自開発のLPU（Language Processing Unit）チップによる超高速AI推論を提供するクラウドAPI。Llama、Mistral、Gemmaなどのオープンソースモデルを驚異的な速度で実行可能。トークン/秒の生成速度でGPU推論の数倍〜数十倍のパフォーマンスを実現。OpenAI互換のChat Completions APIで利用でき、バッチAPI（50%割引）やプロンプトキャッシング（50%割引）にも対応。", "url": "https://groq.com/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "", "priceCurrency": "JPY", "description": "無料ティア: レートリミット付きで無制限利用。Developerティア: 無料の10倍のレートリミット。モデルごとのトークン課金（従量制）"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Groq API", "item": "https://apipedia.dev/api/groq-api/"}]}</script>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
+  .breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-secondary); }
+  .breadcrumb a:hover { color: var(--color-primary); }
+  .api-hero { margin-bottom: 32px; }
+  .api-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+  .api-hero .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .badge { display: inline-flex; align-items: center; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .badge--pricing { color: var(--color-primary); background: var(--color-primary-light); }
+  .badge--region { color: var(--color-accent); background: var(--color-accent-light); }
+  .badge--category { color: var(--color-secondary); background: var(--color-secondary-light); }
+  .badge--difficulty { color: var(--text-secondary); background: rgba(255,255,255,0.06); }
+  .badge--featured { color: var(--color-warning); background: var(--color-warning-light); }
+  .api-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px; }
+  .score-hero { display: flex; align-items: center; gap: 24px; padding: 24px; background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(139,92,246,0.06)); border: 1px solid var(--border-color); border-radius: var(--radius); margin-bottom: 32px; }
+  .score-number { font-size: 3.5rem; font-weight: 800; line-height: 1; }
+  .score-detail { flex: 1; }
+  .score-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+  .score-bar-outer { width: 100%; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 5px; }
+  .score-reason { font-size: 0.88rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.7; }
+  .section-block { margin-bottom: 32px; }
+  .section-heading { font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: 8px; }
+  .detail-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .metric-card { padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metric-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .metric-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+  .adopters-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .adopter-chip { padding: 6px 14px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-pill); }
+  .sources-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .source-link { display: block; padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; color: var(--color-primary); font-size: 0.85rem; font-weight: 500; transition: all var(--transition); }
+  .source-link:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .spec-item { padding: 14px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .spec-item .label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .spec-item .value { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+  .spec-item--full { grid-column: 1 / -1; }
+  .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
+  .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
+  .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
+  @media (max-width: 768px) {
+    .api-hero h1 { font-size: 1.5rem; }
+    .score-hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .score-number { font-size: 2.5rem; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .action-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../../compare.html" class="nav-link">比較表</a>
+      <a href="../../guides/" class="nav-link">ガイド</a>
+      <a href="../../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="api-detail">
+  <div class="breadcrumb">
+    <a href="../../index.html">APIpedia</a> &rsaquo;
+    <a href="../../index.html#catalog">カタログ</a> &rsaquo;
+    Groq API
+  </div>
+
+  <div class="api-hero">
+    <h1>Groq API</h1>
+    <div class="subtitle">Groq 高速推論API</div>
+    <div class="badge-row">
+      <span class="badge badge--pricing">フリーミアム</span>
+      <span class="badge badge--region">グローバル</span>
+      <span class="badge badge--category">🤖 AI・機械学習</span>
+      <span class="badge badge--difficulty">初級</span>
+      <span class="badge badge--featured">&#x2B50; 注目</span>
+    </div>
+  </div>
+
+  <p class="api-desc">独自開発のLPU（Language Processing Unit）チップによる超高速AI推論を提供するクラウドAPI。Llama、Mistral、Gemmaなどのオープンソースモデルを驚異的な速度で実行可能。トークン/秒の生成速度でGPU推論の数倍〜数十倍のパフォーマンスを実現。OpenAI互換のChat Completions APIで利用でき、バッチAPI（50%割引）やプロンプトキャッシング（50%割引）にも対応。</p>
+
+  <div class="score-hero">
+    <div class="score-number" style="color:var(--color-success);">82</div>
+    <div class="score-detail">
+      <div class="score-label">人気スコア（100点満点）</div>
+      <div class="score-bar-outer"><div class="score-bar-fill" style="width:82%;background:linear-gradient(90deg,var(--color-success), #4ade80);"></div></div>
+      <div class="score-reason">LPUチップによる圧倒的な推論速度が話題を呼び急成長。無料ティアの提供もあり、特にリアルタイムAIアプリ開発者に支持されている</div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">詳細分析</h2><div class="detail-text">Groqは2016年設立のAIチップスタートアップ。LPU（Language Processing Unit）を独自開発し、GPU比で数倍〜数十倍の推論速度を実現。2024年以降、GroqCloudとしてAPI提供を本格化。</div></div>
+
+  <div class="section-block"><h2 class="section-heading">利用実績・指標</h2><div class="metrics-grid"><div class="metric-card"><div class="metric-label">APIコール数</div><div class="metric-value">非公開</div></div><div class="metric-card"><div class="metric-label">npm ダウンロード</div><div class="metric-value">N/A</div></div><div class="metric-card"><div class="metric-label">GitHub Stars</div><div class="metric-value">N/A</div></div></div></div>
+  <div class="section-block"><h2 class="section-heading">主な利用企業・サービス</h2><div class="adopters-wrap"><span class="adopter-chip">AIスタートアップ</span><span class="adopter-chip">リアルタイムAIアプリ開発者</span><span class="adopter-chip">音声AIサービス</span></div></div>
+  <div class="section-block"><h2 class="section-heading">根拠・参照元</h2><ul class="sources-list"><li><a href="https://groq.com/" target="_blank" rel="noopener" class="source-link">Groq 公式サイト</a></li><li><a href="https://groq.com/pricing" target="_blank" rel="noopener" class="source-link">Groq 料金</a></li></ul></div>
+
+  <div class="section-block">
+    <h2 class="section-heading">API仕様</h2>
+    <div class="spec-grid">
+      <div class="spec-item"><div class="label">認証方式</div><div class="value">APIキー</div></div>
+      <div class="spec-item"><div class="label">レスポンス形式</div><div class="value">JSON</div></div>
+      <div class="spec-item"><div class="label">レート制限</div><div class="value">Free: RPM・TPMに制限あり。Developer: Freeの10倍。Enterprise: カスタム。組織レベルで適用</div></div>
+      <div class="spec-item"><div class="label">料金</div><div class="value">無料ティア: レートリミット付きで無制限利用。Developerティア: 無料の10倍のレートリミット。モデルごとのトークン課金（従量制）</div></div>
+      <div class="spec-item spec-item--full"><div class="label">SDK</div><div class="value">Python, JavaScript</div></div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">リアルタイムチャットボット</span><span class="usecase-tag">音声AIアシスタント</span><span class="usecase-tag">低レイテンシーAIアプリ</span><span class="usecase-tag">バッチ処理</span><span class="usecase-tag">コード生成</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">LLM</span><span class="tag">高速推論</span><span class="tag">LPU</span><span class="tag">Llama</span><span class="tag">低レイテンシー</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（🤖 AI・機械学習）</h2><div class="related-apis-grid"><a href="../openai/" class="related-api-card"><div class="related-api-name">OpenAI API</div><div class="related-api-desc">GPTシリーズによるテキスト生成、DALL-Eによる画像生成、Whisperによる音声認識などを提供するAI API</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>93点</span></div></a><a href="../openai-dall-e/" class="related-api-card"><div class="related-api-name">DALL-E API</div><div class="related-api-desc">OpenAIのAI画像生成API。テキストプロンプトから画像生成、既存画像の編集、バリエーション作成が可能。DALL-E...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>84点</span></div></a><a href="../anthropic-claude/" class="related-api-card"><div class="related-api-name">Claude API (Anthropic)</div><div class="related-api-desc">Anthropic社のClaudeモデルによるテキスト生成API。長文理解力と安全性に優れ、日本語にも高精度で対応</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>82点</span></div></a><a href="../huggingface-inference-api/" class="related-api-card"><div class="related-api-name">Hugging Face Inference API</div><div class="related-api-desc">10万以上のオープンソースAIモデルを簡単に利用できるAPI。テキスト生成、画像生成、音声認識、翻訳など多様なタスクに対...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>82点</span></div></a><a href="../midjourney-api/" class="related-api-card"><div class="related-api-name">Midjourney API</div><div class="related-api-desc">高品質なAI画像生成サービスMidjourneyの非公式API。テキストプロンプトから芸術的な画像を生成。Discord...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>80点</span></div></a></div></div>
+
+  <div class="action-buttons">
+    <a href="https://console.groq.com/docs" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
+    <a href="https://groq.com/" target="_blank" rel="noopener" class="btn btn--ghost">公式サイト</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../../index.html">トップ</a>
+        <a href="../../compare.html">比較表</a>
+        <a href="../../guides/">ガイド</a>
+        <a href="../../lean-canvas.html">コンセプト</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

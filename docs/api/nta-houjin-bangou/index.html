@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NTA Corporate Number API - APIpedia | 日本語APIカタログ</title>
+<meta name="description" content="国税庁が提供する法人番号公表サイトのWeb-API。法人番号による法人情報検索、法人名による部分一致検索、更新情報の取得などが可能。法人の商号、所在地、法人番号、変更履歴等のデータを取得でき、法人確認・反社チェック・与信調査の基盤データとして活用される。">
+<!-- OGP -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="NTA Corporate Number API — APIpedia | 日本語APIカタログ">
+<meta property="og:description" content="国税庁が提供する法人番号公表サイトのWeb-API。法人番号による法人情報検索、法人名による部分一致検索、更新情報の取得などが可能。法人の商号、所在地、法人番号、変更履歴等のデータを取得でき、法人確認・反社チェック・与信調査の基盤データとして活用される。">
+<meta property="og:url" content="https://apipedia.dev/api/nta-houjin-bangou/">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NTA Corporate Number API — APIpedia">
+<meta name="twitter:description" content="国税庁が提供する法人番号公表サイトのWeb-API。法人番号による法人情報検索、法人名による部分一致検索、更新情報の取得などが可能。法人の商号、所在地、法人番号、変更履歴等のデータを取得でき、法人確認・反社チェック・与信調査の基盤データとして活用される。">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/api/nta-houjin-bangou/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "NTA Corporate Number API", "description": "国税庁が提供する法人番号公表サイトのWeb-API。法人番号による法人情報検索、法人名による部分一致検索、更新情報の取得などが可能。法人の商号、所在地、法人番号、変更履歴等のデータを取得でき、法人確認・反社チェック・与信調査の基盤データとして活用される。", "url": "https://www.houjin-bangou.nta.go.jp/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "完全無料。アプリケーションID取得が必要"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "NTA Corporate Number API", "item": "https://apipedia.dev/api/nta-houjin-bangou/"}]}</script>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
+  .breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-secondary); }
+  .breadcrumb a:hover { color: var(--color-primary); }
+  .api-hero { margin-bottom: 32px; }
+  .api-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+  .api-hero .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .badge { display: inline-flex; align-items: center; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .badge--pricing { color: var(--color-primary); background: var(--color-primary-light); }
+  .badge--region { color: var(--color-accent); background: var(--color-accent-light); }
+  .badge--category { color: var(--color-secondary); background: var(--color-secondary-light); }
+  .badge--difficulty { color: var(--text-secondary); background: rgba(255,255,255,0.06); }
+  .badge--featured { color: var(--color-warning); background: var(--color-warning-light); }
+  .api-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px; }
+  .score-hero { display: flex; align-items: center; gap: 24px; padding: 24px; background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(139,92,246,0.06)); border: 1px solid var(--border-color); border-radius: var(--radius); margin-bottom: 32px; }
+  .score-number { font-size: 3.5rem; font-weight: 800; line-height: 1; }
+  .score-detail { flex: 1; }
+  .score-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+  .score-bar-outer { width: 100%; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 5px; }
+  .score-reason { font-size: 0.88rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.7; }
+  .section-block { margin-bottom: 32px; }
+  .section-heading { font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: 8px; }
+  .detail-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .metric-card { padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metric-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .metric-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+  .adopters-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .adopter-chip { padding: 6px 14px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-pill); }
+  .sources-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .source-link { display: block; padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; color: var(--color-primary); font-size: 0.85rem; font-weight: 500; transition: all var(--transition); }
+  .source-link:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .spec-item { padding: 14px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .spec-item .label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .spec-item .value { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+  .spec-item--full { grid-column: 1 / -1; }
+  .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
+  .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
+  .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
+  @media (max-width: 768px) {
+    .api-hero h1 { font-size: 1.5rem; }
+    .score-hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .score-number { font-size: 2.5rem; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .action-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../../compare.html" class="nav-link">比較表</a>
+      <a href="../../guides/" class="nav-link">ガイド</a>
+      <a href="../../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="api-detail">
+  <div class="breadcrumb">
+    <a href="../../index.html">APIpedia</a> &rsaquo;
+    <a href="../../index.html#catalog">カタログ</a> &rsaquo;
+    NTA Corporate Number API
+  </div>
+
+  <div class="api-hero">
+    <h1>NTA Corporate Number API</h1>
+    <div class="subtitle">国税庁法人番号システムWeb-API</div>
+    <div class="badge-row">
+      <span class="badge badge--pricing">無料</span>
+      <span class="badge badge--region">日本</span>
+      <span class="badge badge--category">🏛️ 政府・公共</span>
+      <span class="badge badge--difficulty">初級</span>
+      
+    </div>
+  </div>
+
+  <p class="api-desc">国税庁が提供する法人番号公表サイトのWeb-API。法人番号による法人情報検索、法人名による部分一致検索、更新情報の取得などが可能。法人の商号、所在地、法人番号、変更履歴等のデータを取得でき、法人確認・反社チェック・与信調査の基盤データとして活用される。</p>
+
+  <div class="score-hero">
+    <div class="score-number" style="color:var(--color-warning);">55</div>
+    <div class="score-detail">
+      <div class="score-label">人気スコア（100点満点）</div>
+      <div class="score-bar-outer"><div class="score-bar-fill" style="width:55%;background:linear-gradient(90deg,var(--color-warning), #fbbf24);"></div></div>
+      <div class="score-reason">全国約500万法人の公式データ。法人確認のデファクトスタンダードで、金融機関のKYCにも活用</div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">詳細分析</h2><div class="detail-text">国税庁法人番号Web-APIはVer.1とVer.2があり、Ver.2ではCSV/XML/JSON形式でのレスポンスに対応。法人の変更履歴も取得可能で、コンプライアンス・反社チェックの基盤データとして重要。</div></div>
+
+  <div class="section-block"><h2 class="section-heading">利用実績・指標</h2><div class="metrics-grid"><div class="metric-card"><div class="metric-label">APIコール数</div><div class="metric-value">数百万リクエスト/月</div></div><div class="metric-card"><div class="metric-label">npm ダウンロード</div><div class="metric-value">N/A</div></div><div class="metric-card"><div class="metric-label">GitHub Stars</div><div class="metric-value">関連ツール合計 100+</div></div></div></div>
+  <div class="section-block"><h2 class="section-heading">主な利用企業・サービス</h2><div class="adopters-wrap"><span class="adopter-chip">金融機関</span><span class="adopter-chip">BtoB企業</span><span class="adopter-chip">会計ソフト企業</span><span class="adopter-chip">名刺管理サービス</span></div></div>
+  <div class="section-block"><h2 class="section-heading">根拠・参照元</h2><ul class="sources-list"><li><a href="https://www.houjin-bangou.nta.go.jp/webapi/kyuusiyousyo.html" target="_blank" rel="noopener" class="source-link">法人番号Web-API仕様書</a></li><li><a href="https://www.houjin-bangou.nta.go.jp/webapi/" target="_blank" rel="noopener" class="source-link">法人番号Web-API</a></li></ul></div>
+
+  <div class="section-block">
+    <h2 class="section-heading">API仕様</h2>
+    <div class="spec-grid">
+      <div class="spec-item"><div class="label">認証方式</div><div class="value">APIキー</div></div>
+      <div class="spec-item"><div class="label">レスポンス形式</div><div class="value">JSON, XML</div></div>
+      <div class="spec-item"><div class="label">レート制限</div><div class="value">具体的な数値は非公開（セキュリティ上の理由）。短時間の大量アクセスは制限対象</div></div>
+      <div class="spec-item"><div class="label">料金</div><div class="value">完全無料。アプリケーションID取得が必要</div></div>
+      
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">法人情報の検索・確認</span><span class="usecase-tag">取引先の実在確認</span><span class="usecase-tag">反社チェック基盤</span><span class="usecase-tag">CRMデータ補完</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">法人番号</span><span class="tag">法人情報</span><span class="tag">国税庁</span><span class="tag">企業検索</span><span class="tag">日本政府</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（🏛️ 政府・公共）</h2><div class="related-apis-grid"><a href="../jma-bosai/" class="related-api-card"><div class="related-api-name">JMA Disaster Prevention API</div><div class="related-api-desc">気象庁が提供する防災情報XMLフォーマットのAPI。気象警報・注意報、地震情報、津波情報、天気予報等の防災関連データをリ...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>65点</span></div></a><a href="../zipcloud-api/" class="related-api-card"><div class="related-api-name">zipcloud API</div><div class="related-api-desc">日本の郵便番号から住所を検索、または住所から郵便番号を検索できる無料API。全国の郵便番号データを網羅し、JSON形式で...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>60点</span></div></a><a href="../gsi-api/" class="related-api-card"><div class="related-api-name">GSI API</div><div class="related-api-desc">国土地理院が提供する地理空間情報API。地形図、空中写真、標高データ、地形分類データなど日本の詳細な地理情報を取得可能。...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>52点</span></div></a><a href="../data-go-jp/" class="related-api-card"><div class="related-api-name">Data.go.jp API</div><div class="related-api-desc">デジタル庁が運営する日本政府のオープンデータカタログサイトのAPI。CKAN準拠のREST APIで、各省庁が公開するオ...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>45点</span></div></a><a href="../corporate-number/" class="related-api-card"><div class="related-api-name">法人番号API</div><div class="related-api-desc">国税庁が提供する法人番号検索API。法人名・所在地から法人番号を検索、または法人番号から法人情報を取得</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--low>42点</span></div></a></div></div>
+
+  <div class="action-buttons">
+    <a href="https://www.houjin-bangou.nta.go.jp/webapi/" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
+    <a href="https://www.houjin-bangou.nta.go.jp/" target="_blank" rel="noopener" class="btn btn--ghost">公式サイト</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../../index.html">トップ</a>
+        <a href="../../compare.html">比較表</a>
+        <a href="../../guides/">ガイド</a>
+        <a href="../../lean-canvas.html">コンセプト</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

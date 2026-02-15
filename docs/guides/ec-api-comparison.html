@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【2026年版】EC API 5社徹底比較 - 楽天 vs Amazon vs Shopify | APIpedia</title>
+<meta name="description" content="楽天市場API, Amazon PA-API, Shopify Storefront API, BASE API, メルカリAPIのEC APIを商品データ量・アフィリエイト対応・API制限・日本市場カバー率で徹底比較。">
+<!-- OGP -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="【2026年版】EC API 5社徹底比較 | APIPedia">
+<meta property="og:description" content="楽天, Amazon, Shopify, BASE, メルカリのEC APIをアフィリエイト・データ量・日本市場対応で徹底比較">
+<meta property="og:url" content="https://apipedia.dev/guides/ec-api-comparison.html">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="【2026年版】EC API 5社徹底比較 | APIPedia">
+<meta name="twitter:description" content="楽天, Amazon, Shopify, BASE, メルカリのEC APIをアフィリエイト・データ量・日本市場対応で徹底比較">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/guides/ec-api-comparison.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "【2026年版】EC API 5社徹底比較",
+  "description": "楽天, Amazon, Shopify, BASE, メルカリのEC APIをアフィリエイト・データ量・日本市場対応で徹底比較",
+  "datePublished": "2026-02-15",
+  "author": {"@type": "Organization", "name": "APIpedia"},
+  "publisher": {"@type": "Organization", "name": "APIpedia", "url": "https://apipedia.dev/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "APIpedia", "item": "https://apipedia.dev/"},
+    {"@type": "ListItem", "position": 2, "name": "ガイド", "item": "https://apipedia.dev/guides/"},
+    {"@type": "ListItem", "position": 3, "name": "EC API比較"}
+  ]
+}
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .guide-page { padding: calc(var(--header-height) + 24px) 0 80px; }
+  .guide-breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; }
+  .guide-breadcrumb a { color: var(--color-primary); text-decoration: none; }
+  .guide-breadcrumb a:hover { text-decoration: underline; }
+  .guide-header { margin-bottom: 40px; }
+  .guide-header__badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 4px 12px;
+    background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-pill); margin-bottom: 12px; }
+  .guide-header h1 { font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4; }
+  .guide-header__meta { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; }
+  .guide-content { max-width: 860px; }
+  .guide-content h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin: 40px 0 16px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); display: inline-block; }
+  .guide-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 28px 0 12px; }
+  .guide-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 16px; }
+  .guide-content ul, .guide-content ol { margin: 12px 0 20px 20px; }
+  .guide-content li { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .guide-content strong { color: var(--text-primary); }
+
+  .compare-matrix { overflow-x: auto; margin: 24px 0 32px; border-radius: var(--radius); border: 1px solid var(--border-color); }
+  .compare-matrix table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: var(--bg-card); min-width: 700px; }
+  .compare-matrix thead { background: var(--bg-secondary); }
+  .compare-matrix th { padding: 12px 14px; text-align: left; font-weight: 700; color: var(--text-primary);
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+  .compare-matrix td { padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); vertical-align: top; }
+  .compare-matrix tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-matrix .api-name { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+  .compare-matrix .api-name a { color: var(--color-primary); text-decoration: none; }
+  .compare-matrix .api-name a:hover { text-decoration: underline; }
+
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .pill--green { color: var(--color-success); background: var(--color-success-light); }
+  .pill--blue { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--amber { color: var(--color-warning); background: var(--color-warning-light); }
+  .pill--red { color: #ef4444; background: rgba(239,68,68,0.15); }
+
+  .recommend-card { background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(59,130,246,0.08) 100%);
+    border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius); padding: 24px; margin: 20px 0; }
+  .recommend-card__title { font-size: 0.95rem; font-weight: 700; color: var(--color-success); margin-bottom: 8px; }
+  .recommend-card p { margin-bottom: 8px; }
+
+  .code-block { background: #0d1117; border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    padding: 16px 20px; margin: 16px 0 24px; overflow-x: auto; }
+  .code-block code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #e6edf3; line-height: 1.6; }
+  .code-block .comment { color: #8b949e; }
+  .code-block .keyword { color: #ff7b72; }
+  .code-block .string { color: #a5d6ff; }
+  .code-block .func { color: #d2a8ff; }
+
+  .guide-nav { display: flex; justify-content: space-between; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-color); }
+  .guide-nav a { font-size: 0.85rem; color: var(--color-primary); text-decoration: none; font-weight: 600; }
+  .guide-nav a:hover { text-decoration: underline; }
+
+  .newsletter-cta { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius);
+    padding: 28px; margin: 40px 0; text-align: center; }
+  .newsletter-cta h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .newsletter-cta p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; }
+  .newsletter-cta .nl-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
+  .newsletter-cta .nl-form input { flex: 1; padding: 10px 14px; font-size: 0.85rem; font-family: inherit;
+    background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    color: var(--text-primary); outline: none; }
+  .newsletter-cta .nl-form input:focus { border-color: var(--color-primary); }
+  .newsletter-cta .nl-form input::placeholder { color: var(--text-muted); }
+  .newsletter-cta .nl-form button { padding: 10px 20px; font-size: 0.82rem; font-weight: 600; font-family: inherit;
+    background: var(--color-primary); color: #fff; border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap; }
+
+  @media (max-width: 768px) {
+    .guide-header h1 { font-size: 1.3rem; }
+    .guide-nav { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../compare.html" class="nav-link">比較表</a>
+      <a href="index.html" class="nav-link active">ガイド</a>
+      <a href="../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="guide-page">
+<div class="container">
+  <div class="guide-breadcrumb">
+    <a href="../index.html">APIpedia</a> &gt; <a href="index.html">ガイド</a> &gt; EC API比較
+  </div>
+
+  <div class="guide-header">
+    <span class="guide-header__badge">比較ガイド</span>
+    <h1>【2026年版】EC API 5社徹底比較<br>楽天 / Amazon / Shopify / BASE / メルカリ</h1>
+    <div class="guide-header__meta">
+      <span>更新日: 2026-02-15</span>
+      <span>読了時間: 約10分</span>
+      <span>カテゴリ: EC・コマース</span>
+    </div>
+  </div>
+
+  <div class="guide-content">
+
+    <p>ECサイトやアフィリエイトメディアを構築する際、商品データの取得やストアフロントの構築にAPIは欠かせません。本ガイドでは、日本で利用可能な主要5つのEC APIを、<strong>アフィリエイト対応・商品データ量・API制限・日本市場カバー率</strong>の観点から徹底比較します。</p>
+
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#comparison" style="color: var(--color-primary);">比較サマリー</a></li>
+      <li><a href="#details" style="color: var(--color-primary);">各APIの特徴と強み</a></li>
+      <li><a href="#usecases" style="color: var(--color-primary);">ユースケース別おすすめ</a></li>
+      <li><a href="#code" style="color: var(--color-primary);">実装サンプルコード</a></li>
+      <li><a href="#summary" style="color: var(--color-primary);">まとめ</a></li>
+    </ol>
+
+    <h2 id="comparison">1. 比較サマリー</h2>
+
+    <div class="compare-matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>API</th>
+            <th>アフィリエイト</th>
+            <th>商品データ量</th>
+            <th>API制限</th>
+            <th>日本市場</th>
+            <th>難易度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="api-name">楽天市場API</td>
+            <td><span class="pill pill--green">対応</span></td>
+            <td>3億商品以上</td>
+            <td>1リクエスト/秒</td>
+            <td><span class="pill pill--green">国内最大</span></td>
+            <td><span class="pill pill--green">初級</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Amazon PA-API</td>
+            <td><span class="pill pill--green">対応</span></td>
+            <td>数億商品</td>
+            <td>1リクエスト/秒〜</td>
+            <td><span class="pill pill--green">完全対応</span></td>
+            <td><span class="pill pill--blue">中級</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">Shopify Storefront API</td>
+            <td><span class="pill pill--amber">なし</span></td>
+            <td>自社ストア依存</td>
+            <td>50リクエスト/秒</td>
+            <td><span class="pill pill--green">完全対応</span></td>
+            <td><span class="pill pill--blue">中級</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">BASE API</td>
+            <td><span class="pill pill--amber">なし</span></td>
+            <td>自社ストア依存</td>
+            <td>制限緩め</td>
+            <td><span class="pill pill--green">日本専用</span></td>
+            <td><span class="pill pill--green">初級</span></td>
+          </tr>
+          <tr>
+            <td class="api-name">メルカリAPI</td>
+            <td><span class="pill pill--amber">限定的</span></td>
+            <td>20億品以上（累計）</td>
+            <td>非公開</td>
+            <td><span class="pill pill--green">日本専用</span></td>
+            <td><span class="pill pill--amber">上級</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="details">2. 各APIの特徴と強み</h2>
+
+    <h3>楽天市場API - 日本最大級のECデータ</h3>
+    <p>楽天市場の商品検索、ランキング取得、ジャンル情報取得が可能。楽天アフィリエイトと連携し、商品紹介で収益化できます。楽天トラベル、楽天ブックスなどグループサービスのAPIも豊富。</p>
+    <ul>
+      <li><strong>強み:</strong> 日本最大級の商品データベース、アフィリエイト連携、豊富なサブAPI（トラベル、ブックス等）</li>
+      <li><strong>弱み:</strong> レート制限が厳しい（1リクエスト/秒）、レスポンスがXML中心、ドキュメントがやや古い</li>
+      <li><strong>おすすめ:</strong> 商品比較サイト、アフィリエイトメディア、価格追跡ツール</li>
+    </ul>
+
+    <h3>Amazon PA-API - グローバル最大のEC API</h3>
+    <p>Amazon Product Advertising APIは、Amazonの商品情報・価格・レビューデータにアクセス可能。Amazonアソシエイトと直結し、アフィリエイトリンクの自動生成ができます。利用にはAmazonアソシエイトの売上実績が必要。</p>
+    <ul>
+      <li><strong>強み:</strong> 世界最大の商品データベース、詳細な商品メタデータ、高い信頼性</li>
+      <li><strong>弱み:</strong> 利用条件が厳しい（売上実績必要）、署名付きリクエストが複雑、レート制限あり</li>
+      <li><strong>おすすめ:</strong> アフィリエイトサイト、価格比較サービス、商品レビューサイト</li>
+    </ul>
+
+    <h3>Shopify Storefront API - 自社ECのヘッドレス化</h3>
+    <p>Shopifyストアのデータにアクセスし、カスタムストアフロントを構築するためのGraphQL API。Hydrogen（Shopify公式Reactフレームワーク）との組み合わせで、高速なヘッドレスコマースを実現。</p>
+    <ul>
+      <li><strong>強み:</strong> GraphQLで柔軟なデータ取得、Hydrogen連携、チェックアウト機能内蔵、高いレート制限</li>
+      <li><strong>弱み:</strong> 自社ストアのみ、Shopify契約が前提、日本語ドキュメントが少ない</li>
+      <li><strong>おすすめ:</strong> ヘッドレスコマース構築、ブランドEC、カスタムストアフロント</li>
+    </ul>
+
+    <h3>BASE API - 日本のかんたんEC</h3>
+    <p>国内200万ショップ超のBASEが提供するAPI。OAuth認証でショップの商品・注文データにアクセス可能。シンプルなREST APIで、EC連携アプリの開発に向いています。</p>
+    <ul>
+      <li><strong>強み:</strong> シンプルなAPI設計、日本語ドキュメント完備、小規模ショップの多さ</li>
+      <li><strong>弱み:</strong> 個別ショップへのアクセス（横断検索不可）、機能がShopifyより限定的</li>
+      <li><strong>おすすめ:</strong> BASEアプリ開発、小規模EC連携、在庫管理ツール</li>
+    </ul>
+
+    <h3>メルカリAPI - フリマデータの活用</h3>
+    <p>メルカリの商品データにアクセスできるAPI。公式APIは限定的で、パートナー向けに提供。累計20億品以上の出品データは、中古品の相場調査やトレンド分析に活用できます。</p>
+    <ul>
+      <li><strong>強み:</strong> 膨大な中古品データ、リアルタイムの相場情報、日本最大のフリマプラットフォーム</li>
+      <li><strong>弱み:</strong> 公式APIの提供範囲が限定的、パートナー申請が必要、ドキュメントが少ない</li>
+      <li><strong>おすすめ:</strong> 中古品相場調査ツール、リセール分析、在庫管理連携</li>
+    </ul>
+
+    <h2 id="usecases">3. ユースケース別おすすめ</h2>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">アフィリエイトメディア → 楽天市場API + Amazon PA-API</div>
+      <p>商品比較記事やランキングサイトには両方の併用が最強。楽天で日本のEC全般をカバーし、Amazonでグローバル商品を補完。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">ブランドEC・D2C → Shopify Storefront API</div>
+      <p>独自デザインのストアフロントを構築するなら Shopify + Hydrogen が最適解。チェックアウト、在庫管理、決済がすべて統合。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">小規模ショップ連携 → BASE API</div>
+      <p>BASEショップのデータ連携アプリを作るなら、シンプルなREST APIで素早く開発可能。日本語サポートも充実。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">価格比較・相場調査 → 楽天 + Amazon + メルカリ</div>
+      <p>新品は楽天・Amazon、中古はメルカリのデータを組み合わせることで、包括的な市場価格分析が可能。</p>
+    </div>
+
+    <h2 id="code">4. 実装サンプルコード</h2>
+
+    <h3>楽天市場API（JavaScript / Fetch）</h3>
+    <div class="code-block"><code><span class="comment">// 楽天商品検索API</span>
+<span class="keyword">const</span> APP_ID = <span class="string">'your-app-id'</span>;
+<span class="keyword">const</span> keyword = <span class="func">encodeURIComponent</span>(<span class="string">'ワイヤレスイヤホン'</span>);
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="func">fetch</span>(
+  <span class="string">`https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601?applicationId=${APP_ID}&keyword=${keyword}&hits=10`</span>
+);
+<span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="func">json</span>();
+console.<span class="func">log</span>(data.Items); <span class="comment">// 商品一覧</span></code></div>
+
+    <h3>Amazon PA-API（cURL）</h3>
+    <div class="code-block"><code><span class="comment"># Amazon商品検索（署名付きリクエスト）</span>
+curl -X POST <span class="string">'https://webservices.amazon.co.jp/paapi5/searchitems'</span> \
+  -H <span class="string">'Content-Type: application/json'</span> \
+  -H <span class="string">'X-Amz-Target: com.amazon.paapi5.v1.ProductAdvertisingAPIv1.SearchItems'</span> \
+  -d <span class="string">'{
+    "Keywords": "ワイヤレスイヤホン",
+    "SearchIndex": "All",
+    "ItemCount": 10,
+    "PartnerTag": "your-tag-20",
+    "PartnerType": "Associates",
+    "Resources": ["ItemInfo.Title", "Offers.Listings.Price"]
+  }'</span></code></div>
+
+    <h3>Shopify Storefront API（GraphQL）</h3>
+    <div class="code-block"><code><span class="comment">// Shopify Storefront APIで商品一覧取得</span>
+<span class="keyword">const</span> query = <span class="string">`{
+  products(first: 10) {
+    edges {
+      node {
+        title
+        handle
+        priceRange {
+          minVariantPrice { amount currencyCode }
+        }
+        images(first: 1) {
+          edges { node { url altText } }
+        }
+      }
+    }
+  }
+}`</span>;
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="func">fetch</span>(<span class="string">'https://your-store.myshopify.com/api/2024-01/graphql.json'</span>, {
+  method: <span class="string">'POST'</span>,
+  headers: {
+    <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>,
+    <span class="string">'X-Shopify-Storefront-Access-Token'</span>: <span class="string">'your-token'</span>,
+  },
+  body: JSON.<span class="func">stringify</span>({ query }),
+});</code></div>
+
+    <h2 id="summary">5. まとめ：選び方フローチャート</h2>
+    <ol>
+      <li><strong>アフィリエイト収益化？</strong> → Yes: 楽天市場API + Amazon PA-API</li>
+      <li><strong>自社ECの構築？</strong> → Yes: Shopify Storefront API</li>
+      <li><strong>小規模ショップ連携？</strong> → Yes: BASE API</li>
+      <li><strong>中古品の相場調査？</strong> → Yes: メルカリAPI</li>
+      <li><strong>日本市場の商品データ？</strong> → Yes: 楽天市場API</li>
+    </ol>
+    <p>アフィリエイトなら楽天+Amazonの併用、自社ECならShopifyが定番です。いずれも無料でAPIキーを取得でき、テスト環境で試してから本番導入できます。</p>
+
+    <div class="newsletter-cta">
+      <h3>この記事が役に立ちましたか？</h3>
+      <p>APIpediaニュースレターで最新の比較ガイドを受け取りましょう。</p>
+      <form class="nl-form" action="https://formspree.io/f/placeholder" method="POST">
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <button type="submit">登録</button>
+      </form>
+    </div>
+
+    <div class="guide-nav">
+      <a href="cms-api-comparison.html">&larr; CMS API比較ガイド</a>
+      <a href="translation-api-comparison.html">翻訳API比較ガイド &rarr;</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../index.html">トップ</a>
+        <a href="../compare.html">比較表</a>
+        <a href="index.html">ガイド</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

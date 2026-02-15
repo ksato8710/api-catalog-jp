@@ -2,8 +2,8 @@
   "metadata": {
     "version": "2.0.0",
     "lastUpdated": "2026-02-15",
-    "totalApis": 128,
-    "totalCategories": 21
+    "totalApis": 218,
+    "totalCategories": 29
   },
   "categories": [
     {
@@ -131,6 +131,54 @@
       "name": "NoCode・自動化",
       "icon": "⚡",
       "description": "ワークフロー自動化、ノーコード開発、業務プロセス連携"
+    },
+    {
+      "id": "iot",
+      "name": "IoT・ハードウェア",
+      "icon": "📡",
+      "description": "IoTデバイス連携、センサーデータ、デバイス管理"
+    },
+    {
+      "id": "travel",
+      "name": "旅行・交通",
+      "icon": "✈️",
+      "description": "宿泊予約、航空券検索、経路探索、交通情報"
+    },
+    {
+      "id": "food",
+      "name": "食・グルメ",
+      "icon": "🍽️",
+      "description": "飲食店検索、レシピ、栄養情報、フードデリバリー"
+    },
+    {
+      "id": "logistics",
+      "name": "物流・配送",
+      "icon": "📦",
+      "description": "荷物追跡、配送管理、送り状発行"
+    },
+    {
+      "id": "education",
+      "name": "教育・学習",
+      "icon": "📚",
+      "description": "学習管理、コース管理、教育プラットフォーム連携"
+    },
+    {
+      "id": "blockchain",
+      "name": "ブロックチェーン・Web3",
+      "icon": "⛓️",
+      "description": "ブロックチェーンデータ取得、NFT、DeFi、暗号通貨"
+    },
+    {
+      "id": "security",
+      "name": "セキュリティ",
+      "icon": "🛡️",
+      "description": "脅威検出、脆弱性診断、セキュリティインテリジェンス"
+    },
+    {
+      "id": "communication",
+      "name": "コミュニケーション",
+      "icon": "📹",
+      "description": "ビデオ会議、チャット、チーム連携ツール"
     }
   ],
   "apis": [
@@ -8462,6 +8510,5696 @@
           }
         ],
         "detail": "BubbleはノーコードWebアプリ開発プラットフォームのリーダー。Data APIとWorkflow APIで外部連携が可能。ワークロードユニット（WU）制の料金体系で、API操作もWUを消費。無料プランは開発モードのみで公開にはStarterプラン以上が必要。"
+      }
+    },
+    {
+      "id": "aws-iot-core",
+      "name": "AWS IoT Core",
+      "nameJa": "AWS IoT Core",
+      "description": "AWSのフルマネージドIoTプラットフォーム。数十億台のデバイスと数兆件のメッセージを安全に接続・管理し、MQTT/HTTPS/WebSocketプロトコルに対応。デバイスシャドウ、ルールエンジン、メッセージブローカー機能でIoTアプリケーションを構築できる。AWS Lambda・S3・DynamoDBなどAWSサービスとシームレスに連携",
+      "url": "https://aws.amazon.com/iot-core/",
+      "docsUrl": "https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html",
+      "category": "iot",
+      "tags": [
+        "IoT",
+        "MQTT",
+        "デバイス管理",
+        "クラウド",
+        "AWS"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "従量課金制：メッセージング $1.00/100万メッセージ（5KB単位）。12ヶ月間の無料利用枠あり（25万メッセージ/月、25万分のデバイスシャドウ操作/月等）。2025年7月以降新規AWSアカウントには$200のFree Tierクレジット付与",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "APIアクション別にTPS制限あり（リージョンごとに異なる）。デバイスメッセージング: 制限はアカウントのクォータに依存",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Java",
+        "C",
+        "C++",
+        "Arduino"
+      ],
+      "useCases": [
+        "産業用IoTセンサーデータの収集・分析",
+        "スマートホームデバイスの管理",
+        "フリート管理・車両テレメトリ",
+        "リアルタイム異常検知"
+      ],
+      "popularity": {
+        "score": 88,
+        "users": "数十万の企業・開発者",
+        "marketPosition": "IoTクラウドプラットフォーム市場でAzure IoTと首位を争う",
+        "reason": "AWSエコシステムとの統合力と大規模IoTデプロイメントでの実績。Gartner Magic QuadrantでリーダーポジションのAWSクラウド上のIoT中核サービス",
+        "monthlyApiCalls": "数兆メッセージ/月（プラットフォーム全体）",
+        "githubStars": "900+ stars（AWS IoT SDK for Python）",
+        "npmDownloads": "週間約1万DL（aws-iot-device-sdk-v2）",
+        "adopters": [
+          "iRobot",
+          "Philips",
+          "Rachio",
+          "BMW",
+          "Enel"
+        ],
+        "sources": [
+          {
+            "label": "AWS IoT Core公式ページ",
+            "url": "https://aws.amazon.com/iot-core/"
+          },
+          {
+            "label": "AWS IoT Coreクォータ",
+            "url": "https://docs.aws.amazon.com/iot/latest/developerguide/limits-iot.html"
+          }
+        ],
+        "detail": "AWS IoT Coreは世界最大のクラウドプラットフォームAWS上のIoT中核サービス。MQTT 5.0対応、デバイスシャドウ、ジョブ管理、セキュリティ機能を統合的に提供。製造業・ヘルスケア・スマートシティ等の大規模IoTシステムで広く採用されている。"
+      }
+    },
+    {
+      "id": "azure-iot-hub",
+      "name": "Azure IoT Hub",
+      "nameJa": "Azure IoT Hub",
+      "description": "MicrosoftのフルマネージドIoTクラウドゲートウェイ。デバイスとクラウド間の双方向通信を実現し、デバイスツイン・ダイレクトメソッド・メッセージルーティング機能を提供。Azure IoT Edgeと連携してエッジコンピューティングも実現可能。BasicとStandardの2つのティアを提供",
+      "url": "https://azure.microsoft.com/en-us/products/iot-hub/",
+      "docsUrl": "https://learn.microsoft.com/en-us/azure/iot-hub/",
+      "category": "iot",
+      "tags": [
+        "IoT",
+        "Azure",
+        "デバイス管理",
+        "エッジコンピューティング",
+        "クラウド"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Free Tier: 1日8,000メッセージ、デバイス500台まで。Basic B1: 1ユニットあたり1日40万メッセージ。Standard S1: 1ユニットあたり1日40万メッセージ（双方向通信対応）。S2: 600万メッセージ/日/ユニット",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "ティア・ユニット数に依存。Free: 8,000メッセージ/日、S1: 40万メッセージ/日/ユニット、S2: 600万メッセージ/日/ユニット",
+      "sdks": [
+        "C",
+        "C#",
+        "Java",
+        "Python",
+        "Node.js"
+      ],
+      "useCases": [
+        "製造業のIoTデバイス監視",
+        "ビル管理・スマートファシリティ",
+        "コネクテッドカーのテレメトリ",
+        "医療機器のリモートモニタリング"
+      ],
+      "popularity": {
+        "score": 86,
+        "users": "数十万の企業・開発者",
+        "marketPosition": "IoTクラウドプラットフォーム市場でAWS IoTと並ぶトップ",
+        "reason": "Microsoft Azureエコシステムとの深い統合。エンタープライズIoTでAWS IoT Coreと双璧をなす",
+        "monthlyApiCalls": "数十億メッセージ/月（プラットフォーム全体）",
+        "githubStars": "600+ stars（Azure IoT SDK for C#）",
+        "npmDownloads": "週間約8,000DL（azure-iot-device）",
+        "adopters": [
+          "Rolls-Royce",
+          "Johnson Controls",
+          "Schneider Electric",
+          "Bosch"
+        ],
+        "sources": [
+          {
+            "label": "Azure IoT Hub公式ドキュメント",
+            "url": "https://learn.microsoft.com/en-us/azure/iot-hub/"
+          },
+          {
+            "label": "Azure IoT Hub料金",
+            "url": "https://azure.microsoft.com/en-ca/pricing/details/iot-hub/"
+          }
+        ],
+        "detail": "Azure IoT Hubは、MicrosoftのクラウドプラットフォームAzure上でIoTソリューションの中核を担うサービス。デバイスツイン、ダイレクトメソッド、IoT Edge連携によりエッジからクラウドまでの包括的なIoTソリューションを構築できる。"
+      }
+    },
+    {
+      "id": "soracom-api",
+      "name": "SORACOM API",
+      "nameJa": "SORACOM API",
+      "description": "日本発のIoTプラットフォーム「SORACOM」のREST API。IoT向けSIM管理、データ通信、デバイス管理をプログラマティックに操作可能。グローバルカバレッジとJapanカバレッジの2つのエリアに対応し、SIMのアクティベーション・通信制御・料金管理をAPI経由で自動化できる",
+      "url": "https://soracom.io/",
+      "docsUrl": "https://developers.soracom.io/en/api/",
+      "category": "iot",
+      "tags": [
+        "IoT",
+        "SIM",
+        "通信",
+        "日本製",
+        "デバイス管理"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "従量課金制。SIMの種類・プランにより異なる。月額¥150/台の無料利用枠あり（Japan Coverage）。Global Coverageは$1.50/台の無料枠。データ通信量に応じた課金",
+      "auth": "apiKey",
+      "region": "both",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "APIリクエスト制限あり（詳細は非公開、一般的な利用では問題なし）",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Ruby",
+        "Go"
+      ],
+      "useCases": [
+        "IoTデバイスのSIM一括管理",
+        "通信量のモニタリング・制御",
+        "デバイスフリート管理の自動化",
+        "セルラーIoTゲートウェイ構築"
+      ],
+      "popularity": {
+        "score": 62,
+        "users": "2万社以上の法人利用",
+        "marketPosition": "日本国内IoTプラットフォーム市場でリーダー的存在",
+        "reason": "日本発のIoTプラットフォームとして国内での知名度が高く、グローバル展開も積極的。KDDIグループの一員として通信インフラに強み",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "100+ stars（soracom-cli）",
+        "npmDownloads": "非公開",
+        "adopters": [
+          "KDDI",
+          "日立製作所",
+          "オムロン",
+          "京セラ"
+        ],
+        "sources": [
+          {
+            "label": "SORACOM公式サイト",
+            "url": "https://soracom.io/"
+          },
+          {
+            "label": "SORACOM API Reference",
+            "url": "https://developers.soracom.io/en/api/"
+          }
+        ],
+        "detail": "SORACOMは2015年にAWSのエンジニアが創業した日本発のIoTプラットフォーム。2017年にKDDIグループ入り。IoT向けSIM・データ通信・クラウド連携をワンストップで提供し、日本国内のIoT市場で高いシェアを持つ。"
+      }
+    },
+    {
+      "id": "google-cloud-pubsub",
+      "name": "Google Cloud Pub/Sub",
+      "nameJa": "Google Cloud Pub/Sub",
+      "description": "Googleのフルマネージドなリアルタイムメッセージングサービス。パブリッシャーとサブスクライバーの非同期通信を実現し、IoTデータの収集・イベントドリブンアーキテクチャの構築に活用される。自動スケーリングにより1秒あたり数百万メッセージを処理可能。BigQueryやCloud Functionsとシームレスに連携",
+      "url": "https://cloud.google.com/pubsub",
+      "docsUrl": "https://cloud.google.com/pubsub/docs",
+      "category": "iot",
+      "tags": [
+        "メッセージング",
+        "IoT",
+        "イベント駆動",
+        "Google Cloud",
+        "リアルタイム"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "最初の10GBのメッセージ配信/月は無料。以降はデータ量課金：$40/TB（最初の次の50TB）。メッセージ保存料金あり",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "プロジェクトあたりのクォータ制限あり。パブリッシュ: 制限はリージョンごと。サブスクリプション: 10,000サブスクリプション/プロジェクト",
+      "sdks": [
+        "Python",
+        "Java",
+        "Go",
+        "C#",
+        "Node.js",
+        "Ruby",
+        "PHP"
+      ],
+      "useCases": [
+        "IoTセンサーデータのリアルタイム収集",
+        "マイクロサービス間の非同期メッセージング",
+        "ストリーミングデータパイプライン構築",
+        "イベントドリブンアーキテクチャの実装"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "数十万の開発者・企業",
+        "marketPosition": "クラウドメッセージングサービスでAWS SNS/SQS、Azure Service Busと競合する主要サービス",
+        "reason": "Google Cloudの中核サービスとして大規模データパイプラインやIoTバックエンドで広く利用。Google内部のメッセージングインフラの商用版",
+        "monthlyApiCalls": "数兆メッセージ/月（プラットフォーム全体）",
+        "githubStars": "500+ stars（google-cloud-pubsub Python）",
+        "npmDownloads": "週間約20万DL（@google-cloud/pubsub）",
+        "adopters": [
+          "Spotify",
+          "Philips",
+          "New York Times",
+          "Workday"
+        ],
+        "sources": [
+          {
+            "label": "Google Cloud Pub/Sub公式",
+            "url": "https://cloud.google.com/pubsub"
+          },
+          {
+            "label": "Pub/Sub料金ページ",
+            "url": "https://cloud.google.com/pubsub/pricing"
+          }
+        ],
+        "detail": "Google Cloud Pub/SubはGoogleの大規模メッセージングインフラを基盤としたサービス。旧Google Cloud IoT Coreが2023年に廃止された後、IoTデータ収集にはPub/Sub + Cloud Functions等の組み合わせが推奨されている。"
+      }
+    },
+    {
+      "id": "ifttt-api",
+      "name": "IFTTT API",
+      "nameJa": "IFTTT API",
+      "description": "900以上のWebサービス・IoTデバイスを連携するオートメーションプラットフォームのAPI。Webhookを介してカスタムトリガー・アクションを作成し、「If This Then That」のルールで様々なサービスを自動連携できる。スマートホーム、通知、データ連携など幅広い用途に対応",
+      "url": "https://ifttt.com/",
+      "docsUrl": "https://ifttt.com/docs",
+      "category": "iot",
+      "tags": [
+        "自動化",
+        "IoT",
+        "スマートホーム",
+        "Webhook",
+        "連携"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Free: 2つのアプレットまで。Pro: $2.99/月（無制限アプレット、Webhook対応）。Pro+: $8.99/月（プラットフォームアクセス、高度なWebhook）。Developer: 要問合せ",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Webhooksサービス: トリガー/アクションの実行頻度はプランに依存。API呼び出し: 具体的なレート制限は非公開",
+      "sdks": [
+        "JavaScript",
+        "Python"
+      ],
+      "useCases": [
+        "スマートホームデバイスの自動制御",
+        "SNS投稿の自動連携",
+        "IoTセンサーイベントの通知自動化",
+        "業務ワークフローの自動化"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "2,500万ユーザー以上",
+        "marketPosition": "消費者向けオートメーション市場のパイオニア。Zapierと並ぶ代表的サービス",
+        "reason": "2,500万以上のユーザーを持つ消費者向け自動化プラットフォームの先駆者。900以上のサービス連携をサポート",
+        "monthlyApiCalls": "数十億アクション/月（プラットフォーム全体）",
+        "githubStars": "該当なし（プロプライエタリ）",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "Google Home",
+          "Amazon Alexa",
+          "Samsung SmartThings",
+          "Philips Hue"
+        ],
+        "sources": [
+          {
+            "label": "IFTTT公式サイト",
+            "url": "https://ifttt.com/"
+          },
+          {
+            "label": "IFTTT料金プラン",
+            "url": "https://ifttt.com/plans"
+          }
+        ],
+        "detail": "IFTTTは2011年創業の自動化プラットフォーム。消費者向けIoT/スマートホーム連携で圧倒的な知名度を持つ。近年は開発者向けプラットフォームを強化し、企業のAPIエコシステム拡張にも利用されている。"
+      }
+    },
+    {
+      "id": "thingspeak-api",
+      "name": "ThingSpeak API",
+      "nameJa": "ThingSpeak API",
+      "description": "MathWorks（MATLAB）が提供するIoTアナリティクスプラットフォーム。REST API/MQTTでセンサーデータを収集し、MATLAB解析エンジンでリアルタイム分析・可視化が可能。チャンネルベースのデータモデルで、IoTプロトタイピングや教育用途に最適",
+      "url": "https://thingspeak.mathworks.com/",
+      "docsUrl": "https://www.mathworks.com/help/thingspeak/",
+      "category": "iot",
+      "tags": [
+        "IoT",
+        "MATLAB",
+        "センサーデータ",
+        "可視化",
+        "アナリティクス"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Free: 年間300万メッセージ（約8,200件/日）、更新間隔15秒制限。Standard（有料ライセンス）: 年間3,300万メッセージ/ユニット、更新間隔1秒。Academic/Studentライセンスあり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON",
+        "XML",
+        "CSV"
+      ],
+      "rateLimit": "Free: 15秒に1回の更新制限。有料: 1秒に1回の更新。MATLAB実行: 無料20秒/有料60秒",
+      "sdks": [
+        "MATLAB",
+        "Arduino",
+        "Python",
+        "Ruby"
+      ],
+      "useCases": [
+        "IoTセンサーデータの収集・可視化",
+        "環境モニタリング（温度・湿度・大気質）",
+        "MATLAB連携によるデータ分析",
+        "教育・プロトタイピング用IoTプロジェクト"
+      ],
+      "popularity": {
+        "score": 55,
+        "users": "数百万のチャンネル登録",
+        "marketPosition": "教育・ホビー向けIoTプラットフォームで高い知名度",
+        "reason": "MATLABとの統合によるユニークなポジション。Arduino・Raspberry Pi等のIoTプロトタイピングコミュニティで広く利用",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "200+ stars（thingspeak-arduino）",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "MathWorks",
+          "教育機関",
+          "個人IoT開発者"
+        ],
+        "sources": [
+          {
+            "label": "ThingSpeak公式",
+            "url": "https://thingspeak.mathworks.com/"
+          },
+          {
+            "label": "ThingSpeak料金",
+            "url": "https://thingspeak.mathworks.com/prices"
+          }
+        ],
+        "detail": "ThingSpeakはMATLABを提供するMathWorksが運営するIoT分析プラットフォーム。無料で始められるため、ArduinoやRaspberry Piを使ったIoT入門・教育で特に人気。MATLAB解析との連携が最大の差別化要因。"
+      }
+    },
+    {
+      "id": "jalan-web-service",
+      "name": "Jalan Web Service",
+      "nameJa": "じゃらんWebサービス",
+      "description": "リクルートが運営する国内最大級の旅行予約サイト「じゃらんnet」のWeb API。約21,500件の宿泊施設情報、空室検索、エリア検索、口コミ情報などをJSON/XML形式で取得可能。アフィリエイト連携にも対応し、旅行関連アプリ開発に活用できる",
+      "url": "https://www.jalan.net/jw/jwp0000/jww0001.do",
+      "docsUrl": "https://www.jalan.net/jw/jwp0100/jww0101.do",
+      "category": "travel",
+      "tags": [
+        "旅行",
+        "宿泊",
+        "予約",
+        "日本",
+        "口コミ"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料で利用可能。アカウント登録が必要。商用利用にはじゃらんnetへのリンク設置が条件",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "非公開（一般的な個人利用では問題なし。大量アクセスには制限あり）",
+      "sdks": [],
+      "useCases": [
+        "宿泊施設の検索・比較アプリ",
+        "旅行プランニングサービス",
+        "空室情報のリアルタイム表示",
+        "アフィリエイトサイト構築"
+      ],
+      "popularity": {
+        "score": 60,
+        "users": "国内旅行系開発者・アフィリエイター",
+        "marketPosition": "国内旅行予約サービスで楽天トラベルと1-2位を争う",
+        "reason": "じゃらんnetは国内旅行予約で圧倒的なシェアを持つ。APIは無料で提供され、アフィリエイターや個人開発者に広く利用される",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "リクルート関連サービス",
+          "旅行比較サイト",
+          "個人開発者"
+        ],
+        "sources": [
+          {
+            "label": "じゃらんWebサービス公式",
+            "url": "https://www.jalan.net/jw/jwp0000/jww0001.do"
+          },
+          {
+            "label": "じゃらんWebサービスFAQ",
+            "url": "https://www.jalan.net/jw/jwp0300/jww0303.do"
+          }
+        ],
+        "detail": "じゃらんWebサービスはリクルートが無料で提供する旅行APIで、約21,500件の国内宿泊施設のデータにアクセス可能。空室検索、施設詳細、口コミなど旅行に必要な情報を網羅している。"
+      }
+    },
+    {
+      "id": "rakuten-travel-api",
+      "name": "Rakuten Travel API",
+      "nameJa": "楽天トラベルAPI",
+      "description": "楽天グループの旅行予約サービス「楽天トラベル」のAPI。施設検索API・空室検索API・地区コードAPIの3種類を提供し、約21,500件の宿泊施設情報をリアルタイムに取得可能。楽天ウェブサービスの一部として無料で利用できる",
+      "url": "https://webservice.rakuten.co.jp/documentation/simple-hotel-search",
+      "docsUrl": "https://webservice.rakuten.co.jp/documentation/simple-hotel-search",
+      "category": "travel",
+      "tags": [
+        "旅行",
+        "宿泊",
+        "予約",
+        "日本",
+        "楽天"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料で利用可能。楽天ウェブサービスへの登録が必要。アフィリエイト連携可能",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "1アプリケーションIDあたり1リクエスト/秒",
+      "sdks": [],
+      "useCases": [
+        "宿泊施設の検索・比較",
+        "空室状況のリアルタイム確認",
+        "旅行プランニングアプリの構築",
+        "楽天アフィリエイト連携"
+      ],
+      "popularity": {
+        "score": 58,
+        "users": "国内旅行系開発者・アフィリエイター",
+        "marketPosition": "国内OTA（オンライン旅行代理店）でじゃらんと1-2位を争う",
+        "reason": "楽天トラベルは国内旅行予約で高いシェア。楽天エコシステム（楽天ポイント・楽天市場）との連携が強み。APIは無料で開放",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "楽天グループ",
+          "旅行比較サイト",
+          "個人開発者"
+        ],
+        "sources": [
+          {
+            "label": "楽天ウェブサービス公式",
+            "url": "https://webservice.rakuten.co.jp/documentation/simple-hotel-search"
+          },
+          {
+            "label": "楽天APIレート制限FAQ",
+            "url": "https://webservice.faq.rakuten.net/hc/en-us/articles/900001974383"
+          }
+        ],
+        "detail": "楽天トラベルAPIは楽天ウェブサービスの一部として提供される無料の旅行API。施設検索、空室検索、地区コードの3つのAPIを提供し、国内約21,500件の宿泊施設データにアクセスできる。"
+      }
+    },
+    {
+      "id": "skyscanner-api",
+      "name": "Skyscanner API",
+      "nameJa": "Skyscanner API",
+      "description": "世界最大級の旅行メタサーチエンジン「Skyscanner」のAPI。航空券・ホテル・レンタカーの価格検索データを提供し、Flights Live Prices API（リアルタイム料金）、Flights Indicative Prices API（概算料金）、Car Hire API、Hotels APIを利用可能。パートナープログラムを通じてアクセス",
+      "url": "https://developers.skyscanner.net/",
+      "docsUrl": "https://developers.skyscanner.net/docs/intro",
+      "category": "travel",
+      "tags": [
+        "航空券",
+        "旅行",
+        "価格比較",
+        "メタサーチ",
+        "フライト"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "パートナープログラムへの参加が必要。基本的なAPI利用はパートナー向けに無料提供。商用利用の場合はボリューム・カスタマイズに応じた料金",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "デフォルトレート制限付き（パートナー向けに十分な量）。制限超過時はアカウントマネージャーに連絡",
+      "sdks": [
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "航空券価格比較サイトの構築",
+        "旅行プラン作成アプリ",
+        "最安値フライト通知サービス",
+        "ホテル・レンタカー検索機能の統合"
+      ],
+      "popularity": {
+        "score": 75,
+        "users": "月間1億ユーザー以上（Skyscanner全体）",
+        "marketPosition": "旅行メタサーチ市場でKayak・Google Flightsと競合するトップ3",
+        "reason": "世界100+市場で展開する旅行メタサーチの大手。パートナーAPIを通じて多数の旅行サイト・アプリにデータを提供",
+        "monthlyApiCalls": "数十億リクエスト/月（プラットフォーム全体）",
+        "githubStars": "300+ stars（Skyscanner Backpack UI）",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "Trip.com",
+          "各国旅行比較サイト",
+          "航空会社OTA"
+        ],
+        "sources": [
+          {
+            "label": "Skyscanner Developers",
+            "url": "https://developers.skyscanner.net/"
+          },
+          {
+            "label": "Skyscanner APIレート制限",
+            "url": "https://developers.skyscanner.net/docs/getting-started/rate-limits"
+          }
+        ],
+        "detail": "Skyscannerは2003年にスコットランドで創業し、現在はTrip.comグループ傘下。世界100以上の市場で航空券・ホテル・レンタカーの比較検索を提供。APIはパートナープログラムを通じて利用可能。"
+      }
+    },
+    {
+      "id": "booking-com-api",
+      "name": "Booking.com Connectivity API",
+      "nameJa": "Booking.com API",
+      "description": "世界最大級のオンライン宿泊予約プラットフォーム「Booking.com」のAPI。Connectivity API（宿泊施設の在庫・料金管理）、Demand API（物件検索・予約）、Content API（物件情報取得）を提供。承認されたパートナーのみ利用可能で、API利用料は無料",
+      "url": "https://developers.booking.com/",
+      "docsUrl": "https://developers.booking.com/connectivity/docs",
+      "category": "travel",
+      "tags": [
+        "宿泊",
+        "旅行",
+        "予約",
+        "ホテル",
+        "OTA"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用料は無料。ただし、承認されたアフィリエイト・コネクティビティパートナーのみ利用可能。現在新規パートナー登録は制限中",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "パートナー契約に依存（詳細は非公開）",
+      "sdks": [],
+      "useCases": [
+        "宿泊施設の在庫・料金管理（PMS連携）",
+        "宿泊予約プラットフォームの構築",
+        "チャネルマネージャーとの連携",
+        "旅行比較サイトへの物件表示"
+      ],
+      "popularity": {
+        "score": 90,
+        "users": "数百万の宿泊施設パートナー",
+        "marketPosition": "オンライン宿泊予約で世界No.1プラットフォーム",
+        "reason": "世界最大の宿泊予約プラットフォーム。229か国、43言語で2,800万以上の宿泊施設を掲載。Booking Holdingsの中核サービス",
+        "monthlyApiCalls": "数十億リクエスト/月（プラットフォーム全体）",
+        "githubStars": "該当なし（プロプライエタリ）",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "主要チャネルマネージャー",
+          "SiteMinder",
+          "RateGain",
+          "D-EDGE"
+        ],
+        "sources": [
+          {
+            "label": "Booking.com Developers",
+            "url": "https://developers.booking.com/"
+          },
+          {
+            "label": "Booking.com Connectivity APIs",
+            "url": "https://developers.booking.com/connectivity/docs"
+          }
+        ],
+        "detail": "Booking.comは世界229か国、2,800万以上の宿泊施設を掲載する最大級のOTA。APIは認定パートナーのみ利用可能で、チャネルマネージャーやPMS（宿泊管理システム）との連携が主な用途。"
+      }
+    },
+    {
+      "id": "amadeus-api",
+      "name": "Amadeus for Developers",
+      "nameJa": "Amadeus API",
+      "description": "世界最大級のGDS（Global Distribution System）プロバイダーAmadeusが提供する旅行APIスイート。航空券検索・予約、ホテル検索、空港情報、旅行先レコメンドなど40以上のSelf-Service APIを提供。テスト環境は無料で利用可能で、本番環境は従量課金制",
+      "url": "https://developers.amadeus.com/",
+      "docsUrl": "https://developers.amadeus.com/self-service/apis-docs/guides/developer-guides",
+      "category": "travel",
+      "tags": [
+        "航空券",
+        "GDS",
+        "旅行",
+        "ホテル",
+        "予約"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "テスト環境: 無料（APIごとに月1,000〜10,000リクエスト）。本番環境: 従量課金（APIにより$0.01〜$0.10/リクエスト）。無料枠超過分のみ課金",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "テスト環境: API別に月1,000〜10,000リクエスト。本番環境: 従量課金（制限なし）",
+      "sdks": [
+        "Python",
+        "Java",
+        "Node.js",
+        "Ruby",
+        ".NET",
+        "Kotlin",
+        "Swift"
+      ],
+      "useCases": [
+        "航空券検索・予約アプリの構築",
+        "ホテル検索・比較サービス",
+        "旅行プランAIレコメンドエンジン",
+        "空港情報・フライトステータス表示"
+      ],
+      "popularity": {
+        "score": 80,
+        "users": "10万以上の開発者がSelf-Serviceに登録",
+        "marketPosition": "旅行テクノロジー業界の最大手GDSプロバイダー",
+        "reason": "世界のGDS市場シェア約40%を持つAmadeusが開発者向けに直接提供。40以上のAPIと7言語のSDKで旅行アプリ開発のハードルを下げている",
+        "monthlyApiCalls": "非公開（GDS全体では年間数十億トランザクション）",
+        "githubStars": "200+ stars（amadeus-python）",
+        "npmDownloads": "週間約2,000DL（amadeus）",
+        "adopters": [
+          "Lufthansa",
+          "Uber",
+          "旅行スタートアップ多数"
+        ],
+        "sources": [
+          {
+            "label": "Amadeus for Developers",
+            "url": "https://developers.amadeus.com/"
+          },
+          {
+            "label": "Amadeus API料金",
+            "url": "https://developers.amadeus.com/pricing"
+          }
+        ],
+        "detail": "Amadeusは世界のGDS市場で約40%のシェアを持つ旅行テクノロジー企業。Self-Service APIプログラムにより、従来はエンタープライズ向けだった旅行データに個人開発者もアクセス可能に。"
+      }
+    },
+    {
+      "id": "ekispert-api",
+      "name": "Ekispert Web Service",
+      "nameJa": "駅すぱあとAPI",
+      "description": "ヴァル研究所が提供する日本国内の経路検索・運賃計算API。鉄道・バス・航空・船の時刻表データをリアルタイムで提供し、経路探索・運賃計算・定期代計算・駅情報取得が可能。交通費精算システムや乗換案内アプリに広く採用されている",
+      "url": "https://ekiworld.net/service/lp/webservice/",
+      "docsUrl": "https://docs.ekispert.com/v1/",
+      "category": "travel",
+      "tags": [
+        "経路検索",
+        "乗換案内",
+        "交通費",
+        "日本",
+        "鉄道"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "フリープラン: 0円（制限あり）。スタンダードプラン: 従量課金制（90日間の評価環境無料提供）。リクエスト数買い切り型プランもあり",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "プランに依存（フリープランは制限あり、有料プランは契約内容による）",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "社内の交通費精算システム",
+        "乗換案内アプリの構築",
+        "通勤経路の最適化",
+        "イベント会場へのアクセス案内"
+      ],
+      "popularity": {
+        "score": 58,
+        "users": "多数の法人・自治体",
+        "marketPosition": "日本国内の経路検索エンジンで長年の実績を持つ定番サービス",
+        "reason": "「駅すぱあと」は1988年発売の老舗経路検索ソフト。法人向けの交通費精算・経路検索で日本国内で高いシェア",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "intra-mart",
+          "kintone連携",
+          "大手企業の経費精算システム"
+        ],
+        "sources": [
+          {
+            "label": "駅すぱあとAPI公式",
+            "url": "https://ekiworld.net/service/lp/webservice/"
+          },
+          {
+            "label": "駅すぱあとAPIドキュメント",
+            "url": "https://docs.ekispert.com/v1/"
+          }
+        ],
+        "detail": "駅すぱあとは1988年に初版が発売された日本の経路検索ソフトの老舗。API版では鉄道・バス・航空など国内交通の時刻表・運賃データを提供。法人向け交通費精算システムでの利用が多い。"
+      }
+    },
+    {
+      "id": "navitime-api",
+      "name": "NAVITIME API",
+      "nameJa": "NAVITIME API",
+      "description": "ナビタイムジャパンが提供する総合ナビゲーションAPI。徒歩・公共交通・車・自転車・バイクなど多様な移動手段のルート検索、地図表示、スポット検索、交通費計算をREST API形式で提供。マルチモーダル経路探索が強みで、最適な移動ルートを提案",
+      "url": "https://api-sdk.navitime.co.jp/api/",
+      "docsUrl": "https://api-sdk.navitime.co.jp/api/specs/",
+      "category": "travel",
+      "tags": [
+        "経路検索",
+        "ナビゲーション",
+        "地図",
+        "日本",
+        "交通"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "APIマーケット（RapidAPI）: 500アクセスまで無料。PROプラン: $200/月。直接契約: APIの種類により個別見積もり",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "プランに依存。RapidAPI経由の場合はプランのリクエスト上限に準拠",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "マルチモーダル経路検索の実装",
+        "配送ルートの最適化",
+        "観光ナビゲーションアプリ",
+        "交通費計算機能の組み込み"
+      ],
+      "popularity": {
+        "score": 55,
+        "users": "法人中心に多数",
+        "marketPosition": "日本国内のナビゲーション・経路検索で高い知名度",
+        "reason": "NAVITIMEは日本国内で月間5,000万人以上が利用するナビゲーションサービス。APIはそのデータとアルゴリズムを外部提供",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "大手物流企業",
+          "旅行サービス",
+          "不動産サイト"
+        ],
+        "sources": [
+          {
+            "label": "NAVITIME API公式",
+            "url": "https://api-sdk.navitime.co.jp/api/"
+          },
+          {
+            "label": "NAVITIME API仕様書",
+            "url": "https://api-sdk.navitime.co.jp/api/specs/"
+          }
+        ],
+        "detail": "NAVITIMEは2000年創業のナビゲーションサービス企業。月間5,000万人以上が利用するサービスのデータ・アルゴリズムをAPI化。マルチモーダル（複数移動手段の組み合わせ）経路探索が最大の強み。"
+      }
+    },
+    {
+      "id": "google-travel-impact-model",
+      "name": "Google Travel Impact Model API",
+      "nameJa": "Google Travel Impact Model API",
+      "description": "Googleが提供するフライトのCO2排出量推定API。Google Flightsで表示される排出量データと同じモデルを使用し、航空便ごとの環境負荷を定量化できる。サステナブルな旅行選択を支援するための無料公開API。旧Google QPX（航空券検索）APIは廃止済み",
+      "url": "https://developers.google.com/travel/impact-model",
+      "docsUrl": "https://developers.google.com/travel/impact-model",
+      "category": "travel",
+      "tags": [
+        "航空",
+        "CO2",
+        "サステナビリティ",
+        "Google",
+        "環境"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。Google Flightsのデータを基にしたCO2排出量推定APIとして公開",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "一般的なGoogle API制限に準拠",
+      "sdks": [
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "フライトのCO2排出量表示",
+        "サステナブル旅行プランニング",
+        "企業の出張CO2排出量レポート",
+        "環境負荷を考慮した航空券比較"
+      ],
+      "popularity": {
+        "score": 45,
+        "users": "旅行テック開発者",
+        "marketPosition": "フライト環境負荷データのオープンAPIとしてユニーク",
+        "reason": "Google Flightsの排出量データを無料で提供するユニークなAPI。サステナビリティへの関心の高まりと共に注目度が上昇中",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "Google Flights",
+          "旅行スタートアップ"
+        ],
+        "sources": [
+          {
+            "label": "Travel Impact Model API公式",
+            "url": "https://developers.google.com/travel/impact-model"
+          },
+          {
+            "label": "Google Flights Search ドキュメント",
+            "url": "https://developers.google.com/travel/flights"
+          }
+        ],
+        "detail": "Googleは旧QPX Express APIを2018年に廃止し、現在公開されている旅行関連APIはTravel Impact Model（CO2排出量推定）のみ。航空券検索は招待制のパートナー限定。サードパーティ（SerpAPIなど）経由でのスクレイピングベースの代替手段もある。"
+      }
+    },
+    {
+      "id": "gnavi-api",
+      "name": "Gurunavi API",
+      "nameJa": "ぐるなびAPI",
+      "description": "日本最大級の飲食店検索サイト「ぐるなび」の法人向けAPI。店名・住所・電話番号・営業時間・アクセス情報・緯度経度・画像などの飲食店情報を取得可能。レストラン検索API・エリア検索API・カテゴリ検索APIなどを提供。2021年に無料プラン終了、法人向け有料サービスに移行",
+      "url": "https://solution.gnavi.co.jp/service/gnavi_api/",
+      "docsUrl": "https://api.gnavi.co.jp/api/manual/restsearch/",
+      "category": "food",
+      "tags": [
+        "飲食店",
+        "レストラン",
+        "グルメ",
+        "日本",
+        "検索"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "月額10万円（法人向け）。3ヶ月間の無料トライアルあり。法人格を持つ企業のみ利用可能",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "契約プランに依存（詳細は非公開）",
+      "sdks": [],
+      "useCases": [
+        "飲食店検索サービスの構築",
+        "グルメ情報アプリの開発",
+        "位置情報連動のレストラン推薦",
+        "法人向け飲食店データベース連携"
+      ],
+      "popularity": {
+        "score": 50,
+        "users": "法人利用中心",
+        "marketPosition": "日本の飲食店情報サービスで食べログ・ホットペッパーと3強",
+        "reason": "日本の飲食店情報メディアとして長い歴史を持つが、2021年に無料API終了。法人向け有料APIとして提供を継続。開発者コミュニティでの利用は減少傾向",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "法人向け飲食関連サービス"
+        ],
+        "sources": [
+          {
+            "label": "ぐるなびAPIサービス",
+            "url": "https://solution.gnavi.co.jp/service/gnavi_api/"
+          },
+          {
+            "label": "ぐるなびAPI仕様",
+            "url": "https://api.gnavi.co.jp/api/manual/restsearch/"
+          }
+        ],
+        "detail": "ぐるなびは1996年創業の飲食店情報サービス。かつては無料のWeb APIを提供し個人開発者にも人気だったが、2021年6月に無料プランを終了。現在は法人向け有料サービス（月額10万円〜）として提供。"
+      }
+    },
+    {
+      "id": "hotpepper-gourmet-api",
+      "name": "Hot Pepper Gourmet API",
+      "nameJa": "ホットペッパーグルメAPI",
+      "description": "リクルートが運営する飲食店検索サービス「ホットペッパーグルメ」のAPI。グルメサーチAPI（条件検索）・店名サーチAPI・大エリアマスタAPI・ジャンルマスタAPIなどを無料で提供。店名・住所・営業時間・予算・クーポン情報などを取得でき、個人開発者にも広く利用されている",
+      "url": "https://webservice.recruit.co.jp/",
+      "docsUrl": "https://webservice.recruit.co.jp/doc/hotpepper/reference.html",
+      "category": "food",
+      "tags": [
+        "飲食店",
+        "レストラン",
+        "グルメ",
+        "日本",
+        "無料"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。リクルートIDの取得とAPIキーの申請が必要",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "非公開（常識的な利用範囲内で制限なし）",
+      "sdks": [],
+      "useCases": [
+        "飲食店検索アプリの開発",
+        "エリア別グルメ情報の表示",
+        "ジャンル・予算で絞り込むグルメサービス",
+        "プログラミング学習の題材"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "個人開発者・学習者を中心に多数",
+        "marketPosition": "日本の無料飲食店検索APIとして最も利用されている",
+        "reason": "無料かつ登録が簡単で、日本の飲食店データを取得できるAPIとして個人開発者・プログラミング学習者に非常に人気。Qiita等での解説記事も多数",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "個人開発者",
+          "プログラミングスクール",
+          "ハッカソン参加者"
+        ],
+        "sources": [
+          {
+            "label": "リクルートWEBサービス",
+            "url": "https://webservice.recruit.co.jp/"
+          },
+          {
+            "label": "ホットペッパーグルメAPIリファレンス",
+            "url": "https://webservice.recruit.co.jp/doc/hotpepper/reference.html"
+          }
+        ],
+        "detail": "ホットペッパーグルメAPIはリクルートが無料で提供する飲食店検索API。日本国内の飲食店情報を簡単に取得でき、個人開発者やプログラミング学習者に最も利用されている飲食店APIの一つ。"
+      }
+    },
+    {
+      "id": "tabelog-api",
+      "name": "Tabelog API",
+      "nameJa": "食べログAPI",
+      "description": "カカクコムが運営する日本最大級のグルメ口コミサイト「食べログ」のAPI。公式のパブリックAPIは現在提供されていないが、ChatGPTプラグインとして食べログ検索機能を提供。予約システムのREST API/GraphQL連携は法人パートナー向けに限定公開",
+      "url": "https://tabelog.com/",
+      "docsUrl": "https://tech-blog.tabelog.com/",
+      "category": "food",
+      "tags": [
+        "飲食店",
+        "口コミ",
+        "レビュー",
+        "日本",
+        "グルメ"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "公式パブリックAPIは非公開。法人パートナー向けのみ提供。ChatGPTプラグインは無料利用可能",
+      "auth": "oauth2",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "パートナー契約に依存（非公開）",
+      "sdks": [],
+      "useCases": [
+        "ChatGPTを通じたレストラン検索",
+        "予約システムとの連携（法人向け）",
+        "飲食店データ分析（パートナー限定）"
+      ],
+      "popularity": {
+        "score": 70,
+        "users": "月間約9,000万ユーザー（食べログ全体）",
+        "marketPosition": "日本最大のグルメ口コミサイト",
+        "reason": "食べログは日本最大のグルメ口コミサイトとして圧倒的な知名度と信頼性を持つ。ただしAPIは一般公開されていないため開発者向け利用は限定的",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "カカクコムグループ",
+          "ChatGPT",
+          "法人パートナー"
+        ],
+        "sources": [
+          {
+            "label": "食べログ公式",
+            "url": "https://tabelog.com/"
+          },
+          {
+            "label": "Tabelog Tech Blog",
+            "url": "https://tech-blog.tabelog.com/"
+          }
+        ],
+        "detail": "食べログは日本最大のグルメ口コミサイト（月間約9,000万人利用）。かつてWeb APIを提供していたが現在は終了。2023年にChatGPTプラグインとして食べログ検索機能を日本初で提供開始。法人パートナー向けにはREST API/GraphQLの予約連携APIを提供。"
+      }
+    },
+    {
+      "id": "uber-eats-api",
+      "name": "Uber Eats Marketplace API",
+      "nameJa": "Uber Eats API",
+      "description": "世界最大級のフードデリバリープラットフォーム「Uber Eats」のAPI。店舗管理API・メニュー管理API・注文管理APIを提供し、POSシステムとの連携やメニューのリアルタイム同期が可能。Uber Directでは自社デリバリーのAPI連携も提供。パートナー向けのみ利用可能",
+      "url": "https://developer.uber.com/docs/eats/introduction",
+      "docsUrl": "https://developer.uber.com/docs/eats/introduction",
+      "category": "food",
+      "tags": [
+        "フードデリバリー",
+        "レストラン",
+        "注文管理",
+        "POS連携"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "パートナーシップ契約が必要。API利用料はカスタム契約による。Uber Directは配送距離に応じた従量課金",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "パートナー契約に依存（非公開）",
+      "sdks": [
+        "Python",
+        "Java"
+      ],
+      "useCases": [
+        "POSシステムとの注文連携",
+        "メニュー情報のリアルタイム同期",
+        "店舗運営ダッシュボードの構築",
+        "自社デリバリーサービスの構築（Uber Direct）"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "数十万の加盟レストラン",
+        "marketPosition": "世界のフードデリバリー市場でDoorDashと1-2位を争う",
+        "reason": "世界6,000以上の都市で展開するフードデリバリーの最大手の一つ。POS連携やメニュー管理のAPI需要が高い",
+        "monthlyApiCalls": "数十億リクエスト/月（プラットフォーム全体）",
+        "githubStars": "該当なし（プロプライエタリ）",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "主要POSベンダー",
+          "大手レストランチェーン",
+          "Olo",
+          "Square"
+        ],
+        "sources": [
+          {
+            "label": "Uber Eats APIドキュメント",
+            "url": "https://developer.uber.com/docs/eats/introduction"
+          },
+          {
+            "label": "Uber Developer Portal",
+            "url": "https://developer.uber.com/docs"
+          }
+        ],
+        "detail": "Uber Eatsは世界6,000以上の都市で展開するフードデリバリープラットフォーム。APIはPOS統合が最も一般的な利用形態で、注文の自動受付・メニュー同期・店舗管理を実現。一般開発者向けの公開APIはなく、パートナー契約が必要。"
+      }
+    },
+    {
+      "id": "spoonacular-api",
+      "name": "Spoonacular API",
+      "nameJa": "Spoonacular API",
+      "description": "包括的な食品・レシピ・栄養情報APIプラットフォーム。36万以上のレシピ、8万以上の食品のデータを提供。レシピ検索・栄養分析・食材認識・ミールプランニング・ワインペアリングなど多彩なエンドポイントを持つ。ポイント制の従量課金で無料枠あり",
+      "url": "https://spoonacular.com/food-api",
+      "docsUrl": "https://spoonacular.com/food-api/docs",
+      "category": "food",
+      "tags": [
+        "レシピ",
+        "栄養",
+        "食品",
+        "ミールプラン",
+        "食材"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Free: 1日150ポイント（リクエスト種別によりポイントコストが異なる）。有料プラン: $29/月〜$149/月でポイント増加。RapidAPI経由でも利用可能",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "ポイント制（Free: 150ポイント/日、各リクエストのポイントコストはエンドポイントにより1〜10ポイント）",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Java"
+      ],
+      "useCases": [
+        "レシピ検索・推薦アプリの構築",
+        "栄養計算・カロリー追跡機能",
+        "AIミールプランニングサービス",
+        "食材ベースのレシピ提案"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "数万の開発者",
+        "marketPosition": "レシピ・栄養API市場で最も包括的なサービスの一つ",
+        "reason": "36万以上のレシピと8万以上の食品データを持ち、レシピAPI市場で非常に高い人気。無料枠がありホビー開発にも適している",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "100+ stars（spoonacular-api-clients）",
+        "npmDownloads": "週間約1,500DL（spoonacular-api-client）",
+        "adopters": [
+          "フードテックスタートアップ",
+          "ヘルスケアアプリ",
+          "個人開発者"
+        ],
+        "sources": [
+          {
+            "label": "Spoonacular公式",
+            "url": "https://spoonacular.com/food-api"
+          },
+          {
+            "label": "Spoonacular APIドキュメント",
+            "url": "https://spoonacular.com/food-api/docs"
+          }
+        ],
+        "detail": "Spoonacularは食品・レシピ・栄養データの包括的なAPIプラットフォーム。36万以上のレシピ、8万以上の食品データを提供し、ポイント制の課金システムで柔軟に利用可能。レシピアプリ・ヘルスケアアプリの開発で広く採用されている。"
+      }
+    },
+    {
+      "id": "edamam-api",
+      "name": "Edamam API",
+      "nameJa": "Edamam API",
+      "description": "食品・栄養データに特化したAPIスイート。Nutrition Analysis API（栄養分析）、Food Database API（食品データベース）、Recipe Search API（レシピ検索）の3つを提供。自然言語処理によるレシピテキストからの栄養データ自動抽出が特徴。28種類のマクロ・微量栄養素と90以上の食事制限ラベルに対応",
+      "url": "https://www.edamam.com/",
+      "docsUrl": "https://developer.edamam.com/",
+      "category": "food",
+      "tags": [
+        "栄養",
+        "食品データ",
+        "レシピ",
+        "NLP",
+        "ヘルスケア"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Developer（無料）: 制限付き利用。Nutrition API: $19/月〜。Food Database API: 無料〜$799/月。Recipe Search API: 無料〜$999/月。エンタープライズ向けカスタム料金あり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "プランに依存。有料プラン: 200リクエスト/分。無料プラン: 制限付き",
+      "sdks": [
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "レシピの栄養成分自動計算",
+        "食事管理・ダイエットアプリ",
+        "食品データベースの検索・活用",
+        "アレルギー・食事制限のフィルタリング"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "数万の開発者・企業",
+        "marketPosition": "栄養分析API市場でリーダー的存在",
+        "reason": "NLPベースの栄養分析はユニークな機能。28種の栄養素と90以上の食事制限ラベルの自動判定が他社にない強み",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし",
+        "npmDownloads": "週間約500DL（edamam-api）",
+        "adopters": [
+          "ヘルスケアスタートアップ",
+          "食品メーカー",
+          "フィットネスアプリ"
+        ],
+        "sources": [
+          {
+            "label": "Edamam公式",
+            "url": "https://www.edamam.com/"
+          },
+          {
+            "label": "Edamam開発者ポータル",
+            "url": "https://developer.edamam.com/"
+          }
+        ],
+        "detail": "Edamamは食品・栄養データに特化したAPIプロバイダー。NLP技術によるレシピテキストからの栄養データ自動抽出が最大の特徴。ヘルスケア・フィットネス・食品業界で幅広く利用されている。"
+      }
+    },
+    {
+      "id": "themealdb-api",
+      "name": "TheMealDB API",
+      "nameJa": "TheMealDB API",
+      "description": "オープンソースのレシピデータベースAPI。世界各国の料理レシピをJSON形式で無料提供。レシピ名検索・カテゴリ別検索・国別検索・ランダムレシピ取得などが可能。商用利用にはPatreonスポンサーシップが必要だが、学習・非商用利用は完全無料で制限なし",
+      "url": "https://www.themealdb.com/",
+      "docsUrl": "https://www.themealdb.com/api.php",
+      "category": "food",
+      "tags": [
+        "レシピ",
+        "食品",
+        "無料",
+        "オープンソース",
+        "料理"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Free: 非商用利用は完全無料・無制限。商用利用: Patreonスポンサー（$2/月〜）で商用APIキー取得",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "制限なし（FAQによると無制限利用可能）",
+      "sdks": [
+        "Dart",
+        "Kotlin"
+      ],
+      "useCases": [
+        "レシピ検索アプリの構築",
+        "プログラミング学習の教材",
+        "料理カテゴリブラウザの開発",
+        "ランダムレシピ提案機能"
+      ],
+      "popularity": {
+        "score": 58,
+        "users": "数万の開発者・学習者",
+        "marketPosition": "無料レシピAPIとして最も有名なサービスの一つ",
+        "reason": "完全無料・無制限で利用可能なレシピAPIとして、プログラミング学習やポートフォリオプロジェクトで非常に人気が高い",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "該当なし（API自体はクローズド、クライアントライブラリは多数）",
+        "npmDownloads": "該当なし",
+        "adopters": [
+          "個人開発者",
+          "プログラミング学習者",
+          "ハッカソン参加者"
+        ],
+        "sources": [
+          {
+            "label": "TheMealDB公式",
+            "url": "https://www.themealdb.com/"
+          },
+          {
+            "label": "TheMealDB APIドキュメント",
+            "url": "https://www.themealdb.com/api.php"
+          }
+        ],
+        "detail": "TheMealDBはTheSportsDB・TheCocktailDBと同じクリエイターによる無料レシピデータベース。シンプルなJSON APIで認証不要（テスト用APIキー'1'で利用可能）。プログラミング入門やフロントエンド学習の教材として世界中で利用されている。"
+      }
+    },
+    {
+      "id": "open-food-facts-api",
+      "name": "Open Food Facts API",
+      "nameJa": "Open Food Facts API",
+      "description": "世界中の食品パッケージ情報をクラウドソーシングで収集するオープンデータプロジェクトのAPI。300万以上の食品のバーコード・栄養成分・原材料・アレルゲン・Nutri-Score・Eco-Scoreなどを提供。食品業界のWikipediaとも呼ばれ、完全無料・オープンデータ",
+      "url": "https://world.openfoodfacts.org/",
+      "docsUrl": "https://openfoodfacts.github.io/openfoodfacts-server/api/",
+      "category": "food",
+      "tags": [
+        "食品",
+        "栄養",
+        "オープンデータ",
+        "バーコード",
+        "Nutri-Score"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料・オープンデータ（Open Database License）。API利用条件として適切なUser-Agentの設定が必要",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "商品検索: 100リクエスト/分。検索クエリ: 10リクエスト/分。ファセットクエリ: 2リクエスト/分。超過時はIPブロックの可能性",
+      "sdks": [
+        "Python",
+        "Dart",
+        "Ruby",
+        "Java",
+        "Kotlin",
+        "Swift",
+        "R"
+      ],
+      "useCases": [
+        "食品バーコードスキャンアプリ",
+        "栄養成分の比較・分析ツール",
+        "Nutri-Score・Eco-Score表示",
+        "食品アレルゲン検索サービス"
+      ],
+      "popularity": {
+        "score": 62,
+        "users": "数百万のユーザー・コントリビューター",
+        "marketPosition": "オープンソース食品データベースで世界最大",
+        "reason": "300万以上の食品データをオープンデータとして提供。食品業界のWikipediaとして知られ、60以上の言語に対応。モバイルアプリは数百万DL",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "700+ stars（openfoodfacts-server）",
+        "npmDownloads": "週間約500DL",
+        "adopters": [
+          "Yuka",
+          "Open Beauty Facts",
+          "食品業界の研究機関"
+        ],
+        "sources": [
+          {
+            "label": "Open Food Facts公式",
+            "url": "https://world.openfoodfacts.org/"
+          },
+          {
+            "label": "Open Food Facts API Documentation",
+            "url": "https://openfoodfacts.github.io/openfoodfacts-server/api/"
+          }
+        ],
+        "detail": "Open Food Factsは2012年にフランスで始まったオープンデータプロジェクト。クラウドソーシングで世界中の食品データを収集し、300万以上の商品情報を無料で提供。Nutri-ScoreやEco-Scoreの算出にも対応している。"
+      }
+    },
+    {
+      "id": "twitch-api",
+      "name": "Twitch API",
+      "nameJa": "Twitch API",
+      "description": "世界最大のライブストリーミングプラットフォーム「Twitch」の公式API。ストリーム情報・ユーザー情報・チャンネル情報・クリップ・チャット・サブスクリプションなどの取得・管理が可能。EventSubによるリアルタイムイベント通知、IRC経由のチャットボット構築にも対応",
+      "url": "https://dev.twitch.tv/",
+      "docsUrl": "https://dev.twitch.tv/docs/api/",
+      "category": "entertainment",
+      "tags": [
+        "ライブ配信",
+        "ゲーム",
+        "チャット",
+        "ストリーミング",
+        "エンタメ"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。Twitchアカウントの開発者登録が必要",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "トークンバケット方式: アプリアクセス800ポイント/分、ユーザーアクセス800ポイント/分（ユーザー別）。Extensions: 30リクエスト/分/視聴者",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "C#",
+        "Java",
+        "Go"
+      ],
+      "useCases": [
+        "ストリーミングダッシュボードの構築",
+        "チャットボットの開発",
+        "配信者統計・分析ツール",
+        "ストリーム情報のウィジェット表示"
+      ],
+      "popularity": {
+        "score": 85,
+        "users": "数百万の開発者・配信者",
+        "marketPosition": "ライブストリーミングプラットフォームで世界No.1",
+        "reason": "月間アクティブユーザー1.4億人以上のTwitchの公式API。ゲーム配信文化の中心として開発者エコシステムが活発",
+        "monthlyApiCalls": "数十億リクエスト/月（プラットフォーム全体）",
+        "githubStars": "3,000+ stars（twitchio Python）",
+        "npmDownloads": "週間約1万DL（twitch-api関連）",
+        "adopters": [
+          "StreamElements",
+          "Streamlabs",
+          "NightBot",
+          "OBS Studio"
+        ],
+        "sources": [
+          {
+            "label": "Twitch Developers公式",
+            "url": "https://dev.twitch.tv/"
+          },
+          {
+            "label": "Twitch API Reference",
+            "url": "https://dev.twitch.tv/docs/api/reference/"
+          }
+        ],
+        "detail": "Twitchは2011年創業、2014年にAmazonが買収したライブストリーミングプラットフォーム。月間1.4億以上のアクティブユーザーを持ち、ゲーム配信で圧倒的なシェア。APIは無料で提供され、チャットボット・配信ツール・分析ダッシュボードの開発が活発。"
+      }
+    },
+    {
+      "id": "igdb-api",
+      "name": "IGDB API",
+      "nameJa": "IGDB API",
+      "description": "Twitch（Amazon）が運営する世界最大のビデオゲームデータベース「IGDB」のAPI。ゲームタイトル・プラットフォーム・ジャンル・発売日・レーティング・スクリーンショット・動画など包括的なゲーム情報を提供。独自のApicalypse クエリ言語で柔軟なデータ取得が可能",
+      "url": "https://www.igdb.com/",
+      "docsUrl": "https://api-docs.igdb.com/",
+      "category": "entertainment",
+      "tags": [
+        "ゲーム",
+        "データベース",
+        "レビュー",
+        "Twitch",
+        "メタデータ"
+      ],
+      "pricing": "free",
+      "pricingDetail": "非商用利用は完全無料。商用利用にはIGDBとのパートナーシップ契約が必要（partner@igdb.com）。Twitchアカウントが必要",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "4リクエスト/秒、最大8同時リクエスト。超過時はHTTP 429エラー",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Java",
+        "Kotlin",
+        "C#",
+        "Ruby",
+        "Go",
+        "R"
+      ],
+      "useCases": [
+        "ゲームカタログ・レビューサイトの構築",
+        "ゲームコレクション管理アプリ",
+        "ゲーム情報のメタデータ取得",
+        "ゲーム推薦エンジンの開発"
+      ],
+      "popularity": {
+        "score": 68,
+        "users": "数万の開発者",
+        "marketPosition": "ゲームデータベースAPIでRAWG APIと並ぶ代表格",
+        "reason": "Twitch傘下の世界最大級のゲームデータベース。非商用利用が無料で、ゲーム関連アプリ開発で広く利用される",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "100+ stars（igdb-api-node）",
+        "npmDownloads": "週間約2,000DL（igdb-api-node）",
+        "adopters": [
+          "Lutris",
+          "GameTrack",
+          "ゲームレビューサイト"
+        ],
+        "sources": [
+          {
+            "label": "IGDB公式",
+            "url": "https://www.igdb.com/"
+          },
+          {
+            "label": "IGDB APIドキュメント",
+            "url": "https://api-docs.igdb.com/"
+          }
+        ],
+        "detail": "IGDBは2015年設立のゲームデータベースで、2019年にTwitch（Amazon）が買収。独自のApicalypseクエリ言語により、SQLライクな柔軟なデータ取得が可能。ゲーム関連アプリ・サイトの開発で標準的なデータソースとして利用されている。"
+      }
+    },
+    {
+      "id": "giphy-api",
+      "name": "GIPHY API",
+      "nameJa": "GIPHY API",
+      "description": "世界最大のGIF・ステッカープラットフォーム「GIPHY」のAPI。GIF検索・トレンドGIF取得・ランダムGIF・GIFアップロード・ステッカー検索などを提供。SDKを使用するとClips・Emoji・Textなどの限定コンテンツタイプにもアクセス可能。Metaグループ傘下",
+      "url": "https://developers.giphy.com/",
+      "docsUrl": "https://developers.giphy.com/docs/api/",
+      "category": "media",
+      "tags": [
+        "GIF",
+        "アニメーション",
+        "メディア",
+        "ステッカー",
+        "検索"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API・SDKともに無料。ベータキー: 100リクエスト/時間。プロダクションキー: ダッシュボードから申請で制限緩和（審査あり）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "ベータキー: 100リクエスト/時間。プロダクションキー: 大幅に緩和（具体的な上限は非公開）",
+      "sdks": [
+        "JavaScript",
+        "Android",
+        "iOS",
+        "React Native",
+        "Flutter"
+      ],
+      "useCases": [
+        "チャットアプリへのGIF検索機能追加",
+        "SNS投稿用GIFピッカーの実装",
+        "リアクションGIFの自動提案",
+        "マーケティングコンテンツのGIF活用"
+      ],
+      "popularity": {
+        "score": 78,
+        "users": "月間7億ユーザー以上（GIPHY全体）",
+        "marketPosition": "GIF検索・配信プラットフォームで圧倒的No.1",
+        "reason": "月間7億以上のユーザーを持つ世界最大のGIFプラットフォーム。Slack・Discord・Facebook Messengerなど主要チャットアプリに統合されている",
+        "monthlyApiCalls": "100億+/日（プラットフォーム全体）",
+        "githubStars": "400+ stars（giphy-js）",
+        "npmDownloads": "週間約3万DL（@giphy/js-fetch-api）",
+        "adopters": [
+          "Slack",
+          "Discord",
+          "Facebook Messenger",
+          "Twitter"
+        ],
+        "sources": [
+          {
+            "label": "GIPHY Developers",
+            "url": "https://developers.giphy.com/"
+          },
+          {
+            "label": "GIPHY API Documentation",
+            "url": "https://developers.giphy.com/docs/api/"
+          }
+        ],
+        "detail": "GIPHYは2013年創業のGIFプラットフォームで、2020年にMeta（Facebook）が買収（その後CMAの命令により2024年に売却）。月間7億以上のユーザーと1日100億以上のコンテンツ配信を処理。APIは無料で提供され、GIF検索のデファクトスタンダード。"
+      }
+    },
+    {
+      "id": "remove-bg-api",
+      "name": "Remove.bg API",
+      "nameJa": "Remove.bg API",
+      "description": "AIを使用した画像の背景自動除去API。1回のAPI呼び出しで写真の背景を高精度に除去・置換できる。人物・商品・動物・車など幅広い被写体に対応。プレビュー画像（低解像度）は無料、高解像度はクレジット消費制。Photoshop・Figmaプラグインも提供",
+      "url": "https://www.remove.bg/",
+      "docsUrl": "https://www.remove.bg/api",
+      "category": "media",
+      "tags": [
+        "画像処理",
+        "AI",
+        "背景除去",
+        "写真編集",
+        "デザイン"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "プレビュー画像（最大0.25メガピクセル）: 無料。高解像度: 1クレジット/枚。サブスクリプション: €9/月〜（40クレジット）。従量課金（Pay-as-you-go）も可能。クレジットの有効期限なし",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "標準レート制限あり（超過時HTTP 429）。高ボリュームプランでレート制限拡大可能",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Ruby",
+        "Go",
+        "PHP",
+        ".NET"
+      ],
+      "useCases": [
+        "ECサイトの商品画像背景除去",
+        "SNSプロフィール写真の加工",
+        "デザインツールへの背景除去機能組み込み",
+        "画像一括処理の自動化"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "数千万の利用者",
+        "marketPosition": "AI背景除去ツール・APIのパイオニア",
+        "reason": "AI背景除去の分野でいち早くAPIを提供し、高精度な処理で業界をリード。Photoshop・Figmaプラグインの存在もエコシステムを拡大",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "600+ stars（removebg Python）",
+        "npmDownloads": "週間約3,000DL（remove.bg）",
+        "adopters": [
+          "Canva",
+          "Adobe（Photoshopプラグイン）",
+          "Figma",
+          "ECサイト運営者"
+        ],
+        "sources": [
+          {
+            "label": "Remove.bg公式",
+            "url": "https://www.remove.bg/"
+          },
+          {
+            "label": "Remove.bg API Documentation",
+            "url": "https://www.remove.bg/api"
+          }
+        ],
+        "detail": "Remove.bgはKaleido AI（後にCanvaが買収）が2018年にリリースしたAI背景除去サービス。APIを通じて1回の呼び出しで画像背景を自動除去でき、EC・デザイン・マーケティング分野で広く利用されている。"
+      }
+    },
+    {
+      "id": "vonage-api",
+      "name": "Vonage Communications API",
+      "nameJa": "Vonage API",
+      "description": "旧Nexmo（2016年にVonageが買収、2022年にEricssonが買収）が提供するコミュニケーションAPIプラットフォーム。SMS・音声通話・ビデオ・認証（Verify）・メッセージング（WhatsApp/Facebook Messenger等）などを統合的に提供。2FAのVerify APIは特に広く利用されている",
+      "url": "https://www.vonage.com/communications-apis/",
+      "docsUrl": "https://developer.vonage.com/en/home",
+      "category": "notification",
+      "tags": [
+        "SMS",
+        "音声通話",
+        "2FA",
+        "メッセージング",
+        "通信"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "従量課金制。SMS: 送信先国による（日本向け約$0.07/通）。音声: 秒単位課金（$0.015/分〜）。Verify: $0.053/認証〜。無料クレジット付き開発者アカウントあり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "30リクエスト/秒（デフォルト）。SMS: 2.5百万通/日上限。プランに応じて拡張可能",
+      "sdks": [
+        "Python",
+        "Node.js",
+        "Java",
+        "Ruby",
+        "PHP",
+        ".NET",
+        "Go"
+      ],
+      "useCases": [
+        "SMS認証（2FA）の実装",
+        "顧客へのSMS通知送信",
+        "音声通話のプログラマティック制御",
+        "WhatsApp/Messenger経由のビジネスメッセージング"
+      ],
+      "popularity": {
+        "score": 73,
+        "users": "数十万の開発者・企業",
+        "marketPosition": "CPaaS市場でTwilio・Sinchに次ぐ主要プレイヤー",
+        "reason": "旧NexmoとしてCPaaS市場の先駆者の一つ。Ericssonの通信インフラと統合され、グローバルなSMS・音声APIを提供",
+        "monthlyApiCalls": "数十億メッセージ/月",
+        "githubStars": "400+ stars（vonage-node-sdk）",
+        "npmDownloads": "週間約5,000DL（@vonage/server-sdk）",
+        "adopters": [
+          "Tokopedia",
+          "ASOS",
+          "Glassdoor",
+          "Airbnb"
+        ],
+        "sources": [
+          {
+            "label": "Vonage Communications APIs",
+            "url": "https://www.vonage.com/communications-apis/"
+          },
+          {
+            "label": "Vonage Developer Portal",
+            "url": "https://developer.vonage.com/en/home"
+          }
+        ],
+        "detail": "Vonage（旧Nexmo）は2010年創業のCPaaSプロバイダー。2016年にVonageが買収、2022年にEricssonが買収し、通信インフラ大手のAPI部門に。SMS・音声・ビデオ・認証の統合APIプラットフォームとしてTwilioの主要競合。"
+      }
+    },
+    {
+      "id": "messagebird-api",
+      "name": "Bird API (MessageBird)",
+      "nameJa": "Bird API（旧MessageBird）",
+      "description": "2022年にMessageBirdからBirdにリブランドされたコミュニケーションAPIプラットフォーム。SMS・音声・WhatsApp・Messenger・RCS等のオムニチャネルメッセージングAPI、Conversations API（チャットボット）、Flow Builder（ノーコードフロー構築）を提供。ヨーロッパ発のTwilio代替として注目",
+      "url": "https://bird.com/",
+      "docsUrl": "https://developers.messagebird.com/api",
+      "category": "notification",
+      "tags": [
+        "SMS",
+        "メッセージング",
+        "オムニチャネル",
+        "WhatsApp",
+        "通信"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "従量課金制。SMS: $0.008/通〜（米国向け）。音声: $0.015/分〜。従量課金と月額プランの両方を提供。大量送信の場合は個別見積もり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Reporting API: 5リクエスト/秒、5同時リクエスト/アクセスキー。その他APIはプランに依存",
+      "sdks": [
+        "Python",
+        "PHP",
+        "Java",
+        "Go",
+        "Ruby",
+        "C#"
+      ],
+      "useCases": [
+        "オムニチャネル顧客コミュニケーション",
+        "SMS・WhatsAppマーケティング",
+        "カスタマーサポートチャットボット",
+        "2FA・ワンタイムパスワード送信"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "数万の企業",
+        "marketPosition": "ヨーロッパ発のCPaaSプラットフォームでTwilio・Vonageの代替",
+        "reason": "オランダ発のCPaaSで、ヨーロッパを中心にグローバル展開。2022年にBirdにリブランドし、メッセージング・メール・CRMを統合したプラットフォームに進化",
+        "monthlyApiCalls": "数十億メッセージ/月（プラットフォーム全体）",
+        "githubStars": "200+ stars（messagebird-python）",
+        "npmDownloads": "週間約2,000DL（messagebird）",
+        "adopters": [
+          "Uber",
+          "Deliveroo",
+          "HelloFresh",
+          "Booking.com"
+        ],
+        "sources": [
+          {
+            "label": "Bird公式（旧MessageBird）",
+            "url": "https://bird.com/"
+          },
+          {
+            "label": "MessageBird開発者ポータル",
+            "url": "https://developers.messagebird.com/"
+          }
+        ],
+        "detail": "MessageBirdは2011年にオランダで創業。2022年にBirdにリブランドし、メッセージング・メール・CRMを統合するプラットフォームへ進化。ヨーロッパを拠点にグローバル展開し、Twilio・Vonageの代替として注目される。"
+      }
+    },
+    {
+      "id": "amplitude-api",
+      "name": "Amplitude API",
+      "nameJa": "Amplitude API",
+      "description": "プロダクトアナリティクスのリーディングプラットフォーム「Amplitude」のAPI。イベントトラッキング、ユーザー行動分析、ファネル分析、リテンション分析、コホート分析などの機能をAPI・SDKで提供。HTTP API（イベント送信）、Dashboard REST API（データ取得）、Cohort API等を提供",
+      "url": "https://amplitude.com/",
+      "docsUrl": "https://amplitude.com/docs/apis",
+      "category": "analytics",
+      "tags": [
+        "アナリティクス",
+        "ユーザー行動",
+        "プロダクト分析",
+        "イベントトラッキング"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Starter: 無料（基本機能）。Plus: $61/月。Growth: カスタム料金。Enterprise: カスタム料金。無料枠でも主要機能にアクセス可能",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "HTTP API: バッチアップロード制限あり。Dashboard API: プランに依存。詳細はドキュメント参照",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "Go",
+        "Android",
+        "iOS",
+        "React Native",
+        "Flutter",
+        "Unity",
+        "Unreal"
+      ],
+      "useCases": [
+        "プロダクトのユーザー行動分析",
+        "ファネル分析によるCVR改善",
+        "リテンション分析とチャーン予測",
+        "A/Bテスト結果の分析"
+      ],
+      "popularity": {
+        "score": 80,
+        "users": "数万の企業",
+        "marketPosition": "プロダクトアナリティクス市場でMixpanelと並ぶリーダー",
+        "reason": "プロダクトアナリティクス市場で時価総額約30億ドルの上場企業。セルフサーブ型の分析ツールとしてSaaS企業・モバイルアプリ企業で広く採用",
+        "monthlyApiCalls": "数兆イベント/月（プラットフォーム全体）",
+        "githubStars": "500+ stars（Amplitude-JavaScript）",
+        "npmDownloads": "週間約20万DL（@amplitude/analytics-browser）",
+        "adopters": [
+          "Atlassian",
+          "Walmart",
+          "NBC Universal",
+          "Burger King",
+          "Doordash"
+        ],
+        "sources": [
+          {
+            "label": "Amplitude公式",
+            "url": "https://amplitude.com/"
+          },
+          {
+            "label": "Amplitude APIドキュメント",
+            "url": "https://amplitude.com/docs/apis"
+          }
+        ],
+        "detail": "Amplitudeは2012年創業のプロダクトアナリティクス企業で2021年にNASDAQ上場。イベントベースのユーザー行動分析に特化し、ファネル・リテンション・コホート分析でMixpanelと競合。セルフサーブ型で無料枠も充実。"
+      }
+    },
+    {
+      "id": "segment-api",
+      "name": "Segment API",
+      "nameJa": "Segment API（Twilio Segment）",
+      "description": "Twilio傘下の顧客データプラットフォーム（CDP）「Segment」のAPI。あらゆるデータソースからユーザーイベントを収集し、450以上のインテグレーション先にリアルタイムで配信。Connections API（データ収集・配信）、Profiles API（ユーザープロファイル統合）、Public API（ワークスペース管理）を提供",
+      "url": "https://segment.com/",
+      "docsUrl": "https://docs.segmentapis.com/",
+      "category": "analytics",
+      "tags": [
+        "CDP",
+        "データ統合",
+        "アナリティクス",
+        "顧客データ",
+        "ETL"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Free: 月間1,000ビジター、2ソース、500,000 Reverse ETLレコード。Team: $120/月（10,000ビジター、無制限ソース）。Business: カスタム料金。スタートアップ向け$50,000クレジットプログラムあり",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Tracking API: 制限なし（事実上）。Public API: レート制限あり（詳細はドキュメント参照）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "Go",
+        "Ruby",
+        "PHP",
+        "iOS",
+        "Android",
+        "React Native",
+        "Flutter"
+      ],
+      "useCases": [
+        "顧客データの統合・一元管理",
+        "マーケティングツールへのリアルタイムデータ配信",
+        "ユーザープロファイルの構築",
+        "分析基盤へのデータパイプライン構築"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "25,000以上の企業",
+        "marketPosition": "CDP（顧客データプラットフォーム）市場のリーダー",
+        "reason": "CDP市場のパイオニアとして25,000以上の企業が利用。450以上のインテグレーション先を持ち、データ収集・配信のハブとして機能",
+        "monthlyApiCalls": "1兆イベント/月以上（プラットフォーム全体）",
+        "githubStars": "4,000+ stars（analytics-next）",
+        "npmDownloads": "週間約25万DL（@segment/analytics-next）",
+        "adopters": [
+          "IBM",
+          "Levi's",
+          "Instacart",
+          "Bonobos",
+          "DigitalOcean"
+        ],
+        "sources": [
+          {
+            "label": "Twilio Segment公式",
+            "url": "https://segment.com/"
+          },
+          {
+            "label": "Segment Public API",
+            "url": "https://docs.segmentapis.com/"
+          }
+        ],
+        "detail": "Segmentは2012年創業のCDPで、2020年にTwilioが約32億ドルで買収。あらゆるデータソースからイベントを収集し、450以上のツール・データウェアハウスに配信するハブとして機能。CDP市場を定義したパイオニアとして圧倒的な知名度。"
+      }
+    },
+    {
+      "id": "yamato-b2cloud-api",
+      "name": "Yamato B2 Cloud API",
+      "nameJa": "ヤマト運輸 B2クラウドAPI",
+      "description": "ヤマト運輸が提供する送り状発行システム「B2クラウド」のWeb APIサービス。EC事業者やシステム開発者向けに、送り状番号の採番・発行、出荷データ連携、配送ステータス取得などの機能をAPI経由で利用可能。受注管理システムや倉庫管理システムとの自動連携により、出荷業務の効率化を実現する。利用には法人契約（ヤマトビジネスメンバーズ）が必要で、開発者向けポータル「YBM For Developers」から仕様書を入手できる。",
+      "url": "https://business.kuronekoyamato.co.jp/service/lineup/b2api/index.html",
+      "docsUrl": "https://b-faq.kuronekoyamato.co.jp/app/answers/list/p/960",
+      "category": "logistics",
+      "tags": [
+        "配送",
+        "送り状",
+        "ヤマト運輸",
+        "EC",
+        "物流"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "1採番あたりの従量課金制。条件により月額固定費が発生する場合あり。料金は商談時に提示",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "法人契約ごとに設定（商談時に決定）",
+      "sdks": [],
+      "useCases": [
+        "EC出荷自動化",
+        "送り状番号採番",
+        "配送ステータス連携",
+        "受注管理システム連携"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "法人EC事業者中心に数万社",
+        "marketPosition": "日本国内宅配便シェアNo.1のヤマト運輸公式API",
+        "reason": "国内最大手の宅配便サービスのAPI。EC事業者での利用が多いが、法人限定かつ導入ハードルが高いため一般開発者の利用は限定的",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "楽天市場出店者",
+          "Yahoo!ショッピング出店者",
+          "ネクストエンジン",
+          "GoQSystem"
+        ],
+        "sources": [
+          {
+            "label": "ヤマト運輸 B2クラウドAPI",
+            "url": "https://business.kuronekoyamato.co.jp/service/lineup/b2api/index.html"
+          },
+          {
+            "label": "YBM For Developers 開設ニュース",
+            "url": "https://www.yamato-hd.co.jp/news/h29/h29_96_01news.html"
+          }
+        ],
+        "detail": "ヤマト運輸は国内宅配便シェア約46%を占める最大手。B2クラウドAPIは主にEC事業者の出荷自動化に利用されている。開発環境から本番環境の提供まで約3ヶ月の期間が必要。"
+      }
+    },
+    {
+      "id": "sagawa-smart-api",
+      "name": "Sagawa Smart API",
+      "nameJa": "佐川急便 スマートAPI",
+      "description": "佐川急便が提供するEC事業者向けAPIプラットフォーム。送り状発行、配送状況確認、配達日時変更、届け先変更などの機能をAPI経由で利用可能。ECサイト上で購入者が直接配達日時を変更できる仕組みを提供し、再配達削減と顧客体験の向上を実現する。スマートクラブ（佐川急便の法人向けWebサービス）のアカウントが必要で、専用の問い合わせフォームから申し込みを行う。",
+      "url": "https://www.sagawa-exp.co.jp/service/smart-api/",
+      "docsUrl": "https://www.sagawa-exp.co.jp/smart-api/",
+      "category": "logistics",
+      "tags": [
+        "配送",
+        "送り状",
+        "佐川急便",
+        "EC",
+        "再配達削減"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "法人契約ベース。料金は商談時に提示（スマートクラブ会員向け）",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "法人契約ごとに設定",
+      "sdks": [],
+      "useCases": [
+        "EC出荷自動化",
+        "配達日時変更",
+        "再配達削減",
+        "配送状況トラッキング"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "法人EC事業者",
+        "marketPosition": "国内宅配便シェア第2位の佐川急便公式API",
+        "reason": "国内第2位の宅配便サービスのAPI。2021年から提供開始の比較的新しいサービスで、ヤマトB2クラウドAPIと比較すると知名度はやや低い",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "GoQSystem",
+          "Ship&co",
+          "ネクストエンジン"
+        ],
+        "sources": [
+          {
+            "label": "佐川急便 スマートAPI",
+            "url": "https://www.sagawa-exp.co.jp/service/smart-api/"
+          },
+          {
+            "label": "EC事業者向けAPI提供ニュース",
+            "url": "https://ecnomikata.com/ecnews/29545/"
+          }
+        ],
+        "detail": "佐川急便は国内宅配便シェア約28%を占める第2位。2021年1月にスマートAPI提供を開始し、再配達削減を後押しする目的でEC事業者向けに展開。"
+      }
+    },
+    {
+      "id": "ship24-api",
+      "name": "Ship24 API",
+      "nameJa": "Ship24 追跡API",
+      "description": "1,500以上の配送業者に対応したグローバル荷物追跡APIサービス。単一のAPIエンドポイントから世界中の配送業者の追跡情報を取得でき、リアルタイムのWebhook通知にも対応。追跡番号を登録するだけで自動的に配送業者を検出し、配送ステータスの更新を継続的に監視する。REST API設計でJSON形式のレスポンスを返し、OpenAPI 3.1仕様のドキュメントが提供されている。",
+      "url": "https://www.ship24.com/tracking-api",
+      "docsUrl": "https://docs.ship24.com/",
+      "category": "logistics",
+      "tags": [
+        "荷物追跡",
+        "グローバル",
+        "配送",
+        "Webhook",
+        "マルチキャリア"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Per-callプラン: 無料100コール/月。Per-shipmentプラン: 無料10件/月。有料プランはEssential/Proあり、超過分は従量課金",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "全エンドポイント共通: 10リクエスト/秒",
+      "sdks": [
+        "JavaScript",
+        "Python"
+      ],
+      "useCases": [
+        "荷物追跡アプリ",
+        "ECサイト配送状況表示",
+        "配送通知自動化",
+        "物流ダッシュボード"
+      ],
+      "popularity": {
+        "score": 58,
+        "users": "中小EC事業者・物流スタートアップ",
+        "marketPosition": "グローバル追跡API市場の中堅プレイヤー",
+        "reason": "1,500以上のキャリア対応でカバレッジは広いが、AfterShipやTrack17といった競合と比較するとシェアは限定的",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "中小EC事業者",
+          "物流スタートアップ"
+        ],
+        "sources": [
+          {
+            "label": "Ship24 公式サイト",
+            "url": "https://www.ship24.com/tracking-api"
+          },
+          {
+            "label": "Ship24 APIドキュメント",
+            "url": "https://docs.ship24.com/"
+          }
+        ],
+        "detail": "Ship24はグローバルな荷物追跡に特化したサービスで、1,500以上の配送業者をサポート。無料枠がありスタートアップに適しているが、大規模利用ではAfterShipが主流。"
+      }
+    },
+    {
+      "id": "easypost-api",
+      "name": "EasyPost API",
+      "nameJa": "EasyPost 配送API",
+      "description": "UPS、USPS、FedEx、DHLなど主要キャリアの配送機能を統一インターフェースで提供するRESTful API。料金比較、ラベル生成、荷物追跡、住所検証、保険、通関書類作成など配送に必要な全機能を網羅。SmartRate機能により過去の配送データに基づいた最適な配送オプションの提案も可能。7以上のプログラミング言語向けの公式SDKと5,000以上のコードサンプルを提供している。",
+      "url": "https://www.easypost.com/",
+      "docsUrl": "https://docs.easypost.com/",
+      "category": "logistics",
+      "tags": [
+        "配送",
+        "ラベル生成",
+        "料金比較",
+        "マルチキャリア",
+        "住所検証"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "SmartRate: 無料500コール/月、超過$0.03/コール。Growthプラン$200/月で3,000コール含む。配送ラベルは従量課金",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Indexエンドポイント: 5リクエスト/秒。超過時429エラー",
+      "sdks": [
+        "Python",
+        "Ruby",
+        "Node.js",
+        "PHP",
+        "Java",
+        "C#",
+        "Go"
+      ],
+      "useCases": [
+        "配送料金比較",
+        "配送ラベル自動生成",
+        "荷物追跡統合",
+        "住所検証",
+        "EC配送最適化"
+      ],
+      "popularity": {
+        "score": 75,
+        "users": "100,000以上のEC事業者",
+        "marketPosition": "北米市場で主要な配送API統合プラットフォーム",
+        "reason": "Shippo・ShipStationと並ぶ北米配送API市場の主要プレイヤー。7言語以上のSDK提供と充実したドキュメントが強み",
+        "monthlyApiCalls": "数億リクエスト/月（推定）",
+        "githubStars": "139（Node.js SDK）",
+        "npmDownloads": "約14,000/週",
+        "adopters": [
+          "Shopify連携事業者",
+          "BigCommerce連携事業者",
+          "中〜大規模EC"
+        ],
+        "sources": [
+          {
+            "label": "EasyPost 公式サイト",
+            "url": "https://www.easypost.com/"
+          },
+          {
+            "label": "EasyPost APIドキュメント",
+            "url": "https://docs.easypost.com/"
+          }
+        ],
+        "detail": "EasyPostは2012年設立の配送API企業。80%以上のリクエストが公式クライアントライブラリ経由で行われており、開発者エコシステムが充実している。"
+      }
+    },
+    {
+      "id": "shippo-api",
+      "name": "Shippo API",
+      "nameJa": "Shippo 配送API",
+      "description": "40以上のキャリアに対応したマルチキャリア配送APIプラットフォーム。料金比較、ラベル生成、荷物追跡、ピックアップスケジュール、返品管理などの包括的な配送機能を提供。全プラン（無料含む）でAPIアクセスが可能で、テスト環境も完備。Webhookによるリアルタイム通知、Postmanコレクション、複数言語のSDKを提供し、開発者フレンドリーな設計が特徴。",
+      "url": "https://goshippo.com/",
+      "docsUrl": "https://docs.goshippo.com/",
+      "category": "logistics",
+      "tags": [
+        "配送",
+        "ラベル生成",
+        "料金比較",
+        "マルチキャリア",
+        "返品管理"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Starterプラン: 無料（月30ラベルまで）。Professionalプラン: $19/月（月10,000ラベルまで）。ラベル生成は5¢/枚の手数料",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "POST/PUT: 500リクエスト/分（本番）、50リクエスト/分（テスト）。GET: 4,000リクエスト/分（本番）",
+      "sdks": [
+        "Python",
+        "Ruby",
+        "Node.js",
+        "PHP",
+        "Java",
+        "Go"
+      ],
+      "useCases": [
+        "EC配送自動化",
+        "配送料金比較",
+        "配送ラベル生成",
+        "返品処理",
+        "ピックアップ手配"
+      ],
+      "popularity": {
+        "score": 73,
+        "users": "100,000以上のEC事業者",
+        "marketPosition": "北米市場で主要な配送API統合プラットフォーム",
+        "reason": "EasyPostと並ぶ北米配送API市場の主要プレイヤー。無料プランからフルAPIアクセスが可能な点が差別化要因",
+        "monthlyApiCalls": "数億リクエスト/月（推定）",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "Shopify",
+          "WooCommerce",
+          "Magento連携事業者"
+        ],
+        "sources": [
+          {
+            "label": "Shippo 公式サイト",
+            "url": "https://goshippo.com/"
+          },
+          {
+            "label": "Shippo APIドキュメント",
+            "url": "https://docs.goshippo.com/"
+          }
+        ],
+        "detail": "Shippoは2013年設立のサンフランシスコ拠点の配送テックスタートアップ。40以上のキャリア対応で、全プランでAPI利用可能な点が最大の特徴。"
+      }
+    },
+    {
+      "id": "japan-post-api",
+      "name": "Japan Post WMS Web API",
+      "nameJa": "日本郵便 WMS Web API",
+      "description": "日本郵便が提供するクラウド型倉庫管理システム（WMS）のWeb APIサービス。出荷指示データの連携、入荷予定データの受け渡し、出荷実績データの取得、追跡情報の確認などをAPI経由で自動化できる。セッションベースの認証処理とマルチパートファイルアップロードに対応。EC事業者の倉庫管理システムや受注管理システムとの連携に活用される。公式の追跡APIは直接公開されておらず、WMS経由での利用となる。",
+      "url": "https://www.post.japanpost.jp/service/jpwms/web-api.html",
+      "docsUrl": "https://www.post.japanpost.jp/service/jpwms/details/interface_webapi.html",
+      "category": "logistics",
+      "tags": [
+        "日本郵便",
+        "倉庫管理",
+        "追跡",
+        "EC",
+        "WMS"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "WMSサービス契約が必要。料金は利用規模・内容に応じて個別見積り",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "CSV"
+      ],
+      "rateLimit": "契約内容により個別設定",
+      "sdks": [],
+      "useCases": [
+        "倉庫管理自動化",
+        "出荷指示連携",
+        "追跡情報取得",
+        "在庫管理",
+        "EC出荷業務効率化"
+      ],
+      "popularity": {
+        "score": 55,
+        "users": "日本郵便WMS契約法人",
+        "marketPosition": "日本郵便の法人向け倉庫管理APIサービス",
+        "reason": "日本郵便は国内第3位の配送サービスだが、公式APIは直接公開されておらずWMS契約が前提。開発者コミュニティでの認知度は低い",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "日本郵便WMS利用法人",
+          "EC物流事業者"
+        ],
+        "sources": [
+          {
+            "label": "日本郵便 WMS Web API",
+            "url": "https://www.post.japanpost.jp/service/jpwms/web-api.html"
+          },
+          {
+            "label": "日本郵便 WMS インターフェース仕様",
+            "url": "https://www.post.japanpost.jp/service/jpwms/details/interface_webapi.html"
+          }
+        ],
+        "detail": "日本郵便のWMS Web APIはクラウド型倉庫管理システムの一部として提供。一般的な追跡APIとしての公開はされておらず、サードパーティ（TrackingMoreなど）を通じた利用が一般的。"
+      }
+    },
+    {
+      "id": "google-classroom-api",
+      "name": "Google Classroom API",
+      "nameJa": "Google Classroom API",
+      "description": "Google Workspaceの教育向けプラットフォーム「Google Classroom」のREST API。コース管理、課題の作成・提出・採点、生徒名簿管理、お知らせ配信、招待管理などの機能をプログラマティックに操作可能。Google for Educationアカウントとの統合により、学校や教育機関のワークフロー自動化に最適。OAuth 2.0認証を使用し、教師・生徒・管理者それぞれのスコープに対応している。",
+      "url": "https://developers.google.com/classroom",
+      "docsUrl": "https://developers.google.com/workspace/classroom/reference/rest",
+      "category": "education",
+      "tags": [
+        "教育",
+        "LMS",
+        "Google",
+        "課題管理",
+        "OAuth2"
+      ],
+      "pricing": "free",
+      "pricingDetail": "Google for Education利用者は無料。API呼び出し自体に追加料金なし",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "1,200クエリ/分/ユーザー（20QPS）。3,000クエリ/分/クライアント（50QPS）。4,000,000クエリ/日/クライアント",
+      "sdks": [
+        "Python",
+        "Java",
+        "JavaScript",
+        "PHP",
+        "Ruby",
+        ".NET",
+        "Go"
+      ],
+      "useCases": [
+        "学習管理システム連携",
+        "課題自動採点",
+        "出席管理",
+        "教育データ分析",
+        "校務効率化"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "1.5億人以上のGoogle Classroomユーザー",
+        "marketPosition": "世界最大級の教育プラットフォームAPI",
+        "reason": "Google Classroomは世界中の教育機関で利用されており、APIを通じたサードパーティ連携も活発。無料で高いレートリミットが魅力",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "世界中の教育機関",
+          "EdTechスタートアップ",
+          "Google Workspace for Education利用校"
+        ],
+        "sources": [
+          {
+            "label": "Google Classroom API",
+            "url": "https://developers.google.com/classroom"
+          },
+          {
+            "label": "Google Classroom 使用制限",
+            "url": "https://developers.google.com/workspace/classroom/reference/limits"
+          }
+        ],
+        "detail": "Google Classroomは150カ国以上で利用される世界最大級の教育プラットフォーム。COVID-19以降急速に普及し、APIを通じたEdTech連携が活発化している。"
+      }
+    },
+    {
+      "id": "canvas-lms-api",
+      "name": "Canvas LMS API",
+      "nameJa": "Canvas LMS REST API",
+      "description": "Instructure社が開発する学習管理システム「Canvas LMS」のREST API。コース管理、課題・クイズ管理、成績管理、ユーザー管理、ファイルアップロード、ディスカッション、カレンダーなど、LMSの全機能をAPI経由で操作可能。リーキーバケットアルゴリズムによる柔軟なレート制限を採用し、APIトークン単位でクォータが管理される。高等教育機関での採用が多い。",
+      "url": "https://www.instructure.com/canvas",
+      "docsUrl": "https://canvas.instructure.com/doc/api/",
+      "category": "education",
+      "tags": [
+        "LMS",
+        "教育",
+        "高等教育",
+        "成績管理",
+        "コース管理"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "Canvas LMSのライセンス契約が必要。APIはライセンスに含まれる",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "リーキーバケットアルゴリズム。トークン単位で管理。初期コスト50ユニット/リクエスト。X-Rate-Limit-Remainingヘッダーで残量確認可能",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby"
+      ],
+      "useCases": [
+        "LMS統合",
+        "成績自動集計",
+        "コース管理自動化",
+        "学習分析",
+        "カスタムLMSダッシュボード"
+      ],
+      "popularity": {
+        "score": 70,
+        "users": "世界6,000以上の教育機関",
+        "marketPosition": "北米高等教育LMS市場でトップシェア",
+        "reason": "北米の大学・高等教育機関で最も利用されているLMSの一つ。APIドキュメントが充実しており、開発者コミュニティも活発",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "米国主要大学",
+          "K-12学校",
+          "企業研修",
+          "Instructureパートナー"
+        ],
+        "sources": [
+          {
+            "label": "Canvas LMS REST API",
+            "url": "https://canvas.instructure.com/doc/api/"
+          },
+          {
+            "label": "Canvas レート制限",
+            "url": "https://canvas.instructure.com/doc/api/file.throttling.html"
+          }
+        ],
+        "detail": "Canvas LMSは北米高等教育市場でBlackboardと並ぶ主要LMS。オープンソースとSaaS両方で提供されており、REST APIは全機能をカバーしている。"
+      }
+    },
+    {
+      "id": "duolingo-api",
+      "name": "Duolingo API (Unofficial)",
+      "nameJa": "Duolingo API（非公式）",
+      "description": "世界最大の語学学習プラットフォーム「Duolingo」の非公式API。ユーザープロフィール、学習進捗、ストリーク情報、リーダーボード、学習カレンダーなどのデータにアクセス可能。公式にはAPIは公開されていないが、コミュニティが解析したエンドポイントとPython・JavaScriptのラッパーライブラリが存在する。OpenAPI 2.0（Swagger）仕様のドキュメントも非公式に作成されている。予告なく仕様変更される可能性がある点に注意。",
+      "url": "https://www.duolingo.com/",
+      "docsUrl": "https://tschuy.com/duolingo/",
+      "category": "education",
+      "tags": [
+        "語学学習",
+        "非公式API",
+        "学習進捗",
+        "ゲーミフィケーション"
+      ],
+      "pricing": "free",
+      "pricingDetail": "非公式APIのため無料。ただし利用規約に抵触する可能性あり",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "明確な制限値は非公開。過度なリクエストでIPブロックの可能性あり",
+      "sdks": [
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "学習進捗ダッシュボード",
+        "ストリーク表示ウィジェット",
+        "語学学習データ分析",
+        "学習コミュニティアプリ"
+      ],
+      "popularity": {
+        "score": 52,
+        "users": "非公式APIのためコミュニティ開発者中心",
+        "marketPosition": "非公式ながらDuolingoの外部連携手段として唯一の選択肢",
+        "reason": "Duolingo自体は1億人以上のユーザーを持つが、公式APIは存在しない。非公式APIはGitHubで人気だが安定性は保証されない",
+        "monthlyApiCalls": "N/A",
+        "githubStars": "1,400+（Python SDK）",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "個人開発者",
+          "学習コミュニティ"
+        ],
+        "sources": [
+          {
+            "label": "非公式Duolingo API（Python）",
+            "url": "https://github.com/KartikTalwar/Duolingo"
+          },
+          {
+            "label": "非公式APIドキュメント",
+            "url": "https://tschuy.com/duolingo/"
+          }
+        ],
+        "detail": "Duolingoは世界最大の語学学習アプリで月間アクティブユーザーは1億人超。しかし公式APIは提供されておらず、コミュニティの非公式APIに依存。本番環境での利用は推奨されない。"
+      }
+    },
+    {
+      "id": "udemy-api",
+      "name": "Udemy Instructor API",
+      "nameJa": "Udemy インストラクターAPI",
+      "description": "世界最大級のオンライン学習プラットフォーム「Udemy」のインストラクター向けREST API。コース情報の取得、受講生データの分析、レビュー管理、収益レポートの取得などの機能を提供。プレミアムインストラクター向けに提供され、ベアラートークンによる認証を使用する。なお、アフィリエイトAPI（コース検索・表示用）は2025年1月に一般公開が終了し、アフィリエイトプログラム経由での利用に限定された。",
+      "url": "https://www.udemy.com/developers/",
+      "docsUrl": "https://www.udemy.com/developers/instructor/",
+      "category": "education",
+      "tags": [
+        "オンライン学習",
+        "インストラクター",
+        "コース管理",
+        "収益分析"
+      ],
+      "pricing": "free",
+      "pricingDetail": "プレミアムインストラクター向けに無料提供。アフィリエイトAPIは別途プログラム申請が必要",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "100リクエスト/10秒",
+      "sdks": [
+        "Python"
+      ],
+      "useCases": [
+        "コース分析ダッシュボード",
+        "受講生管理",
+        "収益トラッキング",
+        "レビュー分析"
+      ],
+      "popularity": {
+        "score": 60,
+        "users": "Udemyインストラクター（75,000人以上）",
+        "marketPosition": "世界最大のオンライン学習マーケットプレイスのAPI",
+        "reason": "Udemyは7,500万人以上の受講生を持つが、APIはインストラクター向けに限定。アフィリエイトAPI廃止により外部開発者の利用は減少傾向",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "Udemyプレミアムインストラクター",
+          "教育分析ツール開発者"
+        ],
+        "sources": [
+          {
+            "label": "Udemy 開発者ポータル",
+            "url": "https://www.udemy.com/developers/"
+          },
+          {
+            "label": "Udemy Instructor API",
+            "url": "https://www.udemy.com/developers/instructor/"
+          }
+        ],
+        "detail": "Udemyは世界最大のオンライン学習マーケットプレイス。2025年1月にアフィリエイトAPIの一般公開を終了し、現在はインストラクターAPIとアフィリエイトプログラム経由のAPIのみ利用可能。"
+      }
+    },
+    {
+      "id": "coursera-api",
+      "name": "Coursera API",
+      "nameJa": "Coursera API",
+      "description": "世界トップクラスの大学と連携するオンライン学習プラットフォーム「Coursera」の開発者向けAPI。コースカタログメタデータの取得、プログラム管理、学習進捗データのアクセスなどが可能。REST APIに加えて、JavaScriptプラグイン・SDKも提供。アフィリエイトプログラムを通じてコースデータの取得と収益化も可能。Coursera for BusinessのAPIも別途提供されている。",
+      "url": "https://building.coursera.org/developer-program/",
+      "docsUrl": "https://dev.coursera.com/get-started",
+      "category": "education",
+      "tags": [
+        "オンライン学習",
+        "MOOC",
+        "大学講座",
+        "アフィリエイト",
+        "EdTech"
+      ],
+      "pricing": "free",
+      "pricingDetail": "開発者プログラムへの参加は無料。アフィリエイトプログラムも無料参加可能",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "非公開（開発者ポータルで確認）",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "コースカタログ表示",
+        "学習進捗連携",
+        "教育アフィリエイト",
+        "企業研修システム統合"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "開発者・アフィリエイトパートナー",
+        "marketPosition": "世界最大級のMOOCプラットフォームの公式API",
+        "reason": "Courseraは1億4,800万人以上の登録ユーザーを持つが、APIは主にパートナー向けで一般開発者の利用は限定的",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "教育機関",
+          "企業研修部門",
+          "EdTechパートナー"
+        ],
+        "sources": [
+          {
+            "label": "Coursera 開発者プログラム",
+            "url": "https://building.coursera.org/developer-program/"
+          },
+          {
+            "label": "Coursera 開発者ポータル",
+            "url": "https://dev.coursera.com/get-started"
+          }
+        ],
+        "detail": "Courseraは世界トップ大学と連携したMOOCプラットフォーム。開発者ポータルではAPIドキュメント、エクスプローラー、SDKが提供されている。"
+      }
+    },
+    {
+      "id": "moodle-web-services-api",
+      "name": "Moodle Web Services API",
+      "nameJa": "Moodle Web Services API",
+      "description": "世界で最も広く利用されているオープンソースLMS「Moodle」のWeb Services API。REST、SOAP、XML-RPCの複数プロトコルに対応し、コース管理、ユーザー管理、成績管理、課題管理、フォーラム操作など、Moodleの全機能を外部システムから操作可能。プラグインとして独自のWebサービス関数を追加することもでき、高いカスタマイズ性を持つ。セルフホスト環境で管理者がWebサービスを有効化して使用する。",
+      "url": "https://moodle.org/",
+      "docsUrl": "https://docs.moodle.org/dev/Web_services_API",
+      "category": "education",
+      "tags": [
+        "LMS",
+        "オープンソース",
+        "教育",
+        "セルフホスト",
+        "プラグイン"
+      ],
+      "pricing": "free",
+      "pricingDetail": "オープンソース（GPL）で完全無料。Moodle Cloudの有料ホスティングプランもあり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "サーバー設定に依存（セルフホスト）。Moodle Cloud版は利用プランに応じた制限あり",
+      "sdks": [
+        "PHP",
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "LMS外部連携",
+        "成績自動インポート",
+        "ユーザー一括管理",
+        "カスタムレポート生成",
+        "モバイルアプリ開発"
+      ],
+      "popularity": {
+        "score": 68,
+        "users": "世界中の教育機関・企業",
+        "marketPosition": "世界最大のオープンソースLMS",
+        "reason": "Moodleは世界242カ国・4億人以上のユーザーに利用されるオープンソースLMS。Web Services APIはカスタマイズ性が高いが、セットアップの複雑さが難点",
+        "monthlyApiCalls": "N/A（セルフホスト）",
+        "githubStars": "5,700+",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "世界中の大学",
+          "K-12学校",
+          "企業研修機関",
+          "政府機関"
+        ],
+        "sources": [
+          {
+            "label": "Moodle Web Services API",
+            "url": "https://docs.moodle.org/dev/Web_services_API"
+          },
+          {
+            "label": "Moodle 外部サービスAPI",
+            "url": "https://moodledev.io/docs/5.0/apis/subsystems/external"
+          }
+        ],
+        "detail": "Moodleは2002年から開発が続く世界最大のオープンソースLMS。242カ国で利用され、Web Services APIを通じて高度なカスタマイズと外部システム連携が可能。"
+      }
+    },
+    {
+      "id": "alchemy-api",
+      "name": "Alchemy API",
+      "nameJa": "Alchemy ブロックチェーンAPI",
+      "description": "50以上のブロックチェーンネットワークに対応したWeb3開発プラットフォーム。Ethereum、Polygon、Solana、Base、Arbitrumなど主要チェーンのRPCノードアクセス、Enhanced API（NFTデータ取得、トークン情報、トランザクション履歴など）、Webhookによるリアルタイム通知を提供。Compute Units（CU）ベースの課金体系で、無料枠は月間3億CU。dApp開発のためのデバッグツールやアナリティクスも充実している。",
+      "url": "https://www.alchemy.com/",
+      "docsUrl": "https://www.alchemy.com/docs/reference/pricing-plans",
+      "category": "blockchain",
+      "tags": [
+        "ブロックチェーン",
+        "Ethereum",
+        "Web3",
+        "RPC",
+        "NFT",
+        "DeFi"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料枠: 月間3億CU、330CU/秒。Pay As You Go: $0.45/百万CU。Enterpriseプランあり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "無料枠: 330 CUPS（Compute Units Per Second）。プランにより上限が変動。超過時429エラー",
+      "sdks": [
+        "JavaScript",
+        "Python"
+      ],
+      "useCases": [
+        "dApp開発",
+        "NFTマーケットプレイス",
+        "DeFiプロトコル",
+        "ブロックチェーンデータ分析",
+        "ウォレット開発"
+      ],
+      "popularity": {
+        "score": 88,
+        "users": "数十万の開発者",
+        "marketPosition": "Web3インフラ市場のリーダー的存在",
+        "reason": "Web3開発プラットフォームとして最大級。50以上のチェーン対応、充実した無料枠、豊富なEnhanced APIがシェア拡大を牽引",
+        "monthlyApiCalls": "数十億リクエスト/月（全体）",
+        "githubStars": "2,100+（SDK）",
+        "npmDownloads": "約15,000/週（SDK）",
+        "adopters": [
+          "OpenSea",
+          "Shopify",
+          "Adobe",
+          "大手Web3プロジェクト"
+        ],
+        "sources": [
+          {
+            "label": "Alchemy 公式サイト",
+            "url": "https://www.alchemy.com/"
+          },
+          {
+            "label": "Alchemy 料金プラン",
+            "url": "https://www.alchemy.com/pricing"
+          }
+        ],
+        "detail": "Alchemyは2017年設立のWeb3インフラ企業。2025年2月にPay As You Go料金モデルを導入。50以上のブロックチェーンネットワークをサポートし、Web3開発の事実上の標準プラットフォーム。"
+      }
+    },
+    {
+      "id": "moralis-api",
+      "name": "Moralis API",
+      "nameJa": "Moralis Web3 データAPI",
+      "description": "EVMチェーンとSolanaに対応したWeb3データAPIプラットフォーム。ウォレット残高、NFTデータ、トークン価格、トランザクション履歴、DeFiポジションなどの構造化されたブロックチェーンデータを単一のAPIで取得可能。Compute Units（CU）ベースの課金で、エンドポイントごとに計算量に応じたコストが設定されている。Streams APIによるリアルタイムのブロックチェーンイベント監視も提供。",
+      "url": "https://moralis.com/",
+      "docsUrl": "https://docs.moralis.com/",
+      "category": "blockchain",
+      "tags": [
+        "Web3",
+        "ブロックチェーン",
+        "NFT",
+        "トークン",
+        "DeFi",
+        "Solana"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料Starterプラン: 40,000CU/日。Proプラン$49/月。Businessプラン$199/月（年払い）。Enterpriseプランあり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "無料: 1,000CU/秒。有料: プランに応じて100,000,000CU/月以上。超過時一時停止（無料）または従量課金（有料）",
+      "sdks": [
+        "JavaScript",
+        "Python"
+      ],
+      "useCases": [
+        "ウォレットポートフォリオ表示",
+        "NFTギャラリー",
+        "トークン価格追跡",
+        "DeFiダッシュボード",
+        "ブロックチェーンイベント監視"
+      ],
+      "popularity": {
+        "score": 78,
+        "users": "数万のWeb3開発者",
+        "marketPosition": "Web3データAPI市場の主要プレイヤー",
+        "reason": "AlchemyのEnhanced APIと直接競合。構造化されたデータAPIが強みで、特にNFTやDeFi関連の開発者に人気",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "Web3スタートアップ",
+          "DeFiプロトコル",
+          "NFTプロジェクト"
+        ],
+        "sources": [
+          {
+            "label": "Moralis 公式サイト",
+            "url": "https://moralis.com/"
+          },
+          {
+            "label": "Moralis 料金プラン",
+            "url": "https://moralis.com/pricing/"
+          }
+        ],
+        "detail": "Moralisは「Web3のFirebase」として知られるプラットフォーム。構造化されたデータAPIにより、生のRPCデータを解析する必要なく、ウォレットやNFT、トークンのデータを簡単に取得できる。"
+      }
+    },
+    {
+      "id": "etherscan-api",
+      "name": "Etherscan API",
+      "nameJa": "Etherscan ブロックエクスプローラーAPI",
+      "description": "Ethereumブロックチェーンの最も広く利用されているブロックエクスプローラー「Etherscan」のAPI。アカウント残高、トランザクション履歴、トークン転送、コントラクト検証、ガス価格推定、ブロック情報などの幅広いオンチェーンデータを取得可能。50以上のEVMチェーンに単一のAPIキーで対応。無料プランでは5コール/秒、API Proでは10〜30コール/秒の上限が設定されている。",
+      "url": "https://etherscan.io/apis",
+      "docsUrl": "https://docs.etherscan.io/",
+      "category": "blockchain",
+      "tags": [
+        "Ethereum",
+        "ブロックエクスプローラー",
+        "トランザクション",
+        "ガス価格",
+        "コントラクト"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 5コール/秒。API Pro: 10〜30コール/秒（有料プラン、年間サブスクリプション）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "無料: 5コール/秒。API Pro: 10〜30コール/秒（プランにより変動）",
+      "sdks": [
+        "JavaScript",
+        "Python"
+      ],
+      "useCases": [
+        "ウォレット残高確認",
+        "トランザクション履歴取得",
+        "ガス価格モニタリング",
+        "コントラクト検証",
+        "オンチェーンデータ分析"
+      ],
+      "popularity": {
+        "score": 90,
+        "users": "数十万のWeb3開発者",
+        "marketPosition": "EVM系ブロックエクスプローラーAPIのデファクトスタンダード",
+        "reason": "Ethereumエコシステムで最も知名度の高いブロックエクスプローラー。無料で利用でき、50以上のEVMチェーンに単一キーで対応する利便性が圧倒的",
+        "monthlyApiCalls": "数十億コール/月（推定）",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "DeFiプロトコル",
+          "ウォレットアプリ",
+          "NFTマーケットプレイス",
+          "ブロックチェーン分析企業"
+        ],
+        "sources": [
+          {
+            "label": "Etherscan APIs",
+            "url": "https://etherscan.io/apis"
+          },
+          {
+            "label": "Etherscan APIドキュメント",
+            "url": "https://docs.etherscan.io/"
+          }
+        ],
+        "detail": "Etherscanは2015年設立のEthereumブロックエクスプローラー。APIは無料で提供され、ethers.jsやweb3.jsなどの主要ライブラリからも参照されるデファクトスタンダード。50以上のEVMチェーンに対応。"
+      }
+    },
+    {
+      "id": "infura-api",
+      "name": "Infura API",
+      "nameJa": "Infura ブロックチェーンインフラAPI",
+      "description": "ConsenSys（現Consensys）が運営するブロックチェーン開発プラットフォーム。Ethereum、Polygon、Optimism、Arbitrum、Avalanche、Starknetなど主要チェーンのJSON-RPCノードアクセスをHTTPSおよびWebSocket経由で提供。クレジットベースの課金体系で、APIリクエストの計算量に応じたクレジット消費モデルを採用。MetaMaskのデフォルトRPCプロバイダーとしても利用されている。",
+      "url": "https://www.infura.io/",
+      "docsUrl": "https://infura.io/docs",
+      "category": "blockchain",
+      "tags": [
+        "Ethereum",
+        "ブロックチェーン",
+        "RPC",
+        "IPFS",
+        "Web3",
+        "MetaMask"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 600万クレジット/日（2,000クレジット/秒）。有料プランおよびEnterpriseプランあり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "無料: 2,000クレジット/秒、600万クレジット/日。有料プランではカスタム上限設定可能",
+      "sdks": [
+        "JavaScript",
+        "Python"
+      ],
+      "useCases": [
+        "dApp開発",
+        "MetaMask連携",
+        "スマートコントラクトデプロイ",
+        "ブロックチェーンデータ取得",
+        "IPFS連携"
+      ],
+      "popularity": {
+        "score": 85,
+        "users": "数十万の開発者",
+        "marketPosition": "最も歴史あるEthereum RPCプロバイダーの一つ",
+        "reason": "MetaMaskのデフォルトRPCプロバイダーとして知られ、Ethereumエコシステムの基盤インフラ。Alchemyと並ぶWeb3インフラの二大巨頭",
+        "monthlyApiCalls": "数百億リクエスト/月（全体）",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "MetaMask",
+          "Uniswap",
+          "Compound",
+          "主要DeFiプロトコル"
+        ],
+        "sources": [
+          {
+            "label": "Infura 公式サイト",
+            "url": "https://www.infura.io/"
+          },
+          {
+            "label": "Infura 料金",
+            "url": "https://www.infura.io/pricing"
+          }
+        ],
+        "detail": "InfuraはConsenSysが2016年に設立したブロックチェーンインフラサービス。MetaMaskのデフォルトプロバイダーとして、Ethereumエコシステムの基盤を担っている。"
+      }
+    },
+    {
+      "id": "quicknode-api",
+      "name": "QuickNode API",
+      "nameJa": "QuickNode ブロックチェーンインフラAPI",
+      "description": "78以上のブロックチェーンネットワークに対応した高性能RPC・APIインフラプラットフォーム。グローバルに分散配置されたノードにより低レイテンシーのアクセスを実現。Core RPC APIに加え、NFT API、Token API、QuickAlertsなどの付加価値サービスをアドオンとして提供。API Creditsベースの課金体系で、メソッドの計算量に応じたクレジット消費モデルを採用。",
+      "url": "https://www.quicknode.com/",
+      "docsUrl": "https://www.quicknode.com/docs/welcome",
+      "category": "blockchain",
+      "tags": [
+        "ブロックチェーン",
+        "RPC",
+        "マルチチェーン",
+        "NFT",
+        "Web3"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プランあり。Launch: $10/月。Scale: $200/月。Dedicated: $300/月。Business: $900/月",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "プランに応じたAPI Credits/秒の制限。無料プランは制限付き",
+      "sdks": [
+        "JavaScript",
+        "Python"
+      ],
+      "useCases": [
+        "dApp開発",
+        "マルチチェーンアプリケーション",
+        "NFTデータ取得",
+        "ブロックチェーンイベント監視",
+        "トークン価格取得"
+      ],
+      "popularity": {
+        "score": 80,
+        "users": "数万の開発者・プロジェクト",
+        "marketPosition": "Alchemy・Infuraに次ぐ主要RPCプロバイダー",
+        "reason": "78以上のチェーン対応で最も広いカバレッジを持つRPCプロバイダーの一つ。マーケットプレイスのアドオン機能が差別化要因",
+        "monthlyApiCalls": "数十億リクエスト/月（推定）",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "Web3スタートアップ",
+          "DeFiプロトコル",
+          "NFTプロジェクト"
+        ],
+        "sources": [
+          {
+            "label": "QuickNode 公式サイト",
+            "url": "https://www.quicknode.com/"
+          },
+          {
+            "label": "QuickNode 料金",
+            "url": "https://www.quicknode.com/pricing"
+          }
+        ],
+        "detail": "QuickNodeは2017年設立のブロックチェーンインフラ企業。78以上のチェーンをサポートし、マーケットプレイスを通じたアドオン機能の拡張が可能。"
+      }
+    },
+    {
+      "id": "the-graph-api",
+      "name": "The Graph API",
+      "nameJa": "The Graph プロトコルAPI",
+      "description": "ブロックチェーンデータのインデックス化と検索に特化した分散型プロトコル。サブグラフと呼ばれるカスタムAPIを定義することで、EthereumやPolygonなどのブロックチェーンデータをGraphQLで効率的にクエリ可能。DeFiプロトコル、NFTマーケットプレイス、DAOなどの複雑なオンチェーンデータを構造化して提供。GRTトークンによる分散型ネットワークで運営されている。",
+      "url": "https://thegraph.com/",
+      "docsUrl": "https://thegraph.com/docs/en/subgraphs/querying/graphql-api/",
+      "category": "blockchain",
+      "tags": [
+        "GraphQL",
+        "ブロックチェーン",
+        "インデックス",
+        "サブグラフ",
+        "分散型",
+        "DeFi"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 100,000クエリ/月。超過分: $4/100,000クエリ。クレジットカードまたはGRTトークンで支払い",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "サブグラフおよびプランに依存。分散型ネットワークのため固定制限なし",
+      "sdks": [
+        "JavaScript",
+        "Python"
+      ],
+      "useCases": [
+        "DeFiプロトコルデータ取得",
+        "NFTマーケット分析",
+        "DAOガバナンスデータ",
+        "オンチェーンアナリティクス",
+        "カスタムブロックチェーンインデックス"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "数万のWeb3開発者・プロジェクト",
+        "marketPosition": "分散型ブロックチェーンインデックスプロトコルのパイオニア",
+        "reason": "Web3のデータインデックスにおけるデファクトスタンダード。Uniswap、Aave、Compoundなど主要DeFiプロトコルがサブグラフを公開",
+        "monthlyApiCalls": "数十億クエリ/月（ネットワーク全体）",
+        "githubStars": "6,000+",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "Uniswap",
+          "Aave",
+          "Compound",
+          "Synthetix",
+          "Decentraland"
+        ],
+        "sources": [
+          {
+            "label": "The Graph 公式サイト",
+            "url": "https://thegraph.com/"
+          },
+          {
+            "label": "The Graph GraphQL API",
+            "url": "https://thegraph.com/docs/en/subgraphs/querying/graphql-api/"
+          }
+        ],
+        "detail": "The Graphは「ブロックチェーンのGoogle」と呼ばれる分散型インデックスプロトコル。GRTトークンによるインセンティブモデルで運営され、主要DeFiプロトコルの多くがサブグラフを利用。"
+      }
+    },
+    {
+      "id": "opensea-api",
+      "name": "OpenSea API",
+      "nameJa": "OpenSea NFT API",
+      "description": "世界最大のNFTマーケットプレイス「OpenSea」の公式API。NFTコレクション情報、個別NFTメタデータ、売買イベント、出品・オファー管理、オーダーブックアクセスなどの機能を提供。ERC721およびERC1155トークンに対応し、複数のEVMチェーン上のNFTデータを取得可能。TypeScript SDK（opensea-js）によるプログラマティックな売買操作もサポート。",
+      "url": "https://opensea.io/",
+      "docsUrl": "https://docs.opensea.io/",
+      "category": "blockchain",
+      "tags": [
+        "NFT",
+        "マーケットプレイス",
+        "ERC721",
+        "ERC1155",
+        "Web3"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は完全無料。マーケットプレイスの売買手数料（1.0%）は別途発生",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "GETリクエスト: 4リクエスト/秒。POSTリクエスト: 2リクエスト/秒。上限引き上げ申請可能",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "NFTギャラリー表示",
+        "NFTマーケットプレイス構築",
+        "NFT価格分析",
+        "コレクション管理ツール",
+        "NFTポートフォリオ"
+      ],
+      "popularity": {
+        "score": 80,
+        "users": "数万のWeb3開発者",
+        "marketPosition": "世界最大のNFTマーケットプレイスAPI",
+        "reason": "NFTマーケットプレイスとして世界最大。API利用は無料だが、NFT市場の低迷によりAPI利用は全盛期より減少傾向",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "2,400+（opensea-js）",
+        "npmDownloads": "約3,000/週",
+        "adopters": [
+          "NFTアグリゲーター",
+          "ウォレットアプリ",
+          "Web3ゲーム",
+          "アート関連dApp"
+        ],
+        "sources": [
+          {
+            "label": "OpenSea 開発者ドキュメント",
+            "url": "https://docs.opensea.io/"
+          },
+          {
+            "label": "OpenSea JS SDK",
+            "url": "https://github.com/ProjectOpenSea/opensea-js"
+          }
+        ],
+        "detail": "OpenSeaは2017年設立のNFTマーケットプレイス。全盛期の2021-2022年と比較するとNFT取引量は減少しているが、依然としてNFTデータAPIとして最も広く利用されている。"
+      }
+    },
+    {
+      "id": "chainlink-api",
+      "name": "Chainlink API",
+      "nameJa": "Chainlink オラクルAPI",
+      "description": "ブロックチェーンスマートコントラクトと外部データソースを接続する分散型オラクルネットワーク「Chainlink」のAPI群。Price Feeds（価格フィード）、VRF（検証可能なランダム関数）、Automation（自動化）、Functions（カスタムAPI呼び出し）、Data Streams（低レイテンシー市場データ）など、多彩なサービスを提供。スマートコントラクトから外部APIデータの取得や自動実行を安全に実現する。",
+      "url": "https://chain.link/",
+      "docsUrl": "https://docs.chain.link/",
+      "category": "blockchain",
+      "tags": [
+        "オラクル",
+        "スマートコントラクト",
+        "Price Feed",
+        "DeFi",
+        "分散型"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "LINKトークンで支払い。Functionsリクエスト: 約0.25 LINK/リクエスト。VRF・Automation等もLINK消費",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "オンチェーンオラクルのため従来のAPIレート制限とは異なる。ネットワーク手数料ベース",
+      "sdks": [
+        "Solidity",
+        "JavaScript"
+      ],
+      "useCases": [
+        "DeFi価格フィード",
+        "NFTランダム生成",
+        "スマートコントラクト自動化",
+        "外部APIデータ連携",
+        "保険スマートコントラクト"
+      ],
+      "popularity": {
+        "score": 88,
+        "users": "数千のWeb3プロジェクト",
+        "marketPosition": "ブロックチェーンオラクル市場の圧倒的リーダー",
+        "reason": "DeFi市場でオラクルサービスのシェア約60%以上を占める圧倒的リーダー。Aave、Compound、Synthetixなど主要DeFiプロトコルが採用",
+        "monthlyApiCalls": "N/A（オンチェーン）",
+        "githubStars": "7,000+",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "Aave",
+          "Compound",
+          "Synthetix",
+          "dYdX",
+          "Polygon"
+        ],
+        "sources": [
+          {
+            "label": "Chainlink 公式サイト",
+            "url": "https://chain.link/"
+          },
+          {
+            "label": "Chainlink ドキュメント",
+            "url": "https://docs.chain.link/"
+          }
+        ],
+        "detail": "Chainlinkは2017年設立の分散型オラクルネットワーク。DeFiのTotal Value Secured（TVS）で数兆ドル規模のセキュリティを提供し、オラクル市場で圧倒的な存在感を持つ。"
+      }
+    },
+    {
+      "id": "perplexity-api",
+      "name": "Perplexity API",
+      "nameJa": "Perplexity AI検索API",
+      "description": "AI検索エンジン「Perplexity」の開発者向けAPI。Sonarモデルを使用して、Web検索結果に基づいたAI生成の回答を取得可能。通常の検索、推論（Reasoning）、ディープリサーチの3つのモードを提供し、出典（Citation）付きの信頼性の高い回答を返す。OpenAI互換のChat Completions形式で利用でき、既存のOpenAI SDKからの移行が容易。",
+      "url": "https://www.perplexity.ai/",
+      "docsUrl": "https://docs.perplexity.ai/",
+      "category": "ai",
+      "tags": [
+        "AI検索",
+        "RAG",
+        "Sonar",
+        "引用付き回答",
+        "推論"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "Sonar: 入力$1/百万トークン、出力$1/百万トークン。Sonar Pro: 入力$3、出力$15/百万トークン。Proサブスクリプション加入で月$5クレジット付与",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "RPM（リクエスト/分）およびTPD（トークン/日）ベース。プランにより変動。超過時スロットリング",
+      "sdks": [
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "AI検索エンジン構築",
+        "リサーチアシスタント",
+        "出典付きQ&Aシステム",
+        "コンテンツ生成",
+        "ファクトチェック"
+      ],
+      "popularity": {
+        "score": 80,
+        "users": "急成長中のAI開発者コミュニティ",
+        "marketPosition": "AI検索API市場の先駆者",
+        "reason": "AI検索エンジンとして急成長中。Sonarモデルによる出典付き回答機能がRAG開発者に支持されている。2024年の年間収益は$100M超",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "AI開発者",
+          "リサーチ企業",
+          "メディア企業"
+        ],
+        "sources": [
+          {
+            "label": "Perplexity 公式サイト",
+            "url": "https://www.perplexity.ai/"
+          },
+          {
+            "label": "Perplexity API料金",
+            "url": "https://docs.perplexity.ai/docs/getting-started/pricing"
+          }
+        ],
+        "detail": "Perplexityは2022年設立のAI検索スタートアップ。独自のSonarモデルで検索結果を要約し出典付きの回答を生成。2024年にはARR（年間経常収益）$100Mを超え急成長中。"
+      }
+    },
+    {
+      "id": "mistral-ai-api",
+      "name": "Mistral AI API",
+      "nameJa": "Mistral AI API",
+      "description": "フランス発のAIスタートアップ「Mistral AI」が提供する大規模言語モデルAPI。Mistral Large、Mistral Medium、Mistral Small、Devstralなどの多様なモデルラインナップを持ち、テキスト生成、コード生成、Function Calling、JSON出力、Embedding生成などに対応。La Platformeコンソールから管理でき、OpenAI互換エンドポイントも提供。オープンソースモデルの提供でも知られる。",
+      "url": "https://mistral.ai/",
+      "docsUrl": "https://docs.mistral.ai/",
+      "category": "ai",
+      "tags": [
+        "LLM",
+        "テキスト生成",
+        "コード生成",
+        "オープンソース",
+        "Function Calling"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料枠あり（一部モデル）。Devstral Small: 入力$0.1、出力$0.3/百万トークン。Mistral Medium 3: 入力$0.4、出力$2/百万トークン。Mistral Large: より高額",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "ワークスペースのティアに応じて変動。詳細はadmin.mistral.ai/plateforme/limitsで確認可能",
+      "sdks": [
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "テキスト生成",
+        "コードアシスタント",
+        "多言語翻訳",
+        "データ抽出",
+        "チャットボット"
+      ],
+      "popularity": {
+        "score": 78,
+        "users": "急成長中のAI開発者コミュニティ",
+        "marketPosition": "欧州発AIモデルプロバイダーのリーダー",
+        "reason": "欧州最大のAIスタートアップとして急成長。オープンソースモデルの品質が高く、コスト効率の良さでOpenAI・Anthropicの代替として人気",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "欧州企業",
+          "AIスタートアップ",
+          "オープンソースコミュニティ"
+        ],
+        "sources": [
+          {
+            "label": "Mistral AI 公式サイト",
+            "url": "https://mistral.ai/"
+          },
+          {
+            "label": "Mistral AI 料金",
+            "url": "https://mistral.ai/pricing"
+          }
+        ],
+        "detail": "Mistral AIは2023年設立のフランスのAIスタートアップ。企業価値$6B超で欧州最大のAI企業。オープンソースモデルと商用APIの両方を提供し、コスト効率の高さが支持されている。"
+      }
+    },
+    {
+      "id": "groq-api",
+      "name": "Groq API",
+      "nameJa": "Groq 高速推論API",
+      "description": "独自開発のLPU（Language Processing Unit）チップによる超高速AI推論を提供するクラウドAPI。Llama、Mistral、Gemmaなどのオープンソースモデルを驚異的な速度で実行可能。トークン/秒の生成速度でGPU推論の数倍〜数十倍のパフォーマンスを実現。OpenAI互換のChat Completions APIで利用でき、バッチAPI（50%割引）やプロンプトキャッシング（50%割引）にも対応。",
+      "url": "https://groq.com/",
+      "docsUrl": "https://console.groq.com/docs",
+      "category": "ai",
+      "tags": [
+        "LLM",
+        "高速推論",
+        "LPU",
+        "Llama",
+        "低レイテンシー"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料ティア: レートリミット付きで無制限利用。Developerティア: 無料の10倍のレートリミット。モデルごとのトークン課金（従量制）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Free: RPM・TPMに制限あり。Developer: Freeの10倍。Enterprise: カスタム。組織レベルで適用",
+      "sdks": [
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "リアルタイムチャットボット",
+        "音声AIアシスタント",
+        "低レイテンシーAIアプリ",
+        "バッチ処理",
+        "コード生成"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "急成長中のAI開発者",
+        "marketPosition": "AI推論速度の業界リーダー",
+        "reason": "LPUチップによる圧倒的な推論速度が話題を呼び急成長。無料ティアの提供もあり、特にリアルタイムAIアプリ開発者に支持されている",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "AIスタートアップ",
+          "リアルタイムAIアプリ開発者",
+          "音声AIサービス"
+        ],
+        "sources": [
+          {
+            "label": "Groq 公式サイト",
+            "url": "https://groq.com/"
+          },
+          {
+            "label": "Groq 料金",
+            "url": "https://groq.com/pricing"
+          }
+        ],
+        "detail": "Groqは2016年設立のAIチップスタートアップ。LPU（Language Processing Unit）を独自開発し、GPU比で数倍〜数十倍の推論速度を実現。2024年以降、GroqCloudとしてAPI提供を本格化。"
+      }
+    },
+    {
+      "id": "google-custom-search-api",
+      "name": "Google Custom Search API",
+      "nameJa": "Google カスタム検索API",
+      "description": "GoogleのProgrammable Search Engineを利用して、Googleの検索結果をAPI経由で取得するサービス。Webページ検索に加え、画像検索にも対応。特定のサイトに限定した検索や、全Web検索の設定が可能。JSON形式でタイトル、スニペット、URL、サムネイルなどの検索結果を返す。Google Cloud Consoleで管理し、APIキーによる認証を使用。",
+      "url": "https://developers.google.com/custom-search/v1/overview",
+      "docsUrl": "https://developers.google.com/custom-search/v1/reference/rest",
+      "category": "search",
+      "tags": [
+        "検索",
+        "Google",
+        "Web検索",
+        "画像検索",
+        "SEO"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 100クエリ/日。有料: $5/1,000クエリ（課金有効化時は日次制限なし）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "無料: 100クエリ/日。有料: $5/1,000クエリで日次制限解除。1クエリあたり最大100結果",
+      "sdks": [
+        "Python",
+        "Java",
+        "JavaScript",
+        "PHP",
+        "Ruby",
+        ".NET",
+        "Go"
+      ],
+      "useCases": [
+        "カスタム検索エンジン構築",
+        "SEO分析",
+        "コンテンツ検索",
+        "画像検索アプリ",
+        "サイト内検索"
+      ],
+      "popularity": {
+        "score": 78,
+        "users": "数十万の開発者",
+        "marketPosition": "Google検索データへの公式APIアクセス手段",
+        "reason": "Googleの検索品質をAPI経由で利用できる唯一の公式手段。無料枠は少ないが、検索精度は圧倒的",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "SEOツール",
+          "比較サイト",
+          "リサーチツール",
+          "エンタープライズ検索"
+        ],
+        "sources": [
+          {
+            "label": "Google Custom Search API",
+            "url": "https://developers.google.com/custom-search/v1/overview"
+          },
+          {
+            "label": "Google Custom Search APIリファレンス",
+            "url": "https://developers.google.com/custom-search/v1/reference/rest"
+          }
+        ],
+        "detail": "Google Custom Search APIはGoogle検索の品質をプログラマティックに利用できるサービス。Site Restricted JSON APIは2025年1月にサービス終了し、Standard JSON APIに統合された。"
+      }
+    },
+    {
+      "id": "brave-search-api",
+      "name": "Brave Search API",
+      "nameJa": "Brave Search API",
+      "description": "プライバシー重視のブラウザ「Brave」が運営する独自の検索インデックスを利用した検索API。Web検索、画像検索、ニュース検索、動画検索に加え、LLM Context API（AI向けコンテキスト取得）やAnswers API（AI生成の要約回答）を提供。Googleに依存しない独自のWebインデックスを持ち、プライバシーを重視したデータ処理が特徴。AI開発者向けの検索ソリューションとしても注目されている。",
+      "url": "https://brave.com/search/api/",
+      "docsUrl": "https://api-dashboard.search.brave.com/",
+      "category": "search",
+      "tags": [
+        "検索",
+        "プライバシー",
+        "AI検索",
+        "独自インデックス",
+        "RAG"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "Search: $5/1,000リクエスト。Answers: $4/1,000検索 + $5/百万トークン。月$5の無料クレジット付与（約1,000検索分）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Freeプラン: 1リクエスト/秒。Baseプラン: 20リクエスト/秒。Proプラン: 無制限",
+      "sdks": [
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "AI検索アプリ",
+        "RAGパイプライン",
+        "プライバシー重視の検索",
+        "コンテンツ発見",
+        "リサーチツール"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "AI開発者・プライバシー重視の開発者",
+        "marketPosition": "Google非依存の独立型検索APIとして急成長",
+        "reason": "Google Custom Search APIの代替として注目。独自インデックスとLLM Context APIがAI開発者コミュニティで人気上昇中",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "AI開発者",
+          "MCPサーバー開発者",
+          "プライバシー重視のアプリ"
+        ],
+        "sources": [
+          {
+            "label": "Brave Search API",
+            "url": "https://brave.com/search/api/"
+          },
+          {
+            "label": "Brave Search API 最新情報",
+            "url": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+          }
+        ],
+        "detail": "Brave Searchは独自のWebインデックスを持つ検索エンジンで、AI開発者向けにLLM Context APIを提供。2026年2月に無料枠を廃止しクレジットベースの課金に移行。MCP連携でも注目されている。"
+      }
+    },
+    {
+      "id": "backblaze-b2-api",
+      "name": "Backblaze B2 API",
+      "nameJa": "Backblaze B2 クラウドストレージAPI",
+      "description": "S3互換の低コストクラウドオブジェクトストレージ「Backblaze B2」のAPI。S3互換APIとB2ネイティブAPIの2種類を提供し、認証、バケット管理、ファイルのアップロード・ダウンロード、メタデータ操作などをサポート。AWS S3の約1/5のコストで利用でき、帯域幅料金も無料。アップロードAPIコールは課金対象外で、大容量データの保存・配信に最適。",
+      "url": "https://www.backblaze.com/cloud-storage",
+      "docsUrl": "https://www.backblaze.com/docs",
+      "category": "storage",
+      "tags": [
+        "クラウドストレージ",
+        "S3互換",
+        "低コスト",
+        "オブジェクトストレージ",
+        "バックアップ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 10GBストレージ + 1GB/日ダウンロード。有料: $0.005/GB/月ストレージ、$0.01/GB超過ダウンロード。アップロードAPIコール無料",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "デフォルト: 500リクエスト/秒（アップロード・ダウンロード）。引き上げ申請可能。超過時503（S3）/429（B2ネイティブ）エラー",
+      "sdks": [
+        "Python",
+        "Java",
+        "JavaScript",
+        "Go",
+        ".NET"
+      ],
+      "useCases": [
+        "データバックアップ",
+        "メディアファイル保存",
+        "アーカイブ",
+        "CDN連携",
+        "災害復旧"
+      ],
+      "popularity": {
+        "score": 70,
+        "users": "数十万のユーザー・開発者",
+        "marketPosition": "低コストS3互換ストレージの代表格",
+        "reason": "AWS S3の約1/5のコストと帯域幅無料が最大の差別化要因。S3互換APIで既存アプリからの移行が容易",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "中小企業",
+          "メディア企業",
+          "バックアップサービス",
+          "個人開発者"
+        ],
+        "sources": [
+          {
+            "label": "Backblaze B2 クラウドストレージ",
+            "url": "https://www.backblaze.com/cloud-storage"
+          },
+          {
+            "label": "Backblaze B2 APIドキュメント",
+            "url": "https://www.backblaze.com/docs"
+          }
+        ],
+        "detail": "Backblaze B2はAWS S3の低コスト代替として人気。帯域幅無料・アップロードAPI無料の料金体系で、特にバックアップ・アーカイブ用途での採用が多い。Cloudflare CDNとの無料連携（Bandwidth Alliance）も魅力。"
+      }
+    },
+    {
+      "id": "minio-api",
+      "name": "MinIO API",
+      "nameJa": "MinIO オブジェクトストレージAPI",
+      "description": "高性能なS3互換オープンソースオブジェクトストレージ「MinIO」のAPI。AWS S3 APIとIAM APIに100%ビット互換で、既存のS3対応アプリケーションをそのまま利用可能。Go、Java、Python、JavaScript、Haskell、.NETの公式クライアントSDKを提供。セルフホスト環境でのプライベートクラウドストレージ構築に最適で、AI/ML用のデータレイクとしても広く利用されている。",
+      "url": "https://min.io/",
+      "docsUrl": "https://min.io/docs/minio/linux/index.html",
+      "category": "storage",
+      "tags": [
+        "オブジェクトストレージ",
+        "S3互換",
+        "オープンソース",
+        "セルフホスト",
+        "AI/ML"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "オープンソース: GNU AGPLv3で無料。商用ライセンス（Enterprise）: 有料。MinIO SaaS: 従量課金制",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "セルフホストのため制限はハードウェアに依存。SaaS版はプランに応じた制限",
+      "sdks": [
+        "Go",
+        "Java",
+        "Python",
+        "JavaScript",
+        "Haskell",
+        ".NET"
+      ],
+      "useCases": [
+        "プライベートクラウドストレージ",
+        "AI/MLデータレイク",
+        "バックアップシステム",
+        "マルチクラウドストレージ",
+        "DevOps CI/CDアーティファクト"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "数十万のインストール環境",
+        "marketPosition": "S3互換オープンソースオブジェクトストレージの事実上の標準",
+        "reason": "GitHub Stars 50,000以上のオープンソースプロジェクト。S3互換ストレージとして最も広く利用され、AI/MLワークロードのデータレイクとしても人気",
+        "monthlyApiCalls": "N/A（セルフホスト）",
+        "githubStars": "50,000+",
+        "npmDownloads": "約8,000/週（minio SDK）",
+        "adopters": [
+          "NVIDIA",
+          "VMware",
+          "Splunk",
+          "Snowflake",
+          "Adobe"
+        ],
+        "sources": [
+          {
+            "label": "MinIO 公式サイト",
+            "url": "https://min.io/"
+          },
+          {
+            "label": "MinIO GitHub",
+            "url": "https://github.com/minio/minio"
+          }
+        ],
+        "detail": "MinIOは世界で最も広く利用されているS3互換オープンソースオブジェクトストレージ。GitHub Stars 50,000以上で、AI/MLワークロードのデータレイクとして急成長中。"
+      }
+    },
+    {
+      "id": "wasabi-api",
+      "name": "Wasabi API",
+      "nameJa": "Wasabi クラウドストレージAPI",
+      "description": "AWS S3とIAM APIに100%ビット互換のクラウドオブジェクトストレージサービス「Wasabi」のAPI。S3互換のため既存のS3アプリケーション・ツールがそのまま利用可能。AWS S3の約1/5の価格で、エグレス（ダウンロード）無料・APIコール無料のシンプルな料金体系が特徴。バックアップ、災害復旧、アーカイブ、アプリケーション開発など幅広い用途に対応。",
+      "url": "https://wasabi.com/",
+      "docsUrl": "https://docs.wasabi.com/",
+      "category": "storage",
+      "tags": [
+        "クラウドストレージ",
+        "S3互換",
+        "低コスト",
+        "エグレス無料",
+        "バックアップ"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "$0.0068/GB/月（$6.99/TB/月）。エグレス無料、APIコール無料。最低保存期間90日",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "S3互換API。具体的なレート制限は非公開（大規模利用時はサポートに確認）",
+      "sdks": [
+        "Python",
+        "Java",
+        "JavaScript",
+        "Go",
+        ".NET"
+      ],
+      "useCases": [
+        "データバックアップ",
+        "災害復旧",
+        "メディアアーカイブ",
+        "監視カメラ映像保存",
+        "クラウドストレージ移行"
+      ],
+      "popularity": {
+        "score": 68,
+        "users": "10万以上の企業ユーザー",
+        "marketPosition": "低コストクラウドストレージ市場の主要プレイヤー",
+        "reason": "AWS S3の1/5の価格でエグレス無料のシンプルな料金体系が中小企業に支持されている。100%S3互換で移行が容易",
+        "monthlyApiCalls": "N/A（APIコール無料）",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "中小企業",
+          "MSP（マネージドサービスプロバイダー）",
+          "バックアップベンダー"
+        ],
+        "sources": [
+          {
+            "label": "Wasabi 公式サイト",
+            "url": "https://wasabi.com/"
+          },
+          {
+            "label": "Wasabi APIリファレンス",
+            "url": "https://docs.wasabi.com/apidocs/wasabi-api"
+          }
+        ],
+        "detail": "Wasabiは2017年設立のクラウドストレージ企業。AWS S3の約1/5の価格でエグレス・APIコール無料のシンプルな料金体系を提供。100%S3互換で既存アプリからの移行が容易。"
+      }
+    },
+    {
+      "id": "sentry-api",
+      "name": "Sentry API",
+      "nameJa": "Sentry エラー監視API",
+      "description": "アプリケーションエラー監視・パフォーマンスモニタリングプラットフォーム「Sentry」のREST API。組織・プロジェクト管理、イベントデータの取得・エクスポート、リリース管理、アラート設定、チーム管理などをプログラマティックに操作可能。DSN（Data Source Name）を通じたイベント送信SDK（50以上の言語・フレームワーク対応）と、管理操作用のREST APIの2種類を提供。",
+      "url": "https://sentry.io/",
+      "docsUrl": "https://docs.sentry.io/api/",
+      "category": "devtools",
+      "tags": [
+        "エラー監視",
+        "パフォーマンス",
+        "デバッグ",
+        "アラート",
+        "モニタリング"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Developer（無料）: 5,000イベント/月。Team: $26/月〜。Business: $80/月〜。予約割引で20%OFF",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "API: 呼び出し元+エンドポイントの組み合わせごとにレート制限。429レスポンス+Retry-Afterヘッダーで通知。SDK: X-Sentry-Rate-Limitsヘッダーで制御",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "Ruby",
+        "PHP",
+        "Go",
+        ".NET",
+        "Rust",
+        "Swift",
+        "Kotlin"
+      ],
+      "useCases": [
+        "エラー監視自動化",
+        "リリース品質管理",
+        "パフォーマンスモニタリング",
+        "アラート連携",
+        "デバッグワークフロー"
+      ],
+      "popularity": {
+        "score": 90,
+        "users": "400万以上の開発者",
+        "marketPosition": "アプリケーションエラー監視のデファクトスタンダード",
+        "reason": "50以上のSDK対応と豊富な無料枠で開発者コミュニティでの採用が圧倒的。オープンソース（self-hosted）版も提供",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "40,000+（sentry本体）",
+        "npmDownloads": "約200万/週（@sentry/node）",
+        "adopters": [
+          "Microsoft",
+          "Disney",
+          "Cloudflare",
+          "Atlassian",
+          "GitHub"
+        ],
+        "sources": [
+          {
+            "label": "Sentry 公式サイト",
+            "url": "https://sentry.io/"
+          },
+          {
+            "label": "Sentry APIドキュメント",
+            "url": "https://docs.sentry.io/api/"
+          }
+        ],
+        "detail": "Sentryは2012年設立のエラー監視プラットフォーム。オープンソースとSaaSの両方を提供し、400万以上の開発者が利用。GitHub Stars 40,000以上で、npm週間DL数200万超。"
+      }
+    },
+    {
+      "id": "linear-api",
+      "name": "Linear API",
+      "nameJa": "Linear プロジェクト管理API",
+      "description": "高速・モダンなプロジェクト管理ツール「Linear」のGraphQL API。課題（Issue）管理、プロジェクト管理、サイクル管理、ラベル管理、ユーザー管理、コメント操作などの全機能をAPIから操作可能。GraphQL APIにより必要なデータのみを効率的に取得でき、Webhookによるリアルタイムイベント通知にも対応。TypeScript SDKも提供され、型安全な開発が可能。",
+      "url": "https://linear.app/",
+      "docsUrl": "https://linear.app/developers",
+      "category": "devtools",
+      "tags": [
+        "プロジェクト管理",
+        "Issue管理",
+        "GraphQL",
+        "Webhook",
+        "開発ツール"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Free: 無制限メンバー（250アクティブIssue制限）。Basic: $8/ユーザー/月（年払い）。Business: $14/ユーザー/月（年払い）",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "GraphQL APIのクエリ複雑度ベースの制限。詳細は開発者ドキュメント参照",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "Issue管理自動化",
+        "CI/CD連携",
+        "カスタムダッシュボード",
+        "Slack・GitHub連携",
+        "プロジェクトレポート生成"
+      ],
+      "popularity": {
+        "score": 80,
+        "users": "数万のスタートアップ・テック企業",
+        "marketPosition": "モダンなプロジェクト管理ツールの新興リーダー",
+        "reason": "Jiraの代替として急成長中。高速なUIとGraphQL APIが開発者に支持され、テック系スタートアップでの採用が急増",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "700+（SDK・ツール）",
+        "npmDownloads": "約5,000/週（@linear/sdk）",
+        "adopters": [
+          "Vercel",
+          "Ramp",
+          "Retool",
+          "Loom",
+          "Cash App"
+        ],
+        "sources": [
+          {
+            "label": "Linear 開発者ポータル",
+            "url": "https://linear.app/developers"
+          },
+          {
+            "label": "Linear GraphQL API",
+            "url": "https://linear.app/developers/graphql"
+          }
+        ],
+        "detail": "Linearは2019年設立のプロジェクト管理ツール。Jiraの代替として急速に採用が進み、特にテック系スタートアップで人気。GraphQL APIと型安全なTypeScript SDKが開発者に好評。"
+      }
+    },
+    {
+      "id": "virustotal",
+      "name": "VirusTotal API",
+      "nameJa": "VirusTotal API",
+      "description": "Google傘下のマルウェア・URL・ファイルスキャンプラットフォームのAPI。70以上のアンチウイルスエンジンでファイルやURLを同時スキャンし、脅威情報を統合的に取得できる。セキュリティ運用の自動化やインシデント対応ワークフローに広く活用されており、脅威インテリジェンスのデファクトスタンダード。",
+      "url": "https://www.virustotal.com/",
+      "docsUrl": "https://docs.virustotal.com/reference/overview",
+      "category": "security",
+      "tags": [
+        "マルウェア検出",
+        "脅威インテリジェンス",
+        "ファイルスキャン",
+        "URL分析",
+        "セキュリティ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 500リクエスト/日・4リクエスト/分。Premium版は要問い合わせ（VT Enterprise）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Public: 4リクエスト/分・500リクエスト/日。Premium: カスタム",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Go"
+      ],
+      "useCases": [
+        "マルウェア検出の自動化",
+        "URLの安全性チェック",
+        "セキュリティインシデント調査",
+        "脅威インテリジェンス収集"
+      ],
+      "popularity": {
+        "score": 90,
+        "users": "セキュリティ企業・SOCチーム・研究者など数百万ユーザー",
+        "marketPosition": "マルウェアスキャン・脅威インテリジェンス分野のデファクトスタンダード",
+        "reason": "70以上のAVエンジン統合、Google傘下で信頼性が高く、セキュリティ業界で最も広く使われるプラットフォーム",
+        "monthlyApiCalls": "数十億リクエスト/月",
+        "githubStars": "Python SDK 約200+",
+        "npmDownloads": "node-virustotal 約500/週",
+        "adopters": [
+          "Google",
+          "CrowdStrike",
+          "Palo Alto Networks",
+          "Microsoft"
+        ],
+        "sources": [
+          {
+            "label": "VirusTotal API公式ドキュメント",
+            "url": "https://docs.virustotal.com/reference/overview"
+          },
+          {
+            "label": "VirusTotal Public vs Premium",
+            "url": "https://docs.virustotal.com/reference/public-vs-premium-api"
+          }
+        ],
+        "detail": "Google Cloud傘下のVirusTotalは、セキュリティ業界における脅威インテリジェンスの中心的存在。SOAR/SIEMとの連携が標準的で、多くのセキュリティ製品がVirusTotalを統合している。"
+      }
+    },
+    {
+      "id": "haveibeenpwned",
+      "name": "Have I Been Pwned API",
+      "nameJa": "Have I Been Pwned API",
+      "description": "データ漏洩・情報流出チェックサービスのAPI。メールアドレスやパスワードが過去のデータ漏洩に含まれているかを確認できる。Pwned Passwordsは無料でk-Anonymityモデルを使った安全なパスワードチェックが可能。企業のセキュリティ対策やユーザー認証強化に広く利用されている。",
+      "url": "https://haveibeenpwned.com/",
+      "docsUrl": "https://haveibeenpwned.com/api/v3",
+      "category": "security",
+      "tags": [
+        "データ漏洩チェック",
+        "パスワード安全性",
+        "情報流出",
+        "セキュリティ",
+        "認証強化"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Pwned Passwords APIは完全無料。漏洩メール検索は有料（月額$3.50〜）、年額プランあり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Pwned Passwords: 制限なし。Breach検索: プランにより異なる",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "C#",
+        "Go"
+      ],
+      "useCases": [
+        "パスワード漏洩チェック",
+        "ユーザーアカウントの安全性検証",
+        "情報流出モニタリング",
+        "セキュリティ監査"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "数百万の個人・企業ユーザー",
+        "marketPosition": "データ漏洩チェック分野で最も著名なサービス",
+        "reason": "Troy Hunt氏が運営する信頼性の高いサービス。Pwned Passwordsは1Password、Firefox、Okta等に統合されている",
+        "monthlyApiCalls": "数億リクエスト/月（Pwned Passwords）",
+        "githubStars": "関連ライブラリ合計 500+",
+        "npmDownloads": "hibp 約2,000/週",
+        "adopters": [
+          "1Password",
+          "Firefox",
+          "Okta",
+          "Auth0"
+        ],
+        "sources": [
+          {
+            "label": "HIBP API v3 ドキュメント",
+            "url": "https://haveibeenpwned.com/api/v3"
+          },
+          {
+            "label": "HIBP サブスクリプション",
+            "url": "https://haveibeenpwned.com/Subscription"
+          }
+        ],
+        "detail": "セキュリティ研究者Troy Hunt氏が運営。Pwned Passwordsは600万回以上DLされたSHA-1ハッシュセットも提供しており、パスワード強度チェックのデファクトとなっている。"
+      }
+    },
+    {
+      "id": "cloudflare-api",
+      "name": "Cloudflare API",
+      "nameJa": "Cloudflare API",
+      "description": "CDN・DDoS防御・DNS管理・Webセキュリティの統合プラットフォームのAPI。ドメイン管理、ファイアウォールルール設定、WAF制御、SSL証明書管理などをプログラマティックに操作可能。Workers・R2・D1等のサーバーレス基盤もAPI経由で管理でき、インフラ自動化に不可欠。",
+      "url": "https://www.cloudflare.com/",
+      "docsUrl": "https://developers.cloudflare.com/fundamentals/api/",
+      "category": "security",
+      "tags": [
+        "CDN",
+        "DDoS防御",
+        "DNS管理",
+        "WAF",
+        "セキュリティ",
+        "インフラ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プランあり（基本CDN/DNS）。Pro $20/月、Business $200/月、Enterprise要問い合わせ",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "1,200リクエスト/5分（ユーザー単位）。Enterprise: カスタム上限",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Go",
+        "Rust"
+      ],
+      "useCases": [
+        "DNS・ドメイン管理の自動化",
+        "DDoS攻撃対策",
+        "WAFルール設定",
+        "CDNキャッシュ制御"
+      ],
+      "popularity": {
+        "score": 95,
+        "users": "数百万のWebサイト・企業が利用",
+        "marketPosition": "CDN・Webセキュリティ分野の最大手プロバイダー",
+        "reason": "インターネットトラフィックの約20%を処理。無料プランの充実さとWorkers等のエッジコンピューティングで開発者に圧倒的な人気",
+        "monthlyApiCalls": "数兆リクエスト/月（CDN含む）",
+        "githubStars": "cloudflare/cloudflare-go 約1,500+",
+        "npmDownloads": "cloudflare 約10,000/週",
+        "adopters": [
+          "Shopify",
+          "Discord",
+          "Canva",
+          "DHL"
+        ],
+        "sources": [
+          {
+            "label": "Cloudflare API Reference",
+            "url": "https://developers.cloudflare.com/fundamentals/api/reference/limits/"
+          },
+          {
+            "label": "Cloudflare開発者ドキュメント",
+            "url": "https://developers.cloudflare.com/"
+          }
+        ],
+        "detail": "Cloudflareはインターネットインフラの重要な柱。REST APIとGraphQL APIの両方を提供し、Terraform Providerも充実。API経由でのインフラ管理が標準的なワークフローとなっている。"
+      }
+    },
+    {
+      "id": "shodan",
+      "name": "Shodan API",
+      "nameJa": "Shodan API",
+      "description": "インターネットに接続されたデバイス・サービスの検索エンジンAPI。IPアドレス、ポート、バナー情報、脆弱性情報などを検索でき、セキュリティ調査やネットワーク監視に活用される。IoTデバイスの露出調査、攻撃対象面分析、脆弱性評価など、OSINT（公開情報調査）の重要ツール。",
+      "url": "https://www.shodan.io/",
+      "docsUrl": "https://developer.shodan.io/api",
+      "category": "security",
+      "tags": [
+        "OSINT",
+        "ネットワークスキャン",
+        "IoT検索",
+        "脆弱性調査",
+        "セキュリティ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料アカウントあり（制限付き）。Freelancer $69/月、Small Business $359/月、Corporate $1,099/月",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "クレジット制: 検索1回=1クエリクレジット。プランにより月次クレジット上限が異なる",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Ruby",
+        "Go"
+      ],
+      "useCases": [
+        "ネットワーク露出調査",
+        "IoTデバイス検索",
+        "脆弱性スキャン",
+        "攻撃対象面分析"
+      ],
+      "popularity": {
+        "score": 78,
+        "users": "セキュリティ研究者・ペネトレーションテスター・SOCチーム",
+        "marketPosition": "インターネットデバイス検索エンジンのパイオニア",
+        "reason": "OSINTツールとして圧倒的な知名度。セキュリティカンファレンスで常に言及される定番ツール",
+        "monthlyApiCalls": "数千万リクエスト/月",
+        "githubStars": "shodan-python 約2,800+",
+        "npmDownloads": "shodan-client 約200/週",
+        "adopters": [
+          "国防機関",
+          "セキュリティ企業",
+          "大学研究機関",
+          "CERT組織"
+        ],
+        "sources": [
+          {
+            "label": "Shodan API ドキュメント",
+            "url": "https://developer.shodan.io/api"
+          },
+          {
+            "label": "Shodan クレジット説明",
+            "url": "https://help.shodan.io/the-basics/credit-types-explained"
+          }
+        ],
+        "detail": "Shodanは『IoTの検索エンジン』として広く知られる。ペネトレーションテストやレッドチーム演習で標準的に使用され、セキュリティ教育でも頻繁に取り上げられる。"
+      }
+    },
+    {
+      "id": "securitytrails",
+      "name": "SecurityTrails API",
+      "nameJa": "SecurityTrails API",
+      "description": "ドメイン・DNS・IP情報の履歴データベースAPI。サブドメイン列挙、DNS変更履歴、関連ドメイン検出、WHOIS情報取得などが可能。脅威ハンティング、フィッシング調査、攻撃インフラの追跡に活用される。DSL（Domain Specific Language）による高度なクエリもサポート。",
+      "url": "https://securitytrails.com/",
+      "docsUrl": "https://docs.securitytrails.com/docs/overview",
+      "category": "security",
+      "tags": [
+        "DNS履歴",
+        "サブドメイン列挙",
+        "WHOIS",
+        "脅威ハンティング",
+        "OSINT"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 50クエリ/月。有料プランは2,500クエリ/月〜、要問い合わせ",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "アカウントレベルでリクエスト/秒制限あり。月次クォータはプランにより異なる",
+      "sdks": [
+        "Python",
+        "Go"
+      ],
+      "useCases": [
+        "サブドメイン列挙",
+        "DNS変更監視",
+        "脅威インフラ追跡",
+        "フィッシングサイト調査"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "セキュリティ研究者・脅威アナリスト・ペンテスター",
+        "marketPosition": "DNS・ドメインインテリジェンス分野の主要プロバイダー",
+        "reason": "SecurityTrailsはRecordedFuture（現Mastercard傘下）が運営。包括的なDNSデータベースを持ち、OSINT調査の定番",
+        "monthlyApiCalls": "数百万リクエスト/月",
+        "githubStars": "haktrails (Go CLI) 約1,000+",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "Recorded Future",
+          "セキュリティ企業",
+          "CERT",
+          "法執行機関"
+        ],
+        "sources": [
+          {
+            "label": "SecurityTrails API ドキュメント",
+            "url": "https://docs.securitytrails.com/docs/overview"
+          },
+          {
+            "label": "SecurityTrails 料金",
+            "url": "https://securitytrails.com/corp/pricing"
+          }
+        ],
+        "detail": "SecurityTrailsは過去10年以上のDNSレコード履歴を保持しており、ドメインの変遷を時系列で追跡可能。脅威ハンティングやインシデントレスポンスで重宝されている。"
+      }
+    },
+    {
+      "id": "abuseipdb",
+      "name": "AbuseIPDB API",
+      "nameJa": "AbuseIPDB API",
+      "description": "IPアドレスの悪用・不正アクセス報告データベースのAPI。特定のIPが過去にスパム、ブルートフォース攻撃、ポートスキャン等の悪意ある活動に使われたかを確認できる。IPの信頼度スコアリングやブラックリスト取得も可能で、ファイアウォールや侵入検知システムとの連携に最適。",
+      "url": "https://www.abuseipdb.com/",
+      "docsUrl": "https://docs.abuseipdb.com/",
+      "category": "security",
+      "tags": [
+        "IP評判",
+        "ブラックリスト",
+        "不正アクセス",
+        "脅威検出",
+        "ファイアウォール"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 1,000リクエスト/日（認証済みWebマスターは3,000/日）。有料プラン: 最大50,000リクエスト/日、30日無料トライアルあり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "無料: 1,000リクエスト/日。有料: 最大50,000リクエスト/日",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "PHP"
+      ],
+      "useCases": [
+        "IPアドレスの安全性チェック",
+        "ファイアウォールのブラックリスト連携",
+        "不正アクセス検知",
+        "セキュリティログ分析"
+      ],
+      "popularity": {
+        "score": 70,
+        "users": "サーバー管理者・セキュリティチーム・ネットワーク運用者",
+        "marketPosition": "IP評判データベースの主要プロバイダー",
+        "reason": "コミュニティ駆動のIP不正報告DB。Fortinet等のセキュリティ製品と公式連携しており、無料枠の充実さで人気",
+        "monthlyApiCalls": "数千万リクエスト/月",
+        "githubStars": "関連ツール合計 300+",
+        "npmDownloads": "abuseipdb 約300/週",
+        "adopters": [
+          "Fortinet",
+          "サーバー運用企業",
+          "ISP",
+          "CERT"
+        ],
+        "sources": [
+          {
+            "label": "AbuseIPDB API ドキュメント",
+            "url": "https://docs.abuseipdb.com/"
+          },
+          {
+            "label": "AbuseIPDB 料金プラン",
+            "url": "https://www.abuseipdb.com/pricing"
+          }
+        ],
+        "detail": "AbuseIPDBはコミュニティベースのIP評判サービス。ユーザーからの報告を集約してIPの信頼度をスコアリングする。Fail2ban等のセキュリティツールとの連携プラグインも豊富。"
+      }
+    },
+    {
+      "id": "microsoft-teams",
+      "name": "Microsoft Teams API (Graph API)",
+      "nameJa": "Microsoft Teams API（Graph API経由）",
+      "description": "Microsoft Graph API経由でTeamsのチャット、チャネル、会議、ファイル共有等を操作するAPI。メッセージ送受信、チーム管理、ユーザープレゼンス取得、通話制御などが可能。Microsoft 365エコシステムとのシームレスな連携により、企業向けコミュニケーション自動化の中核を担う。",
+      "url": "https://www.microsoft.com/ja-jp/microsoft-teams/",
+      "docsUrl": "https://learn.microsoft.com/en-us/graph/api/resources/teams-api-overview",
+      "category": "communication",
+      "tags": [
+        "チャット",
+        "ビデオ会議",
+        "チーム連携",
+        "Microsoft 365",
+        "エンタープライズ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Teams無料版あり。Microsoft 365 Business Basic $6/ユーザー/月〜。API自体は追加費用なし",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "チーム単位: 4リクエスト/秒/アプリ。チャネル: 1リクエスト/秒/テナント。メッセージ投稿: 1リクエスト/秒/ユーザー",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "C#",
+        "Java"
+      ],
+      "useCases": [
+        "チャットボット構築",
+        "会議の自動スケジュール",
+        "通知・アラート配信",
+        "ワークフロー自動化"
+      ],
+      "popularity": {
+        "score": 92,
+        "users": "3億以上の月間アクティブユーザー",
+        "marketPosition": "企業向けコミュニケーションプラットフォームの最大手",
+        "reason": "Microsoft 365の普及により企業導入率が非常に高い。Graph APIによる統合的なデータアクセスが強み",
+        "monthlyApiCalls": "数百億リクエスト/月（Graph API全体）",
+        "githubStars": "microsoft-graph-sdk 約1,500+",
+        "npmDownloads": "@microsoft/microsoft-graph-client 約200,000/週",
+        "adopters": [
+          "Fortune 500企業の大多数",
+          "政府機関",
+          "教育機関",
+          "Accenture"
+        ],
+        "sources": [
+          {
+            "label": "Microsoft Teams API Overview",
+            "url": "https://learn.microsoft.com/en-us/graph/api/resources/teams-api-overview"
+          },
+          {
+            "label": "Graph API スロットリング",
+            "url": "https://learn.microsoft.com/en-us/graph/throttling-limits"
+          }
+        ],
+        "detail": "Microsoft TeamsはGraph APIの一部として提供され、Outlook、SharePoint、OneDrive等とのシームレスな連携が最大の強み。企業のDXにおいて中心的な役割を果たしている。"
+      }
+    },
+    {
+      "id": "zoom-api",
+      "name": "Zoom API",
+      "nameJa": "Zoom API",
+      "description": "ビデオ会議プラットフォームZoomのREST API。会議の作成・管理、参加者管理、録画操作、レポート取得などが可能。Webhook経由のイベント通知やOAuthアプリの構築にも対応。パンデミック以降の普及により、教育・医療・ビジネスなど幅広い分野で利用されている。",
+      "url": "https://zoom.us/",
+      "docsUrl": "https://developers.zoom.us/docs/api/",
+      "category": "communication",
+      "tags": [
+        "ビデオ会議",
+        "ウェビナー",
+        "オンライン会議",
+        "録画",
+        "リモートワーク"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Zoom Free（40分制限）。Pro $13.33/月〜。API利用はZoomライセンスに含まれる",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Light API: 80リクエスト/秒、Medium: 60リクエスト/秒、Heavy: 40リクエスト/秒+60,000/日",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java"
+      ],
+      "useCases": [
+        "会議の自動スケジュール",
+        "参加者管理の自動化",
+        "録画データの管理",
+        "ウェビナー運営"
+      ],
+      "popularity": {
+        "score": 88,
+        "users": "3億以上の日次会議参加者（ピーク時）",
+        "marketPosition": "ビデオ会議市場のリーダー",
+        "reason": "パンデミック以降の急成長で企業・教育機関に広く浸透。API連携も豊富でサードパーティエコシステムが充実",
+        "monthlyApiCalls": "数十億リクエスト/月",
+        "githubStars": "zoom関連ツール合計 5,000+",
+        "npmDownloads": "zoom関連パッケージ 約5,000/週",
+        "adopters": [
+          "Salesforce",
+          "Slack",
+          "HubSpot",
+          "教育機関多数"
+        ],
+        "sources": [
+          {
+            "label": "Zoom API Rate Limits",
+            "url": "https://developers.zoom.us/docs/api/rate-limits/"
+          },
+          {
+            "label": "Zoom Developer Documentation",
+            "url": "https://developers.zoom.us/docs/api/"
+          }
+        ],
+        "detail": "ZoomはビデオSDKも提供しており、自社アプリへのビデオ通話機能の組み込みも可能。Zoom Appsマーケットプレイスにより、サードパーティアプリの開発エコシステムも活発。"
+      }
+    },
+    {
+      "id": "webex-api",
+      "name": "Webex API",
+      "nameJa": "Webex API（Cisco）",
+      "description": "Cisco Webexのビデオ会議・メッセージング・通話機能を操作するAPI。ミーティング管理、メッセージ送受信、ユーザー管理、デバイス制御、通話録音などが可能。エンタープライズ向けのセキュリティ・コンプライアンス機能が充実しており、大企業での導入が多い。",
+      "url": "https://www.webex.com/",
+      "docsUrl": "https://developer.webex.com/docs/getting-started",
+      "category": "communication",
+      "tags": [
+        "ビデオ会議",
+        "メッセージング",
+        "Cisco",
+        "エンタープライズ",
+        "通話"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Webex Free（基本機能）。Starter $14.50/月〜。API利用はWebexライセンスに含まれる",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Meetings API: 200リクエスト/分。People API: プランにより異なる",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java"
+      ],
+      "useCases": [
+        "会議室予約の自動化",
+        "チャットボット構築",
+        "通話管理",
+        "デバイス制御"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "数千万の企業ユーザー",
+        "marketPosition": "エンタープライズ向けビデオ会議の大手",
+        "reason": "Ciscoのネットワーク基盤との統合が強み。大企業・政府機関での採用率が高い",
+        "monthlyApiCalls": "数億リクエスト/月",
+        "githubStars": "webex関連SDK合計 500+",
+        "npmDownloads": "webex 約2,000/週",
+        "adopters": [
+          "Cisco",
+          "NASA",
+          "大手金融機関",
+          "政府機関"
+        ],
+        "sources": [
+          {
+            "label": "Webex Developer Portal",
+            "url": "https://developer.webex.com/"
+          },
+          {
+            "label": "Webex Rate Limiting",
+            "url": "https://developer.webex.com/blog/rate-limiting-and-the-webex-api"
+          }
+        ],
+        "detail": "Cisco Webexはエンタープライズ向けの堅牢なセキュリティ（E2E暗号化、コンプライアンス）が特徴。Webex Connect（CPaaS）との連携でオムニチャネル通信も実現。"
+      }
+    },
+    {
+      "id": "telegram-bot",
+      "name": "Telegram Bot API",
+      "nameJa": "Telegram Bot API",
+      "description": "Telegramメッセンジャーのボット開発API。メッセージ送受信、インラインキーボード、ファイル送信、決済機能、ミニアプリ（Web Apps）など豊富な機能を提供。無料で制限が緩く、Webhookとポーリングの両方をサポート。暗号通貨・Web3コミュニティで特に人気が高い。",
+      "url": "https://telegram.org/",
+      "docsUrl": "https://core.telegram.org/bots/api",
+      "category": "communication",
+      "tags": [
+        "チャットボット",
+        "メッセンジャー",
+        "自動化",
+        "ミニアプリ",
+        "通知"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。商用利用も無料",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "1対1チャット: 1メッセージ/秒。グループ: 20メッセージ/分。一斉送信: 約30ユーザー/秒",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Java",
+        "Go",
+        "Rust"
+      ],
+      "useCases": [
+        "通知ボット構築",
+        "カスタマーサポート自動化",
+        "コミュニティ管理",
+        "ミニアプリ開発"
+      ],
+      "popularity": {
+        "score": 88,
+        "users": "9億以上の月間アクティブユーザー（Telegram全体）",
+        "marketPosition": "ボット開発プラットフォームとして最も活発",
+        "reason": "無料で高機能、Bot Fatherによる簡単なボット作成、Web3コミュニティでの圧倒的な採用率",
+        "monthlyApiCalls": "数百億リクエスト/月",
+        "githubStars": "python-telegram-bot 約26,000",
+        "npmDownloads": "telegraf 約100,000/週",
+        "adopters": [
+          "Web3プロジェクト多数",
+          "TON Foundation",
+          "報道機関",
+          "政府機関"
+        ],
+        "sources": [
+          {
+            "label": "Telegram Bot API 公式ドキュメント",
+            "url": "https://core.telegram.org/bots/api"
+          },
+          {
+            "label": "Telegram Bots FAQ",
+            "url": "https://core.telegram.org/bots/faq"
+          }
+        ],
+        "detail": "Telegram Bot APIは最も開発者フレンドリーなボットプラットフォームの一つ。Mini Apps機能によりWebアプリをTelegram内で動かすことも可能で、Web3分野で特に活用されている。"
+      }
+    },
+    {
+      "id": "whatsapp-business",
+      "name": "WhatsApp Business API",
+      "nameJa": "WhatsApp Business API",
+      "description": "Meta社が提供するWhatsAppのビジネス向けAPI。テンプレートメッセージ、インタラクティブメッセージ、メディア送信、カタログ表示などが可能。世界最大のメッセンジャープラットフォームを活用したカスタマーエンゲージメント、マーケティング、カスタマーサポートに利用される。",
+      "url": "https://business.whatsapp.com/",
+      "docsUrl": "https://developers.facebook.com/docs/whatsapp",
+      "category": "communication",
+      "tags": [
+        "メッセンジャー",
+        "カスタマーサポート",
+        "マーケティング",
+        "Meta",
+        "ビジネスメッセージ"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "2025年7月〜メッセージ単価制: マーケティング$0.025〜/通、ユーティリティ$0.004〜/通。サービスメッセージ（24時間以内の応答）は無料",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "API: 300リクエスト/分（申請で600/分に拡張可）。メッセージ: 新規番号は250会話/24時間〜段階的に拡大",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "PHP"
+      ],
+      "useCases": [
+        "カスタマーサポート自動化",
+        "注文確認・配送通知",
+        "マーケティングメッセージ配信",
+        "予約確認"
+      ],
+      "popularity": {
+        "score": 93,
+        "users": "20億以上のWhatsAppユーザー、数百万のビジネスアカウント",
+        "marketPosition": "世界最大のメッセンジャープラットフォーム",
+        "reason": "世界人口の約25%が利用するメッセンジャー。インド、ブラジル、東南アジアを中心にビジネス利用が急拡大",
+        "monthlyApiCalls": "数百億メッセージ/月",
+        "githubStars": "whatsapp関連ライブラリ合計 10,000+",
+        "npmDownloads": "whatsapp-web.js 約50,000/週",
+        "adopters": [
+          "Meta",
+          "Twilio",
+          "MessageBird",
+          "Zendesk"
+        ],
+        "sources": [
+          {
+            "label": "WhatsApp Business Platform Pricing",
+            "url": "https://business.whatsapp.com/products/platform-pricing"
+          },
+          {
+            "label": "WhatsApp API Rate Limits",
+            "url": "https://www.wati.io/en/blog/whatsapp-business-api/whatsapp-api-rate-limits/"
+          }
+        ],
+        "detail": "WhatsApp Business APIはMeta Cloud API経由とオンプレミスの2つのホスティング方式がある。2025年7月から会話ベースからメッセージ単価制に移行し、よりシンプルな課金体系になった。"
+      }
+    },
+    {
+      "id": "lark-feishu",
+      "name": "Lark/Feishu API",
+      "nameJa": "Lark/飛書 API",
+      "description": "ByteDance（TikTok親会社）が提供するオールインワン業務プラットフォームのAPI。メッセージング、ドキュメント、スプレッドシート、カレンダー、ビデオ会議、ワークフロー承認などを統合的に操作可能。中国版（飛書）とグローバル版（Lark）の両方のAPIを提供。",
+      "url": "https://www.larksuite.com/",
+      "docsUrl": "https://open.larksuite.com/document/home/index",
+      "category": "communication",
+      "tags": [
+        "チャット",
+        "ドキュメント",
+        "ワークフロー",
+        "ByteDance",
+        "オールインワン"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Starter無料。Pro $12/ユーザー/月。Enterprise要問い合わせ。API利用はプランに含まれる",
+      "auth": "bearer",
+      "region": "both",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "APIごとに異なる頻度制御。一般的に数十リクエスト/秒",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Go",
+        "Java"
+      ],
+      "useCases": [
+        "業務ワークフロー自動化",
+        "チャットボット構築",
+        "ドキュメント管理",
+        "承認プロセス自動化"
+      ],
+      "popularity": {
+        "score": 68,
+        "users": "数千万のビジネスユーザー（中国中心）",
+        "marketPosition": "アジア圏で急成長中のオールインワン業務プラットフォーム",
+        "reason": "ByteDanceの技術力を背景に、Slack+Notion+Zoomを統合した包括的プラットフォーム。中国市場で急成長、グローバル展開も加速中",
+        "monthlyApiCalls": "数億リクエスト/月",
+        "githubStars": "larksuite/node-sdk 約200、go-lark/lark 約1,700",
+        "npmDownloads": "@larksuiteoapi/node-sdk 約3,000/週",
+        "adopters": [
+          "ByteDance",
+          "中国テック企業",
+          "アジア進出企業",
+          "スタートアップ"
+        ],
+        "sources": [
+          {
+            "label": "Lark Open Platform",
+            "url": "https://open.larksuite.com/"
+          },
+          {
+            "label": "Lark 料金プラン",
+            "url": "https://www.larksuite.com/en_us/plans"
+          }
+        ],
+        "detail": "Lark/飛書はNotionのようなドキュメント、Slackのようなチャット、Zoomのようなビデオ会議を一つのプラットフォームに統合。中国版飛書とグローバル版LarkでAPIが共通化されている。"
+      }
+    },
+    {
+      "id": "komoju",
+      "name": "Komoju API",
+      "nameJa": "Komoju API",
+      "description": "日本市場に特化した決済ゲートウェイAPI。コンビニ払い、銀行振込、PayPay、LINE Pay、au PAY等の日本固有の決済手段をサードパーティ連携なしで一括導入可能。Shopify、WooCommerce等のECプラットフォームとのプラグインも提供。初期費用・月額固定費無料のトランザクション課金モデル。",
+      "url": "https://en.komoju.com/",
+      "docsUrl": "https://docs.komoju.com/",
+      "category": "payment",
+      "tags": [
+        "日本決済",
+        "コンビニ払い",
+        "銀行振込",
+        "ECサイト",
+        "決済ゲートウェイ"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "初期費用・月額固定費なし。決済手数料のみ（手段により異なる）。振込手数料: 3万円未満220円/3万円以上410円",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "公開情報なし。一般的なAPI利用に十分な上限",
+      "sdks": [
+        "Ruby",
+        "Python",
+        "PHP"
+      ],
+      "useCases": [
+        "日本向けECサイト決済",
+        "コンビニ払い導入",
+        "サブスクリプション決済",
+        "QRコード決済統合"
+      ],
+      "popularity": {
+        "score": 55,
+        "users": "日本市場の中小〜中堅ECサイト",
+        "marketPosition": "日本決済特化の海外事業者向けゲートウェイ",
+        "reason": "日本独自の決済手段（コンビニ払い、銀行振込等）を簡単に導入できる。海外企業の日本進出で重宝される",
+        "monthlyApiCalls": "数百万リクエスト/月",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "海外ECサイト",
+          "Shopifyストア",
+          "日本進出企業"
+        ],
+        "sources": [
+          {
+            "label": "Komoju API ドキュメント",
+            "url": "https://docs.komoju.com/"
+          },
+          {
+            "label": "Komoju 料金",
+            "url": "https://en.komoju.com/pricing/"
+          }
+        ],
+        "detail": "KomojuはDegica社が運営する日本特化の決済ゲートウェイ。特に海外事業者が日本市場に参入する際の決済インフラとして利用されている。2025年の日本モバイルソフトウェア競争促進法にも対応。"
+      }
+    },
+    {
+      "id": "omise",
+      "name": "Omise (Opn Payments) API",
+      "nameJa": "Omise API（Opn Payments）",
+      "description": "東南アジアに特化したオンライン決済プラットフォームAPI。タイ、日本、シンガポール等で利用可能。クレジットカード、銀行振込、QRコード決済、電子ウォレット等に対応。2025年に再びOmiseブランドに回帰し、AI機能（Smart Routing、AI Assistant）を導入。",
+      "url": "https://www.omise.co/",
+      "docsUrl": "https://docs.omise.co/",
+      "category": "payment",
+      "tags": [
+        "東南アジア決済",
+        "オンライン決済",
+        "タイ",
+        "QRコード",
+        "AI決済"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "決済手数料1.65%〜（国・決済手段により異なる）。初期費用なし",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "並列ワーカー10以下推奨。429レスポンスで制限通知",
+      "sdks": [
+        "Ruby",
+        "Python",
+        "JavaScript",
+        "PHP",
+        "Java",
+        "Go",
+        "C#"
+      ],
+      "useCases": [
+        "東南アジア向けEC決済",
+        "サブスクリプション課金",
+        "QRコード決済導入",
+        "マルチ通貨決済"
+      ],
+      "popularity": {
+        "score": 58,
+        "users": "東南アジアのEC事業者・フィンテック企業",
+        "marketPosition": "東南アジア決済市場の主要プレイヤー",
+        "reason": "タイ発の決済プラットフォームで東南アジアでの知名度が高い。2025年にAI機能導入で差別化",
+        "monthlyApiCalls": "数千万リクエスト/月",
+        "githubStars": "omise関連SDK合計 500+",
+        "npmDownloads": "omise 約1,000/週",
+        "adopters": [
+          "東南アジアEC事業者",
+          "タイ企業",
+          "日系企業（アジア展開）"
+        ],
+        "sources": [
+          {
+            "label": "Omise API ドキュメント",
+            "url": "https://docs.omise.co/"
+          },
+          {
+            "label": "Omise Rate Limiting",
+            "url": "https://docs.opn.ooo/api-rate-limiting"
+          }
+        ],
+        "detail": "Omise（旧Opn Payments）は2025年に元のOmiseブランドに回帰。AI Suite（Smart Routing、AI Assistant、Generative Dashboard）を導入し、決済の最適化を自動化している。"
+      }
+    },
+    {
+      "id": "adyen",
+      "name": "Adyen API",
+      "nameJa": "Adyen API",
+      "description": "グローバル対応の統合決済プラットフォームAPI。オンライン決済、店舗決済（POS）、モバイル決済を単一プラットフォームで処理。250以上の決済手段と150以上の通貨に対応。リスク管理、不正検知、Revenue Optimizationなどの高度な機能も内蔵。大規模企業向け決済インフラのリーダー。",
+      "url": "https://www.adyen.com/",
+      "docsUrl": "https://docs.adyen.com/",
+      "category": "payment",
+      "tags": [
+        "グローバル決済",
+        "POS",
+        "不正検知",
+        "オムニチャネル",
+        "エンタープライズ"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "Interchange++モデル。固定手数料約€0.11/取引+変動手数料（決済手段による）。月額固定費なし",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "本番: 700リクエスト/5秒（Legal Entity API）。テスト: 200リクエスト/5秒。エンドポイントにより異なる",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "PHP",
+        "Go",
+        "Ruby",
+        "C#"
+      ],
+      "useCases": [
+        "グローバルEC決済",
+        "オムニチャネル決済統合",
+        "サブスクリプション管理",
+        "マーケットプレイス決済"
+      ],
+      "popularity": {
+        "score": 88,
+        "users": "グローバル大企業・中堅企業",
+        "marketPosition": "グローバル決済プラットフォームのリーダー（時価総額約€40B）",
+        "reason": "Spotify、Uber、eBay等のグローバル企業が採用。単一プラットフォームでオンライン・オフラインを統合できる点が強み",
+        "monthlyApiCalls": "数百億リクエスト/月",
+        "githubStars": "adyen関連SDK合計 1,000+",
+        "npmDownloads": "@adyen/api-library 約15,000/週",
+        "adopters": [
+          "Spotify",
+          "Uber",
+          "eBay",
+          "Microsoft"
+        ],
+        "sources": [
+          {
+            "label": "Adyen API Explorer",
+            "url": "https://docs.adyen.com/api-explorer/"
+          },
+          {
+            "label": "Adyen ドキュメント",
+            "url": "https://docs.adyen.com/"
+          }
+        ],
+        "detail": "Adyenはオランダ発の決済プラットフォーム大手。アクワイアリングからリスク管理まで自社で完結するフルスタック構造が特徴。2023年のGMV（総取扱高）は€900B超。"
+      }
+    },
+    {
+      "id": "braintree",
+      "name": "Braintree API",
+      "nameJa": "Braintree API",
+      "description": "PayPal傘下の決済プラットフォームAPI。クレジットカード、PayPal、Venmo、Apple Pay、Google Pay等をAPIで統合可能。GraphQL APIを採用し、モダンな開発体験を提供。ドロップインUIやホスト型フィールドにより、PCI準拠の簡略化を実現。マーケットプレイス決済にも対応。",
+      "url": "https://www.braintreepayments.com/",
+      "docsUrl": "https://developer.paypal.com/braintree/docs/",
+      "category": "payment",
+      "tags": [
+        "PayPal",
+        "決済統合",
+        "GraphQL",
+        "マーケットプレイス",
+        "モバイル決済"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "カード決済: 2.59%+$0.49/取引（米国）。PayPal/Venmo経由は追加手数料なし。月額固定費なし",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "公式のレート制限値は非公開。通常利用に十分な上限",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby",
+        "PHP",
+        "Java",
+        "C#"
+      ],
+      "useCases": [
+        "ECサイト決済",
+        "PayPal統合",
+        "マーケットプレイス決済",
+        "サブスクリプション課金"
+      ],
+      "popularity": {
+        "score": 80,
+        "users": "中小〜大企業のEC事業者",
+        "marketPosition": "PayPalエコシステムの主要決済ゲートウェイ",
+        "reason": "PayPalとの完全統合が最大の強み。ドロップインUIの使いやすさとGraphQL APIのモダンさで開発者に人気",
+        "monthlyApiCalls": "数十億リクエスト/月",
+        "githubStars": "braintree関連SDK合計 2,000+",
+        "npmDownloads": "braintree 約50,000/週",
+        "adopters": [
+          "Uber",
+          "Airbnb",
+          "GitHub",
+          "Dropbox"
+        ],
+        "sources": [
+          {
+            "label": "Braintree ドキュメント",
+            "url": "https://developer.paypal.com/braintree/docs/"
+          },
+          {
+            "label": "Braintree 料金",
+            "url": "https://www.paypal.com/us/enterprise/paypal-braintree-fees"
+          }
+        ],
+        "detail": "BraintreeはPayPal傘下としてPayPal・Venmoとのシームレスな統合が最大の差別化要因。GraphQL APIの採用により、柔軟なクエリとレスポンスのカスタマイズが可能。"
+      }
+    },
+    {
+      "id": "tomtom",
+      "name": "TomTom API",
+      "nameJa": "TomTom API",
+      "description": "オランダの地図・ナビゲーション企業TomTomが提供する地図プラットフォームAPI。ルーティング、ジオコーディング、交通情報、マップタイル、マトリクスルーティング等の幅広い地図サービスをAPI経由で利用可能。自動車メーカーへのナビゲーション技術供給で培った高精度な地図データが強み。",
+      "url": "https://www.tomtom.com/",
+      "docsUrl": "https://developer.tomtom.com/",
+      "category": "maps",
+      "tags": [
+        "地図",
+        "ルーティング",
+        "交通情報",
+        "ジオコーディング",
+        "ナビゲーション"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 50,000タイル+2,500非タイルリクエスト/日。超過分$0.08/1,000タイルリクエスト",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "非タイルAPI: 5 QPS。タイルAPI: 1,000 QPS。Enterprise: カスタム",
+      "sdks": [
+        "JavaScript",
+        "Android",
+        "iOS"
+      ],
+      "useCases": [
+        "ルート最適化",
+        "交通情報の取得",
+        "ジオコーディング",
+        "配送ルート計算"
+      ],
+      "popularity": {
+        "score": 75,
+        "users": "自動車メーカー・物流企業・開発者",
+        "marketPosition": "Google Mapsに次ぐ主要な地図APIプロバイダー",
+        "reason": "自動車業界での長年の実績と高精度な交通データ。Google Maps代替としての需要が増加",
+        "monthlyApiCalls": "数十億リクエスト/月",
+        "githubStars": "tomtom関連ツール合計 500+",
+        "npmDownloads": "@tomtom-international/web-sdk 約5,000/週",
+        "adopters": [
+          "Microsoft",
+          "Uber",
+          "Fiat",
+          "Volkswagen"
+        ],
+        "sources": [
+          {
+            "label": "TomTom Developer Portal",
+            "url": "https://developer.tomtom.com/"
+          },
+          {
+            "label": "TomTom 料金",
+            "url": "https://developer.tomtom.com/store/maps-api"
+          }
+        ],
+        "detail": "TomTomは自動車向けナビゲーション技術のパイオニア。高精度な交通データとリアルタイム渋滞情報が強みで、MicrosoftのBing Mapsにも技術提供している。"
+      }
+    },
+    {
+      "id": "gsi-vector-tile",
+      "name": "GSI Vector Tile API",
+      "nameJa": "国土地理院ベクトルタイルAPI",
+      "description": "国土地理院が提供する日本の地図データのベクトルタイル配信API。最適化ベクトルタイルとして、Mapbox Vector Tile形式で日本全国の地形・道路・建物・地名等のデータを取得可能。PMTilesファイル配信とXYZ方式の両方に対応。日本の高精度な地理データを無料で利用できる貴重なリソース。",
+      "url": "https://maps.gsi.go.jp/",
+      "docsUrl": "https://github.com/gsi-cyberjapan/optimal_bvmap",
+      "category": "maps",
+      "tags": [
+        "日本地図",
+        "ベクトルタイル",
+        "国土地理院",
+        "GIS",
+        "オープンデータ"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。出典明記が必要",
+      "auth": "none",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "明確な制限値は非公開。常識的な利用範囲で運用",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "日本地図の表示",
+        "GISアプリケーション開発",
+        "防災マップ作成",
+        "都市計画ビジュアライゼーション"
+      ],
+      "popularity": {
+        "score": 50,
+        "users": "GIS開発者・自治体・研究者・防災関連アプリ開発者",
+        "marketPosition": "日本の公式地理データプロバイダー",
+        "reason": "日本の地理空間データの最も信頼性の高い公式ソース。無料でMapbox GL JS等と連携可能",
+        "monthlyApiCalls": "数百万リクエスト/月",
+        "githubStars": "gsi-cyberjapan/optimal_bvmap 約100+",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "自治体",
+          "防災アプリ",
+          "地図サービス企業",
+          "研究機関"
+        ],
+        "sources": [
+          {
+            "label": "地理院地図ベクトルタイル提供実験",
+            "url": "https://maps.gsi.go.jp/development/vt.html"
+          },
+          {
+            "label": "最適化ベクトルタイル GitHub",
+            "url": "https://github.com/gsi-cyberjapan/optimal_bvmap"
+          }
+        ],
+        "detail": "国土地理院の最適化ベクトルタイルは、タイルサイズを256KB以下に最適化した軽量設計。Mapbox GL JSやMapLibre GL JSでの表示に対応し、日本の地図アプリ開発に不可欠なデータソース。"
+      }
+    },
+    {
+      "id": "geoapify",
+      "name": "Geoapify API",
+      "nameJa": "Geoapify API",
+      "description": "ジオコーディング、ルーティング、地図タイル、場所検索、アイソクロン（等時間圏）等を提供するロケーションプラットフォームAPI。クレジットベースの課金で、無料枠が充実（3,000クレジット/日）。OpenStreetMapベースのデータを使用し、Google Maps代替として費用対効果の高い選択肢。",
+      "url": "https://www.geoapify.com/",
+      "docsUrl": "https://apidocs.geoapify.com/",
+      "category": "maps",
+      "tags": [
+        "ジオコーディング",
+        "ルーティング",
+        "地図タイル",
+        "アイソクロン",
+        "場所検索"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 3,000クレジット/日。有料プラン: クレジット追加購入制。1 APIリクエスト=1クレジット（基本）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "無料: 3 QPS。有料: 最大30 QPS（ジオコーディング）。専用サーバー: 最大500 QPS（タイル）",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "住所検索・ジオコーディング",
+        "ルート計算",
+        "商圏分析",
+        "到達圏（アイソクロン）分析"
+      ],
+      "popularity": {
+        "score": 48,
+        "users": "中小開発チーム・スタートアップ",
+        "marketPosition": "コスト効率の良いGoogle Maps代替",
+        "reason": "無料枠が充実し、OSMベースで低コスト。レート制限超過時も即座にブロックしない柔軟な運用が特徴",
+        "monthlyApiCalls": "数百万リクエスト/月",
+        "githubStars": "geoapify関連ツール 約200+",
+        "npmDownloads": "@geoapify/geocoder-autocomplete 約5,000/週",
+        "adopters": [
+          "スタートアップ",
+          "個人開発者",
+          "不動産テック"
+        ],
+        "sources": [
+          {
+            "label": "Geoapify 料金",
+            "url": "https://www.geoapify.com/pricing/"
+          },
+          {
+            "label": "Geoapify API ドキュメント",
+            "url": "https://apidocs.geoapify.com/"
+          }
+        ],
+        "detail": "GeoapifyはOSMデータを活用した費用対効果の高い地図プラットフォーム。特にアイソクロン（等時間圏）APIが強みで、不動産や商圏分析での活用が増えている。"
+      }
+    },
+    {
+      "id": "locationiq",
+      "name": "LocationIQ API",
+      "nameJa": "LocationIQ API",
+      "description": "ジオコーディング、逆ジオコーディング、ルーティング、地図タイル、オートコンプリートを提供する低コストの位置情報API。OpenStreetMapベースで、Google Maps Geocoding APIの代替として高い費用対効果を提供。シンプルなAPIデザインで導入が容易。",
+      "url": "https://locationiq.com/",
+      "docsUrl": "https://locationiq.com/docs",
+      "category": "maps",
+      "tags": [
+        "ジオコーディング",
+        "逆ジオコーディング",
+        "地図タイル",
+        "オートコンプリート",
+        "低コスト"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 5,000リクエスト/日・2 QPS。最小有料プラン: $49/月（10,000リクエスト/日・15 QPS）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "無料: 2リクエスト/秒・5,000/日。有料: 15 QPS〜。ソフトリミット（100%超過まで許容）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "PHP",
+        "Dart"
+      ],
+      "useCases": [
+        "住所検索",
+        "座標から住所変換",
+        "配送先住所の補完",
+        "地図表示"
+      ],
+      "popularity": {
+        "score": 52,
+        "users": "中小開発チーム・コスト重視のプロジェクト",
+        "marketPosition": "低コストジオコーディングAPIの代表格",
+        "reason": "Google Mapsの1/10以下のコストでジオコーディングが可能。シンプルなAPIと寛容なレート制限で人気",
+        "monthlyApiCalls": "数億リクエスト/月",
+        "githubStars": "関連ツール合計 200+",
+        "npmDownloads": "locationiq 約500/週",
+        "adopters": [
+          "スタートアップ",
+          "ECサイト",
+          "配送サービス"
+        ],
+        "sources": [
+          {
+            "label": "LocationIQ 料金",
+            "url": "https://locationiq.com/pricing"
+          },
+          {
+            "label": "LocationIQ ドキュメント",
+            "url": "https://locationiq.com/docs"
+          }
+        ],
+        "detail": "LocationIQはNominatim互換のAPIを提供し、既存のOSMベースアプリからの移行が容易。スタートアップ向け50%割引プログラムもあり、コスト重視のプロジェクトに最適。"
+      }
+    },
+    {
+      "id": "reddit",
+      "name": "Reddit API",
+      "nameJa": "Reddit API",
+      "description": "世界最大の掲示板型SNS「Reddit」のData API。投稿・コメントの取得、サブレディットの管理、ユーザー情報取得、検索機能などを提供。2023年のAPI有料化で大きな議論を呼んだが、非商用利用は引き続き無料。ソーシャルリスニング、コンテンツ分析、コミュニティ管理に活用。",
+      "url": "https://www.reddit.com/",
+      "docsUrl": "https://www.reddit.com/dev/api/",
+      "category": "social",
+      "tags": [
+        "SNS",
+        "掲示板",
+        "コミュニティ",
+        "ソーシャルリスニング",
+        "UGC"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "非商用利用は無料（100 QPM）。商用利用: $0.24/1,000リクエスト。事前承認が必要",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "認証済み: 100リクエスト/分（OAuth）。未認証: 10リクエスト/分",
+      "sdks": [
+        "Python",
+        "JavaScript",
+        "Java"
+      ],
+      "useCases": [
+        "ソーシャルリスニング",
+        "コンテンツ分析",
+        "コミュニティボット作成",
+        "トレンド調査"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "数十万の開発者・リサーチャー",
+        "marketPosition": "世界最大の匿名掲示板プラットフォーム",
+        "reason": "月間20億以上のアクティブユーザー。2023年のAPI有料化は物議を醸したが、データソースとしての重要性は高い",
+        "monthlyApiCalls": "数十億リクエスト/月",
+        "githubStars": "PRAW (Python) 約3,400+",
+        "npmDownloads": "snoowrap 約10,000/週",
+        "adopters": [
+          "Google",
+          "AI研究機関",
+          "マーケティング企業",
+          "ニュースメディア"
+        ],
+        "sources": [
+          {
+            "label": "Reddit Data API Wiki",
+            "url": "https://support.reddithelp.com/hc/en-us/articles/16160319875092-Reddit-Data-API-Wiki"
+          },
+          {
+            "label": "Reddit API コスト解説",
+            "url": "https://rankvise.com/blog/reddit-api-cost-guide/"
+          }
+        ],
+        "detail": "Reddit APIは2023年に有料化され、多くのサードパーティアプリが閉鎖する事態となった。現在は非商用利用は無料だが、商用利用には事前承認と課金が必要。"
+      }
+    },
+    {
+      "id": "pinterest",
+      "name": "Pinterest API",
+      "nameJa": "Pinterest API",
+      "description": "ビジュアル発見・ブックマークプラットフォームPinterestのAPI v5。ピン・ボードの管理、広告管理、商品カタログ連携、コンバージョントラッキング、トレンド分析などが可能。ECサイトとの連携によるショッピング機能が強化されており、ビジュアルコマースに注力。",
+      "url": "https://www.pinterest.com/",
+      "docsUrl": "https://developers.pinterest.com/docs/api/v5/",
+      "category": "social",
+      "tags": [
+        "SNS",
+        "ビジュアル検索",
+        "EC連携",
+        "広告",
+        "トレンド"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料。広告APIは広告出稿が前提",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "全エンドポイント共通: 100リクエスト/秒/ユーザー/アプリ。Trial/Standard等のアクセスレベルで上限が異なる",
+      "sdks": [
+        "Python",
+        "JavaScript"
+      ],
+      "useCases": [
+        "商品ピン連携",
+        "広告キャンペーン管理",
+        "トレンド分析",
+        "コンテンツ自動投稿"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "月間4億以上のアクティブユーザー",
+        "marketPosition": "ビジュアルSNS・EC連携プラットフォーム",
+        "reason": "EC・小売業界との相性が良く、ショッピング機能の強化により商用利用が拡大。特に女性ユーザー層で高い影響力",
+        "monthlyApiCalls": "数億リクエスト/月",
+        "githubStars": "pinterest関連SDK 約300+",
+        "npmDownloads": "pinterest-api 約500/週",
+        "adopters": [
+          "EC事業者",
+          "ファッションブランド",
+          "インテリア企業",
+          "食品メーカー"
+        ],
+        "sources": [
+          {
+            "label": "Pinterest API v5 ドキュメント",
+            "url": "https://developers.pinterest.com/docs/api/v5/"
+          },
+          {
+            "label": "Pinterest Rate Limits",
+            "url": "https://developers.pinterest.com/docs/reference/rate-limits/"
+          }
+        ],
+        "detail": "Pinterest APIは広告・ショッピング機能の強化が続いている。API v3/ads v4は完全に廃止され、v5に統一された。ビジュアルコマースのプラットフォームとして成長中。"
+      }
+    },
+    {
+      "id": "tiktok-api",
+      "name": "TikTok API",
+      "nameJa": "TikTok API",
+      "description": "ショート動画プラットフォームTikTokの開発者向けAPI群。Login Kit、Share Kit、Content Posting API、Research APIなどを提供。TikTok for Business APIでは広告管理・レポーティング・オーディエンス管理が可能。TikTok Shopとの連携APIも拡充中。",
+      "url": "https://www.tiktok.com/",
+      "docsUrl": "https://developers.tiktok.com/doc/overview",
+      "category": "social",
+      "tags": [
+        "SNS",
+        "ショート動画",
+        "広告",
+        "EC連携",
+        "インフルエンサー"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料。広告APIは広告出稿が前提。Research APIは申請・承認制",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "エンドポイントごとに異なる。Research API: 1,000リクエスト/日（最大100,000レコード/日）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java"
+      ],
+      "useCases": [
+        "ソーシャルログイン連携",
+        "動画共有機能の実装",
+        "広告キャンペーン管理",
+        "トレンドリサーチ"
+      ],
+      "popularity": {
+        "score": 90,
+        "users": "月間10億以上のアクティブユーザー",
+        "marketPosition": "ショート動画プラットフォームの世界的リーダー",
+        "reason": "世界で最も成長しているSNS。広告APIとTikTok Shopの拡大により、ビジネス利用が急増",
+        "monthlyApiCalls": "数十億リクエスト/月",
+        "githubStars": "tiktok関連ツール合計 5,000+",
+        "npmDownloads": "tiktok関連パッケージ 約3,000/週",
+        "adopters": [
+          "ByteDance",
+          "広告代理店",
+          "D2Cブランド",
+          "マーケティング企業"
+        ],
+        "sources": [
+          {
+            "label": "TikTok API Rate Limits",
+            "url": "https://developers.tiktok.com/doc/tiktok-api-v2-rate-limit"
+          },
+          {
+            "label": "TikTok for Business API",
+            "url": "https://business-api.tiktok.com/portal/docs"
+          }
+        ],
+        "detail": "TikTok APIはLogin Kit、Share Kit等の基本APIに加え、Research API（学術研究用）やTikTok Shop APIなど用途別に分かれている。事前承認が必要なAPIが多い点に注意。"
+      }
+    },
+    {
+      "id": "bluesky-api",
+      "name": "Bluesky API (AT Protocol)",
+      "nameJa": "Bluesky API（AT Protocol）",
+      "description": "分散型SNS「Bluesky」のAT Protocol（Authenticated Transfer Protocol）ベースのAPI。投稿・フィード取得、フォロー管理、通知取得、カスタムフィード作成などが可能。分散型設計により、自前のPDS（Personal Data Server）を運用することも可能。オープンソースかつ無料で利用できる。",
+      "url": "https://bsky.app/",
+      "docsUrl": "https://docs.bsky.app/",
+      "category": "social",
+      "tags": [
+        "分散型SNS",
+        "AT Protocol",
+        "オープンソース",
+        "フェデレーション",
+        "マイクロブログ"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。オープンソースプロトコル",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "寛容なレート制限。エンドポイントごとに異なり、429レスポンスで通知。詳細は進化中",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Dart",
+        "Go"
+      ],
+      "useCases": [
+        "ソーシャルメディアボット",
+        "カスタムフィード作成",
+        "ソーシャル分析",
+        "分散型アプリ開発"
+      ],
+      "popularity": {
+        "score": 70,
+        "users": "2,500万以上の登録ユーザー（2025年時点）",
+        "marketPosition": "分散型SNSの最有力プラットフォーム",
+        "reason": "Twitter/X代替として急成長。AT Protocolのオープン性と分散型設計が開発者コミュニティで高い評価を得ている",
+        "monthlyApiCalls": "数億リクエスト/月",
+        "githubStars": "bluesky-social/atproto 約7,000+",
+        "npmDownloads": "@atproto/api 約20,000/週",
+        "adopters": [
+          "Bluesky PBC",
+          "AT Protocol開発者",
+          "ジャーナリスト",
+          "テック系インフルエンサー"
+        ],
+        "sources": [
+          {
+            "label": "Bluesky Rate Limits",
+            "url": "https://docs.bsky.app/docs/advanced-guides/rate-limits"
+          },
+          {
+            "label": "Bluesky ドキュメント",
+            "url": "https://docs.bsky.app/"
+          }
+        ],
+        "detail": "Bluesky/AT Protocolは元Twitter CEOジャック・ドーシーの支援で開発が始まった分散型SNSプロトコル。カスタムフィード（Algorithmic Choice）の仕組みが特徴で、開発者が独自のフィードアルゴリズムを作成可能。"
+      }
+    },
+    {
+      "id": "jma-bosai",
+      "name": "JMA Disaster Prevention API",
+      "nameJa": "気象庁防災情報API",
+      "description": "気象庁が提供する防災情報XMLフォーマットのAPI。気象警報・注意報、地震情報、津波情報、天気予報等の防災関連データをリアルタイムで取得可能。XML形式での配信が基本だが、有志によるJSON化ラッパーも存在。日本の防災アプリ・サービス開発に不可欠なデータソース。",
+      "url": "https://www.data.jma.go.jp/developer/index.html",
+      "docsUrl": "https://xml.kishou.go.jp/",
+      "category": "government",
+      "tags": [
+        "気象データ",
+        "防災",
+        "地震情報",
+        "天気予報",
+        "日本政府"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。利用規約に基づく出典表記が必要",
+      "auth": "none",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "明確な数値は非公開。高頻度アクセスは制限される場合あり",
+      "sdks": [],
+      "useCases": [
+        "防災アプリ開発",
+        "天気予報サービス",
+        "地震速報通知",
+        "気象データ分析"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "日本の防災アプリ開発者・気象サービス事業者",
+        "marketPosition": "日本の気象・防災データの公式ソース",
+        "reason": "日本で最も信頼性の高い気象・防災データ。XMLフォーマットは複雑だが、有志によるラッパーAPIが充実",
+        "monthlyApiCalls": "数千万リクエスト/月",
+        "githubStars": "関連ツール合計 500+",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "Yahoo!天気",
+          "ウェザーニュース",
+          "防災アプリ各社",
+          "NHK"
+        ],
+        "sources": [
+          {
+            "label": "気象庁防災情報XMLフォーマット",
+            "url": "https://xml.kishou.go.jp/"
+          },
+          {
+            "label": "気象データ高度利用ポータル",
+            "url": "https://www.data.jma.go.jp/developer/index.html"
+          }
+        ],
+        "detail": "気象庁防災情報APIは公式にはXMLフォーマットで提供される。www.jma.go.jp/bosai/以下のJSON APIも存在するが非公式。防災情報の信頼性・即時性で日本国内では唯一無二のデータソース。"
+      }
+    },
+    {
+      "id": "nta-houjin-bangou",
+      "name": "NTA Corporate Number API",
+      "nameJa": "国税庁法人番号システムWeb-API",
+      "description": "国税庁が提供する法人番号公表サイトのWeb-API。法人番号による法人情報検索、法人名による部分一致検索、更新情報の取得などが可能。法人の商号、所在地、法人番号、変更履歴等のデータを取得でき、法人確認・反社チェック・与信調査の基盤データとして活用される。",
+      "url": "https://www.houjin-bangou.nta.go.jp/",
+      "docsUrl": "https://www.houjin-bangou.nta.go.jp/webapi/",
+      "category": "government",
+      "tags": [
+        "法人番号",
+        "法人情報",
+        "国税庁",
+        "企業検索",
+        "日本政府"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。アプリケーションID取得が必要",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "具体的な数値は非公開（セキュリティ上の理由）。短時間の大量アクセスは制限対象",
+      "sdks": [],
+      "useCases": [
+        "法人情報の検索・確認",
+        "取引先の実在確認",
+        "反社チェック基盤",
+        "CRMデータ補完"
+      ],
+      "popularity": {
+        "score": 55,
+        "users": "日本のBtoB企業・金融機関・法務部門",
+        "marketPosition": "日本の法人情報の最も信頼性の高い公式データベース",
+        "reason": "全国約500万法人の公式データ。法人確認のデファクトスタンダードで、金融機関のKYCにも活用",
+        "monthlyApiCalls": "数百万リクエスト/月",
+        "githubStars": "関連ツール合計 100+",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "金融機関",
+          "BtoB企業",
+          "会計ソフト企業",
+          "名刺管理サービス"
+        ],
+        "sources": [
+          {
+            "label": "法人番号Web-API仕様書",
+            "url": "https://www.houjin-bangou.nta.go.jp/webapi/kyuusiyousyo.html"
+          },
+          {
+            "label": "法人番号Web-API",
+            "url": "https://www.houjin-bangou.nta.go.jp/webapi/"
+          }
+        ],
+        "detail": "国税庁法人番号Web-APIはVer.1とVer.2があり、Ver.2ではCSV/XML/JSON形式でのレスポンスに対応。法人の変更履歴も取得可能で、コンプライアンス・反社チェックの基盤データとして重要。"
+      }
+    },
+    {
+      "id": "world-bank",
+      "name": "World Bank API",
+      "nameJa": "World Bank API（世界銀行API）",
+      "description": "世界銀行が提供するグローバル開発データAPI。GDP、人口、教育、健康、貧困、環境など数千の開発指標を国別・年次で取得可能。Indicators API、Climate API、Projects APIなど複数のAPIを提供。国際比較や開発経済学の研究に不可欠なデータソース。",
+      "url": "https://data.worldbank.org/",
+      "docsUrl": "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation",
+      "category": "data",
+      "tags": [
+        "開発データ",
+        "経済指標",
+        "国際統計",
+        "貧困",
+        "世界銀行"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。認証不要",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "明確な制限値は非公開。1リクエスト最大1,000レコード。適切な利用が前提",
+      "sdks": [
+        "Python",
+        "R"
+      ],
+      "useCases": [
+        "国際経済指標の分析",
+        "開発データの可視化",
+        "学術研究",
+        "政策分析"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "研究者・国際機関・NGO・データアナリスト",
+        "marketPosition": "グローバル開発データの最も包括的な公開APIの一つ",
+        "reason": "200以上の国・地域の数千の指標を無料で取得可能。開発経済学の研究で最も引用されるデータソースの一つ",
+        "monthlyApiCalls": "数千万リクエスト/月",
+        "githubStars": "wbdata (Python) 約200+",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "国連機関",
+          "大学・研究機関",
+          "NGO",
+          "Our World in Data"
+        ],
+        "sources": [
+          {
+            "label": "World Bank API ドキュメント",
+            "url": "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation"
+          },
+          {
+            "label": "World Bank Data Portal",
+            "url": "https://data.worldbank.org/"
+          }
+        ],
+        "detail": "World Bank APIは1960年代からの時系列データを保持しており、長期的な経済分析に適している。SDMXフォーマットにも対応し、他の国際機関のデータとの相互運用性も高い。"
+      }
+    },
+    {
+      "id": "un-data",
+      "name": "UN Data API",
+      "nameJa": "UN Data API（国連データAPI）",
+      "description": "国連統計部が提供する国際統計データベースAPI。人口、経済、社会、環境、貿易など幅広い分野の国際統計データにプログラマティックにアクセス可能。SDMX（Statistical Data and Metadata eXchange）標準に基づくRESTおよびSOAP Webサービスを提供。",
+      "url": "https://data.un.org/",
+      "docsUrl": "https://data.un.org/Host.aspx?Content=API",
+      "category": "data",
+      "tags": [
+        "国際統計",
+        "人口データ",
+        "国連",
+        "SDGs",
+        "経済データ"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。アカウント登録で利用可能",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "スタンダードアカウントに利用制限あり（具体値は非公開）。拡張は申請可能",
+      "sdks": [
+        "Python",
+        "R"
+      ],
+      "useCases": [
+        "国際統計データの取得",
+        "SDGs指標の分析",
+        "人口統計研究",
+        "貿易データ分析"
+      ],
+      "popularity": {
+        "score": 58,
+        "users": "国際機関・研究者・NGO・データサイエンティスト",
+        "marketPosition": "国連公式の統計データAPI",
+        "reason": "193の加盟国からの公式統計データ。SDGs指標の公式データソースとして重要性が高い",
+        "monthlyApiCalls": "数百万リクエスト/月",
+        "githubStars": "comtradr (R) 約100+",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "国連機関",
+          "OECD",
+          "研究機関",
+          "NGO"
+        ],
+        "sources": [
+          {
+            "label": "UNdata API マニュアル",
+            "url": "https://data.un.org/Host.aspx?Content=API"
+          },
+          {
+            "label": "UNSD API Catalogue",
+            "url": "https://unstats.un.org/unsd/api/"
+          }
+        ],
+        "detail": "UN Data APIはEurostatのSDMX Reference Infrastructure上に構築されている。UNdata以外にも、UN Population Division、UN Comtrade等の個別APIも存在し、より専門的なデータへのアクセスが可能。"
+      }
+    },
+    {
+      "id": "citysdk",
+      "name": "CitySDK API",
+      "nameJa": "CitySDK API（米国国勢調査）",
+      "description": "米国国勢調査局（US Census Bureau）が提供するJavaScript SDK。Census Data APIとTIGER（地理境界データ）を統合し、GeoJSON形式で人口統計・地理データを取得可能。ジオコーダーにより緯度経度から行政区域への変換も可能。米国の人口動態分析・マーケティングリサーチに活用。",
+      "url": "https://www.census.gov/data/developers.html",
+      "docsUrl": "https://uscensusbureau.github.io/citysdk/docs/",
+      "category": "data",
+      "tags": [
+        "国勢調査",
+        "人口統計",
+        "GIS",
+        "米国データ",
+        "GeoJSON"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。APIキーは500リクエスト/日以上の利用時に必要",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "APIキーなし: 500リクエスト/日。APIキーあり: より高い上限",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "米国人口動態分析",
+        "商圏分析",
+        "不動産マーケット調査",
+        "政策分析"
+      ],
+      "popularity": {
+        "score": 52,
+        "users": "米国のデータアナリスト・研究者・マーケター",
+        "marketPosition": "米国国勢調査データへの公式アクセスSDK",
+        "reason": "米国の最も詳細な人口統計データに無料でアクセス可能。GeoJSON統合により地理的分析が容易",
+        "monthlyApiCalls": "数百万リクエスト/月",
+        "githubStars": "uscensusbureau/citysdk 約400+",
+        "npmDownloads": "citysdk 約500/週",
+        "adopters": [
+          "米国政府機関",
+          "大学",
+          "シンクタンク",
+          "マーケティング企業"
+        ],
+        "sources": [
+          {
+            "label": "CitySDK ドキュメント",
+            "url": "https://uscensusbureau.github.io/citysdk/docs/"
+          },
+          {
+            "label": "Census Data API User Guide",
+            "url": "https://www.census.gov/data/developers/guidance/api-user-guide.Help_&_Contact_Us.html"
+          }
+        ],
+        "detail": "CitySDKはCensus Data APIのJavaScriptラッパーで、複雑なAPIコールを簡素化している。ACS（American Community Survey）やDecennial Censusなど複数のデータセットを統一的に利用可能。"
+      }
+    },
+    {
+      "id": "data-go-jp",
+      "name": "Data.go.jp API",
+      "nameJa": "Data.go.jp API（データカタログサイト）",
+      "description": "デジタル庁が運営する日本政府のオープンデータカタログサイトのAPI。CKAN準拠のREST APIで、各省庁が公開するオープンデータセットのメタデータ検索・取得が可能。統計データ、地理データ、予算情報など幅広い政府データへのアクセスポイントとして機能する。",
+      "url": "https://www.data.go.jp/",
+      "docsUrl": "https://data.e-gov.go.jp/data/api_guide",
+      "category": "government",
+      "tags": [
+        "オープンデータ",
+        "政府データ",
+        "CKAN",
+        "デジタル庁",
+        "日本政府"
+      ],
+      "pricing": "free",
+      "pricingDetail": "完全無料。利用登録不要",
+      "auth": "none",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "明確な制限値は非公開。常識的な利用範囲で運用",
+      "sdks": [],
+      "useCases": [
+        "政府オープンデータの検索",
+        "統計データの自動取得",
+        "シビックテック開発",
+        "データジャーナリズム"
+      ],
+      "popularity": {
+        "score": 45,
+        "users": "シビックテック開発者・研究者・データジャーナリスト",
+        "marketPosition": "日本政府のオープンデータポータル",
+        "reason": "日本政府の公式オープンデータカタログ。CKANベースで国際標準に準拠しているが、データの質にばらつきがある",
+        "monthlyApiCalls": "数百万リクエスト/月",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "adopters": [
+          "シビックテック団体",
+          "Code for Japan",
+          "研究機関",
+          "メディア"
+        ],
+        "sources": [
+          {
+            "label": "e-Gov データポータル API ガイド",
+            "url": "https://data.e-gov.go.jp/data/api_guide"
+          },
+          {
+            "label": "Data.go.jp",
+            "url": "https://www.data.go.jp/"
+          }
+        ],
+        "detail": "Data.go.jpはCKANベースのオープンデータカタログ。各省庁のデータセットのメタデータを横断検索できる。データ自体は各省庁のサーバーに格納されており、メタデータのみをカタログサイトで管理している。"
       }
     }
   ]

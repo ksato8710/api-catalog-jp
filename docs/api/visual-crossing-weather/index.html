@@ -26,6 +26,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://apipedia.dev/api/visual-crossing-weather/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Visual Crossing Weather", "description": "過去・現在・未来の天気データを統合的に提供。15日間予報、歴史的気象データ、タイムライン形式のレスポンスが特徴。CSVやJSON形式で柔軟に取得可能。", "url": "https://www.visualcrossing.com/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "", "priceCurrency": "JPY", "description": "無料プラン: 1日1000リクエスト、有料プラン: $0.0001/レコードから"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Visual Crossing Weather", "item": "https://apipedia.dev/api/visual-crossing-weather/"}]}</script>
 <link rel="stylesheet" href="../../assets/style.css">
 <style>
   .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
@@ -69,6 +70,20 @@
   .spec-item--full { grid-column: 1 / -1; }
   .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
   .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
   .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
   .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
   @media (max-width: 768px) {
@@ -145,6 +160,8 @@
   <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">天気予報アプリ</span><span class="usecase-tag">農業データ分析</span><span class="usecase-tag">イベント計画</span><span class="usecase-tag">歴史的気象研究</span></div></div>
 
   <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">天気予報</span><span class="tag">気象データ</span><span class="tag">歴史データ</span><span class="tag">タイムライン</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（🌤️ 天気・気象）</h2><div class="related-apis-grid"><a href="../openweathermap/" class="related-api-card"><div class="related-api-name">OpenWeatherMap</div><div class="related-api-desc">グローバルな天気データAPI。現在の天気、予報、履歴データを提供し、多言語対応で日本語にも対応</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>78点</span></div></a><a href="../accuweather/" class="related-api-card"><div class="related-api-name">AccuWeather</div><div class="related-api-desc">高精度な天気予報API。1時間ごと・15日間の予報やアラート情報を提供し、世界中の位置情報に対応</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--high>70点</span></div></a><a href="../open-meteo/" class="related-api-card"><div class="related-api-name">Open-Meteo</div><div class="related-api-desc">オープンソースの天気予報API。APIキー不要で利用でき、高解像度の気象モデルデータを提供</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>62点</span></div></a><a href="../weatherbit/" class="related-api-card"><div class="related-api-name">Weatherbit</div><div class="related-api-desc">47,000以上の気象観測所からのリアルタイムデータを提供。16日間予報、時間ごと予報、大気質データ、農業向け気象データ...</div><div class="related-api-meta"><span class="pill pill--freemium">フリーミアム</span><span class=score-mini score-mini--medium>58点</span></div></a><a href="../open-meteo-air-quality/" class="related-api-card"><div class="related-api-name">Open-Meteo Air Quality API</div><div class="related-api-desc">世界中の大気質データを無料で提供するAPI。PM2.5、PM10、オゾン、二酸化窒素など主要汚染物質のリアルタイム・予報...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>52点</span></div></a></div></div>
 
   <div class="action-buttons">
     <a href="https://www.visualcrossing.com/resources/documentation/weather-api/" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>

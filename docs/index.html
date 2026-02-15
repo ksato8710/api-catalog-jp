@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>APIpedia - 日本語APIカタログ</title>
-<meta name="description" content="日本語で探せる・わかる・選べるAPIカタログ。100以上のAPIを検索・比較・発見できます。人気スコア・利用企業・料金比較で最適なAPIを最短で見つけよう。">
+<meta name="description" content="APIPedia（APIぺディア）は日本語でAPIを検索・比較・選定できる開発者向けカタログ。128件のAPIを21カテゴリで整理。料金・認証方式・SDK対応を一覧比較。">
 <!-- OGP -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="APIPedia — 日本語で、探せる。わかる。選べる。">
@@ -38,6 +38,54 @@
     "target": "https://apipedia.dev/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "APIPediaとは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "APIPedia（APIぺディア）は、日本語でAPIを検索・比較・選定できる開発者向けカタログサイトです。128件以上のAPIを21カテゴリで整理し、料金・認証方式・SDK対応・人気スコアなどを統一フォーマットで比較できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "掲載されているAPIは無料で使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "掲載APIの多くは無料プランまたはフリーミアムプランを提供しています。各APIの料金体系（無料・フリーミアム・有料）はカタログのフィルター機能で絞り込めます。詳細な料金情報は各APIの個別ページで確認できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "APIの人気スコアはどのように算出されていますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "人気スコアは、利用者数・市場シェア・npmダウンロード数・GitHubスター数・採用企業数などを総合的に評価した100点満点のスコアです。各APIの詳細ページで根拠となるデータソースも確認できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "日本語ドキュメントがあるAPIはどれですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "日本発のAPI（PayPay、LINE Messaging、e-Stat、microCMSなど）は日本語ドキュメントが充実しています。リージョンフィルターで「日本」または「日本/グローバル」を選択すると、日本語対応のAPIを絞り込めます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "APIの情報はどのくらいの頻度で更新されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "APIの情報は随時更新しています。料金改定・新機能追加・サービス終了などの重要な変更があった場合は速やかに反映します。最新の更新情報はニュースレターでもお届けしています。"
+      }
+    }
+  ]
 }
 </script>
 <link rel="stylesheet" href="assets/style.css">
@@ -567,6 +615,13 @@
   <div class="category-nav" id="categoryNav"></div>
 </section>
 
+<!-- Category Compare Links -->
+<section style="padding: 16px 0 0;">
+  <div class="container" style="text-align: center;">
+    <a href="compare.html" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--color-primary); text-decoration: none; padding: 8px 20px; border: 1px solid var(--color-primary); border-radius: var(--radius-pill); transition: all 0.2s;">カテゴリ別に比較する &rarr;</a>
+  </div>
+</section>
+
 <!-- Ranking -->
 <section id="ranking" class="section">
   <div class="container">
@@ -681,6 +736,34 @@
         <a href="lean-canvas.html">コンセプト</a>
         <a href="strategy.html">戦略</a>
         <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 24px; padding: 24px 0; border-top: 1px solid var(--border-color); margin-top: 16px;">
+      <div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">比較ガイド</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <a href="guides/payment-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">💳 決済API比較</a>
+          <a href="guides/auth-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">🔐 認証API比較</a>
+          <a href="guides/ai-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">🤖 AI/LLM API比較</a>
+          <a href="guides/notification-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">📧 通知API比較</a>
+          <a href="guides/maps-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">🗺️ 地図API比較</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">カテゴリ</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <a href="compare.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">カテゴリ別比較表</a>
+          <a href="index.html#catalog" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">全APIカタログ</a>
+          <a href="index.html#ranking" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">人気ランキング</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">サイト情報</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <a href="lean-canvas.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">コンセプト</a>
+          <a href="strategy.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">戦略</a>
+          <a href="sitemap.xml" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">サイトマップ</a>
+        </div>
       </div>
     </div>
     <div class="site-footer__copyright">
@@ -881,7 +964,7 @@
       var medal = rank === 1 ? '&#x1F947;' : rank === 2 ? '&#x1F948;' : rank === 3 ? '&#x1F949;' : rank;
       var colorClass = getScoreColor(api.popularity.score);
       var cat = categories.find(function(c) { return c.id === api.category; });
-      return '<a href="' + api.url + '" target="_blank" rel="noopener" class="ranking-item">' +
+      return '<a href="api/' + api.id + '/" class="ranking-item">' +
         '<div class="ranking-rank ' + rankClass + '">' + medal + '</div>' +
         '<div class="ranking-info">' +
           '<div class="ranking-name">' +

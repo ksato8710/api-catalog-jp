@@ -26,6 +26,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://apipedia.dev/api/zipcloud-api/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "zipcloud API", "description": "日本の郵便番号から住所を検索、または住所から郵便番号を検索できる無料API。全国の郵便番号データを網羅し、JSON形式で提供。商用利用可能。", "url": "https://zipcloud.ibsnet.co.jp/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "完全無料（商用利用可、クレジット表記推奨）"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "zipcloud API", "item": "https://apipedia.dev/api/zipcloud-api/"}]}</script>
 <link rel="stylesheet" href="../../assets/style.css">
 <style>
   .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
@@ -69,6 +70,20 @@
   .spec-item--full { grid-column: 1 / -1; }
   .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
   .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
   .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
   .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
   @media (max-width: 768px) {
@@ -145,6 +160,8 @@
   <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">住所入力補完</span><span class="usecase-tag">ECサイト</span><span class="usecase-tag">会員登録フォーム</span><span class="usecase-tag">配送システム</span></div></div>
 
   <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">郵便番号</span><span class="tag">住所検索</span><span class="tag">日本</span><span class="tag">オープンデータ</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（🏛️ 政府・公共）</h2><div class="related-apis-grid"><a href="../jma-bosai/" class="related-api-card"><div class="related-api-name">JMA Disaster Prevention API</div><div class="related-api-desc">気象庁が提供する防災情報XMLフォーマットのAPI。気象警報・注意報、地震情報、津波情報、天気予報等の防災関連データをリ...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>65点</span></div></a><a href="../nta-houjin-bangou/" class="related-api-card"><div class="related-api-name">NTA Corporate Number API</div><div class="related-api-desc">国税庁が提供する法人番号公表サイトのWeb-API。法人番号による法人情報検索、法人名による部分一致検索、更新情報の取得...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>55点</span></div></a><a href="../gsi-api/" class="related-api-card"><div class="related-api-name">GSI API</div><div class="related-api-desc">国土地理院が提供する地理空間情報API。地形図、空中写真、標高データ、地形分類データなど日本の詳細な地理情報を取得可能。...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>52点</span></div></a><a href="../data-go-jp/" class="related-api-card"><div class="related-api-name">Data.go.jp API</div><div class="related-api-desc">デジタル庁が運営する日本政府のオープンデータカタログサイトのAPI。CKAN準拠のREST APIで、各省庁が公開するオ...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--medium>45点</span></div></a><a href="../corporate-number/" class="related-api-card"><div class="related-api-name">法人番号API</div><div class="related-api-desc">国税庁が提供する法人番号検索API。法人名・所在地から法人番号を検索、または法人番号から法人情報を取得</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--low>42点</span></div></a></div></div>
 
   <div class="action-buttons">
     <a href="https://zipcloud.ibsnet.co.jp/doc/api" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
