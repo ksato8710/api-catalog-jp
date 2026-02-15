@@ -119,17 +119,29 @@ def generate_page(api, categories):
     return f'''<!DOCTYPE html>
 <html lang="ja">
 <head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{name} - APIpedia | 日本語APIカタログ</title>
 <meta name="description" content="{desc}">
-<meta property="og:title" content="{name} - APIpedia">
-<meta property="og:description" content="{desc}">
+<!-- OGP -->
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="APIpedia">
+<meta property="og:title" content="{name} — APIpedia | 日本語APIカタログ">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="https://apipedia.dev/api/{api["id"]}/">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="{name} - APIpedia">
+<meta name="twitter:title" content="{name} — APIpedia">
 <meta name="twitter:description" content="{desc}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://apipedia.dev/api/{api["id"]}/">
 <script type="application/ld+json">{jsonld}</script>
 <link rel="stylesheet" href="../../assets/style.css">

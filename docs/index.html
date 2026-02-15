@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="dark">
 <head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>APIpedia - 日本語APIカタログ</title>
 <meta name="description" content="日本語で探せる・わかる・選べるAPIカタログ。100以上のAPIを検索・比較・発見できます。人気スコア・利用企業・料金比較で最適なAPIを最短で見つけよう。">
-<meta property="og:title" content="APIpedia - 日本語APIカタログ">
-<meta property="og:description" content="100以上のAPIを日本語で検索・比較・発見。人気スコア・利用企業・料金を一覧比較できるAPIカタログ。">
+<!-- OGP -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="APIpedia">
+<meta property="og:title" content="APIPedia — 日本語で、探せる。わかる。選べる。">
+<meta property="og:description" content="日本語でAPIを検索・比較・選定できる開発者向けカタログサイト。100+のAPIを18カテゴリで整理。">
 <meta property="og:url" content="https://apipedia.dev/">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="APIpedia - 日本語APIカタログ">
-<meta name="twitter:description" content="100以上のAPIを日本語で検索・比較・発見できるカタログサイト。">
+<meta name="twitter:title" content="APIPedia — 日本語で、探せる。わかる。選べる。">
+<meta name="twitter:description" content="日本語でAPIを検索・比較・選定できる開発者向けカタログサイト">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://apipedia.dev/">
 <script type="application/ld+json">
 {
@@ -513,6 +524,7 @@
       <a href="strategy.html" class="nav-link">戦略</a>
       <a href="https://github.com" class="nav-link" target="_blank" rel="noopener">GitHub</a>
     </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
     <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
   </div>
 </header>
@@ -525,7 +537,8 @@
     <p class="hero__subtitle">開発に使えるAPIを日本語で検索・比較・発見できるカタログサイト。<br>カテゴリ別に整理された情報で、最適なAPIを最短で見つけよう。</p>
     <div class="search-bar">
       <svg class="search-bar__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" class="search-bar__input" id="searchInput" placeholder="APIを検索... (例: 決済, 天気, 翻訳, LINE)">
+      <input type="text" class="search-bar__input" id="searchInput" placeholder="APIを検索... (例: 決済, 天気, 翻訳, LINE)" autocomplete="off">
+      <div class="autocomplete-list" id="autocompleteList" role="listbox"></div>
     </div>
     <!-- Stats -->
     <div class="stats-bar" id="statsBar">
@@ -575,6 +588,7 @@
         <span class="result-info__count" id="resultCount">0</span> 件のAPIが見つかりました
       </div>
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <button class="favorite-filter-btn" id="favoriteFilterBtn" title="お気に入りのみ表示">&#x2764;&#xFE0F; お気に入り <span class="favorite-badge" id="favoriteBadge" style="display:none;">0</span></button>
       <div class="sort-controls">
         <span>並べ替え:</span>
         <button class="sort-btn active" data-sort="default">おすすめ</button>
@@ -690,16 +704,122 @@
   let activePricing = 'all';
   let activeSort = 'default';
   let searchQuery = '';
+  let favoriteFilter = false;
+  let autocompleteIndex = -1;
 
   const difficultyLabel = { easy: '初級', medium: '中級', hard: '上級' };
   const regionLabel = { japan: '日本', global: 'グローバル', both: '日本 / グローバル' };
   const pricingLabel = { free: '無料', freemium: 'フリーミアム', paid: '有料' };
   const authLabel = { apiKey: 'APIキー', oauth2: 'OAuth 2.0', bearer: 'Bearer Token', none: '認証不要' };
 
+  // ── Favorites (localStorage) ──
+  function getFavorites() {
+    try {
+      return JSON.parse(localStorage.getItem('apipedia_favorites') || '[]');
+    } catch (e) { return []; }
+  }
+  function saveFavorites(favs) {
+    localStorage.setItem('apipedia_favorites', JSON.stringify(favs));
+  }
+  function toggleFavorite(apiId) {
+    var favs = getFavorites();
+    var idx = favs.indexOf(apiId);
+    if (idx === -1) { favs.push(apiId); } else { favs.splice(idx, 1); }
+    saveFavorites(favs);
+    updateFavoriteBadge();
+    // Update heart icons in DOM
+    document.querySelectorAll('.favorite-btn[data-fav-id="' + apiId + '"]').forEach(function(btn) {
+      btn.classList.toggle('favorited', favs.indexOf(apiId) !== -1);
+      btn.innerHTML = favs.indexOf(apiId) !== -1 ? '&#x2764;&#xFE0F;' : '&#x2661;';
+    });
+    if (favoriteFilter) renderApis();
+  }
+  function isFavorited(apiId) {
+    return getFavorites().indexOf(apiId) !== -1;
+  }
+  function updateFavoriteBadge() {
+    var favs = getFavorites();
+    var badge = document.getElementById('favoriteBadge');
+    if (favs.length > 0) {
+      badge.textContent = favs.length;
+      badge.style.display = 'inline-flex';
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  // ── Theme Toggle ──
+  function initTheme() {
+    var saved = localStorage.getItem('apipedia_theme');
+    var theme = saved || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    updateThemeIcon(theme);
+  }
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('apipedia_theme', next);
+    updateThemeIcon(next);
+  }
+  function updateThemeIcon(theme) {
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.innerHTML = theme === 'dark' ? '&#x1F319;' : '&#x2600;&#xFE0F;';
+  }
+
+  // ── Autocomplete ──
+  function getAutocompleteSuggestions(query) {
+    if (!query) return [];
+    var q = query.toLowerCase();
+    return allApis.filter(function(api) {
+      return api.name.toLowerCase().startsWith(q) ||
+             api.nameJa.toLowerCase().startsWith(q);
+    }).slice(0, 8);
+  }
+  function renderAutocomplete(suggestions) {
+    var list = document.getElementById('autocompleteList');
+    if (suggestions.length === 0) {
+      list.classList.remove('visible');
+      list.innerHTML = '';
+      autocompleteIndex = -1;
+      return;
+    }
+    list.innerHTML = suggestions.map(function(api, i) {
+      var nameJaPart = api.nameJa !== api.name ? '<span class="autocomplete-item__name-ja"> (' + api.nameJa + ')</span>' : '';
+      return '<div class="autocomplete-item" data-index="' + i + '" data-api-id="' + api.id + '" role="option">' +
+        '<span class="autocomplete-item__name">' + api.name + '</span>' + nameJaPart +
+      '</div>';
+    }).join('');
+    list.classList.add('visible');
+    autocompleteIndex = -1;
+  }
+  function selectAutocomplete(apiId) {
+    var api = allApis.find(function(a) { return a.id === apiId; });
+    if (!api) return;
+    var searchInput = document.getElementById('searchInput');
+    searchInput.value = api.name;
+    searchQuery = api.name;
+    document.getElementById('autocompleteList').classList.remove('visible');
+    autocompleteIndex = -1;
+    renderApis();
+  }
+  function navigateAutocomplete(direction) {
+    var list = document.getElementById('autocompleteList');
+    var items = list.querySelectorAll('.autocomplete-item');
+    if (items.length === 0) return;
+    items.forEach(function(item) { item.classList.remove('active'); });
+    autocompleteIndex += direction;
+    if (autocompleteIndex < 0) autocompleteIndex = items.length - 1;
+    if (autocompleteIndex >= items.length) autocompleteIndex = 0;
+    items[autocompleteIndex].classList.add('active');
+    items[autocompleteIndex].scrollIntoView({ block: 'nearest' });
+  }
+
   async function init() {
     try {
-      const res = await fetch('data/apis.json');
-      const data = await res.json();
+      initTheme();
+      var res = await fetch('data/apis.json');
+      var data = await res.json();
       allApis = data.apis;
       categories = data.categories;
       renderStats(data);
@@ -707,6 +827,7 @@
       renderRanking();
       renderApis();
       bindEvents();
+      updateFavoriteBadge();
     } catch (e) {
       console.error('Failed to load API data:', e);
     }
@@ -715,16 +836,16 @@
   function renderStats(data) {
     document.getElementById('totalApis').textContent = data.metadata.totalApis;
     document.getElementById('totalCategories').textContent = data.metadata.totalCategories;
-    const freeCount = allApis.filter(a => a.pricing === 'free' || a.pricing === 'freemium').length;
+    var freeCount = allApis.filter(function(a) { return a.pricing === 'free' || a.pricing === 'freemium'; }).length;
     document.getElementById('freeApis').textContent = freeCount;
-    const japanCount = allApis.filter(a => a.region === 'japan' || a.region === 'both').length;
+    var japanCount = allApis.filter(function(a) { return a.region === 'japan' || a.region === 'both'; }).length;
     document.getElementById('japanApis').textContent = japanCount;
   }
 
   function renderCategoryNav() {
-    const nav = document.getElementById('categoryNav');
-    let html = '<button class="category-nav__item active" data-category="all">All</button>';
-    categories.forEach(cat => {
+    var nav = document.getElementById('categoryNav');
+    var html = '<button class="category-nav__item active" data-category="all">All</button>';
+    categories.forEach(function(cat) {
       html += '<button class="category-nav__item" data-category="' + cat.id + '">' +
               cat.icon + ' ' + cat.name + '</button>';
     });
@@ -779,27 +900,29 @@
   }
 
   function getFilteredApis() {
-    return allApis.filter(api => {
+    var favs = getFavorites();
+    return allApis.filter(function(api) {
       if (activeCategory !== 'all' && api.category !== activeCategory) return false;
       if (activePricing !== 'all' && api.pricing !== activePricing) return false;
+      if (favoriteFilter && favs.indexOf(api.id) === -1) return false;
       if (searchQuery) {
-        const q = searchQuery.toLowerCase();
-        const searchable = [
-          api.name, api.nameJa, api.description,
-          ...api.tags, ...(api.useCases || []),
+        var q = searchQuery.toLowerCase();
+        var searchable = [
+          api.name, api.nameJa, api.description
+        ].concat(api.tags).concat(api.useCases || []).concat([
           pricingLabel[api.pricing] || '',
           regionLabel[api.region] || ''
-        ].join(' ').toLowerCase();
-        if (!searchable.includes(q)) return false;
+        ]).join(' ').toLowerCase();
+        if (searchable.indexOf(q) === -1) return false;
       }
       return true;
     });
   }
 
   function renderApis() {
-    const filtered = getFilteredApis();
-    const grid = document.getElementById('apiGrid');
-    const noResults = document.getElementById('noResults');
+    var filtered = getFilteredApis();
+    var grid = document.getElementById('apiGrid');
+    var noResults = document.getElementById('noResults');
 
     // Sort
     if (activeSort === 'popularity') {
@@ -830,16 +953,18 @@
     }
     noResults.style.display = 'none';
 
-    grid.innerHTML = filtered.map((api, i) => {
-      const cat = categories.find(c => c.id === api.category);
-      const staggerClass = 'slide-up stagger-' + ((i % 6) + 1);
+    grid.innerHTML = filtered.map(function(api, i) {
+      var cat = categories.find(function(c) { return c.id === api.category; });
+      var staggerClass = 'slide-up stagger-' + ((i % 6) + 1);
+      var faved = isFavorited(api.id);
       return '<div class="api-card ' + staggerClass + '" data-api-id="' + api.id + '">' +
         '<div class="api-card__header">' +
           '<div>' +
             '<h3><a href="' + api.url + '" target="_blank" rel="noopener">' + api.name + '</a></h3>' +
             (api.nameJa !== api.name ? '<div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">' + api.nameJa + '</div>' : '') +
           '</div>' +
-          '<div style="display:flex;gap:4px;flex-shrink:0;">' +
+          '<div style="display:flex;gap:4px;flex-shrink:0;align-items:center;">' +
+            '<button class="favorite-btn' + (faved ? ' favorited' : '') + '" data-fav-id="' + api.id + '" title="お気に入り">' + (faved ? '&#x2764;&#xFE0F;' : '&#x2661;') + '</button>' +
             (api.featured ? '<span class="featured-badge">注目</span>' : '') +
             '<span class="tag tag--' + api.pricing + '">' + pricingLabel[api.pricing] + '</span>' +
           '</div>' +
@@ -858,7 +983,7 @@
         '</div>' +
         '<div class="api-card__tags">' +
           '<span class="tag">' + authLabel[api.auth] + '</span>' +
-          api.tags.slice(0, 3).map(t => '<span class="tag">' + t + '</span>').join('') +
+          api.tags.slice(0, 3).map(function(t) { return '<span class="tag">' + t + '</span>'; }).join('') +
         '</div>' +
         '<div class="api-card__footer">' +
           '<a href="api/' + api.id + '/" class="api-card__link">詳細ページ &rarr;</a>' +
@@ -869,22 +994,62 @@
   }
 
   function bindEvents() {
-    // Search
-    const searchInput = document.getElementById('searchInput');
-    let debounce;
+    // Search with autocomplete
+    var searchInput = document.getElementById('searchInput');
+    var acList = document.getElementById('autocompleteList');
+    var debounce;
+
     searchInput.addEventListener('input', function() {
       clearTimeout(debounce);
+      var val = searchInput.value.trim();
+      // Show autocomplete suggestions
+      var suggestions = getAutocompleteSuggestions(val);
+      renderAutocomplete(suggestions);
       debounce = setTimeout(function() {
-        searchQuery = searchInput.value.trim();
+        searchQuery = val;
         renderApis();
       }, 200);
     });
 
+    searchInput.addEventListener('keydown', function(e) {
+      var items = acList.querySelectorAll('.autocomplete-item');
+      if (!acList.classList.contains('visible') || items.length === 0) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        navigateAutocomplete(1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        navigateAutocomplete(-1);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (autocompleteIndex >= 0 && items[autocompleteIndex]) {
+          selectAutocomplete(items[autocompleteIndex].dataset.apiId);
+        }
+      } else if (e.key === 'Escape') {
+        acList.classList.remove('visible');
+        autocompleteIndex = -1;
+      }
+    });
+
+    // Click on autocomplete item
+    acList.addEventListener('click', function(e) {
+      var item = e.target.closest('.autocomplete-item');
+      if (item) selectAutocomplete(item.dataset.apiId);
+    });
+
+    // Close autocomplete when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.search-bar')) {
+        acList.classList.remove('visible');
+        autocompleteIndex = -1;
+      }
+    });
+
     // Category filter
     document.getElementById('categoryNav').addEventListener('click', function(e) {
-      const btn = e.target.closest('.category-nav__item');
+      var btn = e.target.closest('.category-nav__item');
       if (!btn) return;
-      document.querySelectorAll('.category-nav__item').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.category-nav__item').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
       activeCategory = btn.dataset.category;
       renderApis();
@@ -893,7 +1058,7 @@
     // Pricing filter
     document.querySelectorAll('[data-pricing]').forEach(function(btn) {
       btn.addEventListener('click', function() {
-        document.querySelectorAll('[data-pricing]').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('[data-pricing]').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
         activePricing = btn.dataset.pricing;
         renderApis();
@@ -903,15 +1068,29 @@
     // Sort buttons
     document.querySelectorAll('[data-sort]').forEach(function(btn) {
       btn.addEventListener('click', function() {
-        document.querySelectorAll('[data-sort]').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('[data-sort]').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
         activeSort = btn.dataset.sort;
         renderApis();
       });
     });
 
-    // Card click -> open modal
+    // Favorite filter button
+    document.getElementById('favoriteFilterBtn').addEventListener('click', function() {
+      favoriteFilter = !favoriteFilter;
+      this.classList.toggle('active', favoriteFilter);
+      renderApis();
+    });
+
+    // Card click -> open modal or toggle favorite
     document.getElementById('apiGrid').addEventListener('click', function(e) {
+      // Handle favorite button click
+      var favBtn = e.target.closest('.favorite-btn');
+      if (favBtn) {
+        e.stopPropagation();
+        toggleFavorite(favBtn.dataset.favId);
+        return;
+      }
       var card = e.target.closest('.api-card');
       if (!card) return;
       // Don't open modal if clicking a link
@@ -919,6 +1098,9 @@
       var apiId = card.dataset.apiId;
       if (apiId) openModal(apiId);
     });
+
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 
     // Modal close
     var overlay = document.getElementById('modalOverlay');

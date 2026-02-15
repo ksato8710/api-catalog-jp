@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>e-Stat API - APIpedia | 日本語APIカタログ</title>
 <meta name="description" content="日本の政府統計ポータル「e-Stat」の公式API。人口、経済、産業など幅広い統計データをプログラムで取得可能">
-<meta property="og:title" content="e-Stat API - APIpedia">
-<meta property="og:description" content="日本の政府統計ポータル「e-Stat」の公式API。人口、経済、産業など幅広い統計データをプログラムで取得可能">
+<!-- OGP -->
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="APIpedia">
+<meta property="og:title" content="e-Stat API — APIpedia | 日本語APIカタログ">
+<meta property="og:description" content="日本の政府統計ポータル「e-Stat」の公式API。人口、経済、産業など幅広い統計データをプログラムで取得可能">
+<meta property="og:url" content="https://apipedia.dev/api/estat/">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="e-Stat API - APIpedia">
+<meta name="twitter:title" content="e-Stat API — APIpedia">
 <meta name="twitter:description" content="日本の政府統計ポータル「e-Stat」の公式API。人口、経済、産業など幅広い統計データをプログラムで取得可能">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://apipedia.dev/api/estat/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "e-Stat API", "description": "日本の政府統計ポータル「e-Stat」の公式API。人口、経済、産業など幅広い統計データをプログラムで取得可能", "url": "https://www.e-stat.go.jp/api/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "完全無料（利用登録が必要）"}}</script>
 <link rel="stylesheet" href="../../assets/style.css">
@@ -77,6 +89,7 @@
       <a href="../../index.html#ranking" class="nav-link">ランキング</a>
       <a href="../../index.html#catalog" class="nav-link">カタログ</a>
       <a href="../../compare.html" class="nav-link">比較表</a>
+      <a href="../../guides/" class="nav-link">ガイド</a>
       <a href="../../lean-canvas.html" class="nav-link">コンセプト</a>
     </nav>
   </div>
@@ -149,6 +162,7 @@
       <div class="site-footer__links">
         <a href="../../index.html">トップ</a>
         <a href="../../compare.html">比較表</a>
+        <a href="../../guides/">ガイド</a>
         <a href="../../lean-canvas.html">コンセプト</a>
       </div>
     </div>

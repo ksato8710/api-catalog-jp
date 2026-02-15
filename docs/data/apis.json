@@ -2,8 +2,8 @@
   "metadata": {
     "version": "2.0.0",
     "lastUpdated": "2026-02-15",
-    "totalApis": 100,
-    "totalCategories": 18
+    "totalApis": 128,
+    "totalCategories": 21
   },
   "categories": [
     {
@@ -113,6 +113,24 @@
       "name": "ヘルスケア",
       "icon": "🏥",
       "description": "医療データ、健康管理、フィットネストラッキング"
+    },
+    {
+      "id": "cms",
+      "name": "CMS・コンテンツ管理",
+      "icon": "📝",
+      "description": "ヘッドレスCMS、コンテンツ配信、ブログ・Webサイト管理API"
+    },
+    {
+      "id": "crm",
+      "name": "CRM・顧客管理",
+      "icon": "👥",
+      "description": "顧客関係管理、営業支援、プロジェクト管理、データベース"
+    },
+    {
+      "id": "nocode",
+      "name": "NoCode・自動化",
+      "icon": "⚡",
+      "description": "ワークフロー自動化、ノーコード開発、業務プロセス連携"
     }
   ],
   "apis": [
@@ -6564,6 +6582,1886 @@
           }
         ],
         "detail": "JPX公式の日本株データAPI。東証上場銘柄の株価・財務データを提供。個人投資家のアルゴリズム取引やフィンテックアプリ開発に利用される。"
+      }
+    },
+    {
+      "id": "wordpress-rest",
+      "name": "WordPress REST API",
+      "nameJa": "WordPress REST API",
+      "description": "世界シェア1位のCMS「WordPress」の公式REST API。投稿・ページ・ユーザー・メディアなどすべてのコンテンツをJSON形式で取得・操作でき、ヘッドレスCMSとしても活用可能。WordPress.comホスティング版とセルフホスト版の両方で利用できる",
+      "url": "https://developer.wordpress.org/rest-api/",
+      "docsUrl": "https://developer.wordpress.org/rest-api/reference/",
+      "category": "cms",
+      "tags": [
+        "CMS",
+        "ブログ",
+        "コンテンツ管理",
+        "ヘッドレス",
+        "オープンソース"
+      ],
+      "pricing": "free",
+      "pricingDetail": "WordPress自体は無料（オープンソース）。WordPress.comの場合はホスティング料金に含まれる（無料プランあり、Business $33/月〜でプラグイン・API制限解除）",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "コア制限なし（ホスティング環境依存、WordPress.comは1万リクエスト/時間目安）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "PHP",
+        "Ruby",
+        "Java",
+        "Swift"
+      ],
+      "useCases": [
+        "ヘッドレスCMSとしてのフロントエンド分離",
+        "ブログ記事の自動投稿・管理",
+        "モバイルアプリのバックエンド",
+        "複数サイトのコンテンツ集約"
+      ],
+      "popularity": {
+        "score": 95,
+        "users": "数千万の開発者・サイト運営者",
+        "marketPosition": "CMSマーケット世界シェア1位（約43%）",
+        "reason": "Webサイトの43%がWordPressで構築されており、REST APIはその中核機能",
+        "monthlyUsers": "数千万の開発者",
+        "monthlyApiCalls": "計測不能（分散型）",
+        "githubStars": "19,000+ stars",
+        "npmDownloads": "週間約5万DL（@wordpress/api-fetch）",
+        "marketShare": "CMS市場シェア約43%",
+        "adopters": [
+          "The New York Times",
+          "Sony Music",
+          "Microsoft News",
+          "TechCrunch",
+          "BBC America"
+        ],
+        "sources": [
+          {
+            "label": "WordPress公式REST APIドキュメント",
+            "url": "https://developer.wordpress.org/rest-api/"
+          },
+          {
+            "label": "W3Techs CMS市場シェア統計",
+            "url": "https://w3techs.com/technologies/details/cm-wordpress"
+          }
+        ],
+        "detail": "WordPressは世界のWebサイトの43%以上を占めるCMS。REST APIはWordPress 4.7以降のコア機能として搭載。ヘッドレスCMSとしてNext.jsやGatsbyとの組み合わせが急増している。"
+      }
+    },
+    {
+      "id": "contentful",
+      "name": "Contentful Content Delivery API",
+      "nameJa": "Contentful API",
+      "description": "エンタープライズ向けヘッドレスCMSの代表格。Content Delivery API（CDN経由の高速読み取り）とContent Management API（コンテンツ管理）を提供し、柔軟なコンテンツモデリングと多言語対応が特徴。GraphQLにも対応",
+      "url": "https://www.contentful.com/",
+      "docsUrl": "https://www.contentful.com/developers/docs/references/content-delivery-api/",
+      "category": "cms",
+      "tags": [
+        "ヘッドレスCMS",
+        "コンテンツ配信",
+        "CDN",
+        "GraphQL",
+        "エンタープライズ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 100K APIコール/月、50GB帯域。Basic: $300/月（2M APIコール）。Premium: カスタム価格",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Content Delivery API: 78リクエスト/秒、Content Management API: 10リクエスト/秒",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby",
+        "Java",
+        ".NET",
+        "PHP",
+        "Swift",
+        "Android"
+      ],
+      "useCases": [
+        "マルチチャネルコンテンツ配信",
+        "大規模Webサイトのコンテンツ管理",
+        "モバイルアプリのコンテンツバックエンド",
+        "多言語サイト構築"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "数万の企業・開発チーム",
+        "marketPosition": "ヘッドレスCMS市場のリーダー",
+        "reason": "エンタープライズ向けヘッドレスCMSとして高い信頼性とスケーラビリティ",
+        "monthlyUsers": "数万チーム",
+        "monthlyApiCalls": "月間数十億コール",
+        "githubStars": "1,900+ stars（JS SDK）",
+        "npmDownloads": "週間約20万DL",
+        "marketShare": "ヘッドレスCMS市場トップ3",
+        "adopters": [
+          "Spotify",
+          "Vodafone",
+          "Shiseido",
+          "Urban Outfitters",
+          "Staples"
+        ],
+        "sources": [
+          {
+            "label": "Contentful公式ドキュメント",
+            "url": "https://www.contentful.com/developers/docs/"
+          },
+          {
+            "label": "Contentful料金ページ",
+            "url": "https://www.contentful.com/pricing/"
+          }
+        ],
+        "detail": "ContentfulはヘッドレスCMS市場の先駆者。CDN経由のContent Delivery APIにより高速なコンテンツ配信を実現。2025年に無料プランの帯域が50GBに変更された。"
+      }
+    },
+    {
+      "id": "strapi",
+      "name": "Strapi API",
+      "nameJa": "Strapi API",
+      "description": "オープンソースのヘッドレスCMS。Node.js製で完全カスタマイズ可能なREST/GraphQL APIを自動生成する。セルフホスト可能でデータの完全な管理権を保持でき、管理画面のUIカスタマイズも自由。Strapi Cloudでのホスティングも提供",
+      "url": "https://strapi.io/",
+      "docsUrl": "https://docs.strapi.io/dev-docs/api/rest",
+      "category": "cms",
+      "tags": [
+        "ヘッドレスCMS",
+        "オープンソース",
+        "Node.js",
+        "セルフホスト",
+        "GraphQL"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Community Edition: 完全無料（セルフホスト）。Strapi Cloud: Developer無料（1,000エントリ）、Pro $99/月。Enterprise: $299/月〜",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "セルフホスト: 制限なし（サーバー依存）。Cloud: 100K APIリクエスト/月（Developer）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby",
+        "Dart"
+      ],
+      "useCases": [
+        "カスタムCMS構築",
+        "ブログ・メディアサイトのバックエンド",
+        "ECサイトの商品管理",
+        "モバイルアプリのAPI基盤"
+      ],
+      "popularity": {
+        "score": 80,
+        "users": "70万以上の開発者コミュニティ",
+        "marketPosition": "オープンソースヘッドレスCMSで最大シェア",
+        "reason": "GitHub Stars 62K超の巨大コミュニティ。セルフホスト可能で完全無料利用が可能",
+        "monthlyUsers": "70万以上の開発者",
+        "monthlyApiCalls": "計測不能（セルフホスト型）",
+        "githubStars": "62,000+ stars",
+        "npmDownloads": "週間約10万DL",
+        "marketShare": "オープンソースヘッドレスCMSで1位",
+        "adopters": [
+          "IBM",
+          "NASA",
+          "Walmart",
+          "Toyota",
+          "Deliveroo"
+        ],
+        "sources": [
+          {
+            "label": "Strapi GitHubリポジトリ",
+            "url": "https://github.com/strapi/strapi"
+          },
+          {
+            "label": "Strapi公式サイト",
+            "url": "https://strapi.io/"
+          }
+        ],
+        "detail": "Strapiは100% JavaScript/TypeScriptで構築されたオープンソースヘッドレスCMS。GitHub Stars 62K超で活発な開発コミュニティを持つ。REST APIとGraphQL APIの両方を自動生成する。"
+      }
+    },
+    {
+      "id": "microcms",
+      "name": "microCMS",
+      "nameJa": "microCMS",
+      "description": "日本製のヘッドレスCMS。直感的な管理画面と充実した日本語ドキュメントが特徴で、APIベースのコンテンツ管理を手軽に始められる。画像最適化やWebhookなどの機能も標準搭載。日本のWeb制作現場で広く採用されている",
+      "url": "https://microcms.io/",
+      "docsUrl": "https://document.microcms.io/",
+      "category": "cms",
+      "tags": [
+        "ヘッドレスCMS",
+        "日本製",
+        "API",
+        "コンテンツ管理",
+        "Jamstack"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Hobbyプラン: 無料（3API、10,000リクエスト/月）。Team: ¥4,900/月。Business: ¥24,800/月。Enterprise: カスタム",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Hobby: 5リクエスト/秒。有料プラン: 最大60リクエスト/秒",
+      "sdks": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "useCases": [
+        "企業サイトのコンテンツ管理",
+        "ブログ・メディアサイト構築",
+        "LPの量産管理",
+        "Next.js/Nuxtとの連携"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "数万の日本の開発者・企業",
+        "marketPosition": "日本製ヘッドレスCMS市場のリーダー",
+        "reason": "日本語ドキュメントの充実度と使いやすさで国内シェア1位",
+        "monthlyUsers": "数万の開発者",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "800+ stars（SDK）",
+        "npmDownloads": "週間約3万DL（microcms-js-sdk）",
+        "marketShare": "日本のヘッドレスCMS市場で最大シェア",
+        "adopters": [
+          "リクルート",
+          "サイバーエージェント",
+          "ラクスル",
+          "freee"
+        ],
+        "sources": [
+          {
+            "label": "microCMS公式サイト",
+            "url": "https://microcms.io/"
+          },
+          {
+            "label": "microCMS料金プラン",
+            "url": "https://microcms.io/pricing/"
+          }
+        ],
+        "detail": "microCMSは日本発のヘッドレスCMS。管理画面の日本語UIとドキュメントの充実度が高く、日本のJamstackプロジェクトでデファクト的な存在。2025年にAPIリクエスト制限を強化し、料金プランを改定。"
+      }
+    },
+    {
+      "id": "sanity",
+      "name": "Sanity API",
+      "nameJa": "Sanity API",
+      "description": "リアルタイムコラボレーション対応のヘッドレスCMS。独自クエリ言語GROQによる柔軟なデータ取得と、構造化コンテンツの管理に優れる。Sanity Studioはオープンソースでカスタマイズ自在。GraphQL APIも利用可能",
+      "url": "https://www.sanity.io/",
+      "docsUrl": "https://www.sanity.io/docs",
+      "category": "cms",
+      "tags": [
+        "ヘッドレスCMS",
+        "GROQ",
+        "リアルタイム",
+        "構造化コンテンツ",
+        "GraphQL"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 3ユーザー、500K APIコール/月。Growth: $15/ユーザー/月（1M APIコール）。Enterprise: カスタム",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Content Lake API: 基本的な制限あり（プランにより異なる）。CDN経由は高速",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "PHP",
+        ".NET",
+        "Go"
+      ],
+      "useCases": [
+        "構造化コンテンツの管理・配信",
+        "リアルタイムコラボレーションCMS",
+        "ECサイトの商品情報管理",
+        "マルチチャネル配信"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "数万の開発者・企業",
+        "marketPosition": "ヘッドレスCMS市場のトップ5",
+        "reason": "独自クエリ言語GROQと柔軟なスキーマ定義で開発者から高い評価",
+        "monthlyUsers": "数万チーム",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "5,000+ stars（Sanity Studio）",
+        "npmDownloads": "週間約15万DL",
+        "marketShare": "ヘッドレスCMS市場トップ5",
+        "adopters": [
+          "Cloudflare",
+          "Figma",
+          "Sonos",
+          "Puma",
+          "Brex"
+        ],
+        "sources": [
+          {
+            "label": "Sanity公式ドキュメント",
+            "url": "https://www.sanity.io/docs"
+          },
+          {
+            "label": "Sanity料金プラン",
+            "url": "https://www.sanity.io/pricing"
+          }
+        ],
+        "detail": "Sanityは独自クエリ言語GROQが特徴のヘッドレスCMS。無料プランで500K APIコール/月と寛大。Sanity Studioはオープンソースで完全カスタマイズ可能。リアルタイムコラボレーション機能が強み。"
+      }
+    },
+    {
+      "id": "ghost",
+      "name": "Ghost Content API",
+      "nameJa": "Ghost Content API",
+      "description": "高速で軽量なオープンソースのパブリッシングプラットフォーム。Content API（公開コンテンツ読み取り）とAdmin API（管理操作）を提供。メンバーシップ・サブスクリプション機能を標準搭載し、ニュースレターやペイウォールにも対応",
+      "url": "https://ghost.org/",
+      "docsUrl": "https://ghost.org/docs/content-api/",
+      "category": "cms",
+      "tags": [
+        "パブリッシング",
+        "ブログ",
+        "ニュースレター",
+        "メンバーシップ",
+        "オープンソース"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "セルフホスト: 完全無料。Ghost(Pro): Starter $9/月、Creator $25/月、Team $50/月、Business $199/月",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "セルフホスト: 制限なし。Ghost(Pro): プランに応じた制限あり",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby",
+        "PHP"
+      ],
+      "useCases": [
+        "ブログ・メディアサイト構築",
+        "ニュースレター配信",
+        "有料メンバーシップサイト",
+        "ヘッドレスCMSとしての利用"
+      ],
+      "popularity": {
+        "score": 68,
+        "users": "数万の開発者・パブリッシャー",
+        "marketPosition": "オープンソースパブリッシングプラットフォームで2位",
+        "reason": "WordPress代替として人気。メンバーシップ機能の標準搭載が強み",
+        "monthlyUsers": "数万ユーザー",
+        "monthlyApiCalls": "計測不能（セルフホスト型）",
+        "githubStars": "47,000+ stars",
+        "npmDownloads": "週間約2万DL",
+        "marketShare": "オープンソースCMS市場で上位",
+        "adopters": [
+          "Apple",
+          "DuckDuckGo",
+          "Mozilla",
+          "Tinder",
+          "DigitalOcean"
+        ],
+        "sources": [
+          {
+            "label": "Ghost GitHubリポジトリ",
+            "url": "https://github.com/TryGhost/Ghost"
+          },
+          {
+            "label": "Ghost公式サイト",
+            "url": "https://ghost.org/"
+          }
+        ],
+        "detail": "GhostはNode.js製のオープンソースパブリッシングプラットフォーム。GitHub Stars 47K超。メンバーシップ・サブスクリプション・ニュースレター機能を標準搭載。WordPressより軽量で高速な動作が特徴。"
+      }
+    },
+    {
+      "id": "prismic",
+      "name": "Prismic API",
+      "nameJa": "Prismic API",
+      "description": "スライスベースのコンテンツモデリングが特徴のヘッドレスCMS。ページビルダー的なUIでコンテンツを構築でき、プレビュー機能やスケジュール公開にも対応。Next.jsとの親和性が高く、専用ライブラリが充実",
+      "url": "https://prismic.io/",
+      "docsUrl": "https://prismic.io/docs/api",
+      "category": "cms",
+      "tags": [
+        "ヘッドレスCMS",
+        "スライス",
+        "ページビルダー",
+        "Next.js",
+        "コンテンツ管理"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 1ユーザー、無制限APIコール。Small $7/月。Medium $150/月。Large $500/月〜",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "200リクエスト/秒（CDN経由）",
+      "sdks": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Vue",
+        "Svelte",
+        "Next.js",
+        "Nuxt"
+      ],
+      "useCases": [
+        "マーケティングサイト構築",
+        "ランディングページの量産",
+        "多言語サイト管理",
+        "Next.jsアプリのコンテンツ管理"
+      ],
+      "popularity": {
+        "score": 58,
+        "users": "数万の開発者",
+        "marketPosition": "ヘッドレスCMS市場のトップ10",
+        "reason": "スライスベースのアプローチでマーケティングサイト構築に強い",
+        "monthlyUsers": "数万チーム",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "2,300+ stars（prismic-client）",
+        "npmDownloads": "週間約10万DL",
+        "marketShare": "ヘッドレスCMS市場で中位",
+        "adopters": [
+          "Google",
+          "Deliveroo",
+          "Rakuten",
+          "New Relic"
+        ],
+        "sources": [
+          {
+            "label": "Prismic公式ドキュメント",
+            "url": "https://prismic.io/docs"
+          },
+          {
+            "label": "Prismic公式サイト",
+            "url": "https://prismic.io/"
+          }
+        ],
+        "detail": "Prismicは「スライス」と呼ばれるコンポーネントベースのコンテンツモデリングが特徴。無料プランでも無制限APIコールが利用可能。Next.js向けの専用ライブラリ@prismicio/nextが充実。"
+      }
+    },
+    {
+      "id": "datocms",
+      "name": "DatoCMS API",
+      "nameJa": "DatoCMS API",
+      "description": "開発者フレンドリーなヘッドレスCMS。GraphQL APIをメインに提供し、画像の自動最適化やリアルタイムプレビューが充実。構造化テキストやモジュラーコンテンツなど高度なコンテンツモデリングに対応",
+      "url": "https://www.datocms.com/",
+      "docsUrl": "https://www.datocms.com/docs/content-delivery-api",
+      "category": "cms",
+      "tags": [
+        "ヘッドレスCMS",
+        "GraphQL",
+        "画像最適化",
+        "リアルタイムプレビュー",
+        "CDN"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 300レコード、100K APIコール/月。Professional: $199/月。Enterprise: カスタム",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Content Delivery API: 60リクエスト/3秒。Management API: 60リクエスト/3秒",
+      "sdks": [
+        "JavaScript",
+        "Ruby",
+        "Python"
+      ],
+      "useCases": [
+        "GraphQLベースのコンテンツ配信",
+        "画像最適化付きメディアサイト",
+        "Jamstackサイト構築",
+        "多言語コンテンツ管理"
+      ],
+      "popularity": {
+        "score": 52,
+        "users": "数万の開発者",
+        "marketPosition": "ヘッドレスCMS市場のトップ10",
+        "reason": "GraphQLファーストのアプローチと画像最適化APIが好評",
+        "monthlyUsers": "数万チーム",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "400+ stars（JS SDK）",
+        "npmDownloads": "週間約5万DL",
+        "marketShare": "ヘッドレスCMS市場で中位",
+        "adopters": [
+          "Verizon",
+          "DHL",
+          "Havas",
+          "Arduino"
+        ],
+        "sources": [
+          {
+            "label": "DatoCMS公式ドキュメント",
+            "url": "https://www.datocms.com/docs"
+          },
+          {
+            "label": "DatoCMS料金プラン",
+            "url": "https://www.datocms.com/pricing"
+          }
+        ],
+        "detail": "DatoCMSはGraphQL APIをメインに据えたヘッドレスCMS。画像のリアルタイム変換・最適化APIが強力。2026年にProfessionalプランの価格とAPIリミットを改定予定と発表。"
+      }
+    },
+    {
+      "id": "storyblok",
+      "name": "Storyblok API",
+      "nameJa": "Storyblok API",
+      "description": "ビジュアルエディター搭載のヘッドレスCMS。リアルタイムプレビューしながらコンテンツを編集でき、マーケター・開発者双方にとって使いやすい。REST APIとGraphQL APIの両方を提供し、多言語コンテンツ管理にも強い",
+      "url": "https://www.storyblok.com/",
+      "docsUrl": "https://www.storyblok.com/docs/api/content-delivery/v2",
+      "category": "cms",
+      "tags": [
+        "ヘッドレスCMS",
+        "ビジュアルエディター",
+        "多言語",
+        "コンポーネント",
+        "CDN"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Community: 無料（1ユーザー、25K APIコール/月）。Entry: €99/月。Business: カスタム。Enterprise: カスタム",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Content Delivery API: 50リクエスト/秒。Management API: 3リクエスト/秒",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "PHP",
+        "Ruby",
+        "Java",
+        ".NET",
+        "Go",
+        "Swift"
+      ],
+      "useCases": [
+        "ビジュアルエディターでのコンテンツ管理",
+        "多言語・多リージョンサイト",
+        "コンポーネントベースのページ構築",
+        "ECサイトのコンテンツ管理"
+      ],
+      "popularity": {
+        "score": 60,
+        "users": "数万の開発者・企業",
+        "marketPosition": "ヘッドレスCMS市場のトップ10",
+        "reason": "ビジュアルエディターの使いやすさでマーケターからも高評価",
+        "monthlyUsers": "数万チーム",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "2,000+ stars（storyblok-js-client）",
+        "npmDownloads": "週間約8万DL",
+        "marketShare": "ヘッドレスCMS市場で中位",
+        "adopters": [
+          "Adidas",
+          "Tesla",
+          "Pizza Hut",
+          "Oatly",
+          "Marc O'Polo"
+        ],
+        "sources": [
+          {
+            "label": "Storyblok公式ドキュメント",
+            "url": "https://www.storyblok.com/docs/api/content-delivery/v2"
+          },
+          {
+            "label": "Storyblok公式サイト",
+            "url": "https://www.storyblok.com/"
+          }
+        ],
+        "detail": "Storyblokはビジュアルエディターが最大の特徴。コンテンツを実際のサイトデザイン上でリアルタイム編集できるため、開発者だけでなくマーケターにも好評。8つ以上の言語でSDKを提供。"
+      }
+    },
+    {
+      "id": "salesforce-rest",
+      "name": "Salesforce REST API",
+      "nameJa": "Salesforce REST API",
+      "description": "世界最大のCRMプラットフォーム「Salesforce」のREST API。リード・商談・取引先などのCRMオブジェクトをCRUDでき、SOQL/SOSLによる高度なクエリも可能。エンタープライズ向けの堅牢な認証・権限管理を備える",
+      "url": "https://developer.salesforce.com/",
+      "docsUrl": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/",
+      "category": "crm",
+      "tags": [
+        "CRM",
+        "営業支援",
+        "エンタープライズ",
+        "SOQL",
+        "クラウド"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "Essentials: $25/ユーザー/月。Professional: $80/ユーザー/月。Enterprise: $165/ユーザー/月。Developer Edition: 無料（開発・テスト用）",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "100,000リクエスト/24時間（Enterprise）+ 1,000/ユーザーライセンス。同時接続25",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java",
+        ".NET",
+        "Ruby",
+        "PHP",
+        "Go"
+      ],
+      "useCases": [
+        "顧客データの統合管理",
+        "営業パイプラインの自動化",
+        "外部システムとのCRM連携",
+        "カスタムダッシュボード構築"
+      ],
+      "popularity": {
+        "score": 92,
+        "users": "15万以上の企業",
+        "marketPosition": "CRM世界市場シェア1位（約23%）",
+        "reason": "エンタープライズCRMのデファクトスタンダード。Fortune 500の90%以上が利用",
+        "monthlyUsers": "15万以上の企業",
+        "monthlyApiCalls": "月間数百億コール",
+        "githubStars": "1,500+ stars（各種SDK）",
+        "npmDownloads": "週間約15万DL（jsforce）",
+        "marketShare": "CRM市場シェア約23%",
+        "adopters": [
+          "Toyota",
+          "Amazon Web Services",
+          "Spotify",
+          "American Express",
+          "T-Mobile"
+        ],
+        "sources": [
+          {
+            "label": "Salesforce開発者ドキュメント",
+            "url": "https://developer.salesforce.com/docs/"
+          },
+          {
+            "label": "Salesforce APIリクエスト制限",
+            "url": "https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm"
+          }
+        ],
+        "detail": "SalesforceはCRM世界市場シェア1位。REST APIはEnterprise Editionで100,000リクエスト/24時間が基本。Developer Editionは無料で開発・テストが可能。OAuth 2.0認証が必須で学習コストはやや高い。"
+      }
+    },
+    {
+      "id": "hubspot",
+      "name": "HubSpot API",
+      "nameJa": "HubSpot API",
+      "description": "マーケティング・営業・カスタマーサービスを統合したCRMプラットフォームのAPI。コンタクト・企業・取引・チケットなどのCRMオブジェクト操作に加え、マーケティングオートメーションやCMS機能のAPIも提供する",
+      "url": "https://developers.hubspot.com/",
+      "docsUrl": "https://developers.hubspot.com/docs/api/overview",
+      "category": "crm",
+      "tags": [
+        "CRM",
+        "マーケティング",
+        "営業支援",
+        "自動化",
+        "インバウンド"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料CRM: コンタクト100万件まで。Starter: $20/月。Professional: $890/月。Enterprise: $3,600/月",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "110リクエスト/10秒（OAuthアプリ）。Private app: 200リクエスト/10秒",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby",
+        "PHP"
+      ],
+      "useCases": [
+        "マーケティングオートメーション",
+        "CRM・営業パイプライン管理",
+        "カスタムレポート・ダッシュボード",
+        "外部システムとの顧客データ連携"
+      ],
+      "popularity": {
+        "score": 88,
+        "users": "20万以上の企業",
+        "marketPosition": "CRM市場で2位。SMB向けCRMのリーダー",
+        "reason": "無料CRMの提供と充実したAPI・マーケットプレイスが人気の要因",
+        "monthlyUsers": "20万以上の企業",
+        "monthlyApiCalls": "月間数十億コール",
+        "githubStars": "600+ stars（hubspot-api-nodejs）",
+        "npmDownloads": "週間約5万DL",
+        "marketShare": "CRM市場で上位3",
+        "adopters": [
+          "Trello",
+          "SurveyMonkey",
+          "Subaru",
+          "Suzuki",
+          "ClassPass"
+        ],
+        "sources": [
+          {
+            "label": "HubSpot開発者ドキュメント",
+            "url": "https://developers.hubspot.com/docs/api/overview"
+          },
+          {
+            "label": "HubSpot APIレート制限",
+            "url": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines"
+          }
+        ],
+        "detail": "HubSpotは無料CRM+マーケティングツールのセットで急成長。無料プランでもコンタクト100万件まで管理可能。APIレートリミットは110リクエスト/10秒でバッチ処理に注意が必要。"
+      }
+    },
+    {
+      "id": "kintone",
+      "name": "kintone API",
+      "nameJa": "kintone API",
+      "description": "サイボウズが提供する日本製の業務改善プラットフォーム。ノーコードでアプリを作成し、REST APIで外部連携が可能。レコード操作・アプリ管理・ファイル操作など豊富なAPIを提供。日本の企業で広く利用されている",
+      "url": "https://kintone.cybozu.co.jp/",
+      "docsUrl": "https://cybozu.dev/ja/kintone/docs/rest-api/",
+      "category": "crm",
+      "tags": [
+        "業務改善",
+        "ノーコード",
+        "日本製",
+        "データベース",
+        "サイボウズ"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "ライトコース: ¥1,000/ユーザー/月。スタンダードコース: ¥1,500/ユーザー/月（API利用にはスタンダード必須）。ワイドコース: ¥3,000〜",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "10,000リクエスト/日/アプリ。同時リクエスト100/ドメイン",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "Go",
+        "PHP"
+      ],
+      "useCases": [
+        "業務アプリの外部システム連携",
+        "顧客管理・案件管理",
+        "ワークフロー自動化",
+        "社内データベースのAPI化"
+      ],
+      "popularity": {
+        "score": 70,
+        "users": "3万社以上の日本企業",
+        "marketPosition": "日本のノーコード業務プラットフォーム市場のリーダー",
+        "reason": "日本企業のDX推進で急速に普及。日本語ドキュメントが充実",
+        "monthlyUsers": "3万社以上",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "300+ stars（js-sdk）",
+        "npmDownloads": "週間約1万DL",
+        "marketShare": "日本のノーコード業務プラットフォーム市場で最大シェア",
+        "adopters": [
+          "日産自動車",
+          "全日本空輸（ANA）",
+          "LIXIL",
+          "星野リゾート",
+          "ソフトバンク"
+        ],
+        "sources": [
+          {
+            "label": "kintone開発者ネットワーク",
+            "url": "https://cybozu.dev/ja/kintone/"
+          },
+          {
+            "label": "kintone APIリクエスト制限",
+            "url": "https://cybozu.dev/ja/kintone/tips/best-practices/performance/kintone-api-request-limit-exceeded-guide/"
+          }
+        ],
+        "detail": "kintoneはサイボウズが提供する業務改善プラットフォーム。3万社以上が利用。REST APIで外部連携が可能だが、スタンダードコース以上が必要。1日1万リクエスト/アプリの制限があるため大量データ連携には注意。"
+      }
+    },
+    {
+      "id": "zoho-crm",
+      "name": "Zoho CRM API",
+      "nameJa": "Zoho CRM API",
+      "description": "中小企業からエンタープライズまで対応するCRMプラットフォームのAPI。リード・コンタクト・商談の管理に加え、ワークフロー自動化やカスタムモジュールの操作も可能。同時接続ベースのユニークなレート制限モデルを採用",
+      "url": "https://www.zoho.com/crm/",
+      "docsUrl": "https://www.zoho.com/crm/developer/docs/api/v8/",
+      "category": "crm",
+      "tags": [
+        "CRM",
+        "営業支援",
+        "ワークフロー",
+        "自動化",
+        "コスト効率"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 3ユーザーまで。Standard: $14/ユーザー/月。Professional: $23/ユーザー/月。Enterprise: $40/ユーザー/月",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "同時接続ベース（Enterprise: 25同時接続）。クレジット制: 5,000,000クレジット/24時間（Enterprise）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "PHP",
+        ".NET",
+        "Ruby",
+        "Go"
+      ],
+      "useCases": [
+        "中小企業のCRM導入",
+        "営業プロセスの自動化",
+        "マルチチャネル顧客対応",
+        "Zohoエコシステムとの連携"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "25万以上の企業",
+        "marketPosition": "CRM市場シェア上位5。コスパ重視のCRMとして人気",
+        "reason": "Salesforceの約半額の価格で豊富な機能を提供。中小企業に人気",
+        "monthlyUsers": "25万以上の企業",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "200+ stars（各種SDK）",
+        "npmDownloads": "週間約1万DL",
+        "marketShare": "CRM市場シェア上位5",
+        "adopters": [
+          "Amazon India",
+          "Netflix",
+          "Suzuki",
+          "KPMG"
+        ],
+        "sources": [
+          {
+            "label": "Zoho CRM API公式ドキュメント",
+            "url": "https://www.zoho.com/crm/developer/docs/api/v8/"
+          },
+          {
+            "label": "Zoho CRM APIリミット",
+            "url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html"
+          }
+        ],
+        "detail": "Zoho CRMはSalesforceの半額程度でCRM機能を提供。APIレート制限は同時接続ベースのユニークな方式で、時間あたりの制限がないのが特徴。従量課金でAPIクレジットの追加購入も可能。"
+      }
+    },
+    {
+      "id": "pipedrive",
+      "name": "Pipedrive API",
+      "nameJa": "Pipedrive API",
+      "description": "営業チーム向けに設計されたCRM/パイプライン管理ツールのAPI。ディール・コンタクト・組織・アクティビティの操作が可能。2025年からトークンベースのレート制限に移行し、エンドポイントごとのコスト管理を導入",
+      "url": "https://developers.pipedrive.com/",
+      "docsUrl": "https://developers.pipedrive.com/docs/api/v1",
+      "category": "crm",
+      "tags": [
+        "CRM",
+        "パイプライン",
+        "営業管理",
+        "ディール管理",
+        "自動化"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "Essential: $14/ユーザー/月。Advanced: $34/ユーザー/月。Professional: $49/ユーザー/月。Power: $64/ユーザー/月。Enterprise: $99/ユーザー/月",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "トークンベース: 30,000基本トークン × プラン倍率 × シート数/日。バースト: 2秒ウィンドウ制限",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "PHP",
+        "Ruby"
+      ],
+      "useCases": [
+        "営業パイプラインの可視化",
+        "ディール進捗の自動追跡",
+        "メール・カレンダー連携",
+        "営業レポート自動化"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "10万以上の企業",
+        "marketPosition": "SMB向け営業CRMのトップ5",
+        "reason": "パイプライン管理UIの使いやすさとコストパフォーマンスが人気",
+        "monthlyUsers": "10万以上の企業",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "200+ stars（client-nodejs）",
+        "npmDownloads": "週間約5千DL",
+        "marketShare": "SMB向けCRM市場で上位",
+        "adopters": [
+          "Vimeo",
+          "Skyscanner",
+          "University of Cambridge",
+          "Festo"
+        ],
+        "sources": [
+          {
+            "label": "Pipedrive開発者ドキュメント",
+            "url": "https://developers.pipedrive.com/docs/api/v1"
+          },
+          {
+            "label": "Pipedrive APIレート制限",
+            "url": "https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting"
+          }
+        ],
+        "detail": "Pipedriveは営業チーム向けのパイプライン管理CRM。2025年にトークンベースのレート制限に完全移行。30,000基本トークン×プラン倍率×シート数で日次予算が決まるユニークな仕組み。"
+      }
+    },
+    {
+      "id": "freshsales",
+      "name": "Freshsales API",
+      "nameJa": "Freshsales API",
+      "description": "Freshworks社が提供するCRMのAPI。リード・コンタクト・アカウント・ディールのCRUD操作に加え、ビルトインの電話・メール・チャット機能のAPIも提供。AI搭載のリードスコアリング「Freddy AI」との連携も可能",
+      "url": "https://www.freshworks.com/crm/",
+      "docsUrl": "https://developers.freshworks.com/crm/api/",
+      "category": "crm",
+      "tags": [
+        "CRM",
+        "営業支援",
+        "AI",
+        "リードスコアリング",
+        "Freshworks"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: コンタクト管理のみ。Growth: $9/ユーザー/月。Pro: $39/ユーザー/月。Enterprise: $59/ユーザー/月",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "1,000リクエスト/時間（デフォルト）。プランにより増額可能",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby",
+        "PHP"
+      ],
+      "useCases": [
+        "リード管理と自動スコアリング",
+        "営業パイプラインの自動化",
+        "顧客コミュニケーション統合",
+        "AIによる営業インサイト"
+      ],
+      "popularity": {
+        "score": 55,
+        "users": "6万以上の企業",
+        "marketPosition": "SMB向けCRMのトップ10",
+        "reason": "低価格で電話・メール機能を標準搭載するオールインワンCRM",
+        "monthlyUsers": "6万以上の企業",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "100+ stars（SDK）",
+        "npmDownloads": "週間約2千DL",
+        "marketShare": "SMB向けCRM市場で中位",
+        "adopters": [
+          "Bridgestone",
+          "Honda",
+          "Cisco",
+          "Chargebee"
+        ],
+        "sources": [
+          {
+            "label": "Freshsales開発者ドキュメント",
+            "url": "https://developers.freshworks.com/crm/api/"
+          },
+          {
+            "label": "Freshsales APIリミット",
+            "url": "https://crmsupport.freshworks.com/support/solutions/articles/50000010517"
+          }
+        ],
+        "detail": "FreshsalesはFreshworksのCRM製品。デフォルト1,000リクエスト/時間のレート制限があり、プランに応じて増額可能。AI機能「Freddy」によるリードスコアリングやインサイト機能が特徴。"
+      }
+    },
+    {
+      "id": "monday",
+      "name": "Monday.com API",
+      "nameJa": "Monday.com API",
+      "description": "プロジェクト管理・ワークマネジメントプラットフォームのGraphQL API。ボード・アイテム・カラム・グループの操作が可能で、複雑度（complexity）ベースのレート制限を採用。WebhookやAutomationsとの連携も充実",
+      "url": "https://developer.monday.com/",
+      "docsUrl": "https://developer.monday.com/api-reference/docs/introduction-to-graphql",
+      "category": "crm",
+      "tags": [
+        "プロジェクト管理",
+        "GraphQL",
+        "ワークマネジメント",
+        "自動化",
+        "コラボレーション"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 2ユーザーまで。Basic: $12/ユーザー/月。Standard: $14/ユーザー/月。Pro: $27/ユーザー/月。Enterprise: カスタム",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "10,000,000 complexity/分/アカウント。日次コール制限あり（プランにより異なる）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby"
+      ],
+      "useCases": [
+        "プロジェクト管理の自動化",
+        "タスク進捗のリアルタイム連携",
+        "カスタムダッシュボード構築",
+        "外部ツールとのワークフロー統合"
+      ],
+      "popularity": {
+        "score": 78,
+        "users": "22.5万以上の企業",
+        "marketPosition": "プロジェクト管理ツール市場のトップ5",
+        "reason": "ビジュアルなプロジェクト管理とGraphQL APIの柔軟性が人気",
+        "monthlyUsers": "22.5万以上の企業",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "500+ stars（monday-sdk-js）",
+        "npmDownloads": "週間約3万DL",
+        "marketShare": "ワークマネジメント市場で上位",
+        "adopters": [
+          "Hulu",
+          "Coca-Cola",
+          "Universal Music",
+          "Canva",
+          "Uber"
+        ],
+        "sources": [
+          {
+            "label": "Monday.com開発者ドキュメント",
+            "url": "https://developer.monday.com/api-reference/docs/introduction-to-graphql"
+          },
+          {
+            "label": "Monday.com APIレート制限",
+            "url": "https://developer.monday.com/api-reference/docs/rate-limits"
+          }
+        ],
+        "detail": "Monday.comはGraphQL APIを採用したワークマネジメントツール。レート制限はcomplexity（複雑度）ベースで10,000,000/分/アカウント。クエリの複雑さに応じてコストが変動するユニークな方式。"
+      }
+    },
+    {
+      "id": "airtable",
+      "name": "Airtable API",
+      "nameJa": "Airtable API",
+      "description": "スプレッドシートとデータベースを融合したノーコードプラットフォームのAPI。テーブル・レコード・フィールドの操作が可能で、リレーションやルックアップなどのデータベース機能もAPIから利用できる。シンプルなRESTful設計で使いやすい",
+      "url": "https://airtable.com/developers",
+      "docsUrl": "https://airtable.com/developers/web/api/introduction",
+      "category": "crm",
+      "tags": [
+        "データベース",
+        "ノーコード",
+        "スプレッドシート",
+        "レコード管理",
+        "自動化"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 1,000レコード/ベース、1,000 APIコール/月。Team: $20/ユーザー/月（100K APIコール）。Business: $45/ユーザー/月（500K APIコール）",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "5リクエスト/秒/ベース。50リクエスト/秒/ユーザー（PAT利用時）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby"
+      ],
+      "useCases": [
+        "カスタムCRM・プロジェクト管理",
+        "在庫管理・商品カタログ",
+        "コンテンツカレンダー管理",
+        "データベースバックエンドとしての利用"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "45万以上の企業",
+        "marketPosition": "ノーコードデータベース市場のリーダー",
+        "reason": "スプレッドシートのような使いやすさとAPI機能のバランスが人気",
+        "monthlyUsers": "45万以上の企業",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "1,800+ stars（airtable.js）",
+        "npmDownloads": "週間約10万DL",
+        "marketShare": "ノーコードデータベース市場で1位",
+        "adopters": [
+          "Netflix",
+          "Shopify",
+          "Medium",
+          "Time Magazine",
+          "ExpressVPN"
+        ],
+        "sources": [
+          {
+            "label": "Airtable API公式ドキュメント",
+            "url": "https://airtable.com/developers/web/api/introduction"
+          },
+          {
+            "label": "Airtable APIレート制限",
+            "url": "https://airtable.com/developers/web/api/rate-limits"
+          }
+        ],
+        "detail": "Airtableはスプレッドシート×データベースのノーコードツール。APIレート制限は5リクエスト/秒/ベースと低めだが、無料プランは1,000 APIコール/月に制限。2025年に無料プランのAPI制限が厳格化された。"
+      }
+    },
+    {
+      "id": "postmark",
+      "name": "Postmark API",
+      "nameJa": "Postmark API",
+      "description": "トランザクションメール配信に特化した高品質メールAPI。業界最高水準の到達率を誇り、パスワードリセット・注文確認・通知メールなどのトランザクションメールを高速かつ確実に配信する。メッセージストリームで種類別管理が可能",
+      "url": "https://postmarkapp.com/",
+      "docsUrl": "https://postmarkapp.com/developer",
+      "category": "notification",
+      "tags": [
+        "メール",
+        "トランザクションメール",
+        "配信",
+        "到達率",
+        "SMTP"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 100通/月（開発者プラン、期限なし）。10K通/月: $15〜。100K通/月: $110〜。従量課金あり",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "送信数はプランに依存（上限なし、超過分は従量課金）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby",
+        "PHP",
+        ".NET",
+        "Java",
+        "Go",
+        "Elixir"
+      ],
+      "useCases": [
+        "トランザクションメール送信",
+        "パスワードリセットメール",
+        "注文確認・配送通知",
+        "メール到達率の最適化"
+      ],
+      "popularity": {
+        "score": 62,
+        "users": "数万の企業・開発者",
+        "marketPosition": "トランザクションメールAPI市場のトップ5",
+        "reason": "業界最高水準の到達率とシンプルなAPI設計が好評",
+        "monthlyUsers": "数万の企業",
+        "monthlyApiCalls": "月間数億通",
+        "githubStars": "300+ stars（各種SDK）",
+        "npmDownloads": "週間約3万DL（postmark）",
+        "marketShare": "トランザクションメール市場で上位",
+        "adopters": [
+          "DuckDuckGo",
+          "Basecamp",
+          "Doist",
+          "Wildbit"
+        ],
+        "sources": [
+          {
+            "label": "Postmark公式ドキュメント",
+            "url": "https://postmarkapp.com/developer"
+          },
+          {
+            "label": "Postmark料金プラン",
+            "url": "https://postmarkapp.com/pricing"
+          }
+        ],
+        "detail": "Postmarkはトランザクションメールに特化したサービス。平均配信時間は数秒以内で業界最速クラス。無料プランは100通/月と少ないが期限なし。マーケティングメールとトランザクションメールを分離するストリーム機能が特徴。"
+      }
+    },
+    {
+      "id": "amazon-sns",
+      "name": "Amazon SNS",
+      "nameJa": "Amazon SNS",
+      "description": "AWSのフルマネージド通知サービス。Pub/Subメッセージング、モバイルプッシュ通知、SMS、メール配信を統合的に提供。Standard TopicとFIFO Topicの2種類があり、大規模な分散システムのイベント通知基盤として利用される",
+      "url": "https://aws.amazon.com/sns/",
+      "docsUrl": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
+      "category": "notification",
+      "tags": [
+        "通知",
+        "プッシュ通知",
+        "SMS",
+        "Pub/Sub",
+        "AWS"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料枠: 100万リクエスト/月、100万モバイルプッシュ/月、1,000メール/月。Standard: $0.50/100万リクエスト。FIFO: $2.50/100万リクエスト",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "XML"
+      ],
+      "rateLimit": "30,000メッセージ/秒/リージョン（Standard）。300メッセージ/秒（FIFO）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Java",
+        ".NET",
+        "Go",
+        "Ruby",
+        "PHP",
+        "Rust",
+        "Swift",
+        "Kotlin"
+      ],
+      "useCases": [
+        "マイクロサービス間のイベント通知",
+        "モバイルプッシュ通知配信",
+        "アラート・監視通知",
+        "ファンアウトメッセージング"
+      ],
+      "popularity": {
+        "score": 88,
+        "users": "数十万のAWSアカウント",
+        "marketPosition": "クラウド通知サービスのデファクトスタンダード",
+        "reason": "AWSエコシステムの中核サービスとして圧倒的な利用者数",
+        "monthlyUsers": "数十万のAWSアカウント",
+        "monthlyApiCalls": "月間数兆メッセージ",
+        "githubStars": "8,000+ stars（AWS SDK for JS）",
+        "npmDownloads": "週間数百万DL（@aws-sdk/client-sns）",
+        "marketShare": "クラウド通知サービス市場で最大シェア",
+        "adopters": [
+          "Netflix",
+          "Airbnb",
+          "NASA",
+          "Samsung",
+          "BMW"
+        ],
+        "sources": [
+          {
+            "label": "Amazon SNS公式ドキュメント",
+            "url": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html"
+          },
+          {
+            "label": "Amazon SNS料金ページ",
+            "url": "https://aws.amazon.com/sns/pricing/"
+          }
+        ],
+        "detail": "Amazon SNSはAWSのフルマネージド通知サービス。無料枠が月間100万リクエストと寛大。Standard Topicは30,000メッセージ/秒の高スループットに対応。FIFOは300メッセージ/秒だが順序保証とメッセージ重複排除を提供。"
+      }
+    },
+    {
+      "id": "onesignal",
+      "name": "OneSignal API",
+      "nameJa": "OneSignal API",
+      "description": "モバイル・Webプッシュ通知のリーディングプラットフォーム。iOS/Android/Webプッシュ通知、メール、SMSをマルチチャネルで管理・配信できる。セグメンテーション・A/Bテスト・アナリティクス機能を標準搭載",
+      "url": "https://onesignal.com/",
+      "docsUrl": "https://documentation.onesignal.com/reference/",
+      "category": "notification",
+      "tags": [
+        "プッシュ通知",
+        "モバイル",
+        "Web通知",
+        "セグメンテーション",
+        "マルチチャネル"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: モバイルプッシュ無制限、10Kメール/月。Growth: $9/月〜。Professional・Enterprise: カスタム",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "非公開（大量送信に対応）",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby",
+        "PHP",
+        "Java",
+        "Go",
+        ".NET",
+        "Unity",
+        "React Native",
+        "Flutter"
+      ],
+      "useCases": [
+        "モバイルアプリのプッシュ通知",
+        "Webプッシュ通知",
+        "マルチチャネルメッセージング",
+        "ユーザーエンゲージメント向上"
+      ],
+      "popularity": {
+        "score": 75,
+        "users": "100万以上の開発者",
+        "marketPosition": "プッシュ通知プラットフォーム市場のリーダー",
+        "reason": "無料プランでモバイルプッシュ無制限が最大の強み",
+        "monthlyUsers": "100万以上の開発者",
+        "monthlyApiCalls": "月間数十億通知",
+        "githubStars": "600+ stars（各種SDK）",
+        "npmDownloads": "週間約5万DL",
+        "marketShare": "プッシュ通知市場で最大シェア",
+        "adopters": [
+          "Uber",
+          "Adobe",
+          "Zynga",
+          "Tribune Media"
+        ],
+        "sources": [
+          {
+            "label": "OneSignal公式ドキュメント",
+            "url": "https://documentation.onesignal.com/reference/"
+          },
+          {
+            "label": "OneSignal公式サイト",
+            "url": "https://onesignal.com/"
+          }
+        ],
+        "detail": "OneSignalはプッシュ通知プラットフォーム市場のリーダー。無料プランでモバイルプッシュが無制限な点が最大の差別化要因。React Native、Flutter、Unityなどのゲーム/モバイルSDKが充実。"
+      }
+    },
+    {
+      "id": "pusher",
+      "name": "Pusher API",
+      "nameJa": "Pusher API",
+      "description": "リアルタイム通信のための WebSocket インフラサービス。Channels（リアルタイムメッセージング）とBeams（プッシュ通知）の2製品を提供。チャット、ライブ通知、リアルタイムダッシュボードなどの構築に最適",
+      "url": "https://pusher.com/",
+      "docsUrl": "https://pusher.com/docs/channels/",
+      "category": "notification",
+      "tags": [
+        "リアルタイム",
+        "WebSocket",
+        "チャネル",
+        "プッシュ通知",
+        "メッセージング"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Sandbox: 無料（200同時接続、200Kメッセージ/日）。Startup: $49/月。Business: $99/月。Pro: $299/月〜",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "プランに応じた同時接続数・メッセージ数制限",
+      "sdks": [
+        "JavaScript",
+        "Python",
+        "Ruby",
+        "PHP",
+        "Java",
+        ".NET",
+        "Go",
+        "Swift",
+        "Kotlin",
+        "Flutter"
+      ],
+      "useCases": [
+        "リアルタイムチャット機能",
+        "ライブ通知・アラート",
+        "リアルタイムダッシュボード",
+        "コラボレーション機能"
+      ],
+      "popularity": {
+        "score": 70,
+        "users": "数十万の開発者",
+        "marketPosition": "リアルタイムメッセージングAPI市場のパイオニア",
+        "reason": "WebSocketの複雑さを隠蔽し、簡単にリアルタイム機能を実装できる",
+        "monthlyUsers": "数十万の開発者",
+        "monthlyApiCalls": "月間数十億メッセージ",
+        "githubStars": "2,500+ stars（pusher-js）",
+        "npmDownloads": "週間約30万DL",
+        "marketShare": "リアルタイムメッセージング市場で上位",
+        "adopters": [
+          "GitHub",
+          "Mailchimp",
+          "The Guardian",
+          "QuizUp"
+        ],
+        "sources": [
+          {
+            "label": "Pusher公式ドキュメント",
+            "url": "https://pusher.com/docs/channels/"
+          },
+          {
+            "label": "Pusher料金プラン",
+            "url": "https://pusher.com/channels/pricing/"
+          }
+        ],
+        "detail": "PusherはWebSocketインフラのパイオニア。Sandbox（無料）は200同時接続・200Kメッセージ/日で開発には十分。Laravel公式のブロードキャスティングドライバーとしても採用され、PHPコミュニティで特に人気。"
+      }
+    },
+    {
+      "id": "railway",
+      "name": "Railway API",
+      "nameJa": "Railway API",
+      "description": "シンプルで開発者フレンドリーなクラウドデプロイプラットフォームのGraphQL API。プロジェクト・サービス・デプロイメント・環境の管理が可能。Gitリポジトリからのワンクリックデプロイとインフラの自動プロビジョニングが特徴",
+      "url": "https://railway.app/",
+      "docsUrl": "https://docs.railway.com/reference/public-api",
+      "category": "devtools",
+      "tags": [
+        "デプロイ",
+        "PaaS",
+        "クラウド",
+        "GraphQL",
+        "インフラ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料トライアル: $5分のクレジット（30日間）。Hobby: $5/月（$5使用量含む）。Pro: $20/月。リソース従量課金制",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "公式ドキュメントに明記なし（一般的なAPI制限あり）",
+      "sdks": [
+        "JavaScript",
+        "Go"
+      ],
+      "useCases": [
+        "バックエンドサービスのデプロイ",
+        "データベースの自動プロビジョニング",
+        "プレビュー環境の自動生成",
+        "インフラのコード管理"
+      ],
+      "popularity": {
+        "score": 65,
+        "users": "数十万の開発者",
+        "marketPosition": "次世代PaaS市場の注目プレイヤー",
+        "reason": "Heroku代替として急速に成長。シンプルなUIと従量課金が人気",
+        "monthlyUsers": "数十万の開発者",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "4,000+ stars（CLIなど）",
+        "npmDownloads": "週間約1万DL",
+        "marketShare": "PaaS市場で成長中",
+        "adopters": [
+          "Replicate",
+          "Deno",
+          "Cal.com",
+          "Wasp"
+        ],
+        "sources": [
+          {
+            "label": "Railway公式ドキュメント",
+            "url": "https://docs.railway.com/"
+          },
+          {
+            "label": "Railway料金プラン",
+            "url": "https://docs.railway.com/reference/pricing/plans"
+          }
+        ],
+        "detail": "RailwayはHeroku代替として急成長中のPaaS。GraphQL APIでプロジェクト管理が可能。Hobby $5/月に$5分の使用量クレジットが含まれ、超過分は従量課金。データベースの自動プロビジョニングが手軽。"
+      }
+    },
+    {
+      "id": "render",
+      "name": "Render API",
+      "nameJa": "Render API",
+      "description": "クラウドホスティング・デプロイプラットフォームのREST API。Webサービス・データベース・静的サイト・Cronジョブの管理が可能。無料の静的サイトホスティングと透明性の高い料金体系が特徴。Herokuからの移行先として人気",
+      "url": "https://render.com/",
+      "docsUrl": "https://docs.render.com/api",
+      "category": "devtools",
+      "tags": [
+        "ホスティング",
+        "PaaS",
+        "デプロイ",
+        "データベース",
+        "静的サイト"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料: 静的サイト無制限、Webサービス（制限付き）、1GB PostgreSQL。Individual: $7/月〜。Team: $19/月〜。リソース従量課金制",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "公式ドキュメントに明確な記載なし",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "Webアプリのデプロイ・ホスティング",
+        "マネージドデータベース管理",
+        "静的サイトのホスティング",
+        "Cronジョブの管理"
+      ],
+      "popularity": {
+        "score": 62,
+        "users": "数十万の開発者",
+        "marketPosition": "PaaS市場のトップ10",
+        "reason": "Heroku無料枠廃止後の代替として急成長。透明な料金体系が好評",
+        "monthlyUsers": "数十万の開発者",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "非公開（プロプライエタリ）",
+        "npmDownloads": "非公開",
+        "marketShare": "PaaS市場で成長中",
+        "adopters": [
+          "Crunchy Data",
+          "Retool",
+          "CodeSandbox",
+          "Plausible"
+        ],
+        "sources": [
+          {
+            "label": "Render公式ドキュメント",
+            "url": "https://docs.render.com/"
+          },
+          {
+            "label": "Render料金プラン",
+            "url": "https://render.com/pricing"
+          }
+        ],
+        "detail": "RenderはHeroku代替として人気のPaaS。無料の静的サイトホスティングと1GB PostgreSQLが魅力。2025年に帯域料金を$30/100GBから$15/100GBに値下げ。シンプルで予測可能な料金体系が特徴。"
+      }
+    },
+    {
+      "id": "flyio",
+      "name": "Fly.io API",
+      "nameJa": "Fly.io API",
+      "description": "エッジコンピューティング対応のアプリケーションデプロイプラットフォーム。Machines APIでコンテナの起動・停止・スケーリングをプログラマティックに制御できる。世界30以上のリージョンでアプリを即座にデプロイ可能",
+      "url": "https://fly.io/",
+      "docsUrl": "https://fly.io/docs/machines/api/",
+      "category": "devtools",
+      "tags": [
+        "エッジ",
+        "コンテナ",
+        "デプロイ",
+        "グローバル",
+        "Machines API"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "月額基本料なし。Machines: 秒単位課金（shared-cpu-1x 256MB: $1.94/月相当）。帯域: $0.02/GB（北米・欧州）。無料枠あり",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "公式ドキュメントに明確な記載なし",
+      "sdks": [
+        "JavaScript",
+        "Go",
+        "Ruby",
+        "Elixir"
+      ],
+      "useCases": [
+        "エッジでのアプリケーションデプロイ",
+        "グローバル分散アプリ構築",
+        "コンテナのプログラマティック管理",
+        "低レイテンシAPIの構築"
+      ],
+      "popularity": {
+        "score": 60,
+        "users": "数万の開発者",
+        "marketPosition": "エッジコンピューティングPaaS市場の注目プレイヤー",
+        "reason": "エッジデプロイと秒単位課金のユニークなモデルが開発者から支持",
+        "monthlyUsers": "数万の開発者",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "1,500+ stars（flyctl CLI）",
+        "npmDownloads": "非公開",
+        "marketShare": "エッジPaaS市場で成長中",
+        "adopters": [
+          "Supabase",
+          "Tigris Data",
+          "Livebook",
+          "Bun"
+        ],
+        "sources": [
+          {
+            "label": "Fly.io Machines API公式ドキュメント",
+            "url": "https://fly.io/docs/machines/api/"
+          },
+          {
+            "label": "Fly.io料金ページ",
+            "url": "https://fly.io/pricing/"
+          }
+        ],
+        "detail": "Fly.ioはエッジコンピューティングに特化したPaaS。Machines APIでコンテナを秒単位で管理・課金。世界30+リージョンでアプリを即座にデプロイ。2026年からVolume SnapshotsとリージョンNetwork通信が課金対象に。"
+      }
+    },
+    {
+      "id": "zapier",
+      "name": "Zapier API",
+      "nameJa": "Zapier API",
+      "description": "7,000以上のアプリを接続するワークフロー自動化プラットフォーム。Workflow APIでZapの管理や外部トリガーの発火が可能。プログラミング不要でアプリ間連携を構築でき、開発者向けにはカスタムインテグレーション作成も提供",
+      "url": "https://zapier.com/",
+      "docsUrl": "https://docs.zapier.com/",
+      "category": "nocode",
+      "tags": [
+        "自動化",
+        "ワークフロー",
+        "アプリ連携",
+        "ノーコード",
+        "インテグレーション"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 100タスク/月、5つのZap。Starter: $19.99/月（750タスク）。Professional: $49/月（2,000タスク）。Team: $69/月。Enterprise: カスタム",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "Workflow API: 60リクエスト/分（IPベース）。Zap実行: プランにより100〜5,000リクエスト/60秒",
+      "sdks": [
+        "JavaScript",
+        "Python"
+      ],
+      "useCases": [
+        "業務アプリ間の自動連携",
+        "データ同期の自動化",
+        "通知・アラートワークフロー",
+        "リード獲得の自動化"
+      ],
+      "popularity": {
+        "score": 90,
+        "users": "220万以上のユーザー",
+        "marketPosition": "ノーコード自動化市場のリーダー",
+        "reason": "7,000以上のアプリ対応で最大のインテグレーションエコシステム",
+        "monthlyUsers": "220万以上のユーザー",
+        "monthlyApiCalls": "月間数十億タスク",
+        "githubStars": "1,000+ stars（zapier-platform）",
+        "npmDownloads": "週間約5万DL",
+        "marketShare": "ノーコード自動化市場で最大シェア",
+        "adopters": [
+          "Spotify",
+          "Adobe",
+          "Salesforce",
+          "Slack",
+          "HubSpot"
+        ],
+        "sources": [
+          {
+            "label": "Zapier開発者ドキュメント",
+            "url": "https://docs.zapier.com/"
+          },
+          {
+            "label": "Zapier料金プラン",
+            "url": "https://zapier.com/pricing"
+          }
+        ],
+        "detail": "Zapierはノーコード自動化の代名詞。7,000以上のアプリ連携に対応し、Workflow APIで外部からのZap管理も可能。無料プランは100タスク/月と制限的だが、有料プランはコスパが良い。"
+      }
+    },
+    {
+      "id": "make",
+      "name": "Make (Integromat) API",
+      "nameJa": "Make API",
+      "description": "ビジュアルなワークフロー自動化プラットフォーム。ドラッグ&ドロップでシナリオ（ワークフロー）を構築でき、APIでシナリオの実行・管理も可能。条件分岐やループなどの高度なロジックをノーコードで表現できるのが強み",
+      "url": "https://www.make.com/",
+      "docsUrl": "https://www.make.com/en/api-documentation",
+      "category": "nocode",
+      "tags": [
+        "自動化",
+        "ビジュアル",
+        "シナリオ",
+        "ワークフロー",
+        "ノーコード"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 1,000クレジット/月、2シナリオ。Core: $9/月（10,000クレジット）。Pro: $16/月（10,000クレジット）。Teams: $29/月",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "プランに応じたクレジット制限。実行間隔: 15分（無料）〜1分（有料）",
+      "sdks": [],
+      "useCases": [
+        "複雑な条件分岐を含む自動化",
+        "データ変換・ETL処理",
+        "マルチステップワークフロー",
+        "API連携の視覚化"
+      ],
+      "popularity": {
+        "score": 75,
+        "users": "数十万のユーザー",
+        "marketPosition": "ノーコード自動化市場で2位",
+        "reason": "Zapierよりもビジュアルで柔軟な自動化が可能。コスパが高い",
+        "monthlyUsers": "数十万のユーザー",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "非公開（プロプライエタリ）",
+        "npmDownloads": "非公開",
+        "marketShare": "ノーコード自動化市場で2位",
+        "adopters": [
+          "Spotify",
+          "Coca-Cola",
+          "Uber",
+          "Adidas"
+        ],
+        "sources": [
+          {
+            "label": "Make公式ドキュメント",
+            "url": "https://www.make.com/en/api-documentation"
+          },
+          {
+            "label": "Make料金プラン",
+            "url": "https://www.make.com/en/pricing"
+          }
+        ],
+        "detail": "Make（旧Integromat）はZapierの主要競合。ビジュアルなシナリオビルダーで複雑なワークフローを構築可能。2025年にOperationsがCreditsに名称変更（1:1変換）。無料プランの1,000クレジット/月はZapierの100タスクより寛大。"
+      }
+    },
+    {
+      "id": "n8n",
+      "name": "n8n API",
+      "nameJa": "n8n API",
+      "description": "オープンソースのワークフロー自動化プラットフォーム。セルフホスト可能でデータの完全管理が可能。400以上のインテグレーションとネイティブAI機能を搭載。コードノードでJavaScript/Pythonによるカスタムロジックも実装できる",
+      "url": "https://n8n.io/",
+      "docsUrl": "https://docs.n8n.io/api/",
+      "category": "nocode",
+      "tags": [
+        "自動化",
+        "オープンソース",
+        "セルフホスト",
+        "ワークフロー",
+        "AI"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Community Edition: 完全無料（セルフホスト）。Cloud Starter: €20/月。Cloud Pro: €50/月。Enterprise: カスタム",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "セルフホスト: 制限なし（サーバー依存）。Cloud: プランに応じた実行数制限",
+      "sdks": [
+        "JavaScript"
+      ],
+      "useCases": [
+        "セルフホスト型ワークフロー自動化",
+        "AIワークフロー構築",
+        "データパイプライン自動化",
+        "DevOps自動化"
+      ],
+      "popularity": {
+        "score": 82,
+        "users": "数十万の開発者",
+        "marketPosition": "オープンソースワークフロー自動化のリーダー",
+        "reason": "GitHub Stars 75K超。セルフホスト可能でプライバシー重視の開発者から高い支持",
+        "monthlyUsers": "数十万の開発者",
+        "monthlyApiCalls": "計測不能（セルフホスト型）",
+        "githubStars": "75,000+ stars",
+        "npmDownloads": "週間約5万DL",
+        "marketShare": "オープンソース自動化ツール市場で1位",
+        "adopters": [
+          "NASA",
+          "Accenture",
+          "Liberty Mutual"
+        ],
+        "sources": [
+          {
+            "label": "n8n GitHubリポジトリ",
+            "url": "https://github.com/n8n-io/n8n"
+          },
+          {
+            "label": "n8n公式サイト",
+            "url": "https://n8n.io/"
+          }
+        ],
+        "detail": "n8nはGitHub Stars 75K超のオープンソースワークフロー自動化ツール。2025年に+15K Stars増加するなど急成長中。セルフホスト版は完全無料で、Docker Pullsは1億回超。400+インテグレーションとネイティブAI機能を搭載。"
+      }
+    },
+    {
+      "id": "bubble",
+      "name": "Bubble API",
+      "nameJa": "Bubble API",
+      "description": "ビジュアルWebアプリ開発プラットフォームのAPI。Data API（データ操作）とWorkflow API（ワークフロー実行）を提供し、Bubbleで構築したアプリのバックエンドを外部から操作できる。ノーコードでフルスタックWebアプリを構築可能",
+      "url": "https://bubble.io/",
+      "docsUrl": "https://manual.bubble.io/help-guides/integrations/api",
+      "category": "nocode",
+      "tags": [
+        "ノーコード",
+        "Webアプリ",
+        "ビジュアル開発",
+        "データベース",
+        "ワークフロー"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "無料プラン: 50K WU/月（開発モードのみ、公開不可）。Starter: $32/月。Growth: $249/月。Team: $349/月〜",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "ワークロードユニット（WU）ベース。API操作はWUを消費（DB操作: 0.2〜0.5 WU）",
+      "sdks": [],
+      "useCases": [
+        "ノーコードWebアプリ構築",
+        "MVPの高速プロトタイピング",
+        "社内ツール開発",
+        "マーケットプレイス構築"
+      ],
+      "popularity": {
+        "score": 72,
+        "users": "数百万のユーザー",
+        "marketPosition": "ノーコードWebアプリ開発プラットフォーム市場のリーダー",
+        "reason": "コードなしでフルスタックWebアプリを構築できる唯一の主要プラットフォーム",
+        "monthlyUsers": "数百万のユーザー",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "非公開（プロプライエタリ）",
+        "npmDownloads": "非公開",
+        "marketShare": "ノーコードWebアプリ市場で最大シェア",
+        "adopters": [
+          "Dividend Finance",
+          "Qoins",
+          "Comet",
+          "Teal HQ"
+        ],
+        "sources": [
+          {
+            "label": "Bubble公式ドキュメント",
+            "url": "https://manual.bubble.io/help-guides/integrations/api"
+          },
+          {
+            "label": "Bubble料金プラン",
+            "url": "https://bubble.io/pricing"
+          }
+        ],
+        "detail": "BubbleはノーコードWebアプリ開発プラットフォームのリーダー。Data APIとWorkflow APIで外部連携が可能。ワークロードユニット（WU）制の料金体系で、API操作もWUを消費。無料プランは開発モードのみで公開にはStarterプラン以上が必要。"
       }
     }
   ]

@@ -7,6 +7,12 @@
   <url><loc>https://apipedia.dev/compare.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/lean-canvas.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://apipedia.dev/strategy.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://apipedia.dev/guides/</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/guides/payment-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://apipedia.dev/guides/auth-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://apipedia.dev/guides/ai-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://apipedia.dev/guides/notification-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://apipedia.dev/guides/maps-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://apipedia.dev/api/openweathermap/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/api/accuweather/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/api/jma-unofficial/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
@@ -107,4 +113,32 @@
   <url><loc>https://apipedia.dev/api/rakuten-recipe-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/api/posthog/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/api/jquants-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/wordpress-rest/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/contentful/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/strapi/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/microcms/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/sanity/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/ghost/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/prismic/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/datocms/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/storyblok/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/salesforce-rest/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/hubspot/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/kintone/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/zoho-crm/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/pipedrive/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/freshsales/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/monday/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/airtable/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/postmark/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/amazon-sns/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/onesignal/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/pusher/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/railway/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/render/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/flyio/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/zapier/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/make/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/n8n/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/bubble/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
 </urlset>
