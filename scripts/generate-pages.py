@@ -266,12 +266,11 @@ def generate_page(api, categories, all_apis=None):
   <div class="container">
     <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
     <nav class="site-header__nav">
-      <a href="../../index.html#ranking" class="nav-link">ランキング</a>
-      <a href="../../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../../index.html" class="nav-link">カタログ</a>
       <a href="../../compare.html" class="nav-link">比較表</a>
       <a href="../../guides/" class="nav-link">ガイド</a>
-      <a href="../../lean-canvas.html" class="nav-link">コンセプト</a>
     </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
   </div>
 </header>
 
@@ -346,12 +345,32 @@ def generate_page(api, categories, all_apis=None):
         <a href="../../index.html">トップ</a>
         <a href="../../compare.html">比較表</a>
         <a href="../../guides/">ガイド</a>
-        <a href="../../lean-canvas.html">コンセプト</a>
       </div>
     </div>
     <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
   </div>
 </footer>
+
+<script>
+(function() {{
+  var saved = localStorage.getItem('apipedia_theme');
+  var theme = saved || 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  updateIcon(theme);
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.addEventListener('click', function() {{
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('apipedia_theme', next);
+    updateIcon(next);
+  }});
+  function updateIcon(t) {{
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.innerHTML = t === 'dark' ? '&#x1F319;' : '&#x2600;&#xFE0F;';
+  }}
+}})();
+</script>
 
 </body>
 </html>'''
