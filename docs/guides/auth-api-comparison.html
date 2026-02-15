@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【2026年版】認証API 5社徹底比較 - Auth0 vs Firebase Auth vs Clerk | APIpedia</title>
+<meta name="description" content="Auth0, Firebase Auth, Clerk, Supabase Auth, LINE Loginの認証APIを無料枠・機能・DXの観点で徹底比較。SaaS・モバイルアプリに最適な認証APIの選び方を解説。">
+<meta property="og:title" content="【2026年版】認証API 5社徹底比較 | APIpedia">
+<meta property="og:description" content="Auth0, Firebase Auth, Clerk, Supabase Auth, LINE Loginを無料枠・機能・DXで徹底比較">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="APIpedia">
+<link rel="canonical" href="https://apipedia.dev/guides/auth-api-comparison.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "【2026年版】認証API 5社徹底比較",
+  "description": "Auth0, Firebase Auth, Clerk, Supabase Auth, LINE Loginを無料枠・機能・DXで徹底比較",
+  "datePublished": "2026-02-15",
+  "author": {"@type": "Organization", "name": "APIpedia"},
+  "publisher": {"@type": "Organization", "name": "APIpedia", "url": "https://apipedia.dev/"}
+}
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .guide-page { padding: calc(var(--header-height) + 24px) 0 80px; }
+  .guide-breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; }
+  .guide-breadcrumb a { color: var(--color-primary); text-decoration: none; }
+  .guide-breadcrumb a:hover { text-decoration: underline; }
+  .guide-header { margin-bottom: 40px; }
+  .guide-header__badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 4px 12px;
+    background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-pill); margin-bottom: 12px; }
+  .guide-header h1 { font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4; }
+  .guide-header__meta { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; }
+  .guide-content { max-width: 860px; }
+  .guide-content h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin: 40px 0 16px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); display: inline-block; }
+  .guide-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 28px 0 12px; }
+  .guide-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 16px; }
+  .guide-content ul, .guide-content ol { margin: 12px 0 20px 20px; }
+  .guide-content li { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .guide-content strong { color: var(--text-primary); }
+
+  .compare-matrix { overflow-x: auto; margin: 24px 0 32px; border-radius: var(--radius); border: 1px solid var(--border-color); }
+  .compare-matrix table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: var(--bg-card); min-width: 700px; }
+  .compare-matrix thead { background: var(--bg-secondary); }
+  .compare-matrix th { padding: 12px 14px; text-align: left; font-weight: 700; color: var(--text-primary);
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+  .compare-matrix td { padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); vertical-align: top; }
+  .compare-matrix tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-matrix .api-name { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+  .compare-matrix .api-name a { color: var(--color-primary); text-decoration: none; }
+  .compare-matrix .api-name a:hover { text-decoration: underline; }
+
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .pill--green { color: var(--color-success); background: var(--color-success-light); }
+  .pill--blue { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--amber { color: var(--color-warning); background: var(--color-warning-light); }
+  .pill--red { color: #ef4444; background: rgba(239,68,68,0.15); }
+
+  .recommend-card { background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(59,130,246,0.08) 100%);
+    border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius); padding: 24px; margin: 20px 0; }
+  .recommend-card__title { font-size: 0.95rem; font-weight: 700; color: var(--color-success); margin-bottom: 8px; }
+  .recommend-card p { margin-bottom: 8px; }
+
+  .code-block { background: #0d1117; border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    padding: 16px 20px; margin: 16px 0 24px; overflow-x: auto; }
+  .code-block code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #e6edf3; line-height: 1.6; }
+  .code-block .comment { color: #8b949e; }
+  .code-block .keyword { color: #ff7b72; }
+  .code-block .string { color: #a5d6ff; }
+  .code-block .func { color: #d2a8ff; }
+
+  .guide-nav { display: flex; justify-content: space-between; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-color); }
+  .guide-nav a { font-size: 0.85rem; color: var(--color-primary); text-decoration: none; font-weight: 600; }
+  .guide-nav a:hover { text-decoration: underline; }
+
+  .newsletter-cta { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius);
+    padding: 28px; margin: 40px 0; text-align: center; }
+  .newsletter-cta h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .newsletter-cta p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; }
+  .newsletter-cta .nl-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
+  .newsletter-cta .nl-form input { flex: 1; padding: 10px 14px; font-size: 0.85rem; font-family: inherit;
+    background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    color: var(--text-primary); outline: none; }
+  .newsletter-cta .nl-form input:focus { border-color: var(--color-primary); }
+  .newsletter-cta .nl-form input::placeholder { color: var(--text-muted); }
+  .newsletter-cta .nl-form button { padding: 10px 20px; font-size: 0.82rem; font-weight: 600; font-family: inherit;
+    background: var(--color-primary); color: #fff; border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap; }
+
+  @media (max-width: 768px) {
+    .guide-header h1 { font-size: 1.3rem; }
+    .guide-nav { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../compare.html" class="nav-link">比較表</a>
+      <a href="index.html" class="nav-link active">ガイド</a>
+      <a href="../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="guide-page">
+<div class="container">
+  <div class="guide-breadcrumb">
+    <a href="../index.html">APIpedia</a> &gt; <a href="index.html">ガイド</a> &gt; 認証API比較
+  </div>
+
+  <div class="guide-header">
+    <span class="guide-header__badge">比較ガイド</span>
+    <h1>【2026年版】認証API 5社徹底比較<br>Auth0 / Firebase Auth / Clerk / Supabase Auth / LINE Login</h1>
+    <div class="guide-header__meta">
+      <span>更新日: 2026-02-15</span>
+      <span>読了時間: 約10分</span>
+      <span>カテゴリ: 認証・セキュリティ</span>
+    </div>
+  </div>
+
+  <div class="guide-content">
+
+    <p>Webアプリやモバイルアプリにユーザー認証を実装する際、認証APIの選択はセキュリティとユーザー体験に直結する重要な判断です。本ガイドでは、主要5つの認証APIを、<strong>無料枠・機能・ソーシャルログイン対応・MFA・開発者体験（DX）</strong>の観点から徹底比較します。</p>
+
+    <h2>1. 比較サマリー</h2>
+
+    <div class="compare-matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>API</th>
+            <th>無料枠</th>
+            <th>有料プラン</th>
+            <th>ソーシャルログイン</th>
+            <th>MFA</th>
+            <th>SDK</th>
+            <th>難易度</th>
+            <th>人気</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="api-name"><a href="../api/auth0/">Auth0</a></td>
+            <td>25,000 MAU</td>
+            <td>$35/月〜</td>
+            <td>30+プロバイダ</td>
+            <td><span class="pill pill--green">対応</span></td>
+            <td>10+言語</td>
+            <td><span class="pill pill--amber">上級</span></td>
+            <td>88</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="../api/firebase-auth/">Firebase Auth</a></td>
+            <td>無制限</td>
+            <td>Blaze（従量課金）</td>
+            <td>Google, Apple, GitHub等</td>
+            <td><span class="pill pill--green">対応</span></td>
+            <td>Web, iOS, Android, Flutter</td>
+            <td><span class="pill pill--green">初級</span></td>
+            <td>90</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="../api/clerk/">Clerk</a></td>
+            <td>10,000 MAU</td>
+            <td>$25/月〜</td>
+            <td>20+プロバイダ</td>
+            <td><span class="pill pill--green">対応</span></td>
+            <td>React, Next.js, Remix</td>
+            <td><span class="pill pill--green">初級</span></td>
+            <td>82</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="../api/supabase-auth/">Supabase Auth</a></td>
+            <td>50,000 MAU</td>
+            <td>$25/月〜</td>
+            <td>Google, GitHub, Apple等</td>
+            <td><span class="pill pill--green">対応</span></td>
+            <td>JavaScript, Flutter, Swift</td>
+            <td><span class="pill pill--blue">中級</span></td>
+            <td>78</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="../api/line-login/">LINE Login</a></td>
+            <td>完全無料</td>
+            <td>無料</td>
+            <td>LINEのみ</td>
+            <td><span class="pill pill--red">非対応</span></td>
+            <td>Web, iOS, Android</td>
+            <td><span class="pill pill--green">初級</span></td>
+            <td>65</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>2. 各APIの特徴と強み</h2>
+
+    <h3>Auth0 - エンタープライズ対応の認証プラットフォーム</h3>
+    <p>Okta傘下のAuth0は、エンタープライズ向け認証の決定版。Universal Loginによるブランドカスタマイズ、30以上のソーシャルプロバイダ対応、SAML/LDAP連携、きめ細かいRBAC（ロールベースアクセス制御）まで、あらゆる認証要件に対応します。Actions（旧Rules）によるフロー拡張も強力です。</p>
+    <ul>
+      <li><strong>強み:</strong> エンタープライズ対応（SAML, LDAP, SSO）、豊富なカスタマイズ、Universal Login、30+ソーシャルプロバイダ</li>
+      <li><strong>弱み:</strong> 無料枠（25,000 MAU）を超えると高額、学習コストが高い、設定項目が多い</li>
+      <li><strong>おすすめ:</strong> エンタープライズ、B2B SaaS、高度なセキュリティ要件があるプロジェクト</li>
+    </ul>
+
+    <h3>Firebase Auth - Googleエコシステムの認証基盤</h3>
+    <p>Google Cloud傘下のFirebase Authは、月間アクティブユーザー数に制限のない無料枠が最大の魅力。Firestore、Cloud Functions、Firebase Hostingとのシームレスな統合により、バックエンドをほぼ書かずに認証付きアプリを構築できます。</p>
+    <ul>
+      <li><strong>強み:</strong> 無料枠が最も寛容（MAU無制限）、Firebaseエコシステムとの統合、豊富なSDK（Web, iOS, Android, Flutter）</li>
+      <li><strong>弱み:</strong> Google依存、細かいUIカスタマイズに限界、トークンカスタマイズが複雑</li>
+      <li><strong>おすすめ:</strong> スタートアップ、モバイルアプリ、プロトタイピング、Firebase利用プロジェクト</li>
+    </ul>
+
+    <h3>Clerk - 最高のDXを実現するモダン認証</h3>
+    <p>React/Next.jsエコシステムに最適化されたClerkは、美しいプリビルトUIコンポーネント（SignIn, SignUp, UserButton, UserProfile）を提供。数行のコードで認証画面が完成し、開発者体験（DX）は群を抜いています。マルチテナント対応のOrganizations機能もSaaS開発に最適。</p>
+    <ul>
+      <li><strong>強み:</strong> React/Next.js最適化、美しいUIコンポーネント、最高のDX、Organizations（マルチテナント）</li>
+      <li><strong>弱み:</strong> React以外のフレームワーク対応が弱い、比較的新しいサービス、無料枠は10,000 MAU</li>
+      <li><strong>おすすめ:</strong> Next.jsアプリ、SaaS、DXを重視するチーム</li>
+    </ul>
+
+    <h3>Supabase Auth - オープンソースの認証ソリューション</h3>
+    <p>「オープンソースのFirebase代替」を掲げるSupabaseの認証機能。50,000 MAUの無料枠は主要サービス中で最大級。PostgreSQLのRow Level Security（RLS）との連携により、データベースレベルでのアクセス制御が可能。認証からデータ保護までを一貫して管理できます。</p>
+    <ul>
+      <li><strong>強み:</strong> 最大の無料枠（50,000 MAU）、PostgreSQL RLS連携、オープンソース、セルフホスティング可能</li>
+      <li><strong>弱み:</strong> UIコンポーネントはClerkに劣る、エンタープライズ機能はAuth0に劣る</li>
+      <li><strong>おすすめ:</strong> フルスタックアプリ、コスト重視のプロジェクト、PostgreSQLベースのアプリ</li>
+    </ul>
+
+    <h3>LINE Login - 日本9,500万ユーザーへのリーチ</h3>
+    <p>日本国内9,500万人以上が利用するLINEアカウントを活用した認証。LINE公式アカウントやLINE Messaging APIとの連携で、認証後のユーザーコミュニケーションまで一気通貫で実現できます。完全無料で利用可能。</p>
+    <ul>
+      <li><strong>強み:</strong> 完全無料、日本9,500万ユーザーへのリーチ、LINE Messaging APIとの連携、ログインのハードルが極めて低い</li>
+      <li><strong>弱み:</strong> LINEアカウントのみ（他のソーシャルログインは不可）、海外展開不可、MFA非対応</li>
+      <li><strong>おすすめ:</strong> 日本国内向けサービス、LINE公式アカウント連携、toC向けアプリ</li>
+    </ul>
+
+    <h2>3. ユースケース別おすすめ</h2>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">エンタープライズ / B2B SaaS → Auth0</div>
+      <p>SAML/LDAP連携、SSO、きめ細かいRBAC、コンプライアンス対応が必要なら Auth0 一択。Okta傘下の信頼性も魅力。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">モバイルアプリ / スタートアップ → Firebase Auth</div>
+      <p>MAU無制限の無料枠と、Firestore/Cloud Functionsとのシームレスな統合で、最小限のコストでスピーディにリリース可能。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">Next.js SaaS → Clerk</div>
+      <p>プリビルトUIコンポーネント、Organizations（マルチテナント）、Webhookによるイベント連携で、SaaS構築の開発速度を最大化。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">コスト最優先 → Supabase Auth</div>
+      <p>50,000 MAUの無料枠は業界最大級。PostgreSQL RLSとの連携で、認証とデータ保護を一元管理。オープンソースでベンダーロックインも回避。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">日本向けサービス → LINE Login + 他認証</div>
+      <p>LINE Loginでユーザー獲得のハードルを下げつつ、Firebase AuthやSupabase Authと組み合わせてメール/パスワード認証も併用するのが最適解。</p>
+    </div>
+
+    <h2>4. 実装サンプルコード</h2>
+
+    <h3>Firebase Auth（JavaScript）</h3>
+    <div class="code-block"><code><span class="keyword">import</span> { initializeApp } <span class="keyword">from</span> <span class="string">'firebase/app'</span>;
+<span class="keyword">import</span> { getAuth, signInWithPopup, GoogleAuthProvider } <span class="keyword">from</span> <span class="string">'firebase/auth'</span>;
+
+<span class="keyword">const</span> app = <span class="func">initializeApp</span>({ <span class="comment">/* config */</span> });
+<span class="keyword">const</span> auth = <span class="func">getAuth</span>(app);
+
+<span class="comment">// Googleログイン</span>
+<span class="keyword">const</span> provider = <span class="keyword">new</span> <span class="func">GoogleAuthProvider</span>();
+<span class="keyword">const</span> result = <span class="keyword">await</span> <span class="func">signInWithPopup</span>(auth, provider);
+<span class="keyword">const</span> user = result.user;
+console.<span class="func">log</span>(<span class="string">'ログイン成功:'</span>, user.displayName);</code></div>
+
+    <h3>Clerk（React / Next.js）</h3>
+    <div class="code-block"><code><span class="keyword">import</span> { SignIn, SignedIn, SignedOut, UserButton } <span class="keyword">from</span> <span class="string">'@clerk/nextjs'</span>;
+
+<span class="comment">// レイアウトに認証UIを追加するだけ</span>
+<span class="keyword">export default function</span> <span class="func">App</span>() {
+  <span class="keyword">return</span> (
+    &lt;div&gt;
+      &lt;<span class="func">SignedOut</span>&gt;
+        &lt;<span class="func">SignIn</span> /&gt;
+      &lt;/<span class="func">SignedOut</span>&gt;
+      &lt;<span class="func">SignedIn</span>&gt;
+        &lt;<span class="func">UserButton</span> /&gt;
+        &lt;p&gt;ダッシュボードへようこそ&lt;/p&gt;
+      &lt;/<span class="func">SignedIn</span>&gt;
+    &lt;/div&gt;
+  );
+}</code></div>
+
+    <h2>5. まとめ：選び方フローチャート</h2>
+    <ol>
+      <li><strong>エンタープライズ/SSO要件がある？</strong> → Yes: Auth0</li>
+      <li><strong>Next.js/Reactで最高のDXが欲しい？</strong> → Yes: Clerk</li>
+      <li><strong>Firebase（Firestore等）を使っている？</strong> → Yes: Firebase Auth</li>
+      <li><strong>コストを最小限にしたい？</strong> → Yes: Supabase Auth</li>
+      <li><strong>日本国内ユーザーに特化？</strong> → Yes: LINE Login + 他認証</li>
+    </ol>
+    <p>迷ったらFirebase Auth（無料枠が最も寛容）またはClerk（DX最高）から始めるのがおすすめです。いずれもテスト環境が充実しており、数分で認証機能を組み込めます。</p>
+
+    <div class="newsletter-cta">
+      <h3>この記事が役に立ちましたか？</h3>
+      <p>APIpediaニュースレターで最新の比較ガイドを受け取りましょう。</p>
+      <form class="nl-form" action="https://formspree.io/f/placeholder" method="POST">
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <button type="submit">登録</button>
+      </form>
+    </div>
+
+    <div class="guide-nav">
+      <a href="payment-api-comparison.html">&larr; 決済API比較ガイド</a>
+      <a href="ai-api-comparison.html">AI/LLM API比較ガイド &rarr;</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../index.html">トップ</a>
+        <a href="../compare.html">比較表</a>
+        <a href="index.html">ガイド</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

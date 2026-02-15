@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APIpedia - 日本語APIカタログ</title>
+<meta name="description" content="日本語で探せる・わかる・選べるAPIカタログ。100以上のAPIを検索・比較・発見できます。人気スコア・利用企業・料金比較で最適なAPIを最短で見つけよう。">
+<meta property="og:title" content="APIpedia - 日本語APIカタログ">
+<meta property="og:description" content="100以上のAPIを日本語で検索・比較・発見。人気スコア・利用企業・料金を一覧比較できるAPIカタログ。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="APIpedia">
+<meta property="og:url" content="https://apipedia.dev/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="APIpedia - 日本語APIカタログ">
+<meta name="twitter:description" content="100以上のAPIを日本語で検索・比較・発見できるカタログサイト。">
+<link rel="canonical" href="https://apipedia.dev/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "APIpedia",
+  "alternateName": "APIぺディア",
+  "url": "https://apipedia.dev/",
+  "description": "日本語で探せる・わかる・選べるAPIカタログ。100以上のAPIを検索・比較・発見。",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://apipedia.dev/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    border-radius: var(--radius-pill);
+    margin-bottom: 20px;
+  }
+  .category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .category-nav__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all var(--transition);
+    user-select: none;
+  }
+  .category-nav__item:hover {
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+    background: var(--bg-secondary);
+  }
+  .category-nav__item.active {
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+  }
+  .api-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .api-card__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .api-card__footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .api-card__link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .api-card__link:hover {
+    color: var(--color-primary-hover);
+  }
+  .api-card__difficulty {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+  }
+  .difficulty--easy {
+    color: var(--color-success);
+    background: var(--color-success-light);
+  }
+  .difficulty--medium {
+    color: var(--color-warning);
+    background: var(--color-warning-light);
+  }
+  .difficulty--hard {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+  }
+  .result-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  .result-info__count {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .no-results {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+  }
+  .no-results__icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+  .no-results__text {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+  }
+  .pricing-filters {
+    display: flex;
+    gap: 6px;
+    margin-left: auto;
+  }
+  .region-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+  }
+  .region--japan {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+  }
+  .region--global {
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+  }
+  .region--both {
+    color: var(--color-secondary);
+    background: var(--color-secondary-light);
+  }
+  .featured-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    color: var(--color-warning);
+    background: var(--color-warning-light);
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  /* Popularity score badge on cards */
+  .popularity-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+  .popularity-badge .score-bar {
+    width: 32px;
+    height: 5px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 3px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .popularity-badge .score-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+  .popularity--high { color: var(--color-success); background: var(--color-success-light); }
+  .popularity--high .score-fill { background: var(--color-success); }
+  .popularity--medium { color: var(--color-warning); background: var(--color-warning-light); }
+  .popularity--medium .score-fill { background: var(--color-warning); }
+  .popularity--low { color: #94a3b8; background: rgba(148, 163, 184, 0.12); }
+  .popularity--low .score-fill { background: #94a3b8; }
+
+  /* Ranking section */
+  .ranking-section {
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+  .ranking-section .section__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ranking-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all var(--transition);
+    text-decoration: none;
+    color: inherit;
+  }
+  .ranking-item:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-secondary);
+    transform: translateX(4px);
+  }
+  .ranking-rank {
+    font-size: 1.1rem;
+    font-weight: 800;
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .rank--1 { color: #fbbf24; background: rgba(251, 191, 36, 0.15); font-size: 1.3rem; }
+  .rank--2 { color: #cbd5e1; background: rgba(203, 213, 225, 0.15); font-size: 1.2rem; }
+  .rank--3 { color: #f97316; background: rgba(249, 115, 22, 0.15); font-size: 1.15rem; }
+  .rank--other { color: var(--text-muted); background: var(--bg-secondary); }
+  .ranking-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .ranking-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .ranking-reason {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ranking-score {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .ranking-score__value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    min-width: 44px;
+    text-align: right;
+  }
+  .ranking-score__bar {
+    width: 80px;
+    height: 8px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .ranking-score__fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.8s ease;
+  }
+  .score-color--high { color: var(--color-success); }
+  .score-color--high .ranking-score__fill { background: linear-gradient(90deg, var(--color-success), #4ade80); }
+  .score-color--medium { color: var(--color-warning); }
+  .score-color--medium .ranking-score__fill { background: linear-gradient(90deg, var(--color-warning), #fbbf24); }
+  .score-color--low { color: #94a3b8; }
+  .score-color--low .ranking-score__fill { background: linear-gradient(90deg, #64748b, #94a3b8); }
+
+  /* Sort controls */
+  .sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .sort-btn {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .sort-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+  .sort-btn.active {
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+  }
+
+  /* Detail Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 20px;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: auto; }
+  .modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 720px;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.25s ease;
+    position: relative;
+  }
+  .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+  .modal__close {
+    position: sticky; top: 0; float: right;
+    margin: 12px 12px 0 0; width: 36px; height: 36px;
+    border-radius: 50%; border: 1px solid var(--border-color);
+    background: var(--bg-card); color: var(--text-muted);
+    font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2; transition: all var(--transition);
+  }
+  .modal__close:hover { background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-hover); }
+  .modal__header { padding: 28px 28px 0; }
+  .modal__title { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+  .modal__subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
+  .modal__badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .modal__desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; padding: 0 28px; margin-bottom: 20px; }
+  .modal__section { padding: 0 28px; margin-bottom: 20px; }
+  .modal__section-title {
+    font-size: 0.85rem; font-weight: 700; color: var(--text-primary);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .modal__score-hero {
+    display: flex; align-items: center; gap: 20px;
+    padding: 20px 28px; margin: 0 0 4px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.06) 0%, rgba(139, 92, 246, 0.06) 100%);
+    border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+  }
+  .modal__score-number { font-size: 3rem; font-weight: 800; line-height: 1; }
+  .modal__score-bar-wrap { flex: 1; }
+  .modal__score-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; }
+  .modal__score-bar { width: 100%; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
+  .modal__score-fill { height: 100%; border-radius: 5px; transition: width 0.8s ease; }
+  .modal__score-reason { font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
+  .modal__metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .modal__metric { padding: 12px; background: var(--bg-secondary); border-radius: 10px; border: 1px solid var(--border-color); }
+  .modal__metric-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .modal__metric-value { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+  .modal__adopters { display: flex; flex-wrap: wrap; gap: 6px; }
+  .modal__adopter {
+    padding: 5px 12px; font-size: 0.8rem; font-weight: 500;
+    color: var(--text-secondary); background: var(--bg-secondary);
+    border: 1px solid var(--border-color); border-radius: var(--radius-pill);
+  }
+  .modal__sources { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .modal__source-link {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 10px 14px; background: var(--bg-secondary);
+    border: 1px solid var(--border-color); border-radius: 10px;
+    text-decoration: none; color: var(--color-primary);
+    font-size: 0.82rem; font-weight: 500;
+    transition: all var(--transition); line-height: 1.4;
+  }
+  .modal__source-link:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+  .modal__detail-text {
+    font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;
+    padding: 14px 16px; background: var(--bg-secondary);
+    border: 1px solid var(--border-color); border-radius: 10px;
+  }
+  .modal__actions { display: flex; gap: 10px; padding: 20px 28px 28px; }
+  .modal__action-btn {
+    flex: 1; padding: 12px 20px; border-radius: 10px;
+    font-size: 0.85rem; font-weight: 600; text-align: center;
+    text-decoration: none; transition: all var(--transition);
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .modal__action-btn--primary { background: var(--color-primary); color: #fff; border: none; }
+  .modal__action-btn--primary:hover { background: var(--color-primary-hover); }
+  .modal__action-btn--secondary { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-color); }
+  .modal__action-btn--secondary:hover { border-color: var(--border-hover); color: var(--text-primary); }
+  @media (max-width: 768px) {
+    .modal { max-height: 90vh; border-radius: 12px; }
+    .modal__header { padding: 20px 20px 0; }
+    .modal__desc, .modal__section { padding: 0 20px; }
+    .modal__score-hero { padding: 16px 20px; }
+    .modal__actions { padding: 16px 20px 20px; }
+    .modal__metrics { grid-template-columns: 1fr; }
+    .modal__title { font-size: 1.2rem; }
+    .modal__score-number { font-size: 2.4rem; }
+  }
+  .api-card { cursor: pointer; }
+
+  .about-section {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 40px;
+    margin-top: 32px;
+    text-align: center;
+  }
+  .about-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+  .about-section p {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+  }
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px;
+  }
+  @media (max-width: 768px) {
+    .mobile-menu-btn { display: block; }
+    .hero__title { font-size: 1.6rem !important; }
+    .hero__badge { font-size: 0.7rem; }
+    .category-nav { gap: 6px; }
+    .category-nav__item { padding: 6px 12px; font-size: 0.78rem; }
+    .about-section { padding: 24px 16px; }
+    .result-info { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .pricing-filters { margin-left: 0; }
+    .ranking-item { padding: 10px 14px; gap: 10px; }
+    .ranking-score__bar { width: 50px; }
+    .ranking-reason { display: none; }
+    .sort-controls { margin-top: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="site-header__logo">
+      <span>APIpedia</span>
+    </a>
+    <nav class="site-header__nav">
+      <a href="#ranking" class="nav-link">ランキング</a>
+      <a href="#catalog" class="nav-link active">カタログ</a>
+      <a href="#categories" class="nav-link">カテゴリ</a>
+      <a href="compare.html" class="nav-link">比較表</a>
+      <a href="guides/" class="nav-link">ガイド</a>
+      <a href="lean-canvas.html" class="nav-link">コンセプト</a>
+      <a href="strategy.html" class="nav-link">戦略</a>
+      <a href="https://github.com" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__badge">v2.0 - 100 APIs 掲載</div>
+    <h1 class="hero__title">日本語で、探せる。わかる。選べる。</h1>
+    <p class="hero__subtitle">開発に使えるAPIを日本語で検索・比較・発見できるカタログサイト。<br>カテゴリ別に整理された情報で、最適なAPIを最短で見つけよう。</p>
+    <div class="search-bar">
+      <svg class="search-bar__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="search-bar__input" id="searchInput" placeholder="APIを検索... (例: 決済, 天気, 翻訳, LINE)">
+    </div>
+    <!-- Stats -->
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-item">
+        <div class="stat-item__value" id="totalApis">-</div>
+        <div class="stat-item__label">API掲載数</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value" id="totalCategories">-</div>
+        <div class="stat-item__label">カテゴリ</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value" id="freeApis">-</div>
+        <div class="stat-item__label">無料API</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value" id="japanApis">-</div>
+        <div class="stat-item__label">日本対応</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category Navigation -->
+<section id="categories" class="container">
+  <div class="category-nav" id="categoryNav"></div>
+</section>
+
+<!-- Ranking -->
+<section id="ranking" class="section">
+  <div class="container">
+    <div class="ranking-section">
+      <div class="section__title">API 人気ランキング TOP 15</div>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:24px;">利用者数・市場シェア・npmダウンロード数・GitHubスター数などを総合的に評価したスコアに基づくランキングです。</p>
+      <div class="ranking-list" id="rankingList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Catalog -->
+<section id="catalog" class="section">
+  <div class="container">
+    <div class="section__title">APIカタログ</div>
+
+    <div class="result-info">
+      <div>
+        <span class="result-info__count" id="resultCount">0</span> 件のAPIが見つかりました
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <div class="sort-controls">
+        <span>並べ替え:</span>
+        <button class="sort-btn active" data-sort="default">おすすめ</button>
+        <button class="sort-btn" data-sort="popularity">人気順</button>
+        <button class="sort-btn" data-sort="name">名前順</button>
+      </div>
+      <div class="pricing-filters">
+        <button class="filter-chip active" data-pricing="all">すべて</button>
+        <button class="filter-chip" data-pricing="free">無料</button>
+        <button class="filter-chip" data-pricing="freemium">フリーミアム</button>
+        <button class="filter-chip" data-pricing="paid">有料</button>
+      </div>
+      </div>
+    </div>
+
+    <div class="grid" id="apiGrid"></div>
+
+    <div class="no-results" id="noResults" style="display:none;">
+      <div class="no-results__icon">&#x1F50D;</div>
+      <div class="no-results__text">該当するAPIが見つかりませんでした</div>
+      <p>検索キーワードやフィルターを変更してみてください</p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section">
+  <div class="container">
+    <div class="about-section">
+      <h3>APIpedia について</h3>
+      <p>APIpedia は、日本の開発者が言語の壁なくAPIを発見・理解・活用できることを目指す日本語APIカタログです。統一フォーマットでAPIの概要・料金・制限を整理し、「探す」を「使う」に最短距離でつなぎます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Guides CTA -->
+<section style="padding: 0 0 48px;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 32px;">
+      <a href="guides/payment-api-comparison.html" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">💳</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">決済API比較ガイド</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">Stripe vs PayPay vs Square</div>
+      </a>
+      <a href="guides/auth-api-comparison.html" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">🔐</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">認証API比較ガイド</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">Auth0 vs Firebase vs Clerk</div>
+      </a>
+      <a href="guides/ai-api-comparison.html" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">🤖</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">AI/LLM API比較ガイド</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">OpenAI vs Claude vs Gemini</div>
+      </a>
+      <a href="guides/" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">📖</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">全ガイドを見る &rarr;</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">5カテゴリの比較ガイド</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section id="newsletter" style="padding: 0 0 64px;">
+  <div class="container">
+    <div style="background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(139,92,246,0.08) 100%); border: 1px solid rgba(59,130,246,0.2); border-radius: var(--radius); padding: 48px 32px; text-align: center;">
+      <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">APIpedia ニュースレター</h2>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 500px; margin: 0 auto 24px;">新着API情報、比較ガイドの更新、業界トレンドを月2回お届けします。</p>
+      <form style="display: flex; gap: 10px; max-width: 460px; margin: 0 auto;" action="https://formspree.io/f/placeholder" method="POST">
+        <input type="email" name="email" placeholder="メールアドレスを入力" required style="flex: 1; padding: 12px 16px; font-size: 0.9rem; font-family: inherit; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); outline: none;">
+        <button type="submit" style="padding: 12px 24px; font-size: 0.85rem; font-weight: 600; font-family: inherit; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color: #fff; border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap;">登録する</button>
+      </form>
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 12px;">スパムは送りません。いつでも登録解除できます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="compare.html">比較表</a>
+        <a href="guides/">ガイド</a>
+        <a href="lean-canvas.html">コンセプト</a>
+        <a href="strategy.html">戦略</a>
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">
+      &copy; 2026 APIpedia. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  let allApis = [];
+  let categories = [];
+  let activeCategory = 'all';
+  let activePricing = 'all';
+  let activeSort = 'default';
+  let searchQuery = '';
+
+  const difficultyLabel = { easy: '初級', medium: '中級', hard: '上級' };
+  const regionLabel = { japan: '日本', global: 'グローバル', both: '日本 / グローバル' };
+  const pricingLabel = { free: '無料', freemium: 'フリーミアム', paid: '有料' };
+  const authLabel = { apiKey: 'APIキー', oauth2: 'OAuth 2.0', bearer: 'Bearer Token', none: '認証不要' };
+
+  async function init() {
+    try {
+      const res = await fetch('data/apis.json');
+      const data = await res.json();
+      allApis = data.apis;
+      categories = data.categories;
+      renderStats(data);
+      renderCategoryNav();
+      renderRanking();
+      renderApis();
+      bindEvents();
+    } catch (e) {
+      console.error('Failed to load API data:', e);
+    }
+  }
+
+  function renderStats(data) {
+    document.getElementById('totalApis').textContent = data.metadata.totalApis;
+    document.getElementById('totalCategories').textContent = data.metadata.totalCategories;
+    const freeCount = allApis.filter(a => a.pricing === 'free' || a.pricing === 'freemium').length;
+    document.getElementById('freeApis').textContent = freeCount;
+    const japanCount = allApis.filter(a => a.region === 'japan' || a.region === 'both').length;
+    document.getElementById('japanApis').textContent = japanCount;
+  }
+
+  function renderCategoryNav() {
+    const nav = document.getElementById('categoryNav');
+    let html = '<button class="category-nav__item active" data-category="all">All</button>';
+    categories.forEach(cat => {
+      html += '<button class="category-nav__item" data-category="' + cat.id + '">' +
+              cat.icon + ' ' + cat.name + '</button>';
+    });
+    nav.innerHTML = html;
+  }
+
+  function getPopularityClass(score) {
+    if (score >= 70) return 'high';
+    if (score >= 45) return 'medium';
+    return 'low';
+  }
+
+  function getScoreColor(score) {
+    if (score >= 70) return 'score-color--high';
+    if (score >= 45) return 'score-color--medium';
+    return 'score-color--low';
+  }
+
+  function renderRanking() {
+    var list = document.getElementById('rankingList');
+    if (!list) return;
+    var ranked = allApis
+      .filter(function(a) { return a.popularity && a.popularity.score; })
+      .sort(function(a, b) { return b.popularity.score - a.popularity.score; })
+      .slice(0, 15);
+    if (ranked.length === 0) {
+      list.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px;">人気データを読み込み中...</p>';
+      return;
+    }
+    list.innerHTML = ranked.map(function(api, i) {
+      var rank = i + 1;
+      var rankClass = rank <= 3 ? 'rank--' + rank : 'rank--other';
+      var medal = rank === 1 ? '&#x1F947;' : rank === 2 ? '&#x1F948;' : rank === 3 ? '&#x1F949;' : rank;
+      var colorClass = getScoreColor(api.popularity.score);
+      var cat = categories.find(function(c) { return c.id === api.category; });
+      return '<a href="' + api.url + '" target="_blank" rel="noopener" class="ranking-item">' +
+        '<div class="ranking-rank ' + rankClass + '">' + medal + '</div>' +
+        '<div class="ranking-info">' +
+          '<div class="ranking-name">' +
+            api.name +
+            '<span class="tag tag--' + api.pricing + '" style="font-size:0.65rem;">' + pricingLabel[api.pricing] + '</span>' +
+            (cat ? '<span style="font-size:0.7rem;color:var(--text-muted);">' + cat.icon + ' ' + cat.name + '</span>' : '') +
+          '</div>' +
+          '<div class="ranking-reason">' + (api.popularity.reason || '') + '</div>' +
+        '</div>' +
+        '<div class="ranking-score ' + colorClass + '">' +
+          '<div class="ranking-score__bar"><div class="ranking-score__fill" style="width:' + api.popularity.score + '%;"></div></div>' +
+          '<div class="ranking-score__value">' + api.popularity.score + '</div>' +
+        '</div>' +
+      '</a>';
+    }).join('');
+  }
+
+  function getFilteredApis() {
+    return allApis.filter(api => {
+      if (activeCategory !== 'all' && api.category !== activeCategory) return false;
+      if (activePricing !== 'all' && api.pricing !== activePricing) return false;
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        const searchable = [
+          api.name, api.nameJa, api.description,
+          ...api.tags, ...(api.useCases || []),
+          pricingLabel[api.pricing] || '',
+          regionLabel[api.region] || ''
+        ].join(' ').toLowerCase();
+        if (!searchable.includes(q)) return false;
+      }
+      return true;
+    });
+  }
+
+  function renderApis() {
+    const filtered = getFilteredApis();
+    const grid = document.getElementById('apiGrid');
+    const noResults = document.getElementById('noResults');
+
+    // Sort
+    if (activeSort === 'popularity') {
+      filtered.sort(function(a, b) {
+        var sa = (a.popularity && a.popularity.score) || 0;
+        var sb = (b.popularity && b.popularity.score) || 0;
+        return sb - sa;
+      });
+    } else if (activeSort === 'name') {
+      filtered.sort(function(a, b) { return a.name.localeCompare(b.name); });
+    } else {
+      // default: featured first, then by popularity
+      filtered.sort(function(a, b) {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        var sa = (a.popularity && a.popularity.score) || 0;
+        var sb = (b.popularity && b.popularity.score) || 0;
+        return sb - sa;
+      });
+    }
+
+    document.getElementById('resultCount').textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      noResults.style.display = 'block';
+      return;
+    }
+    noResults.style.display = 'none';
+
+    grid.innerHTML = filtered.map((api, i) => {
+      const cat = categories.find(c => c.id === api.category);
+      const staggerClass = 'slide-up stagger-' + ((i % 6) + 1);
+      return '<div class="api-card ' + staggerClass + '" data-api-id="' + api.id + '">' +
+        '<div class="api-card__header">' +
+          '<div>' +
+            '<h3><a href="' + api.url + '" target="_blank" rel="noopener">' + api.name + '</a></h3>' +
+            (api.nameJa !== api.name ? '<div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">' + api.nameJa + '</div>' : '') +
+          '</div>' +
+          '<div style="display:flex;gap:4px;flex-shrink:0;">' +
+            (api.featured ? '<span class="featured-badge">注目</span>' : '') +
+            '<span class="tag tag--' + api.pricing + '">' + pricingLabel[api.pricing] + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="api-card__body">' +
+          '<p>' + api.description + '</p>' +
+        '</div>' +
+        '<div class="api-card__meta">' +
+          '<span class="region-tag region--' + api.region + '">' + regionLabel[api.region] + '</span>' +
+          (cat ? '<span class="category-badge">' + cat.icon + ' ' + cat.name + '</span>' : '') +
+          (api.popularity && api.popularity.score ?
+            '<span class="popularity-badge popularity--' + getPopularityClass(api.popularity.score) + '">' +
+              '<span class="score-bar"><span class="score-fill" style="width:' + api.popularity.score + '%"></span></span> ' +
+              api.popularity.score + '点' +
+            '</span>' : '') +
+        '</div>' +
+        '<div class="api-card__tags">' +
+          '<span class="tag">' + authLabel[api.auth] + '</span>' +
+          api.tags.slice(0, 3).map(t => '<span class="tag">' + t + '</span>').join('') +
+        '</div>' +
+        '<div class="api-card__footer">' +
+          '<a href="api/' + api.id + '/" class="api-card__link">詳細ページ &rarr;</a>' +
+          '<span class="api-card__difficulty difficulty--' + api.difficulty + '">' + difficultyLabel[api.difficulty] + '</span>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function bindEvents() {
+    // Search
+    const searchInput = document.getElementById('searchInput');
+    let debounce;
+    searchInput.addEventListener('input', function() {
+      clearTimeout(debounce);
+      debounce = setTimeout(function() {
+        searchQuery = searchInput.value.trim();
+        renderApis();
+      }, 200);
+    });
+
+    // Category filter
+    document.getElementById('categoryNav').addEventListener('click', function(e) {
+      const btn = e.target.closest('.category-nav__item');
+      if (!btn) return;
+      document.querySelectorAll('.category-nav__item').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCategory = btn.dataset.category;
+      renderApis();
+    });
+
+    // Pricing filter
+    document.querySelectorAll('[data-pricing]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('[data-pricing]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activePricing = btn.dataset.pricing;
+        renderApis();
+      });
+    });
+
+    // Sort buttons
+    document.querySelectorAll('[data-sort]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('[data-sort]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeSort = btn.dataset.sort;
+        renderApis();
+      });
+    });
+
+    // Card click -> open modal
+    document.getElementById('apiGrid').addEventListener('click', function(e) {
+      var card = e.target.closest('.api-card');
+      if (!card) return;
+      // Don't open modal if clicking a link
+      if (e.target.closest('a')) return;
+      var apiId = card.dataset.apiId;
+      if (apiId) openModal(apiId);
+    });
+
+    // Modal close
+    var overlay = document.getElementById('modalOverlay');
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  }
+
+  function openModal(apiId) {
+    var api = allApis.find(function(a) { return a.id === apiId; });
+    if (!api) return;
+    var cat = categories.find(function(c) { return c.id === api.category; });
+    var pop = api.popularity || {};
+    var colorClass = getScoreColor(pop.score || 0);
+    var popClass = getPopularityClass(pop.score || 0);
+
+    var html = '<button class="modal__close" onclick="closeModal()">&times;</button>';
+
+    // Header
+    html += '<div class="modal__header">';
+    html += '<div class="modal__title">' + api.name + '</div>';
+    if (api.nameJa !== api.name) html += '<div class="modal__subtitle">' + api.nameJa + '</div>';
+    html += '<div class="modal__badges">';
+    html += '<span class="tag tag--' + api.pricing + '">' + pricingLabel[api.pricing] + '</span>';
+    html += '<span class="region-tag region--' + api.region + '">' + regionLabel[api.region] + '</span>';
+    if (cat) html += '<span class="category-badge">' + cat.icon + ' ' + cat.name + '</span>';
+    html += '<span class="api-card__difficulty difficulty--' + api.difficulty + '">' + difficultyLabel[api.difficulty] + '</span>';
+    if (api.featured) html += '<span class="featured-badge">&#x2B50; 注目</span>';
+    html += '</div></div>';
+
+    // Description
+    html += '<div class="modal__desc">' + api.description + '</div>';
+
+    // Score hero
+    if (pop.score) {
+      html += '<div class="modal__score-hero">';
+      html += '<div class="modal__score-number ' + colorClass + '">' + pop.score + '</div>';
+      html += '<div class="modal__score-bar-wrap">';
+      html += '<div class="modal__score-label">&#x1F4CA; 人気スコア（100点満点）</div>';
+      html += '<div class="modal__score-bar"><div class="modal__score-fill" style="width:' + pop.score + '%;background:linear-gradient(90deg,' + (popClass === "high" ? "var(--color-success),#4ade80" : popClass === "medium" ? "var(--color-warning),#fbbf24" : "#64748b,#94a3b8") + ');"></div></div>';
+      if (pop.reason) html += '<div class="modal__score-reason">' + pop.reason + '</div>';
+      html += '</div></div>';
+    }
+
+    // Detailed analysis
+    if (pop.detail) {
+      html += '<div class="modal__section">';
+      html += '<div class="modal__section-title">&#x1F50D; 詳細分析</div>';
+      html += '<div class="modal__detail-text">' + pop.detail + '</div>';
+      html += '</div>';
+    }
+
+    // Metrics
+    if (pop.monthlyUsers || pop.monthlyApiCalls || pop.githubStars || pop.npmDownloads || pop.marketShare) {
+      html += '<div class="modal__section">';
+      html += '<div class="modal__section-title">&#x1F4CA; 利用実績・指標</div>';
+      html += '<div class="modal__metrics">';
+      if (pop.monthlyUsers) html += '<div class="modal__metric"><div class="modal__metric-label">利用者数</div><div class="modal__metric-value">' + pop.monthlyUsers + '</div></div>';
+      if (pop.monthlyApiCalls) html += '<div class="modal__metric"><div class="modal__metric-label">APIコール数</div><div class="modal__metric-value">' + pop.monthlyApiCalls + '</div></div>';
+      if (pop.marketShare) html += '<div class="modal__metric"><div class="modal__metric-label">市場ポジション</div><div class="modal__metric-value">' + pop.marketShare + '</div></div>';
+      if (pop.npmDownloads) html += '<div class="modal__metric"><div class="modal__metric-label">npm ダウンロード</div><div class="modal__metric-value">' + pop.npmDownloads + '</div></div>';
+      if (pop.githubStars) html += '<div class="modal__metric"><div class="modal__metric-label">GitHub Stars</div><div class="modal__metric-value">' + pop.githubStars + '</div></div>';
+      html += '</div></div>';
+    }
+
+    // Adopters
+    if (pop.adopters && pop.adopters.length > 0) {
+      html += '<div class="modal__section">';
+      html += '<div class="modal__section-title">&#x1F3E2; 主な利用企業・サービス</div>';
+      html += '<div class="modal__adopters">';
+      pop.adopters.forEach(function(a) { html += '<span class="modal__adopter">' + a + '</span>'; });
+      html += '</div></div>';
+    }
+
+    // Sources
+    if (pop.sources && pop.sources.length > 0) {
+      html += '<div class="modal__section">';
+      html += '<div class="modal__section-title">&#x1F4CE; 根拠・参照元</div>';
+      html += '<ul class="modal__sources">';
+      pop.sources.forEach(function(s) {
+        html += '<li><a href="' + s.url + '" target="_blank" rel="noopener" class="modal__source-link">' +
+          '<span class="modal__source-icon">&#x1F517;</span> ' + s.label + '</a></li>';
+      });
+      html += '</ul></div>';
+    }
+
+    // API details table
+    html += '<div class="modal__section">';
+    html += '<div class="modal__section-title">&#x2699;&#xFE0F; API仕様</div>';
+    html += '<div class="modal__metrics">';
+    html += '<div class="modal__metric"><div class="modal__metric-label">認証方式</div><div class="modal__metric-value">' + authLabel[api.auth] + '</div></div>';
+    html += '<div class="modal__metric"><div class="modal__metric-label">レスポンス形式</div><div class="modal__metric-value">' + (api.responseFormat || []).join(', ') + '</div></div>';
+    html += '<div class="modal__metric"><div class="modal__metric-label">レート制限</div><div class="modal__metric-value">' + (api.rateLimit || 'ドキュメント参照') + '</div></div>';
+    html += '<div class="modal__metric"><div class="modal__metric-label">料金</div><div class="modal__metric-value">' + (api.pricingDetail || '-') + '</div></div>';
+    if (api.sdks && api.sdks.length > 0) {
+      html += '<div class="modal__metric" style="grid-column:1/-1;"><div class="modal__metric-label">SDK</div><div class="modal__metric-value">' + api.sdks.join(', ') + '</div></div>';
+    }
+    html += '</div></div>';
+
+    // Actions
+    html += '<div class="modal__actions">';
+    html += '<a href="' + (api.docsUrl || api.url) + '" target="_blank" rel="noopener" class="modal__action-btn modal__action-btn--primary">&#x1F4D6; ドキュメントを見る</a>';
+    html += '<a href="' + api.url + '" target="_blank" rel="noopener" class="modal__action-btn modal__action-btn--secondary">&#x1F310; 公式サイト</a>';
+    html += '</div>';
+
+    document.getElementById('modalContent').innerHTML = html;
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  window.closeModal = closeModal;
+
+  // Init
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>

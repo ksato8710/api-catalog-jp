@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Catalog JP — リーンキャンバス & ブランドコンセプト</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg-card: #111827;
+    --bg-card-alt: #1a2332;
+    --border: #1e293b;
+    --border-accent: #2d3a4f;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-bright: #f8fafc;
+    --accent-blue: #3b82f6;
+    --accent-violet: #8b5cf6;
+    --accent-emerald: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-rose: #f43f5e;
+    --accent-cyan: #06b6d4;
+    --accent-sky: #0ea5e9;
+    --radius: 14px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, rgba(59,130,246,0.08) 0%, transparent 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .page-header .site-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .page-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    margin-bottom: 8px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+  }
+
+  /* ── Container ── */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ── Section ── */
+  .section {
+    margin: 48px 0;
+  }
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent-blue);
+    display: inline-block;
+  }
+
+  /* ── Lean Canvas Grid ── */
+  .canvas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .canvas-cell {
+    background: var(--bg-card);
+    padding: 20px;
+    min-height: 200px;
+  }
+  .canvas-cell.tall {
+    grid-row: span 2;
+  }
+  .canvas-cell .cell-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .canvas-cell .cell-label .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--bg);
+  }
+  .canvas-cell ul {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  .canvas-cell ul li {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.5;
+  }
+  .canvas-cell ul li:last-child {
+    border-bottom: none;
+  }
+  .canvas-cell ul li::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .canvas-cell p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .canvas-cell .highlight {
+    font-weight: 700;
+    color: var(--text-bright);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .canvas-cell .sub-section {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255,255,255,0.08);
+  }
+  .canvas-cell .sub-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  /* Color-coded labels */
+  .color-rose .cell-label { color: var(--accent-rose); }
+  .color-rose .num { background: var(--accent-rose); }
+  .color-rose li::before { background: var(--accent-rose); }
+
+  .color-blue .cell-label { color: var(--accent-blue); }
+  .color-blue .num { background: var(--accent-blue); }
+  .color-blue li::before { background: var(--accent-blue); }
+
+  .color-violet .cell-label { color: var(--accent-violet); }
+  .color-violet .num { background: var(--accent-violet); }
+  .color-violet li::before { background: var(--accent-violet); }
+
+  .color-emerald .cell-label { color: var(--accent-emerald); }
+  .color-emerald .num { background: var(--accent-emerald); }
+  .color-emerald li::before { background: var(--accent-emerald); }
+
+  .color-amber .cell-label { color: var(--accent-amber); }
+  .color-amber .num { background: var(--accent-amber); }
+  .color-amber li::before { background: var(--accent-amber); }
+
+  .color-cyan .cell-label { color: var(--accent-cyan); }
+  .color-cyan .num { background: var(--accent-cyan); }
+  .color-cyan li::before { background: var(--accent-cyan); }
+
+  .color-sky .cell-label { color: var(--accent-sky); }
+  .color-sky .num { background: var(--accent-sky); }
+  .color-sky li::before { background: var(--accent-sky); }
+
+  /* ── Bottom row (full width cells) ── */
+  .canvas-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    border-radius: 0 0 var(--radius) var(--radius);
+    overflow: hidden;
+    margin-top: 2px;
+  }
+
+  /* ── Brand Section ── */
+  .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .brand-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .brand-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.15);
+  }
+  .brand-card.featured {
+    grid-column: span 2;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(139,92,246,0.08) 100%);
+    border-color: var(--border-accent);
+    padding: 40px 28px;
+  }
+  .brand-card .card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    margin-bottom: 12px;
+  }
+  .brand-card h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    margin-bottom: 4px;
+  }
+  .brand-card .brand-name-en {
+    font-size: 1rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .brand-card .tagline {
+    font-size: 1.15rem;
+    color: var(--accent-amber);
+    font-weight: 600;
+    margin-top: 16px;
+  }
+  .brand-card p {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ── Persona Section ── */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .persona-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .persona-card .persona-icon {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+  .persona-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 4px;
+  }
+  .persona-card .persona-desc {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+  .persona-card ul {
+    list-style: none;
+    font-size: 0.8rem;
+  }
+  .persona-card ul li {
+    padding: 3px 0;
+    color: var(--text);
+  }
+  .persona-card ul li::before {
+    content: '>';
+    color: var(--accent-emerald);
+    margin-right: 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+
+  /* ── Footer ── */
+  .page-footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .canvas-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    .canvas-cell.tall {
+      grid-row: span 1;
+    }
+    .persona-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-header { padding: 40px 16px 28px; }
+    .page-header h1 { font-size: 1.5rem; }
+    .canvas-grid {
+      grid-template-columns: 1fr;
+    }
+    .canvas-bottom {
+      grid-template-columns: 1fr;
+    }
+    .brand-grid {
+      grid-template-columns: 1fr;
+    }
+    .brand-card.featured {
+      grid-column: span 1;
+    }
+    .container { padding: 0 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="page-header">
+  <div class="site-name">API Catalog JP</div>
+  <h1>Lean Canvas & Brand Concept</h1>
+  <p class="subtitle">日本語APIカタログサイト -- プロダクト戦略ドキュメント v1.0</p>
+</header>
+
+<div class="container">
+
+  <!-- ═══════════ BRAND CONCEPT ═══════════ -->
+  <div class="section">
+    <div class="section-title">Brand Concept</div>
+
+    <div class="brand-grid">
+      <!-- Site Name (Featured) -->
+      <div class="brand-card featured">
+        <div class="card-label">Site Name</div>
+        <h3>APIぺディア</h3>
+        <div class="brand-name-en">APIPedia</div>
+        <p>APIの百科事典。日本語で「調べる、理解する、使いこなす」を一つの場所で実現する。<br>
+        「API」+「Encyclopedia（百科事典）」の造語で、包括性と信頼感を表現。</p>
+        <div class="tagline">「探す」を「使う」に変える、日本語APIカタログ</div>
+      </div>
+
+      <!-- Vision -->
+      <div class="brand-card">
+        <div class="card-label">Vision</div>
+        <p>日本のすべての開発者が、言語の壁なく世界中のAPIを発見・理解・活用できる世界をつくる。APIの民主化を通じて、個人開発者やスタートアップのプロダクト開発を加速し、日本のソフトウェアエコシステム全体の生産性を底上げする。</p>
+      </div>
+
+      <!-- Tone -->
+      <div class="brand-card">
+        <div class="card-label">Tone & Voice</div>
+        <p><strong>実用的で親しみやすい技術ガイド。</strong><br>
+        難解な専門用語を避け、具体的なコード例と平易な日本語で解説する。上から教えるのではなく、隣で一緒に調べる同僚のようなスタンス。正確性と網羅性を重視しつつ、初学者にも門戸を開く。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ TARGET PERSONAS ═══════════ -->
+  <div class="section">
+    <div class="section-title">Target Personas</div>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-icon">&#x1F468;&#x200D;&#x1F4BB;</div>
+        <h4>個人開発者（インディーハッカー）</h4>
+        <div class="persona-desc">副業や個人プロジェクトでWebアプリ・モバイルアプリを開発</div>
+        <ul>
+          <li>決済、認証、地図などのAPIを手早く見つけたい</li>
+          <li>英語ドキュメントの読解にストレスを感じている</li>
+          <li>無料枠やコスト感を事前に把握したい</li>
+        </ul>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-icon">&#x1F680;</div>
+        <h4>スタートアップエンジニア</h4>
+        <div class="persona-desc">MVP開発を急ぐ少人数チームの開発者</div>
+        <ul>
+          <li>自前構築 vs API利用の意思決定材料がほしい</li>
+          <li>信頼性や稼働率の比較情報を求めている</li>
+          <li>実装工数を減らせるAPIを効率よく探したい</li>
+        </ul>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-icon">&#x1F393;</div>
+        <h4>学習中の駆け出しエンジニア</h4>
+        <div class="persona-desc">プログラミングスクール卒業生、独学エンジニア</div>
+        <ul>
+          <li>そもそもどんなAPIがあるか知らない</li>
+          <li>日本語のチュートリアルで実装を学びたい</li>
+          <li>ポートフォリオにAPI連携を組み込みたい</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ LEAN CANVAS ═══════════ -->
+  <div class="section">
+    <div class="section-title">Lean Canvas</div>
+
+    <!-- Main Canvas Grid (Top Row: 5 columns, some span 2 rows) -->
+    <div class="canvas-grid">
+
+      <!-- 1. Problem (rows 1-2) -->
+      <div class="canvas-cell tall color-rose">
+        <div class="cell-label"><span class="num">1</span> Problem -- 課題</div>
+        <ul>
+          <li><strong>発見困難:</strong> 日本語でAPIを横断検索できる場所がなく、用途に合うAPIを見つけるのに膨大な時間がかかる</li>
+          <li><strong>理解障壁:</strong> 海外APIのドキュメントは英語中心。仕様・料金体系・制限事項の理解にストレスと誤解が生じる</li>
+          <li><strong>比較不能:</strong> 同カテゴリのAPI同士を統一フォーマットで比較する手段がなく、技術選定の判断根拠が属人的になる</li>
+        </ul>
+
+        <div class="sub-section">
+          <div class="sub-label">既存の代替手段</div>
+          <ul>
+            <li>RapidAPI（英語のみ）</li>
+            <li>Google検索 + 個人ブログ</li>
+            <li>GitHub awesome-apis（未整理）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2. Solution (row 1) -->
+      <div class="canvas-cell color-blue">
+        <div class="cell-label"><span class="num">2</span> Solution -- ソリューション</div>
+        <ul>
+          <li><strong>カテゴリ別カタログ:</strong> 決済・認証・AI・地図など用途別に整理された日本語APIデータベース</li>
+          <li><strong>統一フォーマット解説:</strong> 概要、料金、制限、コード例を共通テンプレートで日本語提供</li>
+          <li><strong>比較表・選定ガイド:</strong> 同カテゴリAPIの機能・料金・制限を一覧比較できるマトリクス</li>
+        </ul>
+      </div>
+
+      <!-- 3. UVP (rows 1-2) -->
+      <div class="canvas-cell tall color-violet">
+        <div class="cell-label"><span class="num">3</span> Unique Value Proposition</div>
+        <div class="highlight">日本語で、探せる。わかる。選べる。</div>
+        <p>世界中のAPIを日本語で網羅的に検索・理解・比較できる唯一のカタログサイト。統一フォーマットによる解説と実践的なコード例で、APIの「発見」から「実装」までを最短距離でつなぐ。</p>
+
+        <div class="sub-section">
+          <div class="sub-label">差別化の3軸</div>
+          <ul>
+            <li>完全日本語対応</li>
+            <li>統一比較フォーマット</li>
+            <li>実装直結のコード例</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4. Unfair Advantage (row 1) -->
+      <div class="canvas-cell color-emerald">
+        <div class="cell-label"><span class="num">4</span> Unfair Advantage -- 圧倒的な優位性</div>
+        <ul>
+          <li><strong>先行者優位:</strong> 日本語APIカタログ市場で先行しSEO資産とブランドを構築</li>
+          <li><strong>コミュニティ効果:</strong> ユーザーレビュー・実装事例の蓄積はネットワーク効果を生む</li>
+          <li><strong>構造化データ:</strong> 統一フォーマットで蓄積されたAPI情報は機械的な比較・推薦に活用可能</li>
+        </ul>
+      </div>
+
+      <!-- 5. Customer Segments (rows 1-2) -->
+      <div class="canvas-cell tall color-amber">
+        <div class="cell-label"><span class="num">5</span> Customer Segments -- 顧客セグメント</div>
+        <ul>
+          <li><strong>個人開発者:</strong> 副業・趣味でWebアプリ/モバイルアプリを開発する層（最大ボリューム）</li>
+          <li><strong>スタートアップ:</strong> MVP開発でAPI活用を検討する少人数チーム</li>
+          <li><strong>駆け出しエンジニア:</strong> API連携を学びたいプログラミング学習者</li>
+          <li><strong>企業の技術選定担当:</strong> API導入の比較検討を行う中小企業のリード開発者</li>
+        </ul>
+
+        <div class="sub-section">
+          <div class="sub-label">アーリーアダプター</div>
+          <ul>
+            <li>技術ブログを書く個人開発者</li>
+            <li>API連携のチュートリアルを求める学習者</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. Key Metrics (row 2) -->
+      <div class="canvas-cell color-cyan">
+        <div class="cell-label"><span class="num">6</span> Key Metrics -- 主要指標</div>
+        <ul>
+          <li><strong>MAU:</strong> 月間アクティブユーザー数</li>
+          <li><strong>API掲載数:</strong> カタログ収録API件数</li>
+          <li><strong>検索→詳細遷移率:</strong> 検索からAPI詳細ページへの転換率</li>
+          <li><strong>滞在時間:</strong> 詳細ページ平均滞在時間</li>
+          <li><strong>リピート率:</strong> 月内再訪問率</li>
+          <li><strong>SEO流入数:</strong> オーガニック検索からの月間流入</li>
+        </ul>
+      </div>
+
+      <!-- 7. Channels (row 2) -->
+      <div class="canvas-cell color-sky">
+        <div class="cell-label"><span class="num">7</span> Channels -- チャネル</div>
+        <ul>
+          <li><strong>SEO:</strong> 「○○ API 日本語」等のロングテールキーワードで検索上位獲得</li>
+          <li><strong>技術コミュニティ:</strong> Zenn / Qiita / note での解説記事公開</li>
+          <li><strong>SNS:</strong> X（旧Twitter）での新規API紹介・Tips発信</li>
+          <li><strong>開発者イベント:</strong> ハッカソン連携・LT登壇</li>
+          <li><strong>ニュースレター:</strong> 週刊API新着・アップデート情報配信</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Cost Structure & Revenue Streams -->
+    <div class="canvas-bottom">
+      <div class="canvas-cell color-rose">
+        <div class="cell-label"><span class="num">8</span> Cost Structure -- コスト構造</div>
+        <ul>
+          <li><strong>コンテンツ制作:</strong> API調査・日本語ドキュメント作成・コード例制作の人的コスト</li>
+          <li><strong>インフラ:</strong> ホスティング、CDN、ドメイン（静的サイトで最小化）</li>
+          <li><strong>SEO / マーケティング:</strong> コンテンツマーケティング、SNS運用</li>
+          <li><strong>ツール:</strong> 分析ツール、エディタ、CI/CD</li>
+        </ul>
+      </div>
+
+      <div class="canvas-cell color-emerald">
+        <div class="cell-label"><span class="num">9</span> Revenue Streams -- 収益の流れ</div>
+        <ul>
+          <li><strong>アフィリエイト:</strong> API提供元への送客による成果報酬（有料APIの登録誘導）</li>
+          <li><strong>スポンサード掲載:</strong> API提供企業による掲載枠・優先表示</li>
+          <li><strong>プレミアムコンテンツ:</strong> 詳細比較レポート・選定ガイドの有料提供</li>
+          <li><strong>広告:</strong> 開発者向けターゲティング広告（Carbon Ads等）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ STRATEGIC NOTES ═══════════ -->
+  <div class="section">
+    <div class="section-title">Strategic Notes</div>
+
+    <div class="brand-grid">
+      <div class="brand-card">
+        <div class="card-label">Phase 1 -- MVP（0-3ヶ月）</div>
+        <p><strong>目標:</strong> 50件のAPIを掲載し、月間1,000 UU達成</p>
+        <p style="margin-top: 8px;">静的サイトとして構築。決済・認証・AI・地図・メッセージングの5カテゴリから着手。各APIは統一テンプレートで「概要 / 料金 / 制限 / コード例 / 類似API」を掲載。SEO最適化を徹底し、ロングテールキーワードで検索流入を獲得する。</p>
+      </div>
+
+      <div class="brand-card">
+        <div class="card-label">Phase 2 -- Growth（3-6ヶ月）</div>
+        <p><strong>目標:</strong> 200件のAPIを掲載し、月間10,000 UU達成</p>
+        <p style="margin-top: 8px;">カテゴリ比較表の導入、検索機能の強化、ニュースレター配信開始。Zenn/Qiitaでの技術記事をフックにコミュニティ形成を促進。APIプロバイダーへのスポンサード掲載の営業を開始する。</p>
+      </div>
+
+      <div class="brand-card">
+        <div class="card-label">Phase 3 -- Scale（6-12ヶ月）</div>
+        <p><strong>目標:</strong> 500件以上のAPIを掲載し、月間50,000 UU達成</p>
+        <p style="margin-top: 8px;">ユーザーレビュー機能、API推薦エンジン、実装チュートリアルの拡充。コミュニティ貢献によるコンテンツ拡張の仕組みを構築。収益化モデルの本格稼働。</p>
+      </div>
+
+      <div class="brand-card">
+        <div class="card-label">Key Risks & Mitigations</div>
+        <ul style="list-style: none; font-size: 0.85rem;">
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
+            <span style="color: var(--accent-rose); font-weight: 700;">RISK</span> コンテンツ制作の継続負荷 →
+            <span style="color: var(--accent-emerald);">テンプレート化 + AI補助で効率化</span>
+          </li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
+            <span style="color: var(--accent-rose); font-weight: 700;">RISK</span> API情報の陳腐化 →
+            <span style="color: var(--accent-emerald);">定期クロール + コミュニティ報告の仕組み</span>
+          </li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
+            <span style="color: var(--accent-rose); font-weight: 700;">RISK</span> 大手プレイヤーの日本語対応 →
+            <span style="color: var(--accent-emerald);">日本市場特化の深いコンテンツで差別化</span>
+          </li>
+          <li style="padding: 6px 0;">
+            <span style="color: var(--accent-rose); font-weight: 700;">RISK</span> 収益化までの資金 →
+            <span style="color: var(--accent-emerald);">静的サイト運用で固定費を最小化</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="page-footer">
+  <p>API Catalog JP -- Lean Canvas & Brand Concept v1.0</p>
+  <p style="margin-top: 4px;">Last updated: 2026-02-15</p>
+</footer>
+
+</body>
+</html>

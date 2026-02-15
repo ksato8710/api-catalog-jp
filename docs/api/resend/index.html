@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resend - APIpedia | 日本語APIカタログ</title>
+<meta name="description" content="開発者ファーストのモダンなメール送信API。React Emailとの統合、高い到達率、シンプルなAPIが特徴。Next.js/Vercelエコシステムとの親和性が高い。">
+<meta property="og:title" content="Resend - APIpedia">
+<meta property="og:description" content="開発者ファーストのモダンなメール送信API。React Emailとの統合、高い到達率、シンプルなAPIが特徴。Next.js/Vercelエコシステムとの親和性が高い。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="APIpedia">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Resend - APIpedia">
+<meta name="twitter:description" content="開発者ファーストのモダンなメール送信API。React Emailとの統合、高い到達率、シンプルなAPIが特徴。Next.js/Vercelエコシステムとの親和性が高い。">
+<link rel="canonical" href="https://apipedia.dev/api/resend/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Resend", "description": "開発者ファーストのモダンなメール送信API。React Emailとの統合、高い到達率、シンプルなAPIが特徴。Next.js/Vercelエコシステムとの親和性が高い。", "url": "https://resend.com/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "", "priceCurrency": "JPY", "description": "無料: 月3,000通、有料: /月（月50,000通）"}}</script>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
+  .breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-secondary); }
+  .breadcrumb a:hover { color: var(--color-primary); }
+  .api-hero { margin-bottom: 32px; }
+  .api-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+  .api-hero .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .badge { display: inline-flex; align-items: center; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .badge--pricing { color: var(--color-primary); background: var(--color-primary-light); }
+  .badge--region { color: var(--color-accent); background: var(--color-accent-light); }
+  .badge--category { color: var(--color-secondary); background: var(--color-secondary-light); }
+  .badge--difficulty { color: var(--text-secondary); background: rgba(255,255,255,0.06); }
+  .badge--featured { color: var(--color-warning); background: var(--color-warning-light); }
+  .api-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px; }
+  .score-hero { display: flex; align-items: center; gap: 24px; padding: 24px; background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(139,92,246,0.06)); border: 1px solid var(--border-color); border-radius: var(--radius); margin-bottom: 32px; }
+  .score-number { font-size: 3.5rem; font-weight: 800; line-height: 1; }
+  .score-detail { flex: 1; }
+  .score-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+  .score-bar-outer { width: 100%; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 5px; }
+  .score-reason { font-size: 0.88rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.7; }
+  .section-block { margin-bottom: 32px; }
+  .section-heading { font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: 8px; }
+  .detail-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .metric-card { padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metric-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .metric-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+  .adopters-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .adopter-chip { padding: 6px 14px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-pill); }
+  .sources-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .source-link { display: block; padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; color: var(--color-primary); font-size: 0.85rem; font-weight: 500; transition: all var(--transition); }
+  .source-link:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .spec-item { padding: 14px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .spec-item .label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .spec-item .value { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+  .spec-item--full { grid-column: 1 / -1; }
+  .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
+  .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
+  @media (max-width: 768px) {
+    .api-hero h1 { font-size: 1.5rem; }
+    .score-hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .score-number { font-size: 2.5rem; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .action-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../../compare.html" class="nav-link">比較表</a>
+      <a href="../../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="api-detail">
+  <div class="breadcrumb">
+    <a href="../../index.html">APIpedia</a> &rsaquo;
+    <a href="../../index.html#catalog">カタログ</a> &rsaquo;
+    Resend
+  </div>
+
+  <div class="api-hero">
+    <h1>Resend</h1>
+    
+    <div class="badge-row">
+      <span class="badge badge--pricing">フリーミアム</span>
+      <span class="badge badge--region">グローバル</span>
+      <span class="badge badge--category">📧 メール・通知</span>
+      <span class="badge badge--difficulty">初級</span>
+      
+    </div>
+  </div>
+
+  <p class="api-desc">開発者ファーストのモダンなメール送信API。React Emailとの統合、高い到達率、シンプルなAPIが特徴。Next.js/Vercelエコシステムとの親和性が高い。</p>
+
+  <div class="score-hero">
+    <div class="score-number" style="color:var(--color-warning);">62</div>
+    <div class="score-detail">
+      <div class="score-label">人気スコア（100点満点）</div>
+      <div class="score-bar-outer"><div class="score-bar-fill" style="width:62%;background:linear-gradient(90deg,var(--color-warning), #fbbf24);"></div></div>
+      <div class="score-reason">React Email連携、DX重視の設計、Vercelエコシステムとの親和性</div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">詳細分析</h2><div class="detail-text">React Emailとの統合が特徴のモダンメールAPI。Vercel創業者Guillermo Rauchも出資。開発者体験を重視した設計でスタートアップに急速に普及。</div></div>
+
+  <div class="section-block"><h2 class="section-heading">利用実績・指標</h2><div class="metrics-grid"><div class="metric-card"><div class="metric-label">利用者数</div><div class="metric-value">50,000+</div></div><div class="metric-card"><div class="metric-label">APIコール数</div><div class="metric-value">100M+</div></div><div class="metric-card"><div class="metric-label">市場ポジション</div><div class="metric-value">メールAPI市場で5-8%</div></div><div class="metric-card"><div class="metric-label">npm ダウンロード</div><div class="metric-value">100,000+/week（resend）</div></div><div class="metric-card"><div class="metric-label">GitHub Stars</div><div class="metric-value">12,000+（React Email）</div></div></div></div>
+  <div class="section-block"><h2 class="section-heading">主な利用企業・サービス</h2><div class="adopters-wrap"><span class="adopter-chip">Vercel</span><span class="adopter-chip">Cal.com</span><span class="adopter-chip">Dub</span><span class="adopter-chip">スタートアップ</span></div></div>
+  <div class="section-block"><h2 class="section-heading">根拠・参照元</h2><ul class="sources-list"><li><a href="https://resend.com/" target="_blank" rel="noopener" class="source-link">Resend公式</a></li><li><a href="https://www.npmjs.com/package/resend" target="_blank" rel="noopener" class="source-link">npm統計</a></li></ul></div>
+
+  <div class="section-block">
+    <h2 class="section-heading">API仕様</h2>
+    <div class="spec-grid">
+      <div class="spec-item"><div class="label">認証方式</div><div class="value">APIキー</div></div>
+      <div class="spec-item"><div class="label">レスポンス形式</div><div class="value">JSON</div></div>
+      <div class="spec-item"><div class="label">レート制限</div><div class="value">無料: 100通/日、有料: プランにより変動</div></div>
+      <div class="spec-item"><div class="label">料金</div><div class="value">無料: 月3,000通、有料: /月（月50,000通）</div></div>
+      <div class="spec-item spec-item--full"><div class="label">SDK</div><div class="value">JavaScript, Python, Go, Ruby, PHP</div></div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">トランザクションメール</span><span class="usecase-tag">通知メール</span><span class="usecase-tag">マーケティング</span><span class="usecase-tag">ニュースレター</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">メール</span><span class="tag">React Email</span><span class="tag">Next.js</span><span class="tag">開発者向け</span></div></div>
+
+  <div class="action-buttons">
+    <a href="https://resend.com/docs" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
+    <a href="https://resend.com/" target="_blank" rel="noopener" class="btn btn--ghost">公式サイト</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../../index.html">トップ</a>
+        <a href="../../compare.html">比較表</a>
+        <a href="../../lean-canvas.html">コンセプト</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

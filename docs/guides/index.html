@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API比較ガイド - APIpedia | カテゴリ別おすすめAPI徹底比較</title>
+<meta name="description" content="決済・認証・AI・地図・メール通知APIを徹底比較。料金・機能・難易度・ユースケースで最適なAPIが見つかる完全ガイド。">
+<meta property="og:title" content="API比較ガイド - APIpedia">
+<meta property="og:description" content="カテゴリ別にAPIを徹底比較。最適なAPI選びの完全ガイド。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="APIpedia">
+<link rel="canonical" href="https://apipedia.dev/guides/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "API比較ガイド - APIpedia",
+  "description": "カテゴリ別にAPIを徹底比較する完全ガイド集",
+  "url": "https://apipedia.dev/guides/",
+  "isPartOf": { "@type": "WebSite", "name": "APIpedia", "url": "https://apipedia.dev/" }
+}
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .guides-page { padding: calc(var(--header-height) + 40px) 0 80px; }
+  .guides-hero { text-align: center; padding: 40px 20px 48px; }
+  .guides-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--color-primary) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .guides-hero p { color: var(--text-secondary); font-size: 1rem; max-width: 640px; margin: 0 auto; line-height: 1.8; }
+
+  .guides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; margin-bottom: 48px; }
+  .guide-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius);
+    padding: 28px; transition: all 0.25s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .guide-card:hover { border-color: var(--color-primary); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .guide-card__badge { position: absolute; top: 16px; right: 16px; font-size: 0.68rem; font-weight: 700;
+    padding: 3px 10px; border-radius: var(--radius-pill); background: var(--color-primary-light); color: var(--color-primary); }
+  .guide-card__icon { font-size: 2rem; margin-bottom: 12px; }
+  .guide-card__title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .guide-card__desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; flex: 1; }
+  .guide-card__apis { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .guide-card__api-tag { font-size: 0.72rem; padding: 2px 8px; background: rgba(255,255,255,0.06); border-radius: 4px; color: var(--text-muted); }
+  .guide-card__link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;
+    color: var(--color-primary); text-decoration: none; }
+  .guide-card__link:hover { text-decoration: underline; }
+
+  .newsletter-section { background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(139,92,246,0.08) 100%);
+    border: 1px solid rgba(59,130,246,0.2); border-radius: var(--radius); padding: 48px 32px; text-align: center; margin-top: 48px; }
+  .newsletter-section h2 { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .newsletter-section p { color: var(--text-secondary); font-size: 0.9rem; max-width: 500px; margin: 0 auto 24px; }
+  .newsletter-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; }
+  .newsletter-form input { flex: 1; padding: 12px 16px; font-size: 0.9rem; font-family: inherit;
+    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    color: var(--text-primary); outline: none; }
+  .newsletter-form input:focus { border-color: var(--color-primary); }
+  .newsletter-form input::placeholder { color: var(--text-muted); }
+  .newsletter-form button { padding: 12px 24px; font-size: 0.85rem; font-weight: 600; font-family: inherit;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color: #fff;
+    border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap; transition: opacity 0.2s; }
+  .newsletter-form button:hover { opacity: 0.9; }
+
+  @media (max-width: 768px) {
+    .guides-hero h1 { font-size: 1.5rem; }
+    .guides-grid { grid-template-columns: 1fr; }
+    .newsletter-form { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../compare.html" class="nav-link">比較表</a>
+      <a href="index.html" class="nav-link active">ガイド</a>
+      <a href="../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="メニュー" style="display:none;">&#9776;</button>
+  </div>
+</header>
+
+<main class="guides-page">
+  <div class="guides-hero">
+    <h1>API比較ガイド</h1>
+    <p>カテゴリ別にAPIを徹底比較。料金・機能・難易度・ユースケースの観点から、あなたのプロジェクトに最適なAPIが見つかる完全ガイドです。</p>
+  </div>
+
+  <div class="container">
+    <div class="guides-grid">
+
+      <div class="guide-card">
+        <span class="guide-card__badge">人気</span>
+        <div class="guide-card__icon">💳</div>
+        <div class="guide-card__title">決済API 徹底比較ガイド</div>
+        <div class="guide-card__desc">Stripe, PayPay, Square, PAY.JP, LINE Payなど主要決済APIを料金・機能・日本対応の観点で徹底比較。用途別おすすめも紹介。</div>
+        <div class="guide-card__apis">
+          <span class="guide-card__api-tag">Stripe</span>
+          <span class="guide-card__api-tag">PayPay</span>
+          <span class="guide-card__api-tag">Square</span>
+          <span class="guide-card__api-tag">PAY.JP</span>
+          <span class="guide-card__api-tag">LINE Pay</span>
+        </div>
+        <a href="payment-api-comparison.html" class="guide-card__link">ガイドを読む &rarr;</a>
+      </div>
+
+      <div class="guide-card">
+        <span class="guide-card__badge">人気</span>
+        <div class="guide-card__icon">🔐</div>
+        <div class="guide-card__title">認証API 徹底比較ガイド</div>
+        <div class="guide-card__desc">Auth0, Firebase Auth, Clerk, Supabase Auth, LINE Loginの5サービスを比較。無料枠・ソーシャルログイン対応・実装難易度で選ぶ。</div>
+        <div class="guide-card__apis">
+          <span class="guide-card__api-tag">Auth0</span>
+          <span class="guide-card__api-tag">Firebase Auth</span>
+          <span class="guide-card__api-tag">Clerk</span>
+          <span class="guide-card__api-tag">Supabase Auth</span>
+          <span class="guide-card__api-tag">LINE Login</span>
+        </div>
+        <a href="auth-api-comparison.html" class="guide-card__link">ガイドを読む &rarr;</a>
+      </div>
+
+      <div class="guide-card">
+        <span class="guide-card__badge">注目</span>
+        <div class="guide-card__icon">🤖</div>
+        <div class="guide-card__title">AI/LLM API 徹底比較ガイド</div>
+        <div class="guide-card__desc">OpenAI, Claude, Gemini, Hugging Face, Cohereなど主要AI APIを性能・料金・日本語対応で比較。2026年最新版。</div>
+        <div class="guide-card__apis">
+          <span class="guide-card__api-tag">OpenAI</span>
+          <span class="guide-card__api-tag">Claude</span>
+          <span class="guide-card__api-tag">Gemini</span>
+          <span class="guide-card__api-tag">Hugging Face</span>
+          <span class="guide-card__api-tag">Cohere</span>
+        </div>
+        <a href="ai-api-comparison.html" class="guide-card__link">ガイドを読む &rarr;</a>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-card__icon">📧</div>
+        <div class="guide-card__title">メール・通知API 徹底比較ガイド</div>
+        <div class="guide-card__desc">SendGrid, Amazon SES, Resend, Mailgun, LINE Notifyなどメール送信・プッシュ通知APIを到達率・料金・使いやすさで比較。</div>
+        <div class="guide-card__apis">
+          <span class="guide-card__api-tag">SendGrid</span>
+          <span class="guide-card__api-tag">Amazon SES</span>
+          <span class="guide-card__api-tag">Resend</span>
+          <span class="guide-card__api-tag">Mailgun</span>
+          <span class="guide-card__api-tag">LINE Notify</span>
+        </div>
+        <a href="notification-api-comparison.html" class="guide-card__link">ガイドを読む &rarr;</a>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-card__icon">🗺️</div>
+        <div class="guide-card__title">地図API 徹底比較ガイド</div>
+        <div class="guide-card__desc">Google Maps, Mapbox, OpenStreetMap, HERE, Yahoo!ジオコーダの5サービスを料金・機能・日本地図精度で徹底比較。</div>
+        <div class="guide-card__apis">
+          <span class="guide-card__api-tag">Google Maps</span>
+          <span class="guide-card__api-tag">Mapbox</span>
+          <span class="guide-card__api-tag">OSM</span>
+          <span class="guide-card__api-tag">HERE</span>
+          <span class="guide-card__api-tag">Yahoo!</span>
+        </div>
+        <a href="maps-api-comparison.html" class="guide-card__link">ガイドを読む &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="newsletter-section" id="newsletter">
+      <h2>APIpedia ニュースレター</h2>
+      <p>新着API情報、比較ガイドの更新、業界トレンドを月2回お届けします。</p>
+      <form class="newsletter-form" action="https://formspree.io/f/placeholder" method="POST">
+        <input type="email" name="email" placeholder="メールアドレスを入力" required>
+        <button type="submit">登録する</button>
+      </form>
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 12px;">スパムは送りません。いつでも登録解除できます。</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../index.html">トップ</a>
+        <a href="../compare.html">比較表</a>
+        <a href="index.html">ガイド</a>
+        <a href="../lean-canvas.html">コンセプト</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

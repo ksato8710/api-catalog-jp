@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【2026年版】AI/LLM API 5社徹底比較 - OpenAI vs Claude vs Gemini | APIpedia</title>
+<meta name="description" content="OpenAI GPT-4.5, Anthropic Claude 4, Google Gemini, Hugging Face, Cohereの AI/LLM APIを料金・性能・日本語対応の観点で徹底比較。最適なLLM APIの選び方を解説。">
+<meta property="og:title" content="【2026年版】AI/LLM API 5社徹底比較 | APIpedia">
+<meta property="og:description" content="OpenAI, Claude, Gemini, Hugging Face, Cohereを料金・性能・日本語対応で徹底比較">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="APIpedia">
+<link rel="canonical" href="https://apipedia.dev/guides/ai-api-comparison.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "【2026年版】AI/LLM API 5社徹底比較",
+  "description": "OpenAI, Claude, Gemini, Hugging Face, Cohereを料金・性能・日本語対応で徹底比較",
+  "datePublished": "2026-02-15",
+  "author": {"@type": "Organization", "name": "APIpedia"},
+  "publisher": {"@type": "Organization", "name": "APIpedia", "url": "https://apipedia.dev/"}
+}
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .guide-page { padding: calc(var(--header-height) + 24px) 0 80px; }
+  .guide-breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; }
+  .guide-breadcrumb a { color: var(--color-primary); text-decoration: none; }
+  .guide-breadcrumb a:hover { text-decoration: underline; }
+  .guide-header { margin-bottom: 40px; }
+  .guide-header__badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 4px 12px;
+    background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-pill); margin-bottom: 12px; }
+  .guide-header h1 { font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4; }
+  .guide-header__meta { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; }
+  .guide-content { max-width: 860px; }
+  .guide-content h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin: 40px 0 16px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); display: inline-block; }
+  .guide-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 28px 0 12px; }
+  .guide-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 16px; }
+  .guide-content ul, .guide-content ol { margin: 12px 0 20px 20px; }
+  .guide-content li { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .guide-content strong { color: var(--text-primary); }
+
+  .compare-matrix { overflow-x: auto; margin: 24px 0 32px; border-radius: var(--radius); border: 1px solid var(--border-color); }
+  .compare-matrix table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: var(--bg-card); min-width: 700px; }
+  .compare-matrix thead { background: var(--bg-secondary); }
+  .compare-matrix th { padding: 12px 14px; text-align: left; font-weight: 700; color: var(--text-primary);
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+  .compare-matrix td { padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); vertical-align: top; }
+  .compare-matrix tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-matrix .api-name { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+  .compare-matrix .api-name a { color: var(--color-primary); text-decoration: none; }
+  .compare-matrix .api-name a:hover { text-decoration: underline; }
+
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .pill--green { color: var(--color-success); background: var(--color-success-light); }
+  .pill--blue { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--amber { color: var(--color-warning); background: var(--color-warning-light); }
+  .pill--red { color: #ef4444; background: rgba(239,68,68,0.15); }
+
+  .recommend-card { background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(59,130,246,0.08) 100%);
+    border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius); padding: 24px; margin: 20px 0; }
+  .recommend-card__title { font-size: 0.95rem; font-weight: 700; color: var(--color-success); margin-bottom: 8px; }
+  .recommend-card p { margin-bottom: 8px; }
+
+  .code-block { background: #0d1117; border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    padding: 16px 20px; margin: 16px 0 24px; overflow-x: auto; }
+  .code-block code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #e6edf3; line-height: 1.6; }
+  .code-block .comment { color: #8b949e; }
+  .code-block .keyword { color: #ff7b72; }
+  .code-block .string { color: #a5d6ff; }
+  .code-block .func { color: #d2a8ff; }
+
+  .guide-nav { display: flex; justify-content: space-between; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-color); }
+  .guide-nav a { font-size: 0.85rem; color: var(--color-primary); text-decoration: none; font-weight: 600; }
+  .guide-nav a:hover { text-decoration: underline; }
+
+  .newsletter-cta { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius);
+    padding: 28px; margin: 40px 0; text-align: center; }
+  .newsletter-cta h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .newsletter-cta p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; }
+  .newsletter-cta .nl-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
+  .newsletter-cta .nl-form input { flex: 1; padding: 10px 14px; font-size: 0.85rem; font-family: inherit;
+    background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+    color: var(--text-primary); outline: none; }
+  .newsletter-cta .nl-form input:focus { border-color: var(--color-primary); }
+  .newsletter-cta .nl-form input::placeholder { color: var(--text-muted); }
+  .newsletter-cta .nl-form button { padding: 10px 20px; font-size: 0.82rem; font-weight: 600; font-family: inherit;
+    background: var(--color-primary); color: #fff; border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap; }
+
+  @media (max-width: 768px) {
+    .guide-header h1 { font-size: 1.3rem; }
+    .guide-nav { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../index.html#ranking" class="nav-link">ランキング</a>
+      <a href="../index.html#catalog" class="nav-link">カタログ</a>
+      <a href="../compare.html" class="nav-link">比較表</a>
+      <a href="index.html" class="nav-link active">ガイド</a>
+      <a href="../lean-canvas.html" class="nav-link">コンセプト</a>
+    </nav>
+  </div>
+</header>
+
+<main class="guide-page">
+<div class="container">
+  <div class="guide-breadcrumb">
+    <a href="../index.html">APIpedia</a> &gt; <a href="index.html">ガイド</a> &gt; AI/LLM API比較
+  </div>
+
+  <div class="guide-header">
+    <span class="guide-header__badge">比較ガイド</span>
+    <h1>【2026年版】AI/LLM API 5社徹底比較<br>OpenAI / Claude / Gemini / Hugging Face / Cohere</h1>
+    <div class="guide-header__meta">
+      <span>更新日: 2026-02-15</span>
+      <span>読了時間: 約10分</span>
+      <span>カテゴリ: AI・機械学習</span>
+    </div>
+  </div>
+
+  <div class="guide-content">
+
+    <p>AIアプリケーションの開発において、どのLLM APIを選ぶかはプロダクトの品質・コスト・スケーラビリティに直結する重要な判断です。本ガイドでは、主要5社のAI/LLM APIを、<strong>料金体系・モデル性能・コンテキスト長・日本語対応・実装難易度</strong>の観点から徹底比較します。</p>
+
+    <h2>1. 比較サマリー</h2>
+
+    <div class="compare-matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>API</th>
+            <th>最新モデル</th>
+            <th>入力料金(/1Mトークン)</th>
+            <th>出力料金(/1Mトークン)</th>
+            <th>コンテキスト長</th>
+            <th>日本語</th>
+            <th>難易度</th>
+            <th>人気</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="api-name"><a href="../api/openai/">OpenAI</a></td>
+            <td>GPT-4.5</td>
+            <td>$2〜75</td>
+            <td>$8〜150</td>
+            <td>128K</td>
+            <td><span class="pill pill--green">高品質</span></td>
+            <td><span class="pill pill--blue">中級</span></td>
+            <td>98</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="../api/anthropic/">Claude</a></td>
+            <td>Claude 4 Opus/Sonnet</td>
+            <td>$3〜15</td>
+            <td>$15〜75</td>
+            <td>200K</td>
+            <td><span class="pill pill--green">高品質</span></td>
+            <td><span class="pill pill--green">初級</span></td>
+            <td>95</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="../api/gemini/">Gemini</a></td>
+            <td>Gemini 2.5 Pro/Flash</td>
+            <td>$1.25〜2.50</td>
+            <td>$5〜10</td>
+            <td>1M (Pro)</td>
+            <td><span class="pill pill--green">高品質</span></td>
+            <td><span class="pill pill--green">初級</span></td>
+            <td>88</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="../api/huggingface/">Hugging Face</a></td>
+            <td>Llama, Mistral等 10万+</td>
+            <td>無料枠あり</td>
+            <td>Pro: $9/月</td>
+            <td>モデル依存</td>
+            <td><span class="pill pill--amber">モデル依存</span></td>
+            <td><span class="pill pill--blue">中級</span></td>
+            <td>82</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="../api/cohere/">Cohere</a></td>
+            <td>Command R+, Embed v3</td>
+            <td>$0.4〜15</td>
+            <td>$1.2〜45</td>
+            <td>128K</td>
+            <td><span class="pill pill--green">100+言語</span></td>
+            <td><span class="pill pill--blue">中級</span></td>
+            <td>72</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>2. 各APIの特徴と強み</h2>
+
+    <h3>OpenAI (GPT-4.5) - 最大のエコシステム</h3>
+    <p>AI業界を牽引するOpenAIは、GPT-4.5を筆頭に最も成熟したAPIエコシステムを提供。Function Calling、Vision、Assistants API、ファインチューニングなど、プロダクション運用に必要な機能が一通り揃っています。サードパーティとの統合数も圧倒的で、LangChain、LlamaIndexなど主要フレームワークが最優先で対応。</p>
+    <ul>
+      <li><strong>強み:</strong> 最大のエコシステム、Function Calling、Vision対応、最多のサードパーティ統合、充実したファインチューニング</li>
+      <li><strong>弱み:</strong> コストが高め（特にGPT-4.5）、レート制限が厳しめ、APIの仕様変更が頻繁</li>
+      <li><strong>おすすめ:</strong> 汎用的なAI開発、プロダクション環境、豊富な統合が必要なケース</li>
+    </ul>
+
+    <h3>Claude (Anthropic) - 長文処理とコード生成の王者</h3>
+    <p>Anthropicが開発するClaudeは、200Kトークンの業界最長クラスのコンテキストウィンドウと、優れたコーディング性能が特徴。Constitutional AIによる安全性の高さに加え、日本語の処理性能も非常に高い評価を得ています。APIの設計がシンプルで、学習コストが低い点も開発者に好評。</p>
+    <ul>
+      <li><strong>強み:</strong> 200Kトークンのコンテキスト長、コーディング性能トップクラス、安全性、日本語性能の高さ</li>
+      <li><strong>弱み:</strong> Vision以外のマルチモーダル機能は限定的、エコシステムはOpenAIに比べ発展途上</li>
+      <li><strong>おすすめ:</strong> 長文処理、コード生成・レビュー、日本語重視のプロジェクト</li>
+    </ul>
+
+    <h3>Google Gemini - コスパとマルチモーダルの最強</h3>
+    <p>Googleが提供するGeminiは、100万トークンのコンテキストウィンドウ（Pro）と業界最安水準の料金設定が魅力。テキスト・画像・音声・動画をネイティブに扱えるマルチモーダル性能は他社を凌駕。Google Cloudとのシームレスな統合も強み。Flashモデルはレイテンシとコストのバランスに優れています。</p>
+    <ul>
+      <li><strong>強み:</strong> コスパ最強、100万トークンのコンテキスト（Pro）、マルチモーダル最強、Google Cloud統合</li>
+      <li><strong>弱み:</strong> APIの安定性にやや課題が残る、Google Cloud依存度が高い</li>
+      <li><strong>おすすめ:</strong> 大量データ処理、マルチモーダルアプリ、コスト重視のプロジェクト</li>
+    </ul>
+
+    <h3>Hugging Face Inference - オープンソースの宝庫</h3>
+    <p>10万以上のオープンソースモデルにアクセスできるHugging Faceは、研究者・開発者コミュニティの中心的存在。Llama、Mistral、Gemma等の最新オープンモデルをAPIで手軽に利用でき、無料枠も用意。モデルの自由な選択とカスタマイズ性が最大の強み。</p>
+    <ul>
+      <li><strong>強み:</strong> 10万+のオープンソースモデル、モデル選択の自由度、活発なコミュニティ、無料枠あり</li>
+      <li><strong>弱み:</strong> モデルにより性能差が大きい、プロダクション安定性は商用APIに劣る、日本語性能はモデル次第</li>
+      <li><strong>おすすめ:</strong> 研究用途、プロトタイプ開発、オンプレミス運用、特定ドメイン特化モデル</li>
+    </ul>
+
+    <h3>Cohere - RAGと企業内検索の専門家</h3>
+    <p>CohereはRAG（検索拡張生成）に特化したAPIを提供。Command R+はRAGに最適化されたモデルで、Embed v3は100以上の言語に対応する高性能な埋め込みモデル。Rerankモデルと合わせて、企業内検索・ナレッジベース構築に最適なスタックを構成。</p>
+    <ul>
+      <li><strong>強み:</strong> RAG特化のCommand R+、100+言語対応のEmbed v3、Rerankモデル、エンタープライズ向け</li>
+      <li><strong>弱み:</strong> 汎用的な生成タスクではOpenAI/Claudeに劣る、知名度が低め</li>
+      <li><strong>おすすめ:</strong> RAGシステム構築、企業内検索、多言語対応、ナレッジベース</li>
+    </ul>
+
+    <h2>3. ユースケース別おすすめ</h2>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">汎用AI開発・プロダクション → OpenAI</div>
+      <p>最大のエコシステムとサードパーティ統合。Function Callingやファインチューニングなど、プロダクションに必要な機能が最も充実。迷ったらまずOpenAIから始めるのが安全。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">長文処理・コード生成 → Claude</div>
+      <p>200Kトークンのコンテキストで論文・契約書・技術文書の一括処理が可能。コーディング性能はトップクラスで、日本語の品質も高い。APIがシンプルで導入しやすい。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">コスパ重視・大量処理 → Gemini</div>
+      <p>100万トークンのコンテキストと業界最安の料金設定。大量のドキュメント処理やマルチモーダル（画像・動画・音声）を扱うならGeminiが最もコスト効率が良い。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">オープンソース・研究 → Hugging Face</div>
+      <p>Llama、Mistral等のオープンモデルを自由に選択・カスタマイズ可能。オンプレミス運用やドメイン特化のファインチューニングに最適。無料枠でプロトタイプも可能。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">RAG・企業内検索 → Cohere</div>
+      <p>Command R+はRAGに最適化されたモデル。Embed v3 + Rerankで高精度な検索パイプラインを構築可能。100+言語対応でグローバル企業にも最適。</p>
+    </div>
+
+    <h2>4. 実装サンプルコード</h2>
+
+    <h3>OpenAI（Python）</h3>
+    <div class="code-block"><code><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI
+
+client = OpenAI(api_key=<span class="string">"sk-..."</span>)
+
+<span class="comment"># Chat Completionの作成</span>
+response = client.chat.completions.<span class="func">create</span>(
+    model=<span class="string">"gpt-4.5-preview"</span>,
+    messages=[
+        {<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: <span class="string">"あなたは優秀なアシスタントです。"</span>},
+        {<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Pythonでクイックソートを実装してください"</span>}
+    ],
+    max_tokens=<span class="string">1024</span>
+)
+
+<span class="func">print</span>(response.choices[<span class="string">0</span>].message.content)</code></div>
+
+    <h3>Claude（Python）</h3>
+    <div class="code-block"><code><span class="keyword">import</span> anthropic
+
+client = anthropic.Anthropic(api_key=<span class="string">"sk-ant-..."</span>)
+
+<span class="comment"># Messageの作成</span>
+message = client.messages.<span class="func">create</span>(
+    model=<span class="string">"claude-4-sonnet-20260215"</span>,
+    max_tokens=<span class="string">1024</span>,
+    messages=[
+        {<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Pythonでクイックソートを実装してください"</span>}
+    ]
+)
+
+<span class="func">print</span>(message.content[<span class="string">0</span>].text)</code></div>
+
+    <h2>5. まとめ：選び方フローチャート</h2>
+    <ol>
+      <li><strong>エコシステムと統合数を重視？</strong> → Yes: OpenAI</li>
+      <li><strong>長文処理・コード生成が中心？</strong> → Yes: Claude</li>
+      <li><strong>コスパ・大量処理・マルチモーダル？</strong> → Yes: Gemini</li>
+      <li><strong>オープンソース・オンプレ運用？</strong> → Yes: Hugging Face</li>
+      <li><strong>RAG・企業内検索を構築？</strong> → Yes: Cohere</li>
+    </ol>
+    <p>迷ったらOpenAI（エコシステム重視）またはClaude（品質・安全性重視）から始めるのがおすすめです。いずれも無料クレジットやトライアルが用意されており、すぐに試すことができます。用途に応じて複数のAPIを組み合わせるマルチLLM戦略も有効です。</p>
+
+    <div class="newsletter-cta">
+      <h3>この記事が役に立ちましたか？</h3>
+      <p>APIpediaニュースレターで最新の比較ガイドを受け取りましょう。</p>
+      <form class="nl-form" action="https://formspree.io/f/placeholder" method="POST">
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <button type="submit">登録</button>
+      </form>
+    </div>
+
+    <div class="guide-nav">
+      <a href="auth-api-comparison.html">&larr; 認証API比較ガイド</a>
+      <a href="notification-api-comparison.html">メール通知API比較ガイド &rarr;</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../index.html">トップ</a>
+        <a href="../compare.html">比較表</a>
+        <a href="index.html">ガイド</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

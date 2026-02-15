@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API比較表 - APIpedia | カテゴリ別API横断比較</title>
+<meta name="description" content="カテゴリ別にAPIを横断比較。料金・認証方式・レート制限・SDK対応・難易度を一覧で確認できます。">
+<meta property="og:title" content="API比較表 - APIpedia">
+<meta property="og:description" content="カテゴリ別にAPIを横断比較。料金・認証方式・レート制限・SDK対応を一覧で確認。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="APIpedia">
+<link rel="canonical" href="https://apipedia.dev/compare.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "API比較表 - APIpedia",
+  "description": "カテゴリ別にAPIを横断比較。料金・認証方式・レート制限・SDK対応・難易度を一覧で確認。",
+  "url": "https://apipedia.dev/compare.html",
+  "isPartOf": { "@type": "WebSite", "name": "APIpedia", "url": "https://apipedia.dev/" }
+}
+</script>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .compare-page { padding: calc(var(--header-height) + 40px) 0 80px; }
+  .compare-hero { text-align: center; padding: 40px 20px 48px; }
+  .compare-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--color-primary) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .compare-hero p { color: var(--text-secondary); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+  .category-selector { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 40px; }
+  .cat-btn { padding: 8px 18px; font-size: 0.85rem; font-weight: 500; font-family: inherit;
+    color: var(--text-secondary); background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill); cursor: pointer; transition: all 0.2s; }
+  .cat-btn:hover { color: var(--text-primary); border-color: var(--border-hover); background: var(--bg-secondary); }
+  .cat-btn.active { color: var(--color-primary); background: var(--color-primary-light); border-color: var(--color-primary); }
+
+  .compare-section { margin-bottom: 48px; display: none; }
+  .compare-section.active { display: block; }
+  .compare-section__title { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .compare-section__title::before { content: ''; display: inline-block; width: 4px; height: 22px;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary)); border-radius: 2px; }
+
+  .compare-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-color); }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; background: var(--bg-card); }
+  .compare-table thead { background: var(--bg-secondary); }
+  .compare-table th { padding: 12px 16px; text-align: left; font-weight: 700; color: var(--text-primary);
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+    border-bottom: 2px solid var(--border-color); }
+  .compare-table td { padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary);
+    vertical-align: top; }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-table .api-name { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+  .compare-table .api-name a { color: var(--color-primary); }
+  .compare-table .api-name a:hover { text-decoration: underline; }
+
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .pill--easy { color: var(--color-success); background: var(--color-success-light); }
+  .pill--medium { color: var(--color-warning); background: var(--color-warning-light); }
+  .pill--hard { color: #ef4444; background: rgba(239,68,68,0.15); }
+
+  .score-mini { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; font-size: 0.82rem; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
+
+  .sdk-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .sdk-tag { padding: 1px 6px; font-size: 0.68rem; background: rgba(255,255,255,0.06); border-radius: 4px; color: var(--text-muted); }
+
+  .view-all { text-align: center; margin-top: 48px; }
+
+  @media (max-width: 768px) {
+    .compare-hero h1 { font-size: 1.5rem; }
+    .compare-table { font-size: 0.78rem; }
+    .compare-table th, .compare-table td { padding: 8px 10px; }
+    .category-selector { gap: 4px; }
+    .cat-btn { padding: 6px 12px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="index.html#ranking" class="nav-link">ランキング</a>
+      <a href="index.html#catalog" class="nav-link">カタログ</a>
+      <a href="compare.html" class="nav-link active">比較表</a>
+      <a href="guides/" class="nav-link">ガイド</a>
+      <a href="lean-canvas.html" class="nav-link">コンセプト</a>
+      <a href="strategy.html" class="nav-link">戦略</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="メニュー" style="display:none;">&#9776;</button>
+  </div>
+</header>
+
+<main class="compare-page">
+  <div class="compare-hero">
+    <h1>カテゴリ別 API 比較表</h1>
+    <p>カテゴリごとにAPIの料金・認証方式・レート制限・SDK対応・人気スコアを横断比較。最適なAPIを見つけよう。</p>
+  </div>
+
+  <div class="container">
+    <div class="category-selector" id="categorySelector"></div>
+    <div id="compareSections"></div>
+    <div class="view-all">
+      <a href="index.html#catalog" class="btn btn--ghost">全APIカタログを見る &rarr;</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="index.html">トップ</a>
+        <a href="compare.html">比較表</a>
+        <a href="guides/">ガイド</a>
+        <a href="lean-canvas.html">コンセプト</a>
+        <a href="strategy.html">戦略</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  var pricingLabel = { free: '無料', freemium: 'フリーミアム', paid: '有料' };
+  var authLabel = { apiKey: 'APIキー', oauth2: 'OAuth 2.0', bearer: 'Bearer Token', none: '認証不要' };
+  var difficultyLabel = { easy: '初級', medium: '中級', hard: '上級' };
+  var regionLabel = { japan: '日本', global: 'グローバル', both: '日本/グローバル' };
+
+  function getScoreClass(score) {
+    if (score >= 70) return 'high';
+    if (score >= 45) return 'medium';
+    return 'low';
+  }
+
+  async function init() {
+    try {
+      var res = await fetch('data/apis.json');
+      var data = await res.json();
+      render(data);
+    } catch (e) {
+      console.error('Failed to load API data:', e);
+    }
+  }
+
+  function render(data) {
+    var categories = data.categories;
+    var apis = data.apis;
+
+    // Category selector
+    var selector = document.getElementById('categorySelector');
+    selector.innerHTML = categories.map(function(cat, i) {
+      return '<button class="cat-btn' + (i === 0 ? ' active' : '') + '" data-cat="' + cat.id + '">' +
+        cat.icon + ' ' + cat.name + '</button>';
+    }).join('');
+
+    // Build comparison sections
+    var sections = document.getElementById('compareSections');
+    sections.innerHTML = categories.map(function(cat, i) {
+      var catApis = apis.filter(function(a) { return a.category === cat.id; });
+      // Sort by popularity
+      catApis.sort(function(a, b) {
+        var sa = (a.popularity && a.popularity.score) || 0;
+        var sb = (b.popularity && b.popularity.score) || 0;
+        return sb - sa;
+      });
+
+      var rows = catApis.map(function(api) {
+        var pop = api.popularity || {};
+        var score = pop.score || 0;
+        var scoreClass = getScoreClass(score);
+        var sdks = (api.sdks || []).map(function(s) { return '<span class="sdk-tag">' + s + '</span>'; }).join('');
+
+        return '<tr>' +
+          '<td class="api-name"><a href="api/' + api.id + '/">' + api.name + '</a></td>' +
+          '<td><span class="pill pill--' + api.pricing + '">' + pricingLabel[api.pricing] + '</span></td>' +
+          '<td>' + (api.pricingDetail || '-') + '</td>' +
+          '<td>' + authLabel[api.auth] + '</td>' +
+          '<td>' + (api.rateLimit || '-') + '</td>' +
+          '<td><div class="sdk-list">' + (sdks || '-') + '</div></td>' +
+          '<td>' + regionLabel[api.region] + '</td>' +
+          '<td><span class="pill pill--' + api.difficulty + '">' + difficultyLabel[api.difficulty] + '</span></td>' +
+          '<td><span class="score-mini score-mini--' + scoreClass + '">' + (score || '-') + '</span></td>' +
+        '</tr>';
+      }).join('');
+
+      return '<div class="compare-section' + (i === 0 ? ' active' : '') + '" data-section="' + cat.id + '">' +
+        '<div class="compare-section__title">' + cat.icon + ' ' + cat.name + '（' + catApis.length + '件）</div>' +
+        '<div class="compare-table-wrap"><table class="compare-table">' +
+          '<thead><tr>' +
+            '<th>API名</th><th>料金</th><th>料金詳細</th><th>認証</th><th>レート制限</th><th>SDK</th><th>リージョン</th><th>難易度</th><th>人気</th>' +
+          '</tr></thead>' +
+          '<tbody>' + rows + '</tbody>' +
+        '</table></div>' +
+      '</div>';
+    }).join('');
+
+    // Category switching
+    selector.addEventListener('click', function(e) {
+      var btn = e.target.closest('.cat-btn');
+      if (!btn) return;
+      var catId = btn.dataset.cat;
+      document.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.compare-section').forEach(function(s) {
+        s.classList.toggle('active', s.dataset.section === catId);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>
