@@ -490,6 +490,12 @@
           }
         ],
         "detail": "BuiltWithの調査によると、地図を使うWebサイトの約70%がGoogle Mapsを利用。月間$200の無料クレジットがあるが、大規模利用ではコストが課題。日本では住所・施設情報の精度が圧倒的。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://cloud.google.com/maps-platform?ref=apipedia",
+        "program": "Google Cloud Partner",
+        "label": "公式サイトへ"
       }
     },
     {
@@ -699,6 +705,12 @@
           }
         ],
         "detail": "年間1兆ドル以上の決済を処理。npmで週間200万ダウンロード。Fortune 500の90%以上が利用。開発者体験の良さ（ドキュメント品質）で圧倒的評価。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://stripe.com/jp?ref=apipedia",
+        "program": "Stripe Partner Program",
+        "label": "公式サイトへ"
       }
     },
     {
@@ -1285,6 +1297,12 @@
           }
         ],
         "detail": "ChatGPTは3億週間アクティブユーザーを達成。npmで週間300万ダウンロード。Microsoft Copilot、Duolingo、Shopifyなど大手が採用。AI API市場で圧倒的シェア。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://openai.com/api/?ref=apipedia",
+        "program": "OpenAI",
+        "label": "公式サイトへ"
       }
     },
     {
@@ -1726,6 +1744,12 @@
           }
         ],
         "detail": "トランザクションメール市場で26%のシェア（1位）。月間1,480億通以上を配信。Uber、Spotify、Airbnbなど大手が利用。Twilio傘下で信頼性が高い。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://sendgrid.com/?ref=apipedia",
+        "program": "SendGrid Partner",
+        "label": "公式サイトへ"
       }
     },
     {
@@ -1868,6 +1892,12 @@
           }
         ],
         "detail": "CPaaS市場でIDC MarketScape 5年連続リーダー認定。349,000以上の顧客。Cyber Weekに70億メッセージを処理する圧倒的スケール。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://www.twilio.com/?ref=apipedia",
+        "program": "Twilio Partner",
+        "label": "公式サイトへ"
       }
     },
     {
@@ -2005,6 +2035,12 @@
           }
         ],
         "detail": "10万社以上が利用する画像・動画管理APIのリーダー。500億以上のメディアアセットを管理。Adidas、Etsyなど大手ECが採用。DAM機能で差別化。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://cloudinary.com/?ref=apipedia",
+        "program": "Cloudinary Partner",
+        "label": "公式サイトへ"
       }
     },
     {
@@ -2197,6 +2233,12 @@
           }
         ],
         "detail": "Okta傘下のエンタープライズ認証プラットフォーム。1.2万社以上が利用。無料枠25,000 MAUが充実。開発者向けカスタマイズ性の高さで評価。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://auth0.com/?ref=apipedia",
+        "program": "Auth0 Partner",
+        "label": "公式サイトへ"
       }
     },
     {
@@ -2950,6 +2992,12 @@
           }
         ],
         "detail": "検索API市場のリーダーとして、年間1.75兆クエリを処理。18,000以上の企業に採用され、特にEコマースとSaaS領域で圧倒的なシェアを誇る。AI検索とニューラルハッシュ技術により、高速かつ正確な検索を提供。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://www.algolia.com/?ref=apipedia",
+        "program": "Algolia Partner",
+        "label": "公式サイトへ"
       }
     },
     {
@@ -3157,6 +3205,12 @@
           }
         ],
         "detail": "世界で最も広く使用されるオブジェクトストレージサービス。2006年のローンチ以来、クラウドストレージのデファクトスタンダードとして君臨。数百万社が利用し、年間1.75兆クエリを処理する他AWSサービスとの統合により、圧倒的なエコシステムを構築。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://aws.amazon.com/s3/?ref=apipedia",
+        "program": "AWS アフィリエイト",
+        "label": "公式サイトへ"
       }
     },
     {
@@ -5733,6 +5787,12 @@
           }
         ],
         "detail": "世界400万ストア超のECプラットフォーム。GraphQL APIでヘッドレスコマースを推進。Allbirds、Gymsharkなど大手ブランドがカスタムストアフロント構築に採用。"
+      },
+      "affiliate": {
+        "enabled": true,
+        "url": "https://www.shopify.com/?ref=apipedia",
+        "program": "Shopify Partner",
+        "label": "公式サイトへ"
       }
     },
     {

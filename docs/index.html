@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja" data-theme="dark">
+<html lang="ja" data-theme="light">
 <head>
+<script>
+(function(){var t=localStorage.getItem('apipedia_theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+</script>
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
@@ -722,6 +725,18 @@
   </div>
 </section>
 
+<!-- Premium Report CTA -->
+<section style="padding: 0 0 64px;">
+  <div class="container">
+    <div class="premium-report-cta">
+      <h3>📊 プレミアム比較レポート</h3>
+      <p>「決済API完全比較ガイド 2026年版」など、より詳細な分析レポートを準備中です。</p>
+      <p class="cta-note">リリース時にお知らせを受け取る</p>
+      <a href="#newsletter" class="cta-btn">ニュースレター登録</a>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer class="site-footer">
   <div class="container">
@@ -834,7 +849,7 @@
   // ── Theme Toggle ──
   function initTheme() {
     var saved = localStorage.getItem('apipedia_theme');
-    var theme = saved || 'dark';
+    var theme = saved || 'light';
     document.documentElement.setAttribute('data-theme', theme);
     updateThemeIcon(theme);
   }
@@ -1286,11 +1301,22 @@
     }
     html += '</div></div>';
 
-    // Actions
+    // Actions (affiliate-aware)
+    var officialUrl = api.url;
+    var officialRel = 'noopener';
+    var officialLabel = '&#x1F310; 公式サイト';
+    var affiliateDisclosure = '';
+    if (api.affiliate && api.affiliate.enabled) {
+      officialUrl = api.affiliate.url;
+      officialRel = 'sponsored noopener';
+      officialLabel = '&#x1F310; ' + (api.affiliate.label || '公式サイトへ');
+      affiliateDisclosure = '<p class="affiliate-disclosure">※ アフィリエイトリンクを含みます</p>';
+    }
     html += '<div class="modal__actions">';
     html += '<a href="' + (api.docsUrl || api.url) + '" target="_blank" rel="noopener" class="modal__action-btn modal__action-btn--primary">&#x1F4D6; ドキュメントを見る</a>';
-    html += '<a href="' + api.url + '" target="_blank" rel="noopener" class="modal__action-btn modal__action-btn--secondary">&#x1F310; 公式サイト</a>';
+    html += '<a href="' + officialUrl + '" target="_blank" rel="' + officialRel + '" class="modal__action-btn modal__action-btn--secondary">' + officialLabel + '</a>';
     html += '</div>';
+    html += affiliateDisclosure;
 
     document.getElementById('modalContent').innerHTML = html;
     document.getElementById('modalOverlay').classList.add('active');

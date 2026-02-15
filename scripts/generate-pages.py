@@ -87,6 +87,19 @@ def generate_page(api, categories, all_apis=None):
         ]
     }, ensure_ascii=False)
 
+    # Affiliate link handling
+    affiliate = api.get('affiliate', {})
+    if affiliate.get('enabled'):
+        official_url = escape(affiliate.get('url', api.get('url', '#')))
+        official_rel = 'sponsored noopener'
+        official_label = escape(affiliate.get('label', '公式サイトへ'))
+        affiliate_disclosure = '<p class="affiliate-disclosure">※ アフィリエイトリンクを含みます</p>'
+    else:
+        official_url = escape(api.get('url', '#'))
+        official_rel = 'noopener'
+        official_label = '公式サイト'
+        affiliate_disclosure = ''
+
     # Related APIs (same category, excluding self, sorted by popularity, top 5)
     related_html = ''
     if all_apis and cat:
@@ -148,8 +161,11 @@ def generate_page(api, categories, all_apis=None):
         tags_html = f'<div class="tags-wrap">{items}</div>'
 
     return f'''<!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="light">
 <head>
+<script>
+(function(){{var t=localStorage.getItem('apipedia_theme')||'light';document.documentElement.setAttribute('data-theme',t);}})();
+</script>
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
@@ -314,8 +330,9 @@ def generate_page(api, categories, all_apis=None):
 
   <div class="action-buttons">
     <a href="{escape(api.get('docsUrl') or api.get('url', '#'))}" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
-    <a href="{escape(api.get('url', '#'))}" target="_blank" rel="noopener" class="btn btn--ghost">公式サイト</a>
+    <a href="{official_url}" target="_blank" rel="{official_rel}" class="btn btn--ghost">{official_label}</a>
   </div>
+  {affiliate_disclosure}
 </main>
 
 <footer class="site-footer">
