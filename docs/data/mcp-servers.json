@@ -1,0 +1,1363 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-02-17",
+    "totalApis": 29,
+    "totalCategories": 8
+  },
+  "categories": [
+    {
+      "id": "reference-core",
+      "name": "Reference Core",
+      "icon": "🧩",
+      "description": "Model Context Protocolの参照実装"
+    },
+    {
+      "id": "developer-tools",
+      "name": "開発ツール",
+      "icon": "🛠️",
+      "description": "ソースコード管理・開発ワークフロー向けMCP"
+    },
+    {
+      "id": "collaboration",
+      "name": "コラボレーション",
+      "icon": "💬",
+      "description": "チャット・ナレッジ共有・チーム作業向け"
+    },
+    {
+      "id": "cloud-platform",
+      "name": "クラウド・インフラ",
+      "icon": "☁️",
+      "description": "クラウド運用・デプロイ・インフラ操作向け"
+    },
+    {
+      "id": "data-database",
+      "name": "データベース",
+      "icon": "🗄️",
+      "description": "DB検索・運用・スキーマ確認向け"
+    },
+    {
+      "id": "business-apps",
+      "name": "業務SaaS",
+      "icon": "🏢",
+      "description": "業務アプリの情報参照・更新を行うMCP"
+    },
+    {
+      "id": "payments-finance",
+      "name": "決済・金融",
+      "icon": "💳",
+      "description": "決済や金融データを扱うMCP"
+    },
+    {
+      "id": "japanese-services",
+      "name": "国内サービス",
+      "icon": "🇯🇵",
+      "description": "日本の主要SaaS・プラットフォーム向けMCP"
+    }
+  ],
+  "apis": [
+    {
+      "id": "mcp-everything",
+      "name": "Everything",
+      "nameJa": "Everything (参照サーバー)",
+      "description": "MCPのTools/Resources/Promptsを網羅的に試せる公式リファレンス実装。接続検証やクライアント実装テストに適する",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/everything",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/everything",
+      "category": "reference-core",
+      "tags": [
+        "参照実装",
+        "検証",
+        "公式"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（OSS）",
+      "auth": "none",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "ローカル実行構成に依存",
+      "sdks": [
+        "TypeScript",
+        "Python"
+      ],
+      "useCases": [
+        "MCPクライアント動作確認",
+        "PoC",
+        "デモ"
+      ],
+      "popularity": {
+        "score": 68,
+        "reason": "公式サンプルとして導入時の最初の検証先になりやすい",
+        "detail": "MCPの基本機能を横断的に触れるため、学習用途と互換性確認の起点として利用される。",
+        "sources": [
+          {
+            "label": "modelcontextprotocol/servers",
+            "url": "https://github.com/modelcontextprotocol/servers"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mcp-fetch",
+      "name": "Fetch",
+      "nameJa": "Fetch (参照サーバー)",
+      "description": "Webコンテンツの取得と整形に特化した公式参照実装。検索結果の一次情報取得フローに組み込みやすい",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+      "category": "reference-core",
+      "tags": [
+        "参照実装",
+        "Web取得",
+        "公式"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（OSS）",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "取得先サイト側の制限に依存",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "外部ページ取得",
+        "RAG前処理",
+        "情報参照"
+      ],
+      "popularity": {
+        "score": 63,
+        "reason": "情報収集系エージェントの基本部品として使われる",
+        "detail": "検索APIと組み合わせて、一次情報取得をMCPツールとして統合する実装で採用されることが多い。",
+        "sources": [
+          {
+            "label": "Fetch reference server",
+            "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mcp-filesystem",
+      "name": "Filesystem",
+      "nameJa": "Filesystem (参照サーバー)",
+      "description": "許可ディレクトリを限定してファイル操作できる公式参照実装。ローカル開発支援の基盤として使われる",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      "category": "reference-core",
+      "tags": [
+        "参照実装",
+        "ファイル操作",
+        "公式"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（OSS）",
+      "auth": "none",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "ローカルI/O性能に依存",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "コード編集補助",
+        "ドキュメント生成",
+        "構成ファイル更新"
+      ],
+      "popularity": {
+        "score": 74,
+        "reason": "IDE連携・コーディング用途で最も基本的なMCPの一つ",
+        "detail": "ローカルファイルに安全な境界を設けつつアクセスできるため、開発系エージェントで汎用的に採用される。",
+        "sources": [
+          {
+            "label": "Filesystem reference server",
+            "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mcp-git",
+      "name": "Git",
+      "nameJa": "Git (参照サーバー)",
+      "description": "Gitリポジトリの参照・検索・操作を行う公式参照実装。差分把握や変更レビューの自動化に向く",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+      "category": "developer-tools",
+      "tags": [
+        "Git",
+        "参照実装",
+        "公式"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（OSS）",
+      "auth": "none",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "ローカル実行環境に依存",
+      "sdks": [
+        "Python"
+      ],
+      "useCases": [
+        "差分分析",
+        "変更レビュー補助",
+        "履歴検索"
+      ],
+      "popularity": {
+        "score": 72,
+        "reason": "コーディングエージェントの標準構成として導入されやすい",
+        "detail": "Git操作を自然言語から安全に扱う用途で、IDE統合やCLI統合の両方で活用される。",
+        "sources": [
+          {
+            "label": "Git reference server",
+            "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/git"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mcp-memory",
+      "name": "Memory",
+      "nameJa": "Memory (参照サーバー)",
+      "description": "知識グラフ型の永続メモリを提供する公式参照実装。会話や作業文脈の継続に利用される",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+      "category": "reference-core",
+      "tags": [
+        "メモリ",
+        "参照実装",
+        "公式"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（OSS）",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "実装・保存先に依存",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "会話コンテキスト保持",
+        "ナレッジ蓄積",
+        "ユーザー設定保持"
+      ],
+      "popularity": {
+        "score": 61,
+        "reason": "長期的な文脈保持が必要なエージェントで採用される",
+        "detail": "単発質問ではなく継続対話を想定するワークフローで有効。",
+        "sources": [
+          {
+            "label": "Memory reference server",
+            "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mcp-sequential-thinking",
+      "name": "Sequential Thinking",
+      "nameJa": "Sequential Thinking (参照サーバー)",
+      "description": "思考ステップを段階的に整理する公式参照実装。複雑な問題分解や検討プロセス可視化に向く",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+      "category": "reference-core",
+      "tags": [
+        "思考支援",
+        "参照実装",
+        "公式"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（OSS）",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "ローカル実行環境に依存",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "問題分解",
+        "分析プロセス可視化",
+        "検証手順整理"
+      ],
+      "popularity": {
+        "score": 58,
+        "reason": "推論プロセスを構造化したい用途で利用される",
+        "detail": "深い推論よりも、手順明示と再現性を重視する場面で有効。",
+        "sources": [
+          {
+            "label": "Sequential Thinking reference server",
+            "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mcp-time",
+      "name": "Time",
+      "nameJa": "Time (参照サーバー)",
+      "description": "時刻・タイムゾーン変換向けの公式参照実装。グローバル日程調整や時間依存処理の補助に使える",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/time",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/time",
+      "category": "reference-core",
+      "tags": [
+        "時刻",
+        "タイムゾーン",
+        "公式"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（OSS）",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "ローカル実行環境に依存",
+      "sdks": [
+        "Python"
+      ],
+      "useCases": [
+        "時差変換",
+        "日時表記統一",
+        "スケジュール調整"
+      ],
+      "popularity": {
+        "score": 52,
+        "reason": "補助的なユーティリティとして利用される",
+        "detail": "単体で主役になりにくいが、他ツールと組み合わせると誤認防止に役立つ。",
+        "sources": [
+          {
+            "label": "Time reference server",
+            "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/time"
+          }
+        ]
+      }
+    },
+    {
+      "id": "github-mcp-server",
+      "name": "GitHub MCP Server",
+      "nameJa": "GitHub MCP Server",
+      "description": "GitHub公式のMCPサーバー。リポジトリ・Issue・Pull Request・ActionsなどをAIツールから安全に操作できる",
+      "url": "https://github.com/github/github-mcp-server",
+      "docsUrl": "https://github.com/github/github-mcp-server",
+      "category": "developer-tools",
+      "tags": [
+        "GitHub",
+        "公式",
+        "開発"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "サーバー自体はOSS。GitHub API利用条件・プランに依存",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio",
+        "HTTP"
+      ],
+      "rateLimit": "GitHub APIのレート制限に準拠",
+      "sdks": [
+        "Go"
+      ],
+      "useCases": [
+        "Issue管理",
+        "PR作成",
+        "コード参照"
+      ],
+      "popularity": {
+        "score": 91,
+        "reason": "開発ワークフローと相性が高く導入例が多い",
+        "detail": "公式メンテナンスと豊富な機能群により、MCP活用の代表的な選択肢として扱われる。",
+        "sources": [
+          {
+            "label": "GitHub official MCP Server",
+            "url": "https://github.com/github/github-mcp-server"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gitlab-mcp-server",
+      "name": "GitLab MCP Server",
+      "nameJa": "GitLab MCP Server",
+      "description": "GitLab公式MCPサーバー。プロジェクト情報、Issue、リポジトリ操作をMCP経由で実行できる",
+      "url": "https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/",
+      "docsUrl": "https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/",
+      "category": "developer-tools",
+      "tags": [
+        "GitLab",
+        "公式",
+        "開発"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "GitLab利用プランに依存",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "GitLab APIの利用制限に準拠",
+      "sdks": [
+        "Node.js"
+      ],
+      "useCases": [
+        "Issueトリアージ",
+        "MR補助",
+        "プロジェクト照会"
+      ],
+      "popularity": {
+        "score": 78,
+        "reason": "GitLab利用組織のAI開発支援で実用性が高い",
+        "detail": "Self-Managedにも対応しやすく、エンタープライズ環境でのMCP導入候補になる。",
+        "sources": [
+          {
+            "label": "GitLab MCP docs",
+            "url": "https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cloudflare-mcp-server",
+      "name": "Cloudflare MCP Server",
+      "nameJa": "Cloudflare MCP Server",
+      "description": "Cloudflare公式MCPサーバー。Workers/KV/R2/D1などCloudflare開発基盤の操作をMCPで統合できる",
+      "url": "https://github.com/cloudflare/mcp-server-cloudflare",
+      "docsUrl": "https://github.com/cloudflare/mcp-server-cloudflare",
+      "category": "cloud-platform",
+      "tags": [
+        "Cloudflare",
+        "公式",
+        "インフラ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Cloudflare利用プランに依存",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "Cloudflare API制限に準拠",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "デプロイ運用",
+        "エッジ設定変更",
+        "ログ調査"
+      ],
+      "popularity": {
+        "score": 84,
+        "reason": "エッジ開発文脈でのAI運用統合先として注目度が高い",
+        "detail": "Cloudflareサービス群を一括で扱えるため、運用自動化の入口として使われる。",
+        "sources": [
+          {
+            "label": "cloudflare/mcp-server-cloudflare",
+            "url": "https://github.com/cloudflare/mcp-server-cloudflare"
+          }
+        ]
+      }
+    },
+    {
+      "id": "vercel-mcp",
+      "name": "Vercel MCP",
+      "nameJa": "Vercel MCP",
+      "description": "Vercel公式MCP。プロジェクト・デプロイ・ログ参照をAIクライアントに接続できる（Beta）",
+      "url": "https://vercel.com/docs/mcp/vercel-mcp",
+      "docsUrl": "https://vercel.com/docs/mcp/vercel-mcp",
+      "category": "cloud-platform",
+      "tags": [
+        "Vercel",
+        "公式",
+        "デプロイ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Vercelプランに依存（Beta提供）",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "HTTP"
+      ],
+      "rateLimit": "Vercel API/プラン制約に準拠",
+      "sdks": [
+        "Remote MCP"
+      ],
+      "useCases": [
+        "デプロイ監視",
+        "環境確認",
+        "障害調査"
+      ],
+      "popularity": {
+        "score": 80,
+        "reason": "AIコーディング環境との親和性が高い",
+        "detail": "ホスティング運用タスクをMCPで統合できるため、開発チームの導入検討対象になりやすい。",
+        "sources": [
+          {
+            "label": "Vercel MCP docs",
+            "url": "https://vercel.com/docs/mcp/vercel-mcp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "netlify-mcp-server",
+      "name": "Netlify MCP Server",
+      "nameJa": "Netlify MCP Server",
+      "description": "Netlify公式ドキュメントで提供されるMCPサーバー。サイト運用とビルド関連操作をAI導線に統合できる",
+      "url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
+      "docsUrl": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
+      "category": "cloud-platform",
+      "tags": [
+        "Netlify",
+        "公式",
+        "デプロイ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Netlifyプランに依存",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "HTTP"
+      ],
+      "rateLimit": "Netlify API制限に準拠",
+      "sdks": [
+        "Remote MCP"
+      ],
+      "useCases": [
+        "サイト管理",
+        "デプロイ確認",
+        "運用自動化"
+      ],
+      "popularity": {
+        "score": 67,
+        "reason": "Jamstack系運用での利用需要が高い",
+        "detail": "ホスティング管理をAI補助に組み込みやすく、既存Netlifyユーザーにフィットする。",
+        "sources": [
+          {
+            "label": "Netlify MCP Server docs",
+            "url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aws-mcp-server-managed",
+      "name": "AWS MCP Server",
+      "nameJa": "AWS MCP Server (Managed)",
+      "description": "AWS公式のマネージドRemote MCPサーバー。AWSドキュメント参照、SOP、API実行を統合し、自然言語でAWS運用を支援する",
+      "url": "https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html",
+      "docsUrl": "https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html",
+      "category": "cloud-platform",
+      "tags": [
+        "AWS",
+        "公式",
+        "Managed",
+        "Remote MCP"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "MCPサーバー自体に追加料金なし。利用するAWSリソースと転送料金は別途課金",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "HTTPS (Remote MCP)"
+      ],
+      "rateLimit": "AWS API制限およびIAMポリシーに準拠",
+      "sdks": [
+        "Remote MCP"
+      ],
+      "useCases": [
+        "AWS運用自動化",
+        "障害調査",
+        "インフラ構築支援"
+      ],
+      "popularity": {
+        "score": 88,
+        "reason": "AWS公式のマネージド提供で導入障壁が低く、運用ユースケースに直結する",
+        "detail": "Knowledge/API機能を統合したAWS公式Remote MCPとして、AWS利用組織での採用候補になりやすい。",
+        "sources": [
+          {
+            "label": "AWS MCP Server User Guide",
+            "url": "https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aws-documentation-mcp-server",
+      "name": "AWS Documentation MCP Server",
+      "nameJa": "AWS Documentation MCP Server",
+      "description": "AWS LabsのOSS MCPサーバー。AWSドキュメント検索・取得・推薦をツール化し、最新ドキュメント参照を支援する",
+      "url": "https://awslabs.github.io/mcp/servers/aws-documentation-mcp-server",
+      "docsUrl": "https://awslabs.github.io/mcp/servers/aws-documentation-mcp-server",
+      "category": "cloud-platform",
+      "tags": [
+        "AWS",
+        "Documentation",
+        "AWS Labs",
+        "OSS"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（OSS）。実行環境コストは別途",
+      "auth": "none",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "AWS Documentation APIの制約に準拠",
+      "sdks": [
+        "Python",
+        "uvx"
+      ],
+      "useCases": [
+        "AWS調査",
+        "設計検討",
+        "ドキュメント根拠付き回答"
+      ],
+      "popularity": {
+        "score": 81,
+        "reason": "AWS情報参照の精度改善に直結し、実務導入しやすい",
+        "detail": "公式検索APIを通じたドキュメント取得が可能で、AWS関連のRAG/調査ワークフローで使いやすい。",
+        "sources": [
+          {
+            "label": "AWS Documentation MCP Server",
+            "url": "https://awslabs.github.io/mcp/servers/aws-documentation-mcp-server"
+          },
+          {
+            "label": "awslabs/mcp",
+            "url": "https://github.com/awslabs/mcp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aws-pricing-mcp-server",
+      "name": "AWS Pricing MCP Server",
+      "nameJa": "AWS Pricing MCP Server",
+      "description": "AWS LabsのOSS MCPサーバー。AWS Price List APIを自然言語で照会し、料金比較・概算見積りを支援する",
+      "url": "https://awslabs.github.io/mcp/servers/aws-pricing-mcp-server",
+      "docsUrl": "https://awslabs.github.io/mcp/servers/aws-pricing-mcp-server",
+      "category": "cloud-platform",
+      "tags": [
+        "AWS",
+        "Pricing",
+        "AWS Labs",
+        "OSS"
+      ],
+      "pricing": "free",
+      "pricingDetail": "サーバーおよびPricing API呼び出しは無料（対象サービス利用料は別途）",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "AWS Pricing API制限に準拠",
+      "sdks": [
+        "Python",
+        "uvx"
+      ],
+      "useCases": [
+        "料金試算",
+        "リージョン別価格比較",
+        "コスト最適化検討"
+      ],
+      "popularity": {
+        "score": 77,
+        "reason": "見積り/コスト検討タスクを自然言語化できるため実務価値が高い",
+        "detail": "AWS Labsの実装とAWS公式ブログ告知があり、クラウドコスト分析の補助ツールとして注目される。",
+        "sources": [
+          {
+            "label": "AWS Pricing MCP Server docs",
+            "url": "https://awslabs.github.io/mcp/servers/aws-pricing-mcp-server"
+          },
+          {
+            "label": "AWS公式ブログ（Pricing MCP）",
+            "url": "https://aws.amazon.com/blogs/aws-cloud-financial-management/aws-price-list-gets-a-natural-language-upgrade-introducing-the-aws-pricing-mcp-server/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "amazon-eks-mcp-server-managed",
+      "name": "Amazon EKS MCP Server",
+      "nameJa": "Amazon EKS MCP Server (Managed Preview)",
+      "description": "Amazon EKS向けのマネージドMCPサーバー（Preview）。クラスター管理、Kubernetesリソース操作、トラブルシュートを支援する",
+      "url": "https://docs.aws.amazon.com/eks/latest/userguide/eks-mcp-introduction.html",
+      "docsUrl": "https://docs.aws.amazon.com/eks/latest/userguide/eks-mcp-introduction.html",
+      "category": "cloud-platform",
+      "tags": [
+        "AWS",
+        "EKS",
+        "Kubernetes",
+        "Preview"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Preview提供。EKSおよび関連AWSサービス利用料は別途",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "HTTPS (Remote MCP)"
+      ],
+      "rateLimit": "EKS関連API制限・IAMポリシーに準拠",
+      "sdks": [
+        "Remote MCP"
+      ],
+      "useCases": [
+        "EKSクラスター運用",
+        "Kubernetes障害解析",
+        "AI支援デバッグ"
+      ],
+      "popularity": {
+        "score": 79,
+        "reason": "EKS運用とAIアシスタント連携を直接強化できる",
+        "detail": "EKS公式ドキュメントでマネージドMCPとして案内されており、Kubernetes運用の導入候補になりやすい。",
+        "sources": [
+          {
+            "label": "Amazon EKS MCP Server docs",
+            "url": "https://docs.aws.amazon.com/eks/latest/userguide/eks-mcp-introduction.html"
+          },
+          {
+            "label": "AWS Labs EKS MCP Server",
+            "url": "https://awslabs.github.io/mcp/servers/eks-mcp-server"
+          }
+        ]
+      }
+    },
+    {
+      "id": "notion-mcp-server",
+      "name": "Notion MCP Server",
+      "nameJa": "Notion MCP Server",
+      "description": "Notion公式MCPサーバー。ページ検索・作成・更新をMCPクライアントから操作できる",
+      "url": "https://github.com/makenotion/notion-mcp-server",
+      "docsUrl": "https://github.com/makenotion/notion-mcp-server",
+      "category": "business-apps",
+      "tags": [
+        "Notion",
+        "公式",
+        "ナレッジ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Notion利用プランに依存",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio",
+        "HTTP"
+      ],
+      "rateLimit": "Notion API制限に準拠",
+      "sdks": [
+        "Node.js"
+      ],
+      "useCases": [
+        "ドキュメント検索",
+        "議事録整理",
+        "タスク更新"
+      ],
+      "popularity": {
+        "score": 82,
+        "reason": "ナレッジ連携需要が高くMCP導入候補として定番",
+        "detail": "社内情報の参照をAIに接続する用途で採用されるケースが多い。",
+        "sources": [
+          {
+            "label": "Official Notion MCP Server",
+            "url": "https://github.com/makenotion/notion-mcp-server"
+          }
+        ]
+      }
+    },
+    {
+      "id": "linear-mcp-server",
+      "name": "Linear MCP Server",
+      "nameJa": "Linear MCP Server",
+      "description": "Linear公式MCPサーバー。Issue/Project/Commentの検索・作成・更新をリモートMCPで提供",
+      "url": "https://linear.app/docs/mcp",
+      "docsUrl": "https://linear.app/docs/mcp",
+      "category": "business-apps",
+      "tags": [
+        "Linear",
+        "公式",
+        "プロジェクト管理"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Linearプランに依存",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "SSE",
+        "HTTP"
+      ],
+      "rateLimit": "Linear API制限に準拠",
+      "sdks": [
+        "Remote MCP"
+      ],
+      "useCases": [
+        "Issue管理",
+        "進捗照会",
+        "プロジェクト更新"
+      ],
+      "popularity": {
+        "score": 79,
+        "reason": "開発チーム運用に直結し導入価値が分かりやすい",
+        "detail": "OAuth対応のリモートMCPとしてセットアップしやすく、実運用適性が高い。",
+        "sources": [
+          {
+            "label": "Linear MCP docs",
+            "url": "https://linear.app/docs/mcp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "slack-mcp-server",
+      "name": "Slack MCP Server",
+      "nameJa": "Slack MCP Server",
+      "description": "Slack連携MCP。チャンネル情報・メッセージ操作をAIワークフローに組み込める",
+      "url": "https://github.com/zencoderai/slack-mcp-server",
+      "docsUrl": "https://github.com/zencoderai/slack-mcp-server",
+      "category": "collaboration",
+      "tags": [
+        "Slack",
+        "コラボ",
+        "チャット"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Slackワークスペースプランに依存",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio",
+        "HTTP"
+      ],
+      "rateLimit": "Slack API制限に準拠",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "スレッド要約",
+        "問い合わせ対応",
+        "通知自動化"
+      ],
+      "popularity": {
+        "score": 73,
+        "reason": "チームコミュニケーションの自動化用途で需要が高い",
+        "detail": "既存Slack運用にAIエージェントを重ねるユースケースが増えている。",
+        "sources": [
+          {
+            "label": "zencoderai/slack-mcp-server",
+            "url": "https://github.com/zencoderai/slack-mcp-server"
+          }
+        ]
+      }
+    },
+    {
+      "id": "supabase-mcp",
+      "name": "Supabase MCP",
+      "nameJa": "Supabase MCP",
+      "description": "Supabase連携MCP。テーブル操作、クエリ、Edge Functions等の操作をAIアシスタントへ接続できる",
+      "url": "https://github.com/supabase-community/supabase-mcp",
+      "docsUrl": "https://github.com/supabase-community/supabase-mcp",
+      "category": "data-database",
+      "tags": [
+        "Supabase",
+        "DB",
+        "バックエンド"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Supabaseプランに依存",
+      "auth": "bearer",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "Supabase API制限に準拠",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "DB操作",
+        "スキーマ確認",
+        "バックエンド運用"
+      ],
+      "popularity": {
+        "score": 76,
+        "reason": "BaaS運用とAI開発を直結できる点が評価される",
+        "detail": "開発環境データをAIへつなぐ用途で利用されやすい。",
+        "sources": [
+          {
+            "label": "supabase-community/supabase-mcp",
+            "url": "https://github.com/supabase-community/supabase-mcp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "neon-mcp-server",
+      "name": "Neon MCP Server",
+      "nameJa": "Neon MCP Server",
+      "description": "Neon公式MCPサーバー。Neon管理APIとPostgresへの操作をOAuthベースで接続できる",
+      "url": "https://github.com/neondatabase/mcp-server-neon",
+      "docsUrl": "https://github.com/neondatabase/mcp-server-neon",
+      "category": "data-database",
+      "tags": [
+        "Neon",
+        "Postgres",
+        "公式"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Neonプランに依存",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "HTTP",
+        "stdio"
+      ],
+      "rateLimit": "Neon API制限に準拠",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "DB運用",
+        "分岐環境管理",
+        "クエリ補助"
+      ],
+      "popularity": {
+        "score": 69,
+        "reason": "サーバーレスPostgres運用との相性が高い",
+        "detail": "ローカル導入不要のリモートMCP選択肢があり、導入障壁を下げやすい。",
+        "sources": [
+          {
+            "label": "neondatabase/mcp-server-neon",
+            "url": "https://github.com/neondatabase/mcp-server-neon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "redis-mcp-server",
+      "name": "Redis MCP Server",
+      "nameJa": "Redis MCP Server",
+      "description": "Redis公式MCPサーバー。Redisデータの検索・操作を自然言語経由で行える",
+      "url": "https://github.com/redis/mcp-redis",
+      "docsUrl": "https://github.com/redis/mcp-redis",
+      "category": "data-database",
+      "tags": [
+        "Redis",
+        "公式",
+        "キャッシュ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Redis利用形態に依存（OSS/Cloud）",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "Redis接続先の構成に依存",
+      "sdks": [
+        "Python"
+      ],
+      "useCases": [
+        "キャッシュ調査",
+        "キー検索",
+        "運用補助"
+      ],
+      "popularity": {
+        "score": 70,
+        "reason": "公式提供で運用利用の安心感がある",
+        "detail": "既存Redis基盤に対してAIエージェントの探索・診断機能を追加しやすい。",
+        "sources": [
+          {
+            "label": "redis/mcp-redis",
+            "url": "https://github.com/redis/mcp-redis"
+          }
+        ]
+      }
+    },
+    {
+      "id": "stripe-mcp",
+      "name": "Stripe MCP",
+      "nameJa": "Stripe MCP",
+      "description": "StripeのリモートMCP（mcp.stripe.com）とローカル実行の両方に対応。決済オペレーションをAIワークフローに統合できる",
+      "url": "https://github.com/stripe/ai",
+      "docsUrl": "https://github.com/stripe/ai",
+      "category": "payments-finance",
+      "tags": [
+        "Stripe",
+        "決済",
+        "公式"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "Stripeプラン・取引手数料に依存",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "HTTP",
+        "stdio"
+      ],
+      "rateLimit": "Stripe API制限に準拠",
+      "sdks": [
+        "Node.js",
+        "Python",
+        "Remote MCP"
+      ],
+      "useCases": [
+        "顧客・支払い照会",
+        "返金運用補助",
+        "売上分析補助"
+      ],
+      "popularity": {
+        "score": 83,
+        "reason": "決済基盤としての採用母数が大きくMCP需要も高い",
+        "detail": "リモートMCPを提供しており、AIクライアントから接続しやすい点が強み。",
+        "sources": [
+          {
+            "label": "Stripe AI / MCP",
+            "url": "https://github.com/stripe/ai"
+          }
+        ]
+      }
+    },
+    {
+      "id": "line-bot-mcp-server",
+      "name": "LINE Bot MCP Server",
+      "nameJa": "LINE Bot MCP Server",
+      "description": "LINE Messaging APIをMCP化し、LINE公式アカウント連携のAIエージェント実装を支援する",
+      "url": "https://github.com/line/line-bot-mcp-server",
+      "docsUrl": "https://github.com/line/line-bot-mcp-server",
+      "category": "japanese-services",
+      "tags": [
+        "LINE",
+        "国内",
+        "メッセージング"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "LINE公式アカウントプランに依存",
+      "auth": "bearer",
+      "region": "both",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "LINE Messaging API制限に準拠",
+      "sdks": [
+        "Node.js"
+      ],
+      "useCases": [
+        "問い合わせ自動化",
+        "通知配信",
+        "チャット運用"
+      ],
+      "popularity": {
+        "score": 75,
+        "reason": "国内チャネル統合ニーズと親和性が高い",
+        "detail": "日本市場向けの顧客接点をAI化する際に候補に挙がりやすい。",
+        "sources": [
+          {
+            "label": "line/line-bot-mcp-server",
+            "url": "https://github.com/line/line-bot-mcp-server"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kintone-mcp-server",
+      "name": "kintone MCP Server",
+      "nameJa": "kintone MCP Server",
+      "description": "kintone公式MCPサーバー。レコード操作やアプリ管理をMCP経由で実行し、業務自動化に接続できる",
+      "url": "https://github.com/kintone/mcp-server",
+      "docsUrl": "https://github.com/kintone/mcp-server",
+      "category": "japanese-services",
+      "tags": [
+        "kintone",
+        "国内",
+        "業務アプリ"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "kintone契約プランに依存",
+      "auth": "bearer",
+      "region": "japan",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "kintone API制限に準拠",
+      "sdks": [
+        "Node.js"
+      ],
+      "useCases": [
+        "業務データ照会",
+        "レコード更新",
+        "定型業務自動化"
+      ],
+      "popularity": {
+        "score": 72,
+        "reason": "国内業務SaaS連携の需要が高い",
+        "detail": "日本語業務運用との親和性が高く、内製AI導入時の候補になりやすい。",
+        "sources": [
+          {
+            "label": "kintone official MCP server",
+            "url": "https://github.com/kintone/mcp-server"
+          }
+        ]
+      }
+    },
+    {
+      "id": "postgres-mcp-server-archived",
+      "name": "PostgreSQL MCP (Archived)",
+      "nameJa": "PostgreSQL MCP (Archived)",
+      "description": "PostgreSQL向けの旧公式参照実装。現在はアーカイブ扱いのため本番利用前提ではなく、学習・参照用途向け",
+      "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres",
+      "category": "data-database",
+      "tags": [
+        "PostgreSQL",
+        "アーカイブ",
+        "参照"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（アーカイブ・メンテナンス停止）",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "DB接続先に依存",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "学習",
+        "互換検証",
+        "参考実装確認"
+      ],
+      "popularity": {
+        "score": 43,
+        "reason": "歴史的に参照されるが現行推奨ではない",
+        "detail": "activeリポジトリではなく archived に移行済み。運用導入時は現行実装の比較検討が必要。",
+        "sources": [
+          {
+            "label": "servers-archived/postgres",
+            "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sqlite-mcp-server-archived",
+      "name": "SQLite MCP (Archived)",
+      "nameJa": "SQLite MCP (Archived)",
+      "description": "SQLite向けの旧公式参照実装。現在はアーカイブされており、学習用途での参照が中心",
+      "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sqlite",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sqlite",
+      "category": "data-database",
+      "tags": [
+        "SQLite",
+        "アーカイブ",
+        "参照"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（アーカイブ・メンテナンス停止）",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "ローカルDB性能に依存",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "軽量DB検証",
+        "学習",
+        "参考実装確認"
+      ],
+      "popularity": {
+        "score": 40,
+        "reason": "参照価値はあるが現行推奨ではない",
+        "detail": "activeな参照実装ではないため、新規本番利用は別実装の評価が必要。",
+        "sources": [
+          {
+            "label": "servers-archived/sqlite",
+            "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sqlite"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sentry-mcp-server-archived",
+      "name": "Sentry MCP (Archived)",
+      "nameJa": "Sentry MCP (Archived)",
+      "description": "Sentry連携の旧公式参照実装。現行はアーカイブ済みで、利用時はメンテ状況を要確認",
+      "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sentry",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sentry",
+      "category": "developer-tools",
+      "tags": [
+        "Sentry",
+        "アーカイブ",
+        "監視"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（アーカイブ・メンテナンス停止）",
+      "auth": "bearer",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "Sentry API制限に準拠",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "障害調査",
+        "アラート分析",
+        "参照実装学習"
+      ],
+      "popularity": {
+        "score": 45,
+        "reason": "参照実装としては有用だが現行運用は慎重な評価が必要",
+        "detail": "既存環境の学習・試験用途で活用されるが、本番導入では代替実装の確認が望ましい。",
+        "sources": [
+          {
+            "label": "servers-archived/sentry",
+            "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sentry"
+          }
+        ]
+      }
+    },
+    {
+      "id": "puppeteer-mcp-server-archived",
+      "name": "Puppeteer MCP (Archived)",
+      "nameJa": "Puppeteer MCP (Archived)",
+      "description": "ブラウザ自動操作向け旧公式参照実装。現在はアーカイブされ、後継実装の比較検討が前提",
+      "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/puppeteer",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/puppeteer",
+      "category": "developer-tools",
+      "tags": [
+        "Puppeteer",
+        "ブラウザ操作",
+        "アーカイブ"
+      ],
+      "pricing": "free",
+      "pricingDetail": "無料（アーカイブ・メンテナンス停止）",
+      "auth": "none",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON-RPC 2.0",
+        "stdio"
+      ],
+      "rateLimit": "実行環境リソースに依存",
+      "sdks": [
+        "TypeScript"
+      ],
+      "useCases": [
+        "ブラウザ自動化",
+        "UIテスト補助",
+        "参照実装学習"
+      ],
+      "popularity": {
+        "score": 46,
+        "reason": "ユースケースは広いが現行はアーカイブ扱い",
+        "detail": "ブラウザ操作需要は強いものの、現行サポート状況の確認が必須。",
+        "sources": [
+          {
+            "label": "servers-archived/puppeteer",
+            "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/puppeteer"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url><loc>https://apipedia.dev/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://apipedia.dev/compare.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/mcp/</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/lean-canvas.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://apipedia.dev/strategy.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://apipedia.dev/guides/</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
@@ -13,6 +13,7 @@
   <url><loc>https://apipedia.dev/guides/ai-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://apipedia.dev/guides/notification-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://apipedia.dev/guides/maps-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://apipedia.dev/guides/financial-trading-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://apipedia.dev/api/openweathermap/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/api/accuweather/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/api/jma-unofficial/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
@@ -231,4 +232,19 @@
   <url><loc>https://apipedia.dev/api/un-data/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/api/citysdk/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://apipedia.dev/api/data-go-jp/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/kabu-station-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/marketspeed-ii-rss-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/neotrade-api-for-excel/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/okasan-rss-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/matsui-fx-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/oanda-rest-v20-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/ig-trading-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/saxo-openapi/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/quick-market-data-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/oanda-exchange-rates-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/binance-spot-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/coinbase-advanced-trade-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/kraken-spot-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/bybit-v5-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://apipedia.dev/api/okx-v5-api/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
 </urlset>

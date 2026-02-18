@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+<script>
+(function(){var t=localStorage.getItem('apipedia_theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APIpedia - 日本語MCPサーバーカタログ</title>
+<meta name="description" content="主要MCPサーバーを日本語で検索・比較・選定できるカタログ。公式・参照実装・国内サービスをカテゴリ別に整理。認証方式や接続形態を一覧比較。">
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="APIpedia MCP Catalog — 日本語で、探せる。わかる。選べる。">
+<meta property="og:description" content="主要MCPサーバーを日本語で検索・比較・選定できるカタログ。">
+<meta property="og:url" content="https://apipedia.dev/mcp/">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="APIpedia MCP Catalog — 日本語で、探せる。わかる。選べる。">
+<meta name="twitter:description" content="主要MCPサーバーを日本語で検索・比較できるカタログ">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/mcp/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "APIpedia",
+  "alternateName": "APIぺディア",
+  "url": "https://apipedia.dev/",
+  "description": "主要MCPサーバーを日本語で検索・比較・発見できるカタログ。",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://apipedia.dev/mcp/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "MCPサーバーカタログとは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Model Context Protocol対応サーバーを日本語で検索・比較・選定するためのカタログです。公式統合、参照実装、国内サービス向けサーバーを整理しています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "MCPサーバーは無料で使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "サーバー実装自体はOSSで無料のものが多い一方、接続先サービスの契約プランやAPI利用制限が別途必要な場合があります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "どのような観点で比較できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "カテゴリ、認証方式、接続方式（stdio/SSE/HTTP）、料金モデル、運用成熟度などの観点で比較できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "国内サービス向けMCPも掲載されていますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。LINEやkintoneなど国内サービス向けMCPサーバーも掲載しています。リージョンフィルターで絞り込み可能です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "情報は更新されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MCPサーバーの新規公開、アーカイブ化、仕様変更にあわせて更新します。重要変更は優先的に反映します。"
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    border-radius: var(--radius-pill);
+    margin-bottom: 20px;
+  }
+  .category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .category-nav__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all var(--transition);
+    user-select: none;
+  }
+  .category-nav__item:hover {
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+    background: var(--bg-secondary);
+  }
+  .category-nav__item.active {
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+  }
+  .api-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .api-card__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .api-card__footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .api-card__link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .api-card__link:hover {
+    color: var(--color-primary-hover);
+  }
+  .api-card__difficulty {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+  }
+  .difficulty--easy {
+    color: var(--color-success);
+    background: var(--color-success-light);
+  }
+  .difficulty--medium {
+    color: var(--color-warning);
+    background: var(--color-warning-light);
+  }
+  .difficulty--hard {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+  }
+  .result-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  .result-info__count {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .no-results {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-muted);
+  }
+  .no-results__icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+  .no-results__text {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+  }
+  .pricing-filters {
+    display: flex;
+    gap: 6px;
+    margin-left: auto;
+  }
+  .region-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+  }
+  .region--japan {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+  }
+  .region--global {
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+  }
+  .region--both {
+    color: var(--color-secondary);
+    background: var(--color-secondary-light);
+  }
+  .featured-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    color: var(--color-warning);
+    background: var(--color-warning-light);
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  /* Popularity score badge on cards */
+  .popularity-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+  .popularity-badge .score-bar {
+    width: 32px;
+    height: 5px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 3px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .popularity-badge .score-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+  .popularity--high { color: var(--color-success); background: var(--color-success-light); }
+  .popularity--high .score-fill { background: var(--color-success); }
+  .popularity--medium { color: var(--color-warning); background: var(--color-warning-light); }
+  .popularity--medium .score-fill { background: var(--color-warning); }
+  .popularity--low { color: #94a3b8; background: rgba(148, 163, 184, 0.12); }
+  .popularity--low .score-fill { background: #94a3b8; }
+
+  /* Ranking section */
+  .ranking-section {
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+  .ranking-section .section__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ranking-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all var(--transition);
+    text-decoration: none;
+    color: inherit;
+  }
+  .ranking-item:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-secondary);
+    transform: translateX(4px);
+  }
+  .ranking-rank {
+    font-size: 1.1rem;
+    font-weight: 800;
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .rank--1 { color: #fbbf24; background: rgba(251, 191, 36, 0.15); font-size: 1.3rem; }
+  .rank--2 { color: #cbd5e1; background: rgba(203, 213, 225, 0.15); font-size: 1.2rem; }
+  .rank--3 { color: #f97316; background: rgba(249, 115, 22, 0.15); font-size: 1.15rem; }
+  .rank--other { color: var(--text-muted); background: var(--bg-secondary); }
+  .ranking-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .ranking-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .ranking-reason {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ranking-score {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .ranking-score__value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    min-width: 44px;
+    text-align: right;
+  }
+  .ranking-score__bar {
+    width: 80px;
+    height: 8px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .ranking-score__fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.8s ease;
+  }
+  .score-color--high { color: var(--color-success); }
+  .score-color--high .ranking-score__fill { background: linear-gradient(90deg, var(--color-success), #4ade80); }
+  .score-color--medium { color: var(--color-warning); }
+  .score-color--medium .ranking-score__fill { background: linear-gradient(90deg, var(--color-warning), #fbbf24); }
+  .score-color--low { color: #94a3b8; }
+  .score-color--low .ranking-score__fill { background: linear-gradient(90deg, #64748b, #94a3b8); }
+
+  /* Sort controls */
+  .sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .sort-btn {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .sort-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+  .sort-btn.active {
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+  }
+
+  /* Detail Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 20px;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: auto; }
+  .modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 720px;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.25s ease;
+    position: relative;
+  }
+  .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+  .modal__close {
+    position: sticky; top: 0; float: right;
+    margin: 12px 12px 0 0; width: 36px; height: 36px;
+    border-radius: 50%; border: 1px solid var(--border-color);
+    background: var(--bg-card); color: var(--text-muted);
+    font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2; transition: all var(--transition);
+  }
+  .modal__close:hover { background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-hover); }
+  .modal__header { padding: 28px 28px 0; }
+  .modal__title { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+  .modal__subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
+  .modal__badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .modal__desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; padding: 0 28px; margin-bottom: 20px; }
+  .modal__section { padding: 0 28px; margin-bottom: 20px; }
+  .modal__section-title {
+    font-size: 0.85rem; font-weight: 700; color: var(--text-primary);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .modal__score-hero {
+    display: flex; align-items: center; gap: 20px;
+    padding: 20px 28px; margin: 0 0 4px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.06) 0%, rgba(139, 92, 246, 0.06) 100%);
+    border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+  }
+  .modal__score-number { font-size: 3rem; font-weight: 800; line-height: 1; }
+  .modal__score-bar-wrap { flex: 1; }
+  .modal__score-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; }
+  .modal__score-bar { width: 100%; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
+  .modal__score-fill { height: 100%; border-radius: 5px; transition: width 0.8s ease; }
+  .modal__score-reason { font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
+  .modal__metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .modal__metric { padding: 12px; background: var(--bg-secondary); border-radius: 10px; border: 1px solid var(--border-color); }
+  .modal__metric-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .modal__metric-value { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+  .modal__adopters { display: flex; flex-wrap: wrap; gap: 6px; }
+  .modal__adopter {
+    padding: 5px 12px; font-size: 0.8rem; font-weight: 500;
+    color: var(--text-secondary); background: var(--bg-secondary);
+    border: 1px solid var(--border-color); border-radius: var(--radius-pill);
+  }
+  .modal__sources { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .modal__source-link {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 10px 14px; background: var(--bg-secondary);
+    border: 1px solid var(--border-color); border-radius: 10px;
+    text-decoration: none; color: var(--color-primary);
+    font-size: 0.82rem; font-weight: 500;
+    transition: all var(--transition); line-height: 1.4;
+  }
+  .modal__source-link:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+  .modal__detail-text {
+    font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;
+    padding: 14px 16px; background: var(--bg-secondary);
+    border: 1px solid var(--border-color); border-radius: 10px;
+  }
+  .modal__actions { display: flex; gap: 10px; padding: 20px 28px 28px; }
+  .modal__action-btn {
+    flex: 1; padding: 12px 20px; border-radius: 10px;
+    font-size: 0.85rem; font-weight: 600; text-align: center;
+    text-decoration: none; transition: all var(--transition);
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .modal__action-btn--primary { background: var(--color-primary); color: #fff; border: none; }
+  .modal__action-btn--primary:hover { background: var(--color-primary-hover); }
+  .modal__action-btn--secondary { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-color); }
+  .modal__action-btn--secondary:hover { border-color: var(--border-hover); color: var(--text-primary); }
+  @media (max-width: 768px) {
+    .modal { max-height: 90vh; border-radius: 12px; }
+    .modal__header { padding: 20px 20px 0; }
+    .modal__desc, .modal__section { padding: 0 20px; }
+    .modal__score-hero { padding: 16px 20px; }
+    .modal__actions { padding: 16px 20px 20px; }
+    .modal__metrics { grid-template-columns: 1fr; }
+    .modal__title { font-size: 1.2rem; }
+    .modal__score-number { font-size: 2.4rem; }
+  }
+  .api-card { cursor: pointer; }
+
+  .about-section {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 40px;
+    margin-top: 32px;
+    text-align: center;
+  }
+  .about-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+  .about-section p {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 768px) {
+    .hero__title { font-size: 1.6rem !important; }
+    .hero__badge { font-size: 0.7rem; }
+    .category-nav { gap: 6px; }
+    .category-nav__item { padding: 6px 12px; font-size: 0.78rem; }
+    .about-section { padding: 24px 16px; }
+    .result-info { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .pricing-filters { margin-left: 0; }
+    .ranking-item { padding: 10px 14px; gap: 10px; }
+    .ranking-score__bar { width: 50px; }
+    .ranking-reason { display: none; }
+    .sort-controls { margin-top: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="site-header__logo">
+      <span>APIpedia</span>
+    </a>
+    <nav class="site-header__nav">
+      <a href="../index.html" class="nav-link">APIカタログ</a>
+      <a href="./" class="nav-link active">MCPカタログ</a>
+      <a href="../guides/" class="nav-link">ガイド</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__badge">v1.0 - 29 MCP Servers</div>
+    <h1 class="hero__title">日本語で、探せる。わかる。選べる。</h1>
+    <p class="hero__subtitle">Model Context Protocol対応サーバーを日本語で検索・比較・発見できるカタログ。<br>公式統合・参照実装・国内サービス連携を横断して、導入候補を最短で絞り込めます。</p>
+    <div class="search-bar">
+      <svg class="search-bar__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="search-bar__input" id="searchInput" placeholder="MCPサーバーを検索... (例: GitHub, Notion, Redis, LINE)" autocomplete="off">
+      <div class="autocomplete-list" id="autocompleteList" role="listbox"></div>
+    </div>
+    <!-- Stats -->
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-item">
+        <div class="stat-item__value" id="totalApis">-</div>
+        <div class="stat-item__label">MCP掲載数</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value" id="totalCategories">-</div>
+        <div class="stat-item__label">カテゴリ</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value" id="freeApis">-</div>
+        <div class="stat-item__label">無料/フリーミアム</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__value" id="japanApis">-</div>
+        <div class="stat-item__label">日本/国内対応</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category Navigation -->
+<section id="categories" class="container">
+  <div class="category-nav" id="categoryNav"></div>
+</section>
+
+<!-- Catalog -->
+<section id="catalog" class="section">
+  <div class="container">
+    <div class="section__title">MCPサーバーカタログ</div>
+
+    <div class="result-info">
+      <div>
+        <span class="result-info__count" id="resultCount">0</span> 件のMCPサーバーが見つかりました
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <button class="favorite-filter-btn" id="favoriteFilterBtn" title="お気に入りのみ表示">&#x2764;&#xFE0F; お気に入り <span class="favorite-badge" id="favoriteBadge" style="display:none;">0</span></button>
+      <div class="sort-controls">
+        <span>並べ替え:</span>
+        <button class="sort-btn active" data-sort="default">おすすめ</button>
+        <button class="sort-btn" data-sort="popularity">人気順</button>
+        <button class="sort-btn" data-sort="name">名前順</button>
+      </div>
+      <div class="pricing-filters">
+        <button class="filter-chip active" data-pricing="all">すべて</button>
+        <button class="filter-chip" data-pricing="free">無料</button>
+        <button class="filter-chip" data-pricing="freemium">フリーミアム</button>
+        <button class="filter-chip" data-pricing="paid">有料</button>
+      </div>
+      </div>
+    </div>
+
+    <div class="grid" id="apiGrid"></div>
+
+    <div class="no-results" id="noResults" style="display:none;">
+      <div class="no-results__icon">&#x1F50D;</div>
+      <div class="no-results__text">該当するMCPサーバーが見つかりませんでした</div>
+      <p>検索キーワードやフィルターを変更してみてください</p>
+    </div>
+  </div>
+</section>
+
+<!-- Ranking -->
+<section id="ranking" class="section">
+  <div class="container">
+    <div class="ranking-section">
+      <div class="section__title">MCPサーバー 人気ランキング TOP 15</div>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:24px;">公式性、導入しやすさ、運用実績、コミュニティ採用状況を総合評価したスコアに基づくランキングです。</p>
+      <div class="ranking-list" id="rankingList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section">
+  <div class="container">
+    <div class="about-section">
+      <h3>MCPサーバーカタログについて</h3>
+      <p>このカタログは、MCP導入時に「どのサーバーを使うべきか」を判断しやすくするために作成しています。接続形態、認証方式、料金モデル、対応サービスを統一フォーマットで比較できます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- MCP Links -->
+<section style="padding: 0 0 48px;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 32px;">
+      <a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">📘</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">MCP公式イントロ</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">仕様概要と概念を確認</div>
+      </a>
+      <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">🧩</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">公式Serversリポジトリ</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">参照実装のソースコード</div>
+      </a>
+      <a href="https://github.com/modelcontextprotocol/registry" target="_blank" rel="noopener" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">🗂️</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">MCP Registry</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">公開サーバーの登録・探索</div>
+      </a>
+      <a href="https://modelcontextprotocol.io/docs/learn/architecture" target="_blank" rel="noopener" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">🏗️</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">アーキテクチャ解説</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">Client / Host / Serverの責務</div>
+      </a>
+      <a href="../index.html" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">📖</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">APIカタログへ戻る &rarr;</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">APIとMCPを横断して比較</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語MCPサーバーカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../index.html">APIカタログ</a>
+        <a href="./">MCPカタログ</a>
+        <a href="../guides/">ガイド</a>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 24px; padding: 24px 0; border-top: 1px solid var(--border-color); margin-top: 16px;">
+      <div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">MCPリファレンス</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">📘 MCP Introduction</a>
+          <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">🧩 Official Servers</a>
+          <a href="https://github.com/modelcontextprotocol/registry" target="_blank" rel="noopener" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">🗂️ Registry</a>
+          <a href="https://modelcontextprotocol.io/docs/learn/architecture" target="_blank" rel="noopener" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">🏗️ Architecture</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">カテゴリ</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <a href="./#catalog" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">全MCPサーバーカタログ</a>
+          <a href="./#ranking" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">人気ランキング</a>
+          <a href="../index.html#catalog" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">APIカタログ</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">サイト情報</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <a href="../sitemap.xml" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">サイトマップ</a>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer__copyright">
+      &copy; 2026 APIpedia. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  let allApis = [];
+  let categories = [];
+  let activeCategory = 'all';
+  let activePricing = 'all';
+  let activeSort = 'default';
+  let searchQuery = '';
+  let favoriteFilter = false;
+  let autocompleteIndex = -1;
+
+  const difficultyLabel = { easy: '初級', medium: '中級', hard: '上級' };
+  const regionLabel = { japan: '日本', global: 'グローバル', both: '日本 / グローバル' };
+  const pricingLabel = { free: '無料', freemium: 'フリーミアム', paid: '有料' };
+  const authLabel = { apiKey: 'APIキー', oauth2: 'OAuth 2.0', bearer: 'Bearer/PAT', none: '認証不要' };
+
+  // ── Favorites (localStorage) ──
+  function getFavorites() {
+    try {
+      return JSON.parse(localStorage.getItem('apipedia_mcp_favorites') || '[]');
+    } catch (e) { return []; }
+  }
+  function saveFavorites(favs) {
+    localStorage.setItem('apipedia_mcp_favorites', JSON.stringify(favs));
+  }
+  function toggleFavorite(apiId) {
+    var favs = getFavorites();
+    var idx = favs.indexOf(apiId);
+    if (idx === -1) { favs.push(apiId); } else { favs.splice(idx, 1); }
+    saveFavorites(favs);
+    updateFavoriteBadge();
+    // Update heart icons in DOM
+    document.querySelectorAll('.favorite-btn[data-fav-id="' + apiId + '"]').forEach(function(btn) {
+      btn.classList.toggle('favorited', favs.indexOf(apiId) !== -1);
+      btn.innerHTML = favs.indexOf(apiId) !== -1 ? '&#x2764;&#xFE0F;' : '&#x2661;';
+    });
+    if (favoriteFilter) renderApis();
+  }
+  function isFavorited(apiId) {
+    return getFavorites().indexOf(apiId) !== -1;
+  }
+  function updateFavoriteBadge() {
+    var favs = getFavorites();
+    var badge = document.getElementById('favoriteBadge');
+    if (favs.length > 0) {
+      badge.textContent = favs.length;
+      badge.style.display = 'inline-flex';
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  // ── Theme Toggle ──
+  function initTheme() {
+    var saved = localStorage.getItem('apipedia_theme');
+    var theme = saved || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    updateThemeIcon(theme);
+  }
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('apipedia_theme', next);
+    updateThemeIcon(next);
+  }
+  function updateThemeIcon(theme) {
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.innerHTML = theme === 'dark' ? '&#x1F319;' : '&#x2600;&#xFE0F;';
+  }
+
+  // ── Autocomplete ──
+  function getAutocompleteSuggestions(query) {
+    if (!query || allApis.length === 0) return [];
+    var q = query.toLowerCase();
+    // Prioritize startsWith matches, then include contains matches
+    var starts = [];
+    var contains = [];
+    allApis.forEach(function(api) {
+      var name = api.name.toLowerCase();
+      var nameJa = api.nameJa.toLowerCase();
+      var desc = (api.description || '').toLowerCase();
+      var tags = (api.tags || []).join(' ').toLowerCase();
+      if (name.startsWith(q) || nameJa.startsWith(q)) {
+        starts.push(api);
+      } else if (name.indexOf(q) !== -1 || nameJa.indexOf(q) !== -1 || desc.indexOf(q) !== -1 || tags.indexOf(q) !== -1) {
+        contains.push(api);
+      }
+    });
+    return starts.concat(contains).slice(0, 8);
+  }
+  function renderAutocomplete(suggestions) {
+    var list = document.getElementById('autocompleteList');
+    if (suggestions.length === 0) {
+      list.classList.remove('visible');
+      list.innerHTML = '';
+      autocompleteIndex = -1;
+      return;
+    }
+    list.innerHTML = suggestions.map(function(api, i) {
+      var nameJaPart = api.nameJa !== api.name ? '<span class="autocomplete-item__name-ja"> (' + api.nameJa + ')</span>' : '';
+      return '<div class="autocomplete-item" data-index="' + i + '" data-api-id="' + api.id + '" role="option">' +
+        '<span class="autocomplete-item__name">' + api.name + '</span>' + nameJaPart +
+      '</div>';
+    }).join('');
+    list.classList.add('visible');
+    autocompleteIndex = -1;
+  }
+  function selectAutocomplete(apiId) {
+    var api = allApis.find(function(a) { return a.id === apiId; });
+    if (!api) return;
+    var searchInput = document.getElementById('searchInput');
+    searchInput.value = api.name;
+    searchQuery = api.name;
+    document.getElementById('autocompleteList').classList.remove('visible');
+    autocompleteIndex = -1;
+    renderApis();
+  }
+  function navigateAutocomplete(direction) {
+    var list = document.getElementById('autocompleteList');
+    var items = list.querySelectorAll('.autocomplete-item');
+    if (items.length === 0) return;
+    items.forEach(function(item) { item.classList.remove('active'); });
+    autocompleteIndex += direction;
+    if (autocompleteIndex < 0) autocompleteIndex = items.length - 1;
+    if (autocompleteIndex >= items.length) autocompleteIndex = 0;
+    items[autocompleteIndex].classList.add('active');
+    items[autocompleteIndex].scrollIntoView({ block: 'nearest' });
+  }
+
+  async function init() {
+    initTheme();
+    bindEvents();
+
+    // Show loading state
+    var searchInput = document.getElementById('searchInput');
+    searchInput.placeholder = 'データ読み込み中...';
+    searchInput.disabled = true;
+    document.getElementById('apiGrid').innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-muted);"><div style="font-size:2rem;margin-bottom:12px;">&#x23F3;</div>MCPサーバーデータを読み込んでいます...</div>';
+    document.getElementById('rankingList').innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted);">読み込み中...</div>';
+
+    try {
+      var res = await fetch('../data/mcp-servers.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      var data = await res.json();
+      allApis = data.apis;
+      categories = data.categories;
+      renderStats(data);
+      renderCategoryNav();
+      renderRanking();
+      renderApis();
+      updateFavoriteBadge();
+
+      // Enable search
+      searchInput.disabled = false;
+      searchInput.placeholder = 'MCPサーバーを検索... (例: GitHub, Notion, Redis, LINE)';
+    } catch (e) {
+      console.error('Failed to load MCP data:', e);
+      searchInput.disabled = false;
+      searchInput.placeholder = 'MCPサーバーを検索... (例: GitHub, Notion, Redis, LINE)';
+      document.getElementById('apiGrid').innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-muted);"><div style="font-size:2rem;margin-bottom:12px;">&#x26A0;&#xFE0F;</div>データの読み込みに失敗しました。<br><button onclick="location.reload()" style="margin-top:12px;padding:8px 24px;background:var(--color-primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.9rem;">再読み込み</button></div>';
+      document.getElementById('rankingList').innerHTML = '';
+    }
+  }
+
+  function renderStats(data) {
+    document.getElementById('totalApis').textContent = data.metadata.totalApis;
+    document.getElementById('totalCategories').textContent = data.metadata.totalCategories;
+    var freeCount = allApis.filter(function(a) { return a.pricing === 'free' || a.pricing === 'freemium'; }).length;
+    document.getElementById('freeApis').textContent = freeCount;
+    var japanCount = allApis.filter(function(a) { return a.region === 'japan' || a.region === 'both'; }).length;
+    document.getElementById('japanApis').textContent = japanCount;
+  }
+
+  function renderCategoryNav() {
+    var nav = document.getElementById('categoryNav');
+    var featured = ['reference-core', 'developer-tools', 'collaboration', 'cloud-platform', 'data-database', 'business-apps', 'payments-finance', 'japanese-services'];
+    var html = '<button class="category-nav__item active" data-category="all">All</button>';
+    categories.forEach(function(cat) {
+      if (featured.indexOf(cat.id) === -1) return;
+      html += '<button class="category-nav__item" data-category="' + cat.id + '">' +
+              cat.icon + ' ' + cat.name + '</button>';
+    });
+    nav.innerHTML = html;
+  }
+
+  function getPopularityClass(score) {
+    if (score >= 70) return 'high';
+    if (score >= 45) return 'medium';
+    return 'low';
+  }
+
+  function getScoreColor(score) {
+    if (score >= 70) return 'score-color--high';
+    if (score >= 45) return 'score-color--medium';
+    return 'score-color--low';
+  }
+
+  function renderRanking() {
+    var list = document.getElementById('rankingList');
+    if (!list) return;
+    var ranked = allApis
+      .filter(function(a) { return a.popularity && a.popularity.score; })
+      .sort(function(a, b) { return b.popularity.score - a.popularity.score; })
+      .slice(0, 15);
+    if (ranked.length === 0) {
+      list.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px;">人気データを読み込み中...</p>';
+      return;
+    }
+    list.innerHTML = ranked.map(function(api, i) {
+      var rank = i + 1;
+      var rankClass = rank <= 3 ? 'rank--' + rank : 'rank--other';
+      var medal = rank === 1 ? '&#x1F947;' : rank === 2 ? '&#x1F948;' : rank === 3 ? '&#x1F949;' : rank;
+      var colorClass = getScoreColor(api.popularity.score);
+      var cat = categories.find(function(c) { return c.id === api.category; });
+      var rankHref = api.docsUrl || api.url || '#';
+      return '<a href="' + rankHref + '" target="_blank" rel="noopener" class="ranking-item">' +
+        '<div class="ranking-rank ' + rankClass + '">' + medal + '</div>' +
+        '<div class="ranking-info">' +
+          '<div class="ranking-name">' +
+            api.name +
+            '<span class="tag tag--' + api.pricing + '" style="font-size:0.65rem;">' + pricingLabel[api.pricing] + '</span>' +
+            (cat ? '<span style="font-size:0.7rem;color:var(--text-muted);">' + cat.icon + ' ' + cat.name + '</span>' : '') +
+          '</div>' +
+          '<div class="ranking-reason">' + (api.popularity.reason || '') + '</div>' +
+        '</div>' +
+        '<div class="ranking-score ' + colorClass + '">' +
+          '<div class="ranking-score__bar"><div class="ranking-score__fill" style="width:' + api.popularity.score + '%;"></div></div>' +
+          '<div class="ranking-score__value">' + api.popularity.score + '</div>' +
+        '</div>' +
+      '</a>';
+    }).join('');
+  }
+
+  function getFilteredApis() {
+    var favs = getFavorites();
+    return allApis.filter(function(api) {
+      if (activeCategory !== 'all' && api.category !== activeCategory) return false;
+      if (activePricing !== 'all' && api.pricing !== activePricing) return false;
+      if (favoriteFilter && favs.indexOf(api.id) === -1) return false;
+      if (searchQuery) {
+        var q = searchQuery.toLowerCase();
+        var searchable = [
+          api.name, api.nameJa, api.description
+        ].concat(api.tags).concat(api.useCases || []).concat([
+          pricingLabel[api.pricing] || '',
+          regionLabel[api.region] || ''
+        ]).join(' ').toLowerCase();
+        if (searchable.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+  }
+
+  function renderApis() {
+    var filtered = getFilteredApis();
+    var grid = document.getElementById('apiGrid');
+    var noResults = document.getElementById('noResults');
+
+    // Sort
+    if (activeSort === 'popularity') {
+      filtered.sort(function(a, b) {
+        var sa = (a.popularity && a.popularity.score) || 0;
+        var sb = (b.popularity && b.popularity.score) || 0;
+        return sb - sa;
+      });
+    } else if (activeSort === 'name') {
+      filtered.sort(function(a, b) { return a.name.localeCompare(b.name); });
+    } else {
+      // default: featured first, then by popularity
+      filtered.sort(function(a, b) {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        var sa = (a.popularity && a.popularity.score) || 0;
+        var sb = (b.popularity && b.popularity.score) || 0;
+        return sb - sa;
+      });
+    }
+
+    document.getElementById('resultCount').textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      noResults.style.display = 'block';
+      return;
+    }
+    noResults.style.display = 'none';
+
+    grid.innerHTML = filtered.map(function(api, i) {
+      var cat = categories.find(function(c) { return c.id === api.category; });
+      var staggerClass = 'slide-up stagger-' + ((i % 6) + 1);
+      var faved = isFavorited(api.id);
+      return '<div class="api-card ' + staggerClass + '" data-api-id="' + api.id + '">' +
+        '<div class="api-card__header">' +
+          '<div>' +
+            '<h3><a href="' + api.url + '" target="_blank" rel="noopener">' + api.name + '</a></h3>' +
+            (api.nameJa !== api.name ? '<div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">' + api.nameJa + '</div>' : '') +
+          '</div>' +
+          '<div style="display:flex;gap:4px;flex-shrink:0;align-items:center;">' +
+            '<button class="favorite-btn' + (faved ? ' favorited' : '') + '" data-fav-id="' + api.id + '" title="お気に入り">' + (faved ? '&#x2764;&#xFE0F;' : '&#x2661;') + '</button>' +
+            (api.featured ? '<span class="featured-badge">注目</span>' : '') +
+            '<span class="tag tag--' + api.pricing + '">' + pricingLabel[api.pricing] + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="api-card__body">' +
+          '<p>' + api.description + '</p>' +
+        '</div>' +
+        '<div class="api-card__meta">' +
+          '<span class="region-tag region--' + api.region + '">' + regionLabel[api.region] + '</span>' +
+          (cat ? '<span class="category-badge">' + cat.icon + ' ' + cat.name + '</span>' : '') +
+          (api.popularity && api.popularity.score ?
+            '<span class="popularity-badge popularity--' + getPopularityClass(api.popularity.score) + '">' +
+              '<span class="score-bar"><span class="score-fill" style="width:' + api.popularity.score + '%"></span></span> ' +
+              api.popularity.score + '点' +
+            '</span>' : '') +
+        '</div>' +
+        '<div class="api-card__tags">' +
+          '<span class="tag">' + authLabel[api.auth] + '</span>' +
+          api.tags.slice(0, 3).map(function(t) { return '<span class="tag">' + t + '</span>'; }).join('') +
+        '</div>' +
+        '<div class="api-card__footer">' +
+          '<a href="' + (api.docsUrl || api.url) + '" target="_blank" rel="noopener" class="api-card__link">ドキュメント &rarr;</a>' +
+          '<span class="api-card__difficulty difficulty--' + api.difficulty + '">' + difficultyLabel[api.difficulty] + '</span>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function bindEvents() {
+    // Search with autocomplete
+    var searchInput = document.getElementById('searchInput');
+    var acList = document.getElementById('autocompleteList');
+    var debounce;
+
+    searchInput.addEventListener('input', function() {
+      clearTimeout(debounce);
+      var val = searchInput.value.trim();
+      // Show autocomplete suggestions
+      var suggestions = getAutocompleteSuggestions(val);
+      renderAutocomplete(suggestions);
+      debounce = setTimeout(function() {
+        searchQuery = val;
+        renderApis();
+      }, 200);
+    });
+
+    searchInput.addEventListener('keydown', function(e) {
+      var items = acList.querySelectorAll('.autocomplete-item');
+      if (!acList.classList.contains('visible') || items.length === 0) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        navigateAutocomplete(1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        navigateAutocomplete(-1);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (autocompleteIndex >= 0 && items[autocompleteIndex]) {
+          selectAutocomplete(items[autocompleteIndex].dataset.apiId);
+        }
+      } else if (e.key === 'Escape') {
+        acList.classList.remove('visible');
+        autocompleteIndex = -1;
+      }
+    });
+
+    // Click on autocomplete item
+    acList.addEventListener('click', function(e) {
+      var item = e.target.closest('.autocomplete-item');
+      if (item) selectAutocomplete(item.dataset.apiId);
+    });
+
+    // Close autocomplete when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.search-bar')) {
+        acList.classList.remove('visible');
+        autocompleteIndex = -1;
+      }
+    });
+
+    // Category filter
+    document.getElementById('categoryNav').addEventListener('click', function(e) {
+      var btn = e.target.closest('.category-nav__item');
+      if (!btn) return;
+      document.querySelectorAll('.category-nav__item').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeCategory = btn.dataset.category;
+      renderApis();
+    });
+
+    // Pricing filter
+    document.querySelectorAll('[data-pricing]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('[data-pricing]').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activePricing = btn.dataset.pricing;
+        renderApis();
+      });
+    });
+
+    // Sort buttons
+    document.querySelectorAll('[data-sort]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('[data-sort]').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeSort = btn.dataset.sort;
+        renderApis();
+      });
+    });
+
+    // Favorite filter button
+    document.getElementById('favoriteFilterBtn').addEventListener('click', function() {
+      favoriteFilter = !favoriteFilter;
+      this.classList.toggle('active', favoriteFilter);
+      renderApis();
+    });
+
+    // Card click -> open modal or toggle favorite
+    document.getElementById('apiGrid').addEventListener('click', function(e) {
+      // Handle favorite button click
+      var favBtn = e.target.closest('.favorite-btn');
+      if (favBtn) {
+        e.stopPropagation();
+        toggleFavorite(favBtn.dataset.favId);
+        return;
+      }
+      var card = e.target.closest('.api-card');
+      if (!card) return;
+      // Don't open modal if clicking a link
+      if (e.target.closest('a')) return;
+      var apiId = card.dataset.apiId;
+      if (apiId) openModal(apiId);
+    });
+
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+    // Modal close
+    var overlay = document.getElementById('modalOverlay');
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  }
+
+  function openModal(apiId) {
+    var api = allApis.find(function(a) { return a.id === apiId; });
+    if (!api) return;
+    var cat = categories.find(function(c) { return c.id === api.category; });
+    var pop = api.popularity || {};
+    var colorClass = getScoreColor(pop.score || 0);
+    var popClass = getPopularityClass(pop.score || 0);
+
+    var html = '<button class="modal__close" onclick="closeModal()">&times;</button>';
+
+    // Header
+    html += '<div class="modal__header">';
+    html += '<div class="modal__title">' + api.name + '</div>';
+    if (api.nameJa !== api.name) html += '<div class="modal__subtitle">' + api.nameJa + '</div>';
+    html += '<div class="modal__badges">';
+    html += '<span class="tag tag--' + api.pricing + '">' + pricingLabel[api.pricing] + '</span>';
+    html += '<span class="region-tag region--' + api.region + '">' + regionLabel[api.region] + '</span>';
+    if (cat) html += '<span class="category-badge">' + cat.icon + ' ' + cat.name + '</span>';
+    html += '<span class="api-card__difficulty difficulty--' + api.difficulty + '">' + difficultyLabel[api.difficulty] + '</span>';
+    if (api.featured) html += '<span class="featured-badge">&#x2B50; 注目</span>';
+    html += '</div></div>';
+
+    // Description
+    html += '<div class="modal__desc">' + api.description + '</div>';
+
+    // Score hero
+    if (pop.score) {
+      html += '<div class="modal__score-hero">';
+      html += '<div class="modal__score-number ' + colorClass + '">' + pop.score + '</div>';
+      html += '<div class="modal__score-bar-wrap">';
+      html += '<div class="modal__score-label">&#x1F4CA; 人気スコア（100点満点）</div>';
+      html += '<div class="modal__score-bar"><div class="modal__score-fill" style="width:' + pop.score + '%;background:linear-gradient(90deg,' + (popClass === "high" ? "var(--color-success),#4ade80" : popClass === "medium" ? "var(--color-warning),#fbbf24" : "#64748b,#94a3b8") + ');"></div></div>';
+      if (pop.reason) html += '<div class="modal__score-reason">' + pop.reason + '</div>';
+      html += '</div></div>';
+    }
+
+    // Detailed analysis
+    if (pop.detail) {
+      html += '<div class="modal__section">';
+      html += '<div class="modal__section-title">&#x1F50D; 詳細分析</div>';
+      html += '<div class="modal__detail-text">' + pop.detail + '</div>';
+      html += '</div>';
+    }
+
+    // Metrics
+    if (pop.monthlyUsers || pop.monthlyApiCalls || pop.githubStars || pop.npmDownloads || pop.marketShare) {
+      html += '<div class="modal__section">';
+      html += '<div class="modal__section-title">&#x1F4CA; 利用実績・指標</div>';
+      html += '<div class="modal__metrics">';
+      if (pop.monthlyUsers) html += '<div class="modal__metric"><div class="modal__metric-label">利用者数</div><div class="modal__metric-value">' + pop.monthlyUsers + '</div></div>';
+      if (pop.monthlyApiCalls) html += '<div class="modal__metric"><div class="modal__metric-label">月間処理量</div><div class="modal__metric-value">' + pop.monthlyApiCalls + '</div></div>';
+      if (pop.marketShare) html += '<div class="modal__metric"><div class="modal__metric-label">市場ポジション</div><div class="modal__metric-value">' + pop.marketShare + '</div></div>';
+      if (pop.npmDownloads) html += '<div class="modal__metric"><div class="modal__metric-label">npm ダウンロード</div><div class="modal__metric-value">' + pop.npmDownloads + '</div></div>';
+      if (pop.githubStars) html += '<div class="modal__metric"><div class="modal__metric-label">GitHub Stars</div><div class="modal__metric-value">' + pop.githubStars + '</div></div>';
+      html += '</div></div>';
+    }
+
+    // Adopters
+    if (pop.adopters && pop.adopters.length > 0) {
+      html += '<div class="modal__section">';
+      html += '<div class="modal__section-title">&#x1F3E2; 主な利用企業・サービス</div>';
+      html += '<div class="modal__adopters">';
+      pop.adopters.forEach(function(a) { html += '<span class="modal__adopter">' + a + '</span>'; });
+      html += '</div></div>';
+    }
+
+    // Sources
+    if (pop.sources && pop.sources.length > 0) {
+      html += '<div class="modal__section">';
+      html += '<div class="modal__section-title">&#x1F4CE; 根拠・参照元</div>';
+      html += '<ul class="modal__sources">';
+      pop.sources.forEach(function(s) {
+        html += '<li><a href="' + s.url + '" target="_blank" rel="noopener" class="modal__source-link">' +
+          '<span class="modal__source-icon">&#x1F517;</span> ' + s.label + '</a></li>';
+      });
+      html += '</ul></div>';
+    }
+
+    // API details table
+    html += '<div class="modal__section">';
+    html += '<div class="modal__section-title">&#x2699;&#xFE0F; サーバー仕様</div>';
+    html += '<div class="modal__metrics">';
+    html += '<div class="modal__metric"><div class="modal__metric-label">認証方式</div><div class="modal__metric-value">' + authLabel[api.auth] + '</div></div>';
+    html += '<div class="modal__metric"><div class="modal__metric-label">プロトコル/形式</div><div class="modal__metric-value">' + (api.responseFormat || []).join(', ') + '</div></div>';
+    html += '<div class="modal__metric"><div class="modal__metric-label">レート制限</div><div class="modal__metric-value">' + (api.rateLimit || 'ドキュメント参照') + '</div></div>';
+    html += '<div class="modal__metric"><div class="modal__metric-label">料金</div><div class="modal__metric-value">' + (api.pricingDetail || '-') + '</div></div>';
+    if (api.sdks && api.sdks.length > 0) {
+      html += '<div class="modal__metric" style="grid-column:1/-1;"><div class="modal__metric-label">SDK</div><div class="modal__metric-value">' + api.sdks.join(', ') + '</div></div>';
+    }
+    html += '</div></div>';
+
+    // Actions (affiliate-aware)
+    var officialUrl = api.url;
+    var officialRel = 'noopener';
+    var officialLabel = '&#x1F310; 公式サイト';
+    var affiliateDisclosure = '';
+    if (api.affiliate && api.affiliate.enabled) {
+      officialUrl = api.affiliate.url;
+      officialRel = 'sponsored noopener';
+      officialLabel = '&#x1F310; ' + (api.affiliate.label || '公式サイトへ');
+      affiliateDisclosure = '<p class="affiliate-disclosure">※ アフィリエイトリンクを含みます</p>';
+    }
+    html += '<div class="modal__actions">';
+    html += '<a href="' + (api.docsUrl || api.url) + '" target="_blank" rel="noopener" class="modal__action-btn modal__action-btn--primary">&#x1F4D6; ドキュメントを見る</a>';
+    html += '<a href="' + officialUrl + '" target="_blank" rel="' + officialRel + '" class="modal__action-btn modal__action-btn--secondary">' + officialLabel + '</a>';
+    html += '</div>';
+    html += affiliateDisclosure;
+
+    document.getElementById('modalContent').innerHTML = html;
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  window.closeModal = closeModal;
+
+  // Init
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>

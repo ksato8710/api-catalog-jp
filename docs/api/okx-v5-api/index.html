@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+<script>
+(function(){var t=localStorage.getItem('apipedia_theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OKX API v5 - APIpedia | 日本語APIカタログ</title>
+<meta name="description" content="OKXのv5 API。POST /api/v5/trade/orderによる注文実行と、GET /api/v5/market/booksによる板情報照会に対応する。">
+<!-- OGP -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="OKX API v5 — APIpedia | 日本語APIカタログ">
+<meta property="og:description" content="OKXのv5 API。POST /api/v5/trade/orderによる注文実行と、GET /api/v5/market/booksによる板情報照会に対応する。">
+<meta property="og:url" content="https://apipedia.dev/api/okx-v5-api/">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OKX API v5 — APIpedia">
+<meta name="twitter:description" content="OKXのv5 API。POST /api/v5/trade/orderによる注文実行と、GET /api/v5/market/booksによる板情報照会に対応する。">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/api/okx-v5-api/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "OKX API v5", "description": "OKXのv5 API。POST /api/v5/trade/orderによる注文実行と、GET /api/v5/market/booksによる板情報照会に対応する。", "url": "https://www.okx.com/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web API", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "API利用は無料（取引手数料は別途）"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/"}, {"@type": "ListItem", "position": 2, "name": "カタログ", "item": "https://apipedia.dev/#catalog"}, {"@type": "ListItem", "position": 3, "name": "OKX API v5", "item": "https://apipedia.dev/api/okx-v5-api/"}]}</script>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .api-detail { max-width: 800px; margin: 0 auto; padding: calc(var(--header-height) + 40px) 24px 80px; }
+  .breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-secondary); }
+  .breadcrumb a:hover { color: var(--color-primary); }
+  .api-hero { margin-bottom: 32px; }
+  .api-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+  .api-hero .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .badge { display: inline-flex; align-items: center; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .badge--pricing { color: var(--color-primary); background: var(--color-primary-light); }
+  .badge--region { color: var(--color-accent); background: var(--color-accent-light); }
+  .badge--category { color: var(--color-secondary); background: var(--color-secondary-light); }
+  .badge--difficulty { color: var(--text-secondary); background: rgba(255,255,255,0.06); }
+  .badge--featured { color: var(--color-warning); background: var(--color-warning-light); }
+  .api-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px; }
+  .score-hero { display: flex; align-items: center; gap: 24px; padding: 24px; background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(139,92,246,0.06)); border: 1px solid var(--border-color); border-radius: var(--radius); margin-bottom: 32px; }
+  .score-number { font-size: 3.5rem; font-weight: 800; line-height: 1; }
+  .score-detail { flex: 1; }
+  .score-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+  .score-bar-outer { width: 100%; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 5px; }
+  .score-reason { font-size: 0.88rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.7; }
+  .section-block { margin-bottom: 32px; }
+  .section-heading { font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: 8px; }
+  .detail-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .metric-card { padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .metric-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .metric-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+  .adopters-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .adopter-chip { padding: 6px 14px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-pill); }
+  .sources-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .source-link { display: block; padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; color: var(--color-primary); font-size: 0.85rem; font-weight: 500; transition: all var(--transition); }
+  .source-link:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .spec-item { padding: 14px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; }
+  .spec-item .label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .spec-item .value { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+  .spec-item--full { grid-column: 1 / -1; }
+  .usecases-wrap, .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .usecase-tag { padding: 6px 14px; font-size: 0.82rem; color: var(--color-accent); background: var(--color-accent-light); border-radius: var(--radius-pill); }
+  .related-apis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .related-api-card { display: block; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .related-api-card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+  .related-api-name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .related-api-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .related-api-meta { display: flex; align-items: center; gap: 8px; }
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+  .pill--free { color: var(--color-success); background: var(--color-success-light); }
+  .pill--freemium { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--paid { color: var(--color-warning); background: var(--color-warning-light); }
+  .score-mini { font-size: 0.75rem; font-weight: 700; }
+  .score-mini--high { color: var(--color-success); }
+  .score-mini--medium { color: var(--color-warning); }
+  .score-mini--low { color: #94a3b8; }
+  .action-buttons { display: flex; gap: 12px; margin-top: 40px; }
+  .action-buttons .btn { flex: 1; padding: 14px 24px; font-size: 0.95rem; text-align: center; }
+  @media (max-width: 768px) {
+    .api-hero h1 { font-size: 1.5rem; }
+    .score-hero { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .score-number { font-size: 2.5rem; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .action-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="../../index.html" class="nav-link">カタログ</a>
+      <a href="../../guides/" class="nav-link">ガイド</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<main class="api-detail">
+  <div class="breadcrumb">
+    <a href="../../index.html">APIpedia</a> &rsaquo;
+    <a href="../../index.html#catalog">カタログ</a> &rsaquo;
+    OKX API v5
+  </div>
+
+  <div class="api-hero">
+    <h1>OKX API v5</h1>
+    
+    <div class="badge-row">
+      <span class="badge badge--pricing">無料</span>
+      <span class="badge badge--region">グローバル</span>
+      <span class="badge badge--category">💹 金融取引</span>
+      <span class="badge badge--difficulty">上級</span>
+      
+    </div>
+  </div>
+
+  <p class="api-desc">OKXのv5 API。POST /api/v5/trade/orderによる注文実行と、GET /api/v5/market/booksによる板情報照会に対応する。</p>
+
+  <div class="score-hero">
+    <div class="score-number" style="color:var(--color-success);">81</div>
+    <div class="score-detail">
+      <div class="score-label">人気スコア（100点満点）</div>
+      <div class="score-bar-outer"><div class="score-bar-fill" style="width:81%;background:linear-gradient(90deg,var(--color-success), #4ade80);"></div></div>
+      <div class="score-reason">Trade/Market APIが明確に分離され、執行系と情報系の責務設計がしやすい。</div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">詳細分析</h2><div class="detail-text">取引・照会の境界が明確で、運用監視や権限分離を設計しやすい。</div></div>
+
+  <div class="section-block"><h2 class="section-heading">利用実績・指標</h2><div class="metrics-grid"><div class="metric-card"><div class="metric-label">利用者数</div><div class="metric-value">非公開</div></div><div class="metric-card"><div class="metric-label">APIコール数</div><div class="metric-value">非公開</div></div><div class="metric-card"><div class="metric-label">市場ポジション</div><div class="metric-value">グローバル暗号資産APIで高い認知</div></div><div class="metric-card"><div class="metric-label">npm ダウンロード</div><div class="metric-value">N/A</div></div><div class="metric-card"><div class="metric-label">GitHub Stars</div><div class="metric-value">N/A</div></div></div></div>
+  <div class="section-block"><h2 class="section-heading">主な利用企業・サービス</h2><div class="adopters-wrap"><span class="adopter-chip">個人トレーダー</span><span class="adopter-chip">クオンツチーム</span><span class="adopter-chip">暗号資産アプリ事業者</span></div></div>
+  <div class="section-block"><h2 class="section-heading">根拠・参照元</h2><ul class="sources-list"><li><a href="https://www.okx.com/docs-v5/en/" target="_blank" rel="noopener" class="source-link">OKX API v5 Docs</a></li><li><a href="https://www.okx.com/docs-v5/en/" target="_blank" rel="noopener" class="source-link">OKX API v5 Trade/Market Sections</a></li></ul></div>
+  <div class="section-block"><h2 class="section-heading">取引可否（実行/照会）</h2><div class="detail-text">Trade APIで注文実行、Market APIで板情報を取得する構成。</div><ul class="sources-list" style="margin-top:12px;"><li><a href="https://www.okx.com/docs-v5/en/" target="_blank" rel="noopener" class="source-link">OKX Docs（POST /api/v5/trade/order）</a></li><li><a href="https://www.okx.com/docs-v5/en/" target="_blank" rel="noopener" class="source-link">OKX Docs（GET /api/v5/market/books）</a></li></ul></div>
+
+  <div class="section-block">
+    <h2 class="section-heading">API仕様</h2>
+    <div class="spec-grid">
+      <div class="spec-item"><div class="label">認証方式</div><div class="value">APIキー</div></div>
+      <div class="spec-item"><div class="label">レスポンス形式</div><div class="value">JSON, WebSocket</div></div>
+      <div class="spec-item"><div class="label">レート制限</div><div class="value">操作種別ごとのレート制限（公式参照）</div></div>
+      <div class="spec-item"><div class="label">料金</div><div class="value">API利用は無料（取引手数料は別途）</div></div>
+      <div class="spec-item spec-item--full"><div class="label">取引可否</div><div class="value">実取引可（発注）+ 情報照会</div></div>
+      <div class="spec-item spec-item--full"><div class="label">SDK</div><div class="value">REST, WebSocket</div></div>
+    </div>
+  </div>
+
+  <div class="section-block"><h2 class="section-heading">ユースケース</h2><div class="usecases-wrap"><span class="usecase-tag">暗号資産売買執行</span><span class="usecase-tag">板監視</span><span class="usecase-tag">取引履歴分析</span><span class="usecase-tag">マルチ市場戦略</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">暗号資産</span><span class="tag">OKX</span><span class="tag">現物</span><span class="tag">デリバティブ</span><span class="tag">グローバル</span></div></div>
+
+  <div class="section-block"><h2 class="section-heading">関連API（💹 金融取引）</h2><div class="related-apis-grid"><a href="../binance-spot-api/" class="related-api-card"><div class="related-api-name">Binance Spot API</div><div class="related-api-desc">Binanceの現物取引API。注文発注・取消・注文照会に加え、板情報・約定履歴・ティッカーなど市場データ取得に対応。グ...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>90点</span></div></a><a href="../coinbase-advanced-trade-api/" class="related-api-card"><div class="related-api-name">Coinbase Advanced Trade API</div><div class="related-api-desc">CoinbaseのAdvanced Trade REST API。Create Order/Cancel Ordersな...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>84点</span></div></a><a href="../bybit-v5-api/" class="related-api-card"><div class="related-api-name">Bybit V5 API</div><div class="related-api-desc">Bybit V5の統合API。Place Orderで現物/デリバティブ注文を実行し、Orderbookなど市場データA...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>82点</span></div></a><a href="../kraken-spot-api/" class="related-api-card"><div class="related-api-name">Kraken Spot REST API</div><div class="related-api-desc">Krakenの現物取引REST API。Add OrderやCancel系の取引実行と、Order Book/Trade...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>80点</span></div></a><a href="../oanda-rest-v20-api/" class="related-api-card"><div class="related-api-name">OANDA REST-V20 API</div><div class="related-api-desc">OANDAのFX取引エンジンへアクセスするREST API。オーダー作成/変更/クローズ、ポジション・口座管理、価格配信...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>77点</span></div></a></div></div>
+
+  <div class="action-buttons">
+    <a href="https://www.okx.com/docs-v5/en/" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
+    <a href="https://www.okx.com/" target="_blank" rel="noopener" class="btn btn--ghost">公式サイト</a>
+  </div>
+  
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="../../index.html">トップ</a>
+        <a href="../../guides/">ガイド</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var saved = localStorage.getItem('apipedia_theme');
+  var theme = saved || 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  updateIcon(theme);
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('apipedia_theme', next);
+    updateIcon(next);
+  });
+  function updateIcon(t) {
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.innerHTML = t === 'dark' ? '&#x1F319;' : '&#x2600;&#xFE0F;';
+  }
+})();
+</script>
+
+</body>
+</html>

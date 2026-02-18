@@ -105,10 +105,12 @@
     <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
     <nav class="site-header__nav">
       <a href="../../index.html" class="nav-link">カタログ</a>
-      <a href="../../compare.html" class="nav-link">比較表</a>
       <a href="../../guides/" class="nav-link">ガイド</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
   </div>
 </header>
 
@@ -125,7 +127,7 @@
     <div class="badge-row">
       <span class="badge badge--pricing">無料</span>
       <span class="badge badge--region">日本</span>
-      <span class="badge badge--category">💳 決済・金融</span>
+      <span class="badge badge--category">💹 金融取引</span>
       <span class="badge badge--difficulty">中級</span>
       
     </div>
@@ -147,6 +149,7 @@
   <div class="section-block"><h2 class="section-heading">利用実績・指標</h2><div class="metrics-grid"><div class="metric-card"><div class="metric-label">利用者数</div><div class="metric-value">30,000+</div></div><div class="metric-card"><div class="metric-label">APIコール数</div><div class="metric-value">3M+</div></div><div class="metric-card"><div class="metric-label">市場ポジション</div><div class="metric-value">日本暗号資産取引所で10-15%</div></div><div class="metric-card"><div class="metric-label">npm ダウンロード</div><div class="metric-value">500+/week（非公式ライブラリ）</div></div><div class="metric-card"><div class="metric-label">GitHub Stars</div><div class="metric-value">N/A</div></div></div></div>
   <div class="section-block"><h2 class="section-heading">主な利用企業・サービス</h2><div class="adopters-wrap"><span class="adopter-chip">個人トレーダー</span><span class="adopter-chip">自動売買bot開発者</span><span class="adopter-chip">暗号資産管理アプリ</span><span class="adopter-chip">フィンテック企業</span></div></div>
   <div class="section-block"><h2 class="section-heading">根拠・参照元</h2><ul class="sources-list"><li><a href="https://coincheck.com/" target="_blank" rel="noopener" class="source-link">Coincheck公式</a></li><li><a href="https://coincheck.com/documents/exchange/api" target="_blank" rel="noopener" class="source-link">暗号資産取引所比較</a></li></ul></div>
+  <div class="section-block"><h2 class="section-heading">取引可否（実行/照会）</h2><div class="detail-text">Private APIで注文発注・取消・注文照会に対応し、Public APIで板情報やTickerを取得できる。</div><ul class="sources-list" style="margin-top:12px;"><li><a href="https://coincheck.com/documents/exchange/api" target="_blank" rel="noopener" class="source-link">Coincheck API（POST /api/exchange/orders, DELETE /api/exchange/orders/[id]）</a></li><li><a href="https://coincheck.com/documents/exchange/api" target="_blank" rel="noopener" class="source-link">Coincheck API（GET /api/order_books, GET /api/ticker）</a></li></ul></div>
 
   <div class="section-block">
     <h2 class="section-heading">API仕様</h2>
@@ -155,6 +158,7 @@
       <div class="spec-item"><div class="label">レスポンス形式</div><div class="value">JSON</div></div>
       <div class="spec-item"><div class="label">レート制限</div><div class="value">600リクエスト/5分（パブリックAPI）</div></div>
       <div class="spec-item"><div class="label">料金</div><div class="value">API利用は無料（取引手数料は別途発生）</div></div>
+      <div class="spec-item spec-item--full"><div class="label">取引可否</div><div class="value">実取引可（発注/取消）+ 情報照会</div></div>
       <div class="spec-item spec-item--full"><div class="label">SDK</div><div class="value">Python, Ruby, JavaScript, REST</div></div>
     </div>
   </div>
@@ -163,7 +167,7 @@
 
   <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">暗号資産</span><span class="tag">仮想通貨</span><span class="tag">取引所</span><span class="tag">日本</span></div></div>
 
-  <div class="section-block"><h2 class="section-heading">関連API（💳 決済・金融）</h2><div class="related-apis-grid"><a href="../stripe/" class="related-api-card"><div class="related-api-name">Stripe</div><div class="related-api-desc">グローバル対応のオンライン決済API。クレジットカード、サブスクリプション、請求書など包括的な決済機能を提供</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>92点</span></div></a><a href="../adyen/" class="related-api-card"><div class="related-api-name">Adyen API</div><div class="related-api-desc">グローバル対応の統合決済プラットフォームAPI。オンライン決済、店舗決済（POS）、モバイル決済を単一プラットフォームで...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>88点</span></div></a><a href="../braintree/" class="related-api-card"><div class="related-api-name">Braintree API</div><div class="related-api-desc">PayPal傘下の決済プラットフォームAPI。クレジットカード、PayPal、Venmo、Apple Pay、Googl...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>80点</span></div></a><a href="../paypay/" class="related-api-card"><div class="related-api-name">PayPay API</div><div class="related-api-desc">日本最大級のQRコード決済サービスのAPI。オンライン決済、店舗決済、残高管理などに対応</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>72点</span></div></a><a href="../gmo-payment-gateway/" class="related-api-card"><div class="related-api-name">GMO Payment Gateway</div><div class="related-api-desc">日本最大級の決済代行サービス。クレジットカード、コンビニ払い、キャリア決済、電子マネーなど40種類以上の決済手段に対応。...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>72点</span></div></a></div></div>
+  <div class="section-block"><h2 class="section-heading">関連API（💹 金融取引）</h2><div class="related-apis-grid"><a href="../binance-spot-api/" class="related-api-card"><div class="related-api-name">Binance Spot API</div><div class="related-api-desc">Binanceの現物取引API。注文発注・取消・注文照会に加え、板情報・約定履歴・ティッカーなど市場データ取得に対応。グ...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>90点</span></div></a><a href="../coinbase-advanced-trade-api/" class="related-api-card"><div class="related-api-name">Coinbase Advanced Trade API</div><div class="related-api-desc">CoinbaseのAdvanced Trade REST API。Create Order/Cancel Ordersな...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>84点</span></div></a><a href="../bybit-v5-api/" class="related-api-card"><div class="related-api-name">Bybit V5 API</div><div class="related-api-desc">Bybit V5の統合API。Place Orderで現物/デリバティブ注文を実行し、Orderbookなど市場データA...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>82点</span></div></a><a href="../okx-v5-api/" class="related-api-card"><div class="related-api-name">OKX API v5</div><div class="related-api-desc">OKXのv5 API。POST /api/v5/trade/orderによる注文実行と、GET /api/v5/mark...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>81点</span></div></a><a href="../kraken-spot-api/" class="related-api-card"><div class="related-api-name">Kraken Spot REST API</div><div class="related-api-desc">Krakenの現物取引REST API。Add OrderやCancel系の取引実行と、Order Book/Trade...</div><div class="related-api-meta"><span class="pill pill--free">無料</span><span class=score-mini score-mini--high>80点</span></div></a></div></div>
 
   <div class="action-buttons">
     <a href="https://coincheck.com/documents/exchange/api" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
@@ -181,7 +185,6 @@
       </div>
       <div class="site-footer__links">
         <a href="../../index.html">トップ</a>
-        <a href="../../compare.html">比較表</a>
         <a href="../../guides/">ガイド</a>
       </div>
     </div>

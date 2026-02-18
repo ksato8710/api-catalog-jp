@@ -50,7 +50,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="/assets/style.css">
 <style>
   .guide-page { padding: calc(var(--header-height) + 24px) 0 80px; }
   .guide-breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; }
@@ -127,21 +127,22 @@
 
 <header class="site-header">
   <div class="container">
-    <a href="../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <a href="/" class="site-header__logo"><span>APIpedia</span></a>
     <nav class="site-header__nav">
-      <a href="../index.html" class="nav-link">カタログ</a>
-      <a href="../compare.html" class="nav-link">比較表</a>
-      <a href="index.html" class="nav-link active">ガイド</a>
+      <a href="/" class="nav-link">カタログ</a>
+      <a href="/guides/" class="nav-link">ガイド</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
-    <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
   </div>
 </header>
 
 <main class="guide-page">
 <div class="container">
   <div class="guide-breadcrumb">
-    <a href="../index.html">APIpedia</a> &gt; <a href="index.html">ガイド</a> &gt; 決済API比較
+    <a href="/">APIpedia</a> &gt; <a href="/guides/">ガイド</a> &gt; 決済API比較
   </div>
 
   <div class="guide-header">
@@ -150,7 +151,7 @@
     <div class="guide-header__meta">
       <span>更新日: 2026-02-15</span>
       <span>読了時間: 約8分</span>
-      <span>カテゴリ: 決済・金融</span>
+      <span>カテゴリ: 決済</span>
     </div>
   </div>
 
@@ -175,7 +176,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="api-name"><a href="../api/stripe/">Stripe</a></td>
+            <td class="api-name"><a href="/api/stripe/">Stripe</a></td>
             <td>無料</td>
             <td>3.6%</td>
             <td>カード, コンビニ, 銀行</td>
@@ -184,7 +185,7 @@
             <td>92</td>
           </tr>
           <tr>
-            <td class="api-name"><a href="../api/paypay/">PayPay</a></td>
+            <td class="api-name"><a href="/api/paypay/">PayPay</a></td>
             <td>無料</td>
             <td>1.98%〜</td>
             <td>QRコード決済</td>
@@ -193,7 +194,7 @@
             <td>68</td>
           </tr>
           <tr>
-            <td class="api-name"><a href="../api/square/">Square</a></td>
+            <td class="api-name"><a href="/api/square/">Square</a></td>
             <td>無料</td>
             <td>3.25%〜</td>
             <td>カード, QR, 対面</td>
@@ -202,7 +203,7 @@
             <td>75</td>
           </tr>
           <tr>
-            <td class="api-name"><a href="../api/payjp/">PAY.JP</a></td>
+            <td class="api-name"><a href="/api/payjp/">PAY.JP</a></td>
             <td>無料</td>
             <td>3.0%〜</td>
             <td>カード</td>
@@ -211,7 +212,7 @@
             <td>55</td>
           </tr>
           <tr>
-            <td class="api-name"><a href="../api/linepay/">LINE Pay</a></td>
+            <td class="api-name"><a href="/api/linepay/">LINE Pay</a></td>
             <td>無料</td>
             <td>2.45%〜</td>
             <td>QRコード, LINE内決済</td>
@@ -329,7 +330,7 @@
     </div>
 
     <div class="guide-nav">
-      <a href="index.html">&larr; ガイド一覧に戻る</a>
+      <a href="/guides/">&larr; ガイド一覧に戻る</a>
       <a href="auth-api-comparison.html">認証API比較ガイド &rarr;</a>
     </div>
   </div>
@@ -342,7 +343,7 @@
       <h3>📊 プレミアム比較レポート</h3>
       <p>「決済API完全比較ガイド 2026年版」など、より詳細な分析レポートを準備中です。</p>
       <p class="cta-note">リリース時にお知らせを受け取る</p>
-      <a href="../index.html#newsletter" class="cta-btn">ニュースレター登録</a>
+      <a href="/#newsletter" class="cta-btn">ニュースレター登録</a>
     </div>
   </div>
 </section>
@@ -357,11 +358,9 @@
         <div class="site-footer__text">日本語APIカタログ</div>
       </div>
       <div class="site-footer__links">
-        <a href="../index.html">トップ</a>
-        <a href="../compare.html">比較表</a>
-        <a href="index.html">ガイド</a>
-      </div>
-    </div>
+        <a href="/">トップ</a>
+        <a href="/guides/">ガイド</a>
+      </div>    </div>
     <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
   </div>
 </footer>

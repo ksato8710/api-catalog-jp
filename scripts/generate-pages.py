@@ -58,6 +58,9 @@ def generate_page(api, categories, all_apis=None):
     sdks = ', '.join(api.get('sdks', []))
     use_cases = api.get('useCases', [])
     tags = api.get('tags', [])
+    trading_access = api.get('tradingAccess', {})
+    trading_label = escape(trading_access.get('label', ''))
+    trading_detail = escape(trading_access.get('detail', ''))
 
     # JSON-LD structured data
     jsonld = json.dumps({
@@ -159,6 +162,23 @@ def generate_page(api, categories, all_apis=None):
     if tags:
         items = ''.join(f'<span class="tag">{escape(t)}</span>' for t in tags)
         tags_html = f'<div class="tags-wrap">{items}</div>'
+
+    # Trading capability
+    trading_access_html = ''
+    if trading_access:
+        evidence_items = ''
+        if trading_access.get('evidence'):
+            links = ''.join(
+                f'<li><a href="{escape(item.get("url", ""))}" target="_blank" rel="noopener" class="source-link">{escape(item.get("label", "参照資料"))}</a></li>'
+                for item in trading_access['evidence']
+                if item.get('url')
+            )
+            if links:
+                evidence_items = f'<ul class="sources-list" style="margin-top:12px;">{links}</ul>'
+        trading_access_html = (
+            f'<div class="section-block"><h2 class="section-heading">取引可否（実行/照会）</h2>'
+            f'<div class="detail-text">{trading_detail}</div>{evidence_items}</div>'
+        )
 
     return f'''<!DOCTYPE html>
 <html lang="ja" data-theme="light">
@@ -267,10 +287,12 @@ def generate_page(api, categories, all_apis=None):
     <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
     <nav class="site-header__nav">
       <a href="../../index.html" class="nav-link">カタログ</a>
-      <a href="../../compare.html" class="nav-link">比較表</a>
       <a href="../../guides/" class="nav-link">ガイド</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
   </div>
 </header>
 
@@ -309,6 +331,7 @@ def generate_page(api, categories, all_apis=None):
   {metrics_html}
   {adopters_html}
   {sources_html}
+  {trading_access_html}
 
   <div class="section-block">
     <h2 class="section-heading">API仕様</h2>
@@ -317,6 +340,7 @@ def generate_page(api, categories, all_apis=None):
       <div class="spec-item"><div class="label">レスポンス形式</div><div class="value">{response_fmt}</div></div>
       <div class="spec-item"><div class="label">レート制限</div><div class="value">{rate_limit}</div></div>
       <div class="spec-item"><div class="label">料金</div><div class="value">{pricing_detail}</div></div>
+      {f'<div class="spec-item spec-item--full"><div class="label">取引可否</div><div class="value">{trading_label}</div></div>' if trading_label else ''}
       {f'<div class="spec-item spec-item--full"><div class="label">SDK</div><div class="value">{sdks}</div></div>' if sdks else ''}
     </div>
   </div>
@@ -343,7 +367,6 @@ def generate_page(api, categories, all_apis=None):
       </div>
       <div class="site-footer__links">
         <a href="../../index.html">トップ</a>
-        <a href="../../compare.html">比較表</a>
         <a href="../../guides/">ガイド</a>
       </div>
     </div>
@@ -380,7 +403,7 @@ def generate_sitemap(apis):
     base_url = 'https://apipedia.dev'
     urls = [
         f'  <url><loc>{base_url}/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>',
-        f'  <url><loc>{base_url}/compare.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>',
+        f'  <url><loc>{base_url}/mcp/</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>',
         f'  <url><loc>{base_url}/lean-canvas.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>',
         f'  <url><loc>{base_url}/strategy.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>',
         f'  <url><loc>{base_url}/guides/</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>',
@@ -389,6 +412,7 @@ def generate_sitemap(apis):
         f'  <url><loc>{base_url}/guides/ai-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>',
         f'  <url><loc>{base_url}/guides/notification-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>',
         f'  <url><loc>{base_url}/guides/maps-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>',
+        f'  <url><loc>{base_url}/guides/financial-trading-api-comparison.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>',
     ]
     for api in apis:
         urls.append(f'  <url><loc>{base_url}/api/{api["id"]}/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>')

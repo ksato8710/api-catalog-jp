@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+<script>
+(function(){var t=localStorage.getItem('apipedia_theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【2026年版】金融取引API徹底比較 - 実取引可否で選ぶ国内証券/FX/暗号資産API | APIpedia</title>
+<meta name="description" content="金融取引APIを実取引可否（発注可能/照会専用/契約制）で比較。国内証券、FX、暗号資産APIを横断し、設計・選定・運用の実務ポイントまで解説。">
+<!-- OGP -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="【2026年版】金融取引API徹底比較 | APIPedia">
+<meta property="og:description" content="実取引可否を軸に、国内証券・FX・暗号資産APIを横断比較。">
+<meta property="og:url" content="https://apipedia.dev/guides/financial-trading-api-comparison.html">
+<meta property="og:site_name" content="APIPedia">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="【2026年版】金融取引API徹底比較 | APIPedia">
+<meta name="twitter:description" content="実取引可否を軸に、国内証券・FX・暗号資産APIを横断比較。">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://apipedia.dev/guides/financial-trading-api-comparison.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "【2026年版】金融取引API徹底比較",
+  "description": "金融取引APIを実取引可否で比較し、選定・実装・運用の実務ポイントを整理",
+  "datePublished": "2026-02-16",
+  "author": {"@type": "Organization", "name": "APIpedia"},
+  "publisher": {"@type": "Organization", "name": "APIpedia", "url": "https://apipedia.dev/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://apipedia.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "比較ガイド", "item": "https://apipedia.dev/guides/" },
+    { "@type": "ListItem", "position": 3, "name": "金融取引API比較", "item": "https://apipedia.dev/guides/financial-trading-api-comparison.html" }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .guide-page { padding: calc(var(--header-height) + 24px) 0 80px; }
+  .guide-breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; }
+  .guide-breadcrumb a { color: var(--color-primary); text-decoration: none; }
+  .guide-breadcrumb a:hover { text-decoration: underline; }
+  .guide-header { margin-bottom: 40px; }
+  .guide-header__badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 4px 12px;
+    background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-pill); margin-bottom: 12px; }
+  .guide-header h1 { font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4; }
+  .guide-header__meta { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; }
+  .guide-content { max-width: 960px; }
+  .guide-content h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin: 40px 0 16px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); display: inline-block; }
+  .guide-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 28px 0 12px; }
+  .guide-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 16px; }
+  .guide-content ul, .guide-content ol { margin: 12px 0 20px 20px; }
+  .guide-content li { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .guide-content strong { color: var(--text-primary); }
+
+  .compare-matrix { overflow-x: auto; margin: 24px 0 32px; border-radius: var(--radius); border: 1px solid var(--border-color); }
+  .compare-matrix table { width: 100%; border-collapse: collapse; font-size: 0.8rem; background: var(--bg-card); min-width: 980px; }
+  .compare-matrix thead { background: var(--bg-secondary); }
+  .compare-matrix th { padding: 12px 14px; text-align: left; font-weight: 700; color: var(--text-primary);
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+  .compare-matrix td { padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); vertical-align: top; }
+  .compare-matrix tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-matrix .api-name { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+  .compare-matrix .api-name a { color: var(--color-primary); text-decoration: none; }
+  .compare-matrix .api-name a:hover { text-decoration: underline; }
+
+  .pill { display: inline-block; padding: 2px 8px; font-size: 0.7rem; font-weight: 600; border-radius: var(--radius-pill); }
+  .pill--green { color: var(--color-success); background: var(--color-success-light); }
+  .pill--blue { color: var(--color-primary); background: var(--color-primary-light); }
+  .pill--amber { color: var(--color-warning); background: var(--color-warning-light); }
+  .pill--gray { color: #94a3b8; background: rgba(148,163,184,0.18); }
+
+  .recommend-card { background: linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(59,130,246,0.08) 100%);
+    border: 1px solid rgba(34,197,94,0.25); border-radius: var(--radius); padding: 22px; margin: 16px 0; }
+  .recommend-card__title { font-size: 0.95rem; font-weight: 700; color: var(--color-success); margin-bottom: 8px; }
+
+  .notice-box { background: var(--bg-card); border: 1px solid var(--border-color); border-left: 4px solid var(--color-warning);
+    border-radius: 10px; padding: 16px; margin: 20px 0; }
+  .notice-box p { margin: 0; }
+
+  .guide-nav { display: flex; justify-content: space-between; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-color); }
+  .guide-nav a { font-size: 0.85rem; color: var(--color-primary); text-decoration: none; font-weight: 600; }
+  .guide-nav a:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .guide-header h1 { font-size: 1.3rem; }
+    .guide-nav { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="site-header__logo"><span>APIpedia</span></a>
+    <nav class="site-header__nav">
+      <a href="/" class="nav-link">カタログ</a>
+      <a href="/guides/" class="nav-link">ガイド</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<main class="guide-page">
+<div class="container">
+  <div class="guide-breadcrumb">
+    <a href="/">APIpedia</a> &gt; <a href="/guides/">ガイド</a> &gt; 金融取引API比較
+  </div>
+
+  <div class="guide-header">
+    <span class="guide-header__badge">比較ガイド</span>
+    <h1>【2026年版】金融取引API 徹底比較<br>実取引可否で選ぶ 国内証券 / FX / 暗号資産 API</h1>
+    <div class="guide-header__meta">
+      <span>更新日: 2026-02-16</span>
+      <span>読了時間: 約11分</span>
+      <span>カテゴリ: 金融取引</span>
+    </div>
+  </div>
+
+  <div class="guide-content">
+
+    <p>金融取引APIを選ぶとき、最も重要なのは<strong>「実際に注文を出せるのか（取引実行）」</strong>と、<strong>「情報参照だけなのか」</strong>を先に切り分けることです。価格データ取得だけのAPIに取引機能を期待すると、設計のやり直しコストが大きくなります。本ガイドでは、国内証券・FX・暗号資産APIを横断し、実運用で判断しやすい形で整理します。</p>
+
+    <h2>1. 取引可否の判定軸</h2>
+    <ul>
+      <li><strong>実取引可（発注/取消）+ 情報照会:</strong> 注文エンドポイントと市場データエンドポイントを両方提供</li>
+      <li><strong>実取引可（契約・審査制）:</strong> 機能はあるが、一般公開ではなく事業者契約が必要</li>
+      <li><strong>照会専用:</strong> 価格・財務・市場情報のみ。注文実行機能はなし</li>
+      <li><strong>公開情報では要確認:</strong> 概要公開のみで、発注可否が明示されない</li>
+    </ul>
+
+    <h2>2. 金融取引API 比較マトリクス</h2>
+
+    <div class="compare-matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>API</th>
+            <th>市場</th>
+            <th>取引可否</th>
+            <th>実行方式</th>
+            <th>照会系</th>
+            <th>認証</th>
+            <th>対象</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="api-name"><a href="/api/kabu-station-api/">kabuステーションAPI</a></td>
+            <td>国内株/先物OP</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST（/sendorder）</td>
+            <td>板・注文・建玉（/board, /orders）</td>
+            <td>Bearer</td>
+            <td>国内（個人向け）</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/marketspeed-ii-rss-api/">MARKETSPEED II RSS</a></td>
+            <td>国内株/先物OP</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>Excel関数（RssStockOrder等）</td>
+            <td>注文状況・約定照会</td>
+            <td>ツール認証</td>
+            <td>国内（個人向け）</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/neotrade-api-for-excel/">Neotrade API for Excel</a></td>
+            <td>国内株</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>Excel関数（SNT.EqtyOrder等）</td>
+            <td>注文約定照会・残高照会</td>
+            <td>ツール認証</td>
+            <td>国内（個人向け）</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/matsui-fx-api/">Matsui FX API</a></td>
+            <td>FX</td>
+            <td><span class="pill pill--amber">契約審査制</span></td>
+            <td>REST（事業者連携）</td>
+            <td>注文/建玉/レート照会</td>
+            <td>Bearer</td>
+            <td>国内（提携事業者）</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/oanda-rest-v20-api/">OANDA REST-V20 API</a></td>
+            <td>FX</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST（Order/Trade）</td>
+            <td>Pricing/履歴/口座</td>
+            <td>Bearer</td>
+            <td>国内/グローバル</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/ig-trading-api/">IG REST Trading API</a></td>
+            <td>FX/CFD</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST（positions/working-orders）</td>
+            <td>markets/prices/履歴</td>
+            <td>API Key</td>
+            <td>グローバル</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/saxo-openapi/">Saxo OpenAPI</a></td>
+            <td>FX/株/先物OP</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST + Streaming</td>
+            <td>Portfolio/価格購読</td>
+            <td>OAuth2</td>
+            <td>グローバル（プロ寄り）</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/coincheck-api/">Coincheck API</a></td>
+            <td>暗号資産</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST（POST /exchange/orders）</td>
+            <td>板・ticker・残高</td>
+            <td>API Key</td>
+            <td>国内</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/binance-spot-api/">Binance Spot API</a></td>
+            <td>暗号資産</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST（POST /api/v3/order）</td>
+            <td>Order Book/Trades</td>
+            <td>API Key</td>
+            <td>グローバル</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/coinbase-advanced-trade-api/">Coinbase Advanced Trade</a></td>
+            <td>暗号資産</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST（POST /orders）</td>
+            <td>Product Book/Candles</td>
+            <td>API Key</td>
+            <td>グローバル</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/kraken-spot-api/">Kraken Spot API</a></td>
+            <td>暗号資産</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST（Add Order）</td>
+            <td>Order Book/Trades</td>
+            <td>API Key</td>
+            <td>グローバル</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/bybit-v5-api/">Bybit V5 API</a></td>
+            <td>暗号資産</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST（Place Order）</td>
+            <td>Orderbook</td>
+            <td>API Key</td>
+            <td>グローバル</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/okx-v5-api/">OKX API v5</a></td>
+            <td>暗号資産</td>
+            <td><span class="pill pill--green">実取引可</span></td>
+            <td>REST（POST /api/v5/trade/order）</td>
+            <td>GET /api/v5/market/books</td>
+            <td>API Key</td>
+            <td>グローバル</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/jquants-api/">J-Quants API</a></td>
+            <td>国内株データ</td>
+            <td><span class="pill pill--blue">照会専用</span></td>
+            <td>注文不可</td>
+            <td>株価・財務・指標</td>
+            <td>API Key</td>
+            <td>国内</td>
+          </tr>
+          <tr>
+            <td class="api-name"><a href="/api/okasan-rss-api/">岡三RSS</a></td>
+            <td>国内株</td>
+            <td><span class="pill pill--gray">要確認</span></td>
+            <td>公開資料で判定困難</td>
+            <td>概要公開（詳細はPDF）</td>
+            <td>ツール認証</td>
+            <td>国内</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice-box">
+      <p><strong>判定方針:</strong> 本ガイドの「実取引可否」は、公式ドキュメントにおける注文系エンドポイント（例: Place Order, Add Order, /sendorder）と市場照会系エンドポイント（例: Order Book, Prices, Portfolio）の記載有無を基準に分類しています。</p>
+    </div>
+
+    <h2>3. 用途別おすすめ</h2>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">国内株の個人向け自動売買</div>
+      <p><strong>第一候補:</strong> kabuステーションAPI</p>
+      <p>RESTで注文/照会が分離されており、板情報を含めた自動執行系に向く構成です。Excel中心ならMARKETSPEED II RSS / Neotrade API for Excelも有力です。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">FXの実運用（検証→本番移行）</div>
+      <p><strong>第一候補:</strong> OANDA REST-V20 API</p>
+      <p>Practice/Liveの2環境を持ち、Order/Trade/Position/Pricingを一貫して扱えるため、段階移行しやすい構成です。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">暗号資産のグローバル展開</div>
+      <p><strong>第一候補:</strong> Binance Spot API / Coinbase Advanced Trade API</p>
+      <p>どちらも注文実行と市場照会の両輪を提供。運用体制・地域・リスク管理方針に応じて選定してください。</p>
+    </div>
+
+    <div class="recommend-card">
+      <div class="recommend-card__title">まず分析だけ始める（発注は別システム）</div>
+      <p><strong>第一候補:</strong> J-Quants API</p>
+      <p>照会専用としてデータ取得基盤に集中できるため、分析パイプラインの立ち上げに向いています。</p>
+    </div>
+
+    <h2>4. 実装時のチェックリスト</h2>
+    <ol>
+      <li><strong>注文系と照会系を分離設計する:</strong> `trade` 権限キーと `view` 権限キーを分離し、漏えい時の影響を最小化する</li>
+      <li><strong>実取引前にテスト環境を必ず用意:</strong> OANDA Practiceや取引所テスト機能で注文ライフサイクルを検証する</li>
+      <li><strong>レート制限と再試行制御を先に設計:</strong> 注文APIは指数バックオフ + 冪等キー（またはクライアント注文ID）で多重発注を防ぐ</li>
+      <li><strong>照会遅延を前提に状態機械を組む:</strong> 約定通知と照会結果の不一致を許容する一時状態（pending）を持つ</li>
+      <li><strong>事業者契約型APIは早期に法務確認:</strong> 松井FXなど審査制は契約リードタイムを計画に含める</li>
+    </ol>
+
+    <h2>5. API選定の実務ルール</h2>
+    <ul>
+      <li><strong>「まず発注可否」→「次に市場データ品質」→「最後にSDK/運用性」</strong>の順で評価する</li>
+      <li>金融取引カテゴリでは、<strong>機能の多さより取引責任境界（どこまでAPI側で担保されるか）</strong>を優先する</li>
+      <li>導入前に、対象APIの公式ドキュメントで「注文」「取消」「照会」「レート制限」「認証方式」を必ず確認する</li>
+    </ul>
+
+    <div class="guide-nav">
+      <a href="payment-api-comparison.html">&larr; 決済API比較ガイド</a>
+      <a href="/guides/">ガイド一覧に戻る &rarr;</a>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div>
+        <div class="site-footer__brand">APIpedia</div>
+        <div class="site-footer__text">日本語APIカタログ</div>
+      </div>
+      <div class="site-footer__links">
+        <a href="/">トップ</a>
+        <a href="/guides/">ガイド</a>
+      </div>
+    </div>
+    <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var saved = localStorage.getItem('apipedia_theme');
+  var theme = saved || 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  updateIcon(theme);
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('apipedia_theme', next);
+    updateIcon(next);
+  });
+  function updateIcon(t) {
+    var b = document.getElementById('themeToggle');
+    if (b) b.innerHTML = t === 'dark' ? '&#x1F319;' : '&#x2600;&#xFE0F;';
+  }
+})();
+</script>
+
+</body>
+</html>

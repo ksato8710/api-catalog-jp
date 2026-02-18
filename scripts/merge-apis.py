@@ -26,6 +26,7 @@ CATEGORY_DEFINITIONS = {
     "blockchain": {"id": "blockchain", "name": "ブロックチェーン・Web3", "icon": "⛓️"},
     "communication": {"id": "communication", "name": "コミュニケーション", "icon": "📹"},
     "security": {"id": "security", "name": "セキュリティ", "icon": "🛡️"},
+    "financial-trading": {"id": "financial-trading", "name": "金融取引", "icon": "💹"},
 }
 
 def extract_json_from_file(filepath):

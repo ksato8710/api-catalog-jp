@@ -105,10 +105,12 @@
     <a href="../../index.html" class="site-header__logo"><span>APIpedia</span></a>
     <nav class="site-header__nav">
       <a href="../../index.html" class="nav-link">カタログ</a>
-      <a href="../../compare.html" class="nav-link">比較表</a>
       <a href="../../guides/" class="nav-link">ガイド</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
   </div>
 </header>
 
@@ -125,7 +127,7 @@
     <div class="badge-row">
       <span class="badge badge--pricing">有料</span>
       <span class="badge badge--region">日本</span>
-      <span class="badge badge--category">💳 決済・金融</span>
+      <span class="badge badge--category">💳 決済</span>
       <span class="badge badge--difficulty">初級</span>
       
     </div>
@@ -163,7 +165,7 @@
 
   <div class="section-block"><h2 class="section-heading">タグ</h2><div class="tags-wrap"><span class="tag">決済</span><span class="tag">クレジットカード</span><span class="tag">日本</span><span class="tag">シンプル</span></div></div>
 
-  <div class="section-block"><h2 class="section-heading">関連API（💳 決済・金融）</h2><div class="related-apis-grid"><a href="../stripe/" class="related-api-card"><div class="related-api-name">Stripe</div><div class="related-api-desc">グローバル対応のオンライン決済API。クレジットカード、サブスクリプション、請求書など包括的な決済機能を提供</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>92点</span></div></a><a href="../adyen/" class="related-api-card"><div class="related-api-name">Adyen API</div><div class="related-api-desc">グローバル対応の統合決済プラットフォームAPI。オンライン決済、店舗決済（POS）、モバイル決済を単一プラットフォームで...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>88点</span></div></a><a href="../braintree/" class="related-api-card"><div class="related-api-name">Braintree API</div><div class="related-api-desc">PayPal傘下の決済プラットフォームAPI。クレジットカード、PayPal、Venmo、Apple Pay、Googl...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>80点</span></div></a><a href="../paypay/" class="related-api-card"><div class="related-api-name">PayPay API</div><div class="related-api-desc">日本最大級のQRコード決済サービスのAPI。オンライン決済、店舗決済、残高管理などに対応</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>72点</span></div></a><a href="../gmo-payment-gateway/" class="related-api-card"><div class="related-api-name">GMO Payment Gateway</div><div class="related-api-desc">日本最大級の決済代行サービス。クレジットカード、コンビニ払い、キャリア決済、電子マネーなど40種類以上の決済手段に対応。...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>72点</span></div></a></div></div>
+  <div class="section-block"><h2 class="section-heading">関連API（💳 決済）</h2><div class="related-apis-grid"><a href="../stripe/" class="related-api-card"><div class="related-api-name">Stripe</div><div class="related-api-desc">グローバル対応のオンライン決済API。クレジットカード、サブスクリプション、請求書など包括的な決済機能を提供</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>92点</span></div></a><a href="../adyen/" class="related-api-card"><div class="related-api-name">Adyen API</div><div class="related-api-desc">グローバル対応の統合決済プラットフォームAPI。オンライン決済、店舗決済（POS）、モバイル決済を単一プラットフォームで...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>88点</span></div></a><a href="../braintree/" class="related-api-card"><div class="related-api-name">Braintree API</div><div class="related-api-desc">PayPal傘下の決済プラットフォームAPI。クレジットカード、PayPal、Venmo、Apple Pay、Googl...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>80点</span></div></a><a href="../paypay/" class="related-api-card"><div class="related-api-name">PayPay API</div><div class="related-api-desc">日本最大級のQRコード決済サービスのAPI。オンライン決済、店舗決済、残高管理などに対応</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>72点</span></div></a><a href="../gmo-payment-gateway/" class="related-api-card"><div class="related-api-name">GMO Payment Gateway</div><div class="related-api-desc">日本最大級の決済代行サービス。クレジットカード、コンビニ払い、キャリア決済、電子マネーなど40種類以上の決済手段に対応。...</div><div class="related-api-meta"><span class="pill pill--paid">有料</span><span class=score-mini score-mini--high>72点</span></div></a></div></div>
 
   <div class="action-buttons">
     <a href="https://pay.jp/docs/api/" target="_blank" rel="noopener" class="btn btn--primary">ドキュメントを見る</a>
@@ -181,7 +183,6 @@
       </div>
       <div class="site-footer__links">
         <a href="../../index.html">トップ</a>
-        <a href="../../compare.html">比較表</a>
         <a href="../../guides/">ガイド</a>
       </div>
     </div>

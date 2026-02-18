@@ -50,7 +50,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="/assets/style.css">
 <style>
   .guide-page { padding: calc(var(--header-height) + 24px) 0 80px; }
   .guide-breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; }
@@ -127,21 +127,22 @@
 
 <header class="site-header">
   <div class="container">
-    <a href="../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <a href="/" class="site-header__logo"><span>APIpedia</span></a>
     <nav class="site-header__nav">
-      <a href="../index.html" class="nav-link">カタログ</a>
-      <a href="../compare.html" class="nav-link">比較表</a>
-      <a href="index.html" class="nav-link active">ガイド</a>
+      <a href="/" class="nav-link">カタログ</a>
+      <a href="/guides/" class="nav-link">ガイド</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
-    <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
   </div>
 </header>
 
 <main class="guide-page">
 <div class="container">
   <div class="guide-breadcrumb">
-    <a href="../index.html">APIpedia</a> &gt; <a href="index.html">ガイド</a> &gt; AI/LLM API比較
+    <a href="/">APIpedia</a> &gt; <a href="/guides/">ガイド</a> &gt; AI/LLM API比較
   </div>
 
   <div class="guide-header">
@@ -176,7 +177,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="api-name"><a href="../api/openai/">OpenAI</a></td>
+            <td class="api-name"><a href="/api/openai/">OpenAI</a></td>
             <td>GPT-4.5</td>
             <td>$2〜75</td>
             <td>$8〜150</td>
@@ -186,7 +187,7 @@
             <td>98</td>
           </tr>
           <tr>
-            <td class="api-name"><a href="../api/anthropic/">Claude</a></td>
+            <td class="api-name"><a href="/api/anthropic/">Claude</a></td>
             <td>Claude 4 Opus/Sonnet</td>
             <td>$3〜15</td>
             <td>$15〜75</td>
@@ -196,7 +197,7 @@
             <td>95</td>
           </tr>
           <tr>
-            <td class="api-name"><a href="../api/gemini/">Gemini</a></td>
+            <td class="api-name"><a href="/api/gemini/">Gemini</a></td>
             <td>Gemini 2.5 Pro/Flash</td>
             <td>$1.25〜2.50</td>
             <td>$5〜10</td>
@@ -206,7 +207,7 @@
             <td>88</td>
           </tr>
           <tr>
-            <td class="api-name"><a href="../api/huggingface/">Hugging Face</a></td>
+            <td class="api-name"><a href="/api/huggingface/">Hugging Face</a></td>
             <td>Llama, Mistral等 10万+</td>
             <td>無料枠あり</td>
             <td>Pro: $9/月</td>
@@ -216,7 +217,7 @@
             <td>82</td>
           </tr>
           <tr>
-            <td class="api-name"><a href="../api/cohere/">Cohere</a></td>
+            <td class="api-name"><a href="/api/cohere/">Cohere</a></td>
             <td>Command R+, Embed v3</td>
             <td>$0.4〜15</td>
             <td>$1.2〜45</td>
@@ -366,7 +367,7 @@ message = client.messages.<span class="func">create</span>(
       <h3>📊 プレミアム比較レポート</h3>
       <p>「決済API完全比較ガイド 2026年版」など、より詳細な分析レポートを準備中です。</p>
       <p class="cta-note">リリース時にお知らせを受け取る</p>
-      <a href="../index.html#newsletter" class="cta-btn">ニュースレター登録</a>
+      <a href="/#newsletter" class="cta-btn">ニュースレター登録</a>
     </div>
   </div>
 </section>
@@ -381,11 +382,9 @@ message = client.messages.<span class="func">create</span>(
         <div class="site-footer__text">日本語APIカタログ</div>
       </div>
       <div class="site-footer__links">
-        <a href="../index.html">トップ</a>
-        <a href="../compare.html">比較表</a>
-        <a href="index.html">ガイド</a>
-      </div>
-    </div>
+        <a href="/">トップ</a>
+        <a href="/guides/">ガイド</a>
+      </div>    </div>
     <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
   </div>
 </footer>

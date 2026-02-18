@@ -766,6 +766,10 @@ p {
     display: none;
   }
 
+  .mobile-menu-btn {
+    display: block;
+  }
+
   .search-bar__input {
     padding: 14px 16px 14px 44px;
     font-size: 0.95rem;
@@ -810,6 +814,12 @@ p {
 
 /* --- Theme Toggle --- */
 
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .theme-toggle {
   background: none;
   border: 1px solid var(--border-color);
@@ -829,6 +839,16 @@ p {
   border-color: var(--border-hover);
   color: var(--text-primary);
   background: var(--bg-secondary);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
 }
 
 

@@ -50,7 +50,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="/assets/style.css">
 <style>
   .guide-page { padding: calc(var(--header-height) + 24px) 0 80px; }
   .guide-breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px; }
@@ -127,21 +127,22 @@
 
 <header class="site-header">
   <div class="container">
-    <a href="../index.html" class="site-header__logo"><span>APIpedia</span></a>
+    <a href="/" class="site-header__logo"><span>APIpedia</span></a>
     <nav class="site-header__nav">
-      <a href="../index.html" class="nav-link">カタログ</a>
-      <a href="../compare.html" class="nav-link">比較表</a>
-      <a href="index.html" class="nav-link active">ガイド</a>
+      <a href="/" class="nav-link">カタログ</a>
+      <a href="/guides/" class="nav-link">ガイド</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
-    <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
   </div>
 </header>
 
 <main class="guide-page">
 <div class="container">
   <div class="guide-breadcrumb">
-    <a href="../index.html">APIpedia</a> &gt; <a href="index.html">ガイド</a> &gt; EC API比較
+    <a href="/">APIpedia</a> &gt; <a href="/guides/">ガイド</a> &gt; EC API比較
   </div>
 
   <div class="guide-header">
@@ -378,7 +379,7 @@ curl -X POST <span class="string">'https://webservices.amazon.co.jp/paapi5/searc
       <h3>📊 プレミアム比較レポート</h3>
       <p>「決済API完全比較ガイド 2026年版」など、より詳細な分析レポートを準備中です。</p>
       <p class="cta-note">リリース時にお知らせを受け取る</p>
-      <a href="../index.html#newsletter" class="cta-btn">ニュースレター登録</a>
+      <a href="/#newsletter" class="cta-btn">ニュースレター登録</a>
     </div>
   </div>
 </section>
@@ -393,11 +394,9 @@ curl -X POST <span class="string">'https://webservices.amazon.co.jp/paapi5/searc
         <div class="site-footer__text">日本語APIカタログ</div>
       </div>
       <div class="site-footer__links">
-        <a href="../index.html">トップ</a>
-        <a href="../compare.html">比較表</a>
-        <a href="index.html">ガイド</a>
-      </div>
-    </div>
+        <a href="/">トップ</a>
+        <a href="/guides/">ガイド</a>
+      </div>    </div>
     <div class="site-footer__copyright">&copy; 2026 APIpedia. All rights reserved.</div>
   </div>
 </footer>

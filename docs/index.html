@@ -532,17 +532,7 @@
     margin: 0 auto;
     font-size: 0.95rem;
   }
-  .mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 4px;
-  }
   @media (max-width: 768px) {
-    .mobile-menu-btn { display: block; }
     .hero__title { font-size: 1.6rem !important; }
     .hero__badge { font-size: 0.7rem; }
     .category-nav { gap: 6px; }
@@ -567,11 +557,13 @@
     </a>
     <nav class="site-header__nav">
       <a href="index.html" class="nav-link active">カタログ</a>
-      <a href="compare.html" class="nav-link">比較表</a>
+      <a href="mcp/" class="nav-link">MCPカタログ</a>
       <a href="guides/" class="nav-link">ガイド</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
-    <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    <div class="site-header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライトモード切替">&#x1F319;</button>
+      <button class="mobile-menu-btn" aria-label="メニュー">&#9776;</button>
+    </div>
   </div>
 </header>
 
@@ -613,24 +605,6 @@
   <div class="category-nav" id="categoryNav"></div>
 </section>
 
-<!-- Category Compare Links -->
-<section style="padding: 16px 0 0;">
-  <div class="container" style="text-align: center;">
-    <a href="compare.html" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--color-primary); text-decoration: none; padding: 8px 20px; border: 1px solid var(--color-primary); border-radius: var(--radius-pill); transition: all 0.2s;">カテゴリ別に比較する &rarr;</a>
-  </div>
-</section>
-
-<!-- Ranking -->
-<section id="ranking" class="section">
-  <div class="container">
-    <div class="ranking-section">
-      <div class="section__title">API 人気ランキング TOP 15</div>
-      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:24px;">利用者数・市場シェア・npmダウンロード数・GitHubスター数などを総合的に評価したスコアに基づくランキングです。</p>
-      <div class="ranking-list" id="rankingList"></div>
-    </div>
-  </div>
-</section>
-
 <!-- Catalog -->
 <section id="catalog" class="section">
   <div class="container">
@@ -667,6 +641,17 @@
   </div>
 </section>
 
+<!-- Ranking -->
+<section id="ranking" class="section">
+  <div class="container">
+    <div class="ranking-section">
+      <div class="section__title">API 人気ランキング TOP 15</div>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:24px;">利用者数・市場シェア・npmダウンロード数・GitHubスター数などを総合的に評価したスコアに基づくランキングです。</p>
+      <div class="ranking-list" id="rankingList"></div>
+    </div>
+  </div>
+</section>
+
 <!-- About -->
 <section class="section">
   <div class="container">
@@ -696,38 +681,21 @@
         <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">AI/LLM API比較ガイド</div>
         <div style="font-size: 0.8rem; color: var(--text-secondary);">OpenAI vs Claude vs Gemini</div>
       </a>
+      <a href="guides/financial-trading-api-comparison.html" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">💹</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">金融取引API比較ガイド</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">国内証券・FX・暗号資産API</div>
+      </a>
       <a href="guides/" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
         <div style="font-size: 1.5rem; margin-bottom: 8px;">📖</div>
         <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">全ガイドを見る &rarr;</div>
-        <div style="font-size: 0.8rem; color: var(--text-secondary);">5カテゴリの比較ガイド</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">主要カテゴリの比較ガイド</div>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- Newsletter -->
-<section id="newsletter" style="padding: 0 0 64px;">
-  <div class="container">
-    <div style="background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(139,92,246,0.08) 100%); border: 1px solid rgba(59,130,246,0.2); border-radius: var(--radius); padding: 48px 32px; text-align: center;">
-      <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">APIpedia ニュースレター</h2>
-      <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 500px; margin: 0 auto 24px;">新着API情報、比較ガイドの更新、業界トレンドを月2回お届けします。</p>
-      <form style="display: flex; gap: 10px; max-width: 460px; margin: 0 auto;" action="https://formspree.io/f/placeholder" method="POST">
-        <input type="email" name="email" placeholder="メールアドレスを入力" required style="flex: 1; padding: 12px 16px; font-size: 0.9rem; font-family: inherit; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); outline: none;">
-        <button type="submit" style="padding: 12px 24px; font-size: 0.85rem; font-weight: 600; font-family: inherit; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color: #fff; border: none; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap;">登録する</button>
-      </form>
-      <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 12px;">スパムは送りません。いつでも登録解除できます。</p>
-    </div>
-  </div>
-</section>
-
-<!-- Premium Report CTA -->
-<section style="padding: 0 0 64px;">
-  <div class="container">
-    <div class="premium-report-cta">
-      <h3>📊 プレミアム比較レポート</h3>
-      <p>「決済API完全比較ガイド 2026年版」など、より詳細な分析レポートを準備中です。</p>
-      <p class="cta-note">リリース時にお知らせを受け取る</p>
-      <a href="#newsletter" class="cta-btn">ニュースレター登録</a>
+      <a href="mcp/" style="display: block; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: all 0.2s;">
+        <div style="font-size: 1.5rem; margin-bottom: 8px;">🧩</div>
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">MCPサーバーカタログを見る &rarr;</div>
+        <div style="font-size: 0.8rem; color: var(--text-secondary);">Model Context Protocol対応サーバーを比較</div>
+      </a>
     </div>
   </div>
 </section>
@@ -741,7 +709,7 @@
         <div class="site-footer__text">日本語APIカタログ</div>
       </div>
       <div class="site-footer__links">
-        <a href="compare.html">比較表</a>
+        <a href="mcp/">MCPカタログ</a>
         <a href="guides/">ガイド</a>
       </div>
     </div>
@@ -750,6 +718,7 @@
         <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">比較ガイド</div>
         <div style="display: flex; flex-direction: column; gap: 6px;">
           <a href="guides/payment-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">💳 決済API比較</a>
+          <a href="guides/financial-trading-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">💹 金融取引API比較</a>
           <a href="guides/auth-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">🔐 認証API比較</a>
           <a href="guides/ai-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">🤖 AI/LLM API比較</a>
           <a href="guides/notification-api-comparison.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">📧 通知API比較</a>
@@ -759,9 +728,10 @@
       <div>
         <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">カテゴリ</div>
         <div style="display: flex; flex-direction: column; gap: 6px;">
-          <a href="compare.html" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">カテゴリ別比較表</a>
+          <a href="guides/" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">API比較ガイド</a>
           <a href="index.html#catalog" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">全APIカタログ</a>
           <a href="index.html#ranking" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">人気ランキング</a>
+          <a href="mcp/" style="font-size: 0.8rem; color: var(--text-secondary); text-decoration: none;">MCPサーバーカタログ</a>
         </div>
       </div>
       <div>
@@ -857,12 +827,23 @@
 
   // ── Autocomplete ──
   function getAutocompleteSuggestions(query) {
-    if (!query) return [];
+    if (!query || allApis.length === 0) return [];
     var q = query.toLowerCase();
-    return allApis.filter(function(api) {
-      return api.name.toLowerCase().startsWith(q) ||
-             api.nameJa.toLowerCase().startsWith(q);
-    }).slice(0, 8);
+    // Prioritize startsWith matches, then include contains matches
+    var starts = [];
+    var contains = [];
+    allApis.forEach(function(api) {
+      var name = api.name.toLowerCase();
+      var nameJa = api.nameJa.toLowerCase();
+      var desc = (api.description || '').toLowerCase();
+      var tags = (api.tags || []).join(' ').toLowerCase();
+      if (name.startsWith(q) || nameJa.startsWith(q)) {
+        starts.push(api);
+      } else if (name.indexOf(q) !== -1 || nameJa.indexOf(q) !== -1 || desc.indexOf(q) !== -1 || tags.indexOf(q) !== -1) {
+        contains.push(api);
+      }
+    });
+    return starts.concat(contains).slice(0, 8);
   }
   function renderAutocomplete(suggestions) {
     var list = document.getElementById('autocompleteList');
@@ -904,9 +885,19 @@
   }
 
   async function init() {
+    initTheme();
+    bindEvents();
+
+    // Show loading state
+    var searchInput = document.getElementById('searchInput');
+    searchInput.placeholder = 'データ読み込み中...';
+    searchInput.disabled = true;
+    document.getElementById('apiGrid').innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-muted);"><div style="font-size:2rem;margin-bottom:12px;">&#x23F3;</div>APIデータを読み込んでいます...</div>';
+    document.getElementById('rankingList').innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted);">読み込み中...</div>';
+
     try {
-      initTheme();
       var res = await fetch('data/apis.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
       var data = await res.json();
       allApis = data.apis;
       categories = data.categories;
@@ -914,10 +905,17 @@
       renderCategoryNav();
       renderRanking();
       renderApis();
-      bindEvents();
       updateFavoriteBadge();
+
+      // Enable search
+      searchInput.disabled = false;
+      searchInput.placeholder = 'APIを検索... (例: 決済, 天気, 翻訳, LINE)';
     } catch (e) {
       console.error('Failed to load API data:', e);
+      searchInput.disabled = false;
+      searchInput.placeholder = 'APIを検索... (例: 決済, 天気, 翻訳, LINE)';
+      document.getElementById('apiGrid').innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-muted);"><div style="font-size:2rem;margin-bottom:12px;">&#x26A0;&#xFE0F;</div>データの読み込みに失敗しました。<br><button onclick="location.reload()" style="margin-top:12px;padding:8px 24px;background:var(--color-primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.9rem;">再読み込み</button></div>';
+      document.getElementById('rankingList').innerHTML = '';
     }
   }
 
@@ -932,8 +930,10 @@
 
   function renderCategoryNav() {
     var nav = document.getElementById('categoryNav');
+    var featured = ['ai', 'payment', 'financial-trading', 'social', 'notification', 'maps', 'auth', 'data', 'devtools', 'ecommerce'];
     var html = '<button class="category-nav__item active" data-category="all">All</button>';
     categories.forEach(function(cat) {
+      if (featured.indexOf(cat.id) === -1) return;
       html += '<button class="category-nav__item" data-category="' + cat.id + '">' +
               cat.icon + ' ' + cat.name + '</button>';
     });

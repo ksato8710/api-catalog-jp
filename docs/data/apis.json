@@ -1,9 +1,9 @@
 {
   "metadata": {
     "version": "2.0.0",
-    "lastUpdated": "2026-02-15",
-    "totalApis": 218,
-    "totalCategories": 29
+    "lastUpdated": "2026-02-16",
+    "totalApis": 233,
+    "totalCategories": 30
   },
   "categories": [
     {
@@ -20,9 +20,9 @@
     },
     {
       "id": "payment",
-      "name": "決済・金融",
+      "name": "決済",
       "icon": "💳",
-      "description": "オンライン決済、送金、金融データ取得"
+      "description": "オンライン決済、送金、請求・収納のAPI"
     },
     {
       "id": "social",
@@ -179,6 +179,12 @@
       "name": "コミュニケーション",
       "icon": "📹",
       "description": "ビデオ会議、チャット、チーム連携ツール"
+    },
+    {
+      "id": "financial-trading",
+      "name": "金融取引",
+      "icon": "💹",
+      "description": "証券・FX・暗号資産などの取引・市場データAPI"
     }
   ],
   "apis": [
@@ -4503,7 +4509,7 @@
       "description": "日本の大手暗号資産取引所CoincheckのAPI。ビットコイン、イーサリアムなど主要仮想通貨の取引、残高照会、価格情報取得、入出金管理が可能。",
       "url": "https://coincheck.com/",
       "docsUrl": "https://coincheck.com/documents/exchange/api",
-      "category": "payment",
+      "category": "financial-trading",
       "tags": [
         "暗号資産",
         "仮想通貨",
@@ -4559,6 +4565,21 @@
           }
         ],
         "detail": "日本の金融庁登録済み暗号資産取引所。REST APIでビットコイン、イーサリアムなど主要通貨の取引・管理が可能。自動売買botの開発に人気。"
+      },
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注/取消）+ 情報照会",
+        "detail": "Private APIで注文発注・取消・注文照会に対応し、Public APIで板情報やTickerを取得できる。",
+        "evidence": [
+          {
+            "label": "Coincheck API（POST /api/exchange/orders, DELETE /api/exchange/orders/[id]）",
+            "url": "https://coincheck.com/documents/exchange/api"
+          },
+          {
+            "label": "Coincheck API（GET /api/order_books, GET /api/ticker）",
+            "url": "https://coincheck.com/documents/exchange/api"
+          }
+        ]
       }
     },
     {
@@ -6636,7 +6657,7 @@
       "description": "JPX（日本取引所グループ）提供の株式市場データAPI。東証上場銘柄の株価、財務データ、投資指標をAPIで取得可能。個人投資家・フィンテック開発者向け。",
       "url": "https://jpx-jquants.com/",
       "docsUrl": "https://jpx-jquants.com/api/docs",
-      "category": "payment",
+      "category": "financial-trading",
       "tags": [
         "株価",
         "金融データ",
@@ -6659,9 +6680,9 @@
       ],
       "useCases": [
         "株価分析",
-        "アルゴリズム取引",
-        "ポートフォリオ管理",
-        "投資アプリ"
+        "クオンツリサーチ",
+        "ポートフォリオ分析",
+        "投資アプリのデータ基盤"
       ],
       "popularity": {
         "score": 56,
@@ -6690,6 +6711,21 @@
           }
         ],
         "detail": "JPX公式の日本株データAPI。東証上場銘柄の株価・財務データを提供。個人投資家のアルゴリズム取引やフィンテックアプリ開発に利用される。"
+      },
+      "tradingAccess": {
+        "status": "reference_only",
+        "label": "照会専用（取引実行不可）",
+        "detail": "J-Quantsは株価・財務等の市場データ提供APIであり、注文発注エンドポイントは提供していない。",
+        "evidence": [
+          {
+            "label": "J-Quants 公式（株価・財務データをAPI提供）",
+            "url": "https://jpx-jquants.com/"
+          },
+          {
+            "label": "JPX（J-Quantsサービス案内）",
+            "url": "https://www.jpx.co.jp/"
+          }
+        ]
       }
     },
     {
@@ -14260,6 +14296,1155 @@
           }
         ],
         "detail": "Data.go.jpはCKANベースのオープンデータカタログ。各省庁のデータセットのメタデータを横断検索できる。データ自体は各省庁のサーバーに格納されており、メタデータのみをカタログサイトで管理している。"
+      }
+    },
+    {
+      "id": "kabu-station-api",
+      "name": "kabuステーションAPI",
+      "nameJa": "auカブコム kabuステーションAPI",
+      "description": "auカブコム証券のデスクトップツール『kabuステーション』と連携する国内証券API。現物・信用・先物・オプションの注文発注/取消、注文約定照会、残高照会、時価・板情報、為替情報、WebSocket PUSH配信に対応。",
+      "url": "https://kabucom.github.io/kabusapi/",
+      "docsUrl": "https://kabucom.github.io/kabusapi/reference/kabu_STATION_API.yaml",
+      "category": "financial-trading",
+      "tags": [
+        "証券API",
+        "国内株式",
+        "先物",
+        "オプション",
+        "板情報"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料（証券口座およびkabuステーション利用環境が必要）",
+      "auth": "bearer",
+      "region": "japan",
+      "featured": true,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "WebSocket"
+      ],
+      "rateLimit": "発注系 5件/秒、情報系 10件/秒（公式FAQ記載）",
+      "sdks": [
+        "REST",
+        "WebSocket"
+      ],
+      "useCases": [
+        "国内株アルゴリズム取引",
+        "先物・OP自動売買",
+        "板情報モニタリング",
+        "注文執行基盤"
+      ],
+      "popularity": {
+        "score": 73,
+        "users": "中規模（国内個人投資家・開発者）",
+        "marketPosition": "国内個人向け証券APIで代表的",
+        "reason": "国内証券で注文系・照会系・PUSH配信まで公開している数少ないAPIの一つ",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "国内個人向け証券API領域で高い認知",
+        "adopters": [
+          "個人投資家",
+          "システムトレーダー",
+          "投資系開発コミュニティ"
+        ],
+        "sources": [
+          {
+            "label": "kabuステーションAPI リファレンス",
+            "url": "https://kabucom.github.io/kabusapi/reference/kabu_STATION_API.yaml"
+          },
+          {
+            "label": "kabuステーションAPI FAQ",
+            "url": "https://kabucom.github.io/kabusapi/ptal/faq.html"
+          }
+        ],
+        "detail": "localhost経由のREST/WebSocket APIとして提供され、注文発注・取消、注文約定照会、残高照会、板情報取得、PUSH配信までカバー。国内株だけでなく先物・オプションにも対応。"
+      },
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注/取消）+ 情報照会",
+        "detail": "注文系（/sendorder, /cancelorder）と照会系（/orders, /positions, /board）を同時に提供する。",
+        "evidence": [
+          {
+            "label": "kabuステーションAPI リファレンス（/sendorder, /cancelorder）",
+            "url": "https://kabucom.github.io/kabusapi/reference/kabu_STATION_API.yaml"
+          },
+          {
+            "label": "kabuステーションAPI リファレンス（/board, /orders, /positions）",
+            "url": "https://kabucom.github.io/kabusapi/reference/kabu_STATION_API.yaml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "marketspeed-ii-rss-api",
+      "name": "MARKETSPEED II RSS",
+      "nameJa": "楽天証券 マーケットスピード II RSS",
+      "description": "楽天証券のExcelアドイン型トレーディングAPI（RSS関数）。国内株（現物・信用）と国内先物・オプションの発注、注文約定情報取得、リアルタイム市況・ヒストリカル・為替レート取得に対応。",
+      "url": "https://marketspeed.jp/ms2_rss/",
+      "docsUrl": "https://marketspeed.jp/ms2_rss/onlinehelp/ohm_001/ohm_001_01.html",
+      "category": "financial-trading",
+      "tags": [
+        "証券API",
+        "楽天証券",
+        "国内株式",
+        "先物オプション",
+        "Excel"
+      ],
+      "pricing": "free",
+      "pricingDetail": "ツール利用は無料（楽天証券口座・利用条件あり）",
+      "auth": "none",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "Excel関数"
+      ],
+      "rateLimit": "ドキュメント参照",
+      "sdks": [
+        "Excel VBA"
+      ],
+      "useCases": [
+        "Excel自動売買",
+        "リアルタイム監視",
+        "注文執行自動化",
+        "裁定・シグナル取引"
+      ],
+      "popularity": {
+        "score": 68,
+        "users": "中規模（国内アクティブトレーダー）",
+        "marketPosition": "国内証券RSS系ツールで高い知名度",
+        "reason": "Excelベースで実運用しやすく、国内株・先物OPの注文機能を公式提供",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "国内個人向けRSS取引で主要",
+        "adopters": [
+          "個人デイトレーダー",
+          "Excelベース自動売買ユーザー",
+          "投資サークル"
+        ],
+        "sources": [
+          {
+            "label": "MARKETSPEED II RSS 公式",
+            "url": "https://marketspeed.jp/ms2_rss/"
+          },
+          {
+            "label": "利用可能なRSS機能（公式オンラインヘルプ）",
+            "url": "https://marketspeed.jp/ms2_rss/onlinehelp/ohm_001/ohm_001_01.html"
+          }
+        ],
+        "detail": "投資情報取得・注文約定取得・注文機能をExcel関数で扱える国内証券向けRSS。国内株・先物OPに対応し、為替レートやヒストリカル情報も取り込める。"
+      },
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注）+ 情報照会",
+        "detail": "Excel関数で現物/信用/先物OPの注文を実行でき、注文状況・約定照会・市況取得にも対応。",
+        "evidence": [
+          {
+            "label": "MARKETSPEED II RSS（注文関数・国内株/先物OP注文）",
+            "url": "https://marketspeed.jp/ms2_rss/onlinehelp/ohm_002/ohm_002_06.html"
+          },
+          {
+            "label": "MARKETSPEED II RSS（注文状況取得関数）",
+            "url": "https://marketspeed.jp/ms2_rss/onlinehelp/ohm_002/ohm_002_06.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "neotrade-api-for-excel",
+      "name": "Neotrade API for Excel",
+      "nameJa": "SBIネオトレード証券 ネオトレAPI for Excel",
+      "description": "SBIネオトレード証券のExcel連携API。国内株式の現物/信用の注文、注文約定照会、残高照会に加え、株式・指数・為替の投資情報やヒストリカルデータ取得に対応。",
+      "url": "https://www.sbineotrade.jp/tool/api/",
+      "docsUrl": "https://www.sbineotrade.jp/tool/api/operation.html",
+      "category": "financial-trading",
+      "tags": [
+        "証券API",
+        "SBIネオトレード",
+        "国内株式",
+        "信用取引",
+        "Excel"
+      ],
+      "pricing": "free",
+      "pricingDetail": "利用料無料（証券口座・ツール利用設定が必要）",
+      "auth": "none",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "Excel関数"
+      ],
+      "rateLimit": "ドキュメント参照",
+      "sdks": [
+        "Excel VBA"
+      ],
+      "useCases": [
+        "国内株自動売買",
+        "注文監視ダッシュボード",
+        "残高・建玉管理",
+        "為替/指数参照"
+      ],
+      "popularity": {
+        "score": 61,
+        "users": "小〜中規模（個人投資家中心）",
+        "marketPosition": "国内証券のExcel連携APIの一角",
+        "reason": "注文機能と投資情報機能をExcelで一体利用でき、国内株式運用に実装しやすい",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "国内証券Excel APIで一定シェア",
+        "adopters": [
+          "個人投資家",
+          "Excelトレーダー",
+          "投資ツール開発者"
+        ],
+        "sources": [
+          {
+            "label": "ネオトレAPI for Excel 公式",
+            "url": "https://www.sbineotrade.jp/tool/api/"
+          },
+          {
+            "label": "操作マニュアル",
+            "url": "https://www.sbineotrade.jp/tool/api/operation.html"
+          }
+        ],
+        "detail": "現物・信用の注文系に加え、注文約定照会・残高照会・為替/指数を含む投資情報取得を提供。国内株のExcel運用を前提にしたAPI設計。"
+      },
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注）+ 情報照会",
+        "detail": "発注セクション（SNT.EqtyOrder等）と、注文約定照会・残高照会・投資情報取得を提供。",
+        "evidence": [
+          {
+            "label": "ネオトレAPI for Excel（7.発注）",
+            "url": "https://www.sbineotrade.jp/tool/api/operation.html"
+          },
+          {
+            "label": "ネオトレAPI for Excel（5.注文約定照会 / 6.取得関数）",
+            "url": "https://www.sbineotrade.jp/tool/api/operation.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "okasan-rss-api",
+      "name": "岡三RSS",
+      "nameJa": "岡三オンライン 岡三RSS",
+      "description": "岡三オンライン証券が提供するExcel連携型のRSSツール。国内株式取引での情報参照や関数連携を中心に利用される。詳細仕様は公式マニュアル/PDFで提供。",
+      "url": "https://www.okasan-online.co.jp/tool/okasan_rss/",
+      "docsUrl": "https://www.okasan-online.co.jp/tool/okasan_rss/pdf/okasanrss_manual.pdf",
+      "category": "financial-trading",
+      "tags": [
+        "証券API",
+        "岡三オンライン",
+        "国内株式",
+        "RSS",
+        "Excel"
+      ],
+      "pricing": "free",
+      "pricingDetail": "利用料無料（証券口座・利用条件あり）",
+      "auth": "none",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "Excel関数"
+      ],
+      "rateLimit": "ドキュメント参照",
+      "sdks": [
+        "Excel VBA"
+      ],
+      "useCases": [
+        "投資情報モニタリング",
+        "Excelトレーディング",
+        "国内株戦略検証"
+      ],
+      "popularity": {
+        "score": 49,
+        "users": "小〜中規模",
+        "marketPosition": "国内証券RSSツールの一つ",
+        "reason": "国内証券口座とExcel連携で活用されるが、公開仕様が限定的で導入には公式資料確認が必要",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "限定的",
+        "adopters": [
+          "岡三オンライン利用者",
+          "個人投資家"
+        ],
+        "sources": [
+          {
+            "label": "岡三RSS 公式ページ",
+            "url": "https://www.okasan-online.co.jp/tool/okasan_rss/"
+          },
+          {
+            "label": "岡三RSS マニュアル（PDF）",
+            "url": "https://www.okasan-online.co.jp/tool/okasan_rss/pdf/okasanrss_manual.pdf"
+          }
+        ],
+        "detail": "国内株運用で利用されるExcel連携型RSS。公開ページでは概要中心のため、実装時は公式マニュアル（PDF）で機能・制約の確認が必要。"
+      },
+      "tradingAccess": {
+        "status": "unclear",
+        "label": "公開情報のみでは判定困難（要マニュアル確認）",
+        "detail": "公開ページはツール概要中心で、発注可否をAPIエンドポイント単位で明示していない。導入前に最新マニュアルで確認が必要。",
+        "evidence": [
+          {
+            "label": "岡三RSS 公式ページ",
+            "url": "https://www.okasan-online.co.jp/tool/okasan_rss/"
+          },
+          {
+            "label": "岡三RSS マニュアル（PDF）",
+            "url": "https://www.okasan-online.co.jp/tool/okasan_rss/pdf/okasanrss_manual.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "matsui-fx-api",
+      "name": "Matsui FX API",
+      "nameJa": "松井証券 FX API",
+      "description": "松井証券FXサービス向けAPI。各種発注、注文照会、建玉照会、為替レート取得、ヒストリカルデータ取得などを提供。アクセストークン認証を採用し、接続事業者は個別審査・契約方式。",
+      "url": "https://www.matsui.co.jp/fx/",
+      "docsUrl": "https://www.matsui.co.jp/company/press/2022/pr221222.html",
+      "category": "financial-trading",
+      "tags": [
+        "FX",
+        "松井証券",
+        "取引API",
+        "為替レート",
+        "ヒストリカル"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "接続事業者ごとに個別契約・条件設定（一般公開型ではなく審査制）",
+      "auth": "bearer",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "個別契約・ドキュメント参照",
+      "sdks": [
+        "REST"
+      ],
+      "useCases": [
+        "FX自動売買",
+        "注文執行連携",
+        "為替データ取得",
+        "投資助言サービス連携"
+      ],
+      "popularity": {
+        "score": 44,
+        "users": "限定公開（接続事業者経由）",
+        "marketPosition": "国内FX APIの提携型提供",
+        "reason": "機能は充実しているが、公開利用ではなくAPI利用許諾契約ベースの提供",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "限定的",
+        "adopters": [
+          "接続審査を通過した事業者",
+          "提携取引ツール"
+        ],
+        "sources": [
+          {
+            "label": "松井証券 FX API公開リリース",
+            "url": "https://www.matsui.co.jp/company/press/2022/pr221222.html"
+          },
+          {
+            "label": "松井証券 FXサービス",
+            "url": "https://www.matsui.co.jp/fx/"
+          }
+        ],
+        "detail": "松井証券FX口座向けのAPIで、発注・照会・為替データ取得を提供。アクセストークン方式で、接続にはAPI利用許諾契約と個別審査が必要。"
+      },
+      "tradingAccess": {
+        "status": "execution_restricted_and_reference",
+        "label": "実取引可（事業者契約・審査制）+ 情報照会",
+        "detail": "各種発注・注文照会・建玉照会・為替レート取得を提供。利用はAPI利用許諾契約と審査を経た事業者向け。",
+        "evidence": [
+          {
+            "label": "松井証券リリース（発注機能/注文照会/建玉照会）",
+            "url": "https://www.matsui.co.jp/company/press/2022/pr221222.html"
+          },
+          {
+            "label": "松井証券リリース（API利用許諾契約・個別審査）",
+            "url": "https://www.matsui.co.jp/company/press/2022/pr221222.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "oanda-rest-v20-api",
+      "name": "OANDA REST-V20 API",
+      "nameJa": "OANDA REST-V20 API",
+      "description": "OANDAのFX取引エンジンへアクセスするREST API。オーダー作成/変更/クローズ、ポジション・口座管理、価格配信、履歴取得、ストリーミングに対応。Practice/Liveの2環境を提供。",
+      "url": "https://developer.oanda.com/rest-live-v20/introduction/",
+      "docsUrl": "https://developer.oanda.com/rest-live-v20/api-comparison/",
+      "category": "financial-trading",
+      "tags": [
+        "FX",
+        "OANDA",
+        "REST API",
+        "注文執行",
+        "ストリーミング"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料（取引にはOANDA口座が必要、スプレッド等は別途）",
+      "auth": "bearer",
+      "region": "both",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "Streaming"
+      ],
+      "rateLimit": "ドキュメント参照",
+      "sdks": [
+        "REST"
+      ],
+      "useCases": [
+        "FX自動売買",
+        "裁量取引支援",
+        "ポジション管理",
+        "為替データ配信"
+      ],
+      "popularity": {
+        "score": 77,
+        "users": "大規模（グローバルFX開発者）",
+        "marketPosition": "FX APIの代表的選択肢",
+        "reason": "Practice/Live環境、注文・口座・価格配信を一通り備え、個人/法人開発で採用実績が多い",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "グローバルFX APIで高い認知",
+        "adopters": [
+          "個人トレーダー",
+          "システムトレード開発者",
+          "FX系FinTech"
+        ],
+        "sources": [
+          {
+            "label": "OANDA REST-V20 Introduction",
+            "url": "https://developer.oanda.com/rest-live-v20/introduction/"
+          },
+          {
+            "label": "OANDA API Comparison",
+            "url": "https://developer.oanda.com/rest-live-v20/api-comparison/"
+          }
+        ],
+        "detail": "FX注文・ポジション・口座・価格配信を包括するAPI。Practice/Live両環境を持ち、開発段階から本番運用まで移行しやすい構成。"
+      },
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注/決済）+ 情報照会",
+        "detail": "Order/Trade/Position/Account/Pricingを提供し、注文実行と価格・履歴照会の双方に対応。",
+        "evidence": [
+          {
+            "label": "OANDA v20 Introduction（place, modify, close orders）",
+            "url": "https://developer.oanda.com/rest-live-v20/introduction/"
+          },
+          {
+            "label": "OANDA v20 REST（Order/Trade/Position/Pricing）",
+            "url": "https://developer.oanda.com/rest-live-v20/introduction/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ig-trading-api",
+      "name": "IG REST Trading API",
+      "nameJa": "IG Trading API",
+      "description": "IGのCFD/FX取引用REST API。セッション認証、口座情報、ポジション管理、注文、マーケット検索、ヒストリカル価格取得、ストリーミング連携に対応。",
+      "url": "https://labs.ig.com/rest-trading-api-reference.html",
+      "docsUrl": "https://labs.ig.com/faq.html",
+      "category": "financial-trading",
+      "tags": [
+        "FX",
+        "CFD",
+        "IG",
+        "REST API",
+        "ヒストリカル価格"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料（取引にはIG口座・APIキーが必要）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "Streaming"
+      ],
+      "rateLimit": "非取引60req/分、取引100req/分など（公式FAQ既定値）",
+      "sdks": [
+        "REST"
+      ],
+      "useCases": [
+        "FX/CFD自動売買",
+        "ポジション監視",
+        "リスク管理",
+        "価格データ分析"
+      ],
+      "popularity": {
+        "score": 66,
+        "users": "中〜大規模（グローバル）",
+        "marketPosition": "CFD/FX APIの主要プレイヤー",
+        "reason": "注文・ポジション・価格取得まで網羅し、公式にREST/Streamingの実運用情報を公開",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "グローバルCFD/FX APIで高い認知",
+        "adopters": [
+          "個人トレーダー",
+          "クオンツ開発者",
+          "トレーディングツール開発会社"
+        ],
+        "sources": [
+          {
+            "label": "IG REST Trading API Reference",
+            "url": "https://labs.ig.com/rest-trading-api-reference.html"
+          },
+          {
+            "label": "IG API FAQ",
+            "url": "https://labs.ig.com/faq.html"
+          }
+        ],
+        "detail": "IG LabsでREST/Streaming APIを公開。口座、ポジション、注文、マーケット情報、価格履歴まで一連の取引機能に対応。"
+      },
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（ポジション/注文）+ 情報照会",
+        "detail": "positions/working-ordersで発注・クローズ系を提供し、markets/pricesで市場情報・履歴価格も取得できる。",
+        "evidence": [
+          {
+            "label": "IG REST Trading API（/positions/otc, /working-orders/otc）",
+            "url": "https://labs.ig.com/rest-trading-api-reference.html"
+          },
+          {
+            "label": "IG REST Trading API（/markets, /prices）",
+            "url": "https://labs.ig.com/rest-trading-api-reference.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "saxo-openapi",
+      "name": "Saxo OpenAPI",
+      "nameJa": "Saxo OpenAPI",
+      "description": "Saxo Bankのマルチアセット取引用API。FX、株式、先物、オプション等の注文・ポジション管理とマーケットデータ取得を提供し、プロ向け取引プラットフォーム連携に利用される。",
+      "url": "https://www.home.saxo/platforms/api",
+      "docsUrl": "https://www.developer.saxo/openapi/referencedocs",
+      "category": "financial-trading",
+      "tags": [
+        "FX",
+        "株式",
+        "先物",
+        "オプション",
+        "Saxo"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "契約形態により変動（個人・法人・提携形態に応じて要確認）",
+      "auth": "oauth2",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "ドキュメント参照",
+      "sdks": [
+        "REST",
+        "WebSocket"
+      ],
+      "useCases": [
+        "マルチアセット自動売買",
+        "取引執行システム",
+        "リスク管理",
+        "資産運用プラットフォーム連携"
+      ],
+      "popularity": {
+        "score": 63,
+        "users": "中規模（プロ/機関投資家寄り）",
+        "marketPosition": "マルチアセットAPIの有力選択肢",
+        "reason": "FXに加え株式・先物・オプションを同一API基盤で扱える点が強み",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "プロ向けAPI市場で一定プレゼンス",
+        "adopters": [
+          "資産運用会社",
+          "プロトレーダー",
+          "トレーディングシステムベンダー"
+        ],
+        "sources": [
+          {
+            "label": "Saxo API Platform",
+            "url": "https://www.home.saxo/platforms/api"
+          },
+          {
+            "label": "Saxo OpenAPI Reference Docs",
+            "url": "https://www.developer.saxo/openapi/referencedocs"
+          }
+        ],
+        "detail": "SaxoのOpenAPIはマルチアセット取引を統合的に扱えるAPI。FX専業APIより導入難易度は高いが、資産クラス横断の運用に向く。"
+      },
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（注文・取引）+ 情報照会",
+        "detail": "Tradingサービスで注文/取引（ポジション）と価格購読を提供し、Portfolioサービスで口座・建玉照会に対応。",
+        "evidence": [
+          {
+            "label": "Saxo OpenAPI Reference（Trading service group）",
+            "url": "https://www.developer.saxo/openapi/referencedocs"
+          },
+          {
+            "label": "Saxo OpenAPI Reference（Portfolio service group）",
+            "url": "https://www.developer.saxo/openapi/referencedocs"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quick-market-data-api",
+      "name": "QUICK Market Data API",
+      "nameJa": "QUICK マーケットデータAPI",
+      "description": "QUICKが提供する金融情報WebAPI。国内株・海外株・投資信託・為替・先物オプション・経済指標・企業情報などを取得し、金融サービス開発のデータ基盤として利用できる。",
+      "url": "https://corporate.quick.co.jp/products/market-data-api/",
+      "docsUrl": "https://corporate.quick.co.jp/products/",
+      "category": "data",
+      "tags": [
+        "金融データ",
+        "株価",
+        "為替",
+        "先物オプション",
+        "QUICK"
+      ],
+      "pricing": "paid",
+      "pricingDetail": "法人向け（詳細は要問い合わせ）",
+      "auth": "apiKey",
+      "region": "japan",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON"
+      ],
+      "rateLimit": "契約により変動",
+      "sdks": [
+        "REST"
+      ],
+      "useCases": [
+        "証券アプリの市況表示",
+        "投資分析ダッシュボード",
+        "市場監視",
+        "経済指標連携"
+      ],
+      "popularity": {
+        "score": 62,
+        "users": "中規模（金融機関・事業者）",
+        "marketPosition": "国内金融データ提供の主要ブランド",
+        "reason": "金融業界で実績のあるQUICKデータをAPIで取得でき、国内株/為替/先物OPを横断カバー",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "国内金融情報ベンダーとして高い認知",
+        "adopters": [
+          "証券会社",
+          "銀行・金融機関",
+          "資産運用会社",
+          "フィンテック企業"
+        ],
+        "sources": [
+          {
+            "label": "QUICK マーケットデータAPI",
+            "url": "https://corporate.quick.co.jp/products/market-data-api/"
+          },
+          {
+            "label": "QUICK 製品一覧",
+            "url": "https://corporate.quick.co.jp/products/"
+          }
+        ],
+        "detail": "国内金融データの老舗であるQUICKの市場データAPI。国内外株、為替、先物オプション、経済指標を扱い、金融サービスのバックエンドに組み込みやすい。"
+      }
+    },
+    {
+      "id": "oanda-exchange-rates-api",
+      "name": "OANDA Exchange Rates API",
+      "nameJa": "OANDA Exchange Rates API",
+      "description": "OANDAの為替レートデータAPI。200超通貨・コモディティに対応し、リアルタイム/ヒストリカル/平均レート/フォワードレートなどの取得に対応。会計・監査・財務リスク管理向けの情報参照系API。",
+      "url": "https://www.oanda.com/fx-for-business/exchange-rates-api/",
+      "docsUrl": "https://www.oanda.com/foreign-exchange-data-services/en/exchange-rates-api/api-plans/",
+      "category": "data",
+      "tags": [
+        "為替レート",
+        "FXデータ",
+        "ヒストリカル",
+        "OANDA",
+        "財務"
+      ],
+      "pricing": "freemium",
+      "pricingDetail": "7日間トライアルあり。有料プランは年額課金（公式ページに価格帯記載）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "easy",
+      "responseFormat": [
+        "JSON",
+        "XML",
+        "CSV"
+      ],
+      "rateLimit": "プランにより変動",
+      "sdks": [
+        "REST"
+      ],
+      "useCases": [
+        "会計換算レート取得",
+        "監査対応",
+        "財務リスク管理",
+        "為替モニタリング"
+      ],
+      "popularity": {
+        "score": 70,
+        "users": "中〜大規模（企業利用中心）",
+        "marketPosition": "為替データAPIの有力サービス",
+        "reason": "長期ヒストリカルとリアルタイムの両方を提供し、財務・会計用途で導入しやすい",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "為替データAPI市場で高い認知",
+        "adopters": [
+          "会計・監査部門",
+          "財務部門",
+          "FXデータ利用SaaS",
+          "金融機関"
+        ],
+        "sources": [
+          {
+            "label": "OANDA Exchange Rates API",
+            "url": "https://www.oanda.com/fx-for-business/exchange-rates-api/"
+          },
+          {
+            "label": "OANDA API Plans",
+            "url": "https://www.oanda.com/foreign-exchange-data-services/en/exchange-rates-api/api-plans/"
+          }
+        ],
+        "detail": "取引実行ではなく、為替レート参照・監査・会計に適した情報API。リアルタイム、ヒストリカル、フォワード等のデータセットを提供。"
+      }
+    },
+    {
+      "id": "binance-spot-api",
+      "name": "Binance Spot API",
+      "nameJa": "Binance Spot API",
+      "description": "Binanceの現物取引API。注文発注・取消・注文照会に加え、板情報・約定履歴・ティッカーなど市場データ取得に対応。グローバル暗号資産取引で広く利用される。",
+      "url": "https://www.binance.com/",
+      "docsUrl": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints",
+      "category": "financial-trading",
+      "tags": [
+        "暗号資産",
+        "取引所",
+        "グローバル",
+        "現物取引",
+        "マーケットデータ"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料（取引手数料・VIP手数料体系は別途）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "WebSocket"
+      ],
+      "rateLimit": "重み制（REQUEST_WEIGHT/ORDERS）。詳細は公式レート制限参照",
+      "sdks": [
+        "REST",
+        "WebSocket",
+        "Python",
+        "JavaScript",
+        "Java",
+        "Go"
+      ],
+      "useCases": [
+        "暗号資産自動売買",
+        "板情報モニタリング",
+        "マーケットメイキング",
+        "取引ボット開発"
+      ],
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注/取消）+ 情報照会",
+        "detail": "Trading endpointsで注文実行、Market Data endpointsで板・約定・ティッカー取得に対応。",
+        "evidence": [
+          {
+            "label": "Binance Trading endpoints（POST /api/v3/order）",
+            "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints"
+          },
+          {
+            "label": "Binance Market Data endpoints（GET /api/v3/depth, /api/v3/trades）",
+            "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints"
+          }
+        ]
+      },
+      "popularity": {
+        "score": 90,
+        "users": "超大規模（グローバル暗号資産トレーダー）",
+        "marketPosition": "暗号資産取引APIの主要選択肢",
+        "reason": "注文・口座・市場データ・WebSocketを包括し、現物取引の自動化基盤として採用例が多い。",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "グローバル暗号資産取引APIで高い認知",
+        "adopters": [
+          "個人トレーダー",
+          "クオンツ開発者",
+          "暗号資産取引ボット事業者"
+        ],
+        "sources": [
+          {
+            "label": "Binance Spot API Docs",
+            "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints"
+          },
+          {
+            "label": "Binance Market Data Docs",
+            "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints"
+          }
+        ],
+        "detail": "注文系と市場データ系を同一API体系で扱え、取引戦略の実装から執行まで一気通貫で構築しやすい。"
+      }
+    },
+    {
+      "id": "coinbase-advanced-trade-api",
+      "name": "Coinbase Advanced Trade API",
+      "nameJa": "Coinbase Advanced Trade API",
+      "description": "CoinbaseのAdvanced Trade REST API。Create Order/Cancel Ordersなどの取引実行系と、Product Book/Candles/Tradesなどの市場データ照会系を提供。",
+      "url": "https://www.coinbase.com/",
+      "docsUrl": "https://docs.cdp.coinbase.com/coinbase-app/advanced-trade-apis/rest-api",
+      "category": "financial-trading",
+      "tags": [
+        "暗号資産",
+        "取引所",
+        "Coinbase",
+        "現物取引",
+        "グローバル"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料（取引手数料は別途）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": true,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "WebSocket"
+      ],
+      "rateLimit": "エンドポイントごとに制御（公式制限参照）",
+      "sdks": [
+        "REST",
+        "WebSocket"
+      ],
+      "useCases": [
+        "暗号資産自動売買",
+        "注文執行",
+        "板情報参照",
+        "価格分析"
+      ],
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注/取消）+ 情報照会",
+        "detail": "Create Orderがtrade権限、Product BookやCandlesはview権限で利用可能。",
+        "evidence": [
+          {
+            "label": "Advanced Trade REST API（Create Order /orders, trade）",
+            "url": "https://docs.cdp.coinbase.com/coinbase-app/advanced-trade-apis/rest-api"
+          },
+          {
+            "label": "Advanced Trade REST API（Public Product Book / Candles / Trades）",
+            "url": "https://docs.cdp.coinbase.com/coinbase-app/advanced-trade-apis/rest-api"
+          }
+        ]
+      },
+      "popularity": {
+        "score": 84,
+        "users": "大規模（北米・グローバル開発者）",
+        "marketPosition": "グローバル暗号資産APIの主要プレイヤー",
+        "reason": "権限モデル（trade/view）を明確化したREST APIと公開市場データAPIを併用できる。",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "グローバル暗号資産APIで高い認知",
+        "adopters": [
+          "個人トレーダー",
+          "米国系FinTech",
+          "暗号資産データサービス"
+        ],
+        "sources": [
+          {
+            "label": "Coinbase Advanced Trade API",
+            "url": "https://docs.cdp.coinbase.com/coinbase-app/advanced-trade-apis/rest-api"
+          },
+          {
+            "label": "Coinbase Developer Docs",
+            "url": "https://docs.cdp.coinbase.com/"
+          }
+        ],
+        "detail": "取引実行と公開市場データ参照を一つのドキュメント体系で扱え、アプリ実装の一貫性を取りやすい。"
+      }
+    },
+    {
+      "id": "kraken-spot-api",
+      "name": "Kraken Spot REST API",
+      "nameJa": "Kraken Spot REST API",
+      "description": "Krakenの現物取引REST API。Add OrderやCancel系の取引実行と、Order Book/Trades等のマーケットデータ照会を提供。",
+      "url": "https://www.kraken.com/",
+      "docsUrl": "https://docs.kraken.com/api/docs/rest-api/add-order/",
+      "category": "financial-trading",
+      "tags": [
+        "暗号資産",
+        "Kraken",
+        "現物取引",
+        "グローバル",
+        "REST API"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料（取引手数料は別途）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "medium",
+      "responseFormat": [
+        "JSON",
+        "WebSocket"
+      ],
+      "rateLimit": "エンドポイント単位で制御（公式仕様参照）",
+      "sdks": [
+        "REST",
+        "WebSocket"
+      ],
+      "useCases": [
+        "暗号資産売買執行",
+        "板情報監視",
+        "約定履歴分析",
+        "取引ボット開発"
+      ],
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注）+ 情報照会",
+        "detail": "TradingカテゴリのAdd Orderで発注し、Market DataカテゴリのOrder Book/Tradesで照会可能。",
+        "evidence": [
+          {
+            "label": "Kraken Add Order（Place a new order）",
+            "url": "https://docs.kraken.com/api/docs/rest-api/add-order/"
+          },
+          {
+            "label": "Kraken Get Order Book",
+            "url": "https://docs.kraken.com/api/docs/rest-api/get-order-book/"
+          }
+        ]
+      },
+      "popularity": {
+        "score": 80,
+        "users": "中〜大規模（グローバル暗号資産トレーダー）",
+        "marketPosition": "グローバル暗号資産APIの主要候補",
+        "reason": "取引系と市場データ系のカテゴリ分離が明確で、システム実装時に責務を分けやすい。",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "グローバルで高い認知",
+        "adopters": [
+          "個人トレーダー",
+          "自動売買開発者",
+          "暗号資産分析サービス"
+        ],
+        "sources": [
+          {
+            "label": "Kraken API Center - Add Order",
+            "url": "https://docs.kraken.com/api/docs/rest-api/add-order/"
+          },
+          {
+            "label": "Kraken API Center - Get Order Book",
+            "url": "https://docs.kraken.com/api/docs/rest-api/get-order-book/"
+          }
+        ],
+        "detail": "Spot REST APIのトレード/マーケットデータ機能が整理されており、運用時の監視設計がしやすい。"
+      }
+    },
+    {
+      "id": "bybit-v5-api",
+      "name": "Bybit V5 API",
+      "nameJa": "Bybit V5 API",
+      "description": "Bybit V5の統合API。Place Orderで現物/デリバティブ注文を実行し、Orderbookなど市場データAPIと組み合わせて運用できる。",
+      "url": "https://www.bybit.com/",
+      "docsUrl": "https://bybit-exchange.github.io/docs/v5/order/create-order",
+      "category": "financial-trading",
+      "tags": [
+        "暗号資産",
+        "Bybit",
+        "先物",
+        "現物",
+        "統合API"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料（取引手数料は別途）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "WebSocket"
+      ],
+      "rateLimit": "カテゴリ/エンドポイント単位で制御（公式参照）",
+      "sdks": [
+        "REST",
+        "WebSocket",
+        "Python",
+        "Java",
+        ".NET",
+        "Go"
+      ],
+      "useCases": [
+        "暗号資産自動売買",
+        "デリバティブ戦略",
+        "板監視",
+        "マルチアセット運用"
+      ],
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注）+ 情報照会",
+        "detail": "Place Orderで注文実行し、Market系Orderbook APIで板情報を取得可能。",
+        "evidence": [
+          {
+            "label": "Bybit V5 Place Order",
+            "url": "https://bybit-exchange.github.io/docs/v5/order/create-order"
+          },
+          {
+            "label": "Bybit V5 Get Orderbook",
+            "url": "https://bybit-exchange.github.io/docs/v5/market/orderbook"
+          }
+        ]
+      },
+      "popularity": {
+        "score": 82,
+        "users": "大規模（グローバル暗号資産トレーダー）",
+        "marketPosition": "デリバティブ対応APIとして主要",
+        "reason": "V5で現物/先物等を横断し、注文・履歴・板情報を統合運用しやすい。",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "グローバル暗号資産APIで高い認知",
+        "adopters": [
+          "デリバティブトレーダー",
+          "アルゴ開発者",
+          "取引ツール事業者"
+        ],
+        "sources": [
+          {
+            "label": "Bybit V5 API - Place Order",
+            "url": "https://bybit-exchange.github.io/docs/v5/order/create-order"
+          },
+          {
+            "label": "Bybit V5 API - Get Orderbook",
+            "url": "https://bybit-exchange.github.io/docs/v5/market/orderbook"
+          }
+        ],
+        "detail": "取引対象の幅が広く、同一APIバージョンで注文執行と市場監視を実装できる。"
+      }
+    },
+    {
+      "id": "okx-v5-api",
+      "name": "OKX API v5",
+      "nameJa": "OKX API v5",
+      "description": "OKXのv5 API。POST /api/v5/trade/orderによる注文実行と、GET /api/v5/market/booksによる板情報照会に対応する。",
+      "url": "https://www.okx.com/",
+      "docsUrl": "https://www.okx.com/docs-v5/en/",
+      "category": "financial-trading",
+      "tags": [
+        "暗号資産",
+        "OKX",
+        "現物",
+        "デリバティブ",
+        "グローバル"
+      ],
+      "pricing": "free",
+      "pricingDetail": "API利用は無料（取引手数料は別途）",
+      "auth": "apiKey",
+      "region": "global",
+      "featured": false,
+      "difficulty": "hard",
+      "responseFormat": [
+        "JSON",
+        "WebSocket"
+      ],
+      "rateLimit": "操作種別ごとのレート制限（公式参照）",
+      "sdks": [
+        "REST",
+        "WebSocket"
+      ],
+      "useCases": [
+        "暗号資産売買執行",
+        "板監視",
+        "取引履歴分析",
+        "マルチ市場戦略"
+      ],
+      "tradingAccess": {
+        "status": "execution_and_reference",
+        "label": "実取引可（発注）+ 情報照会",
+        "detail": "Trade APIで注文実行、Market APIで板情報を取得する構成。",
+        "evidence": [
+          {
+            "label": "OKX Docs（POST /api/v5/trade/order）",
+            "url": "https://www.okx.com/docs-v5/en/"
+          },
+          {
+            "label": "OKX Docs（GET /api/v5/market/books）",
+            "url": "https://www.okx.com/docs-v5/en/"
+          }
+        ]
+      },
+      "popularity": {
+        "score": 81,
+        "users": "大規模（グローバル暗号資産トレーダー）",
+        "marketPosition": "統合暗号資産APIの有力候補",
+        "reason": "Trade/Market APIが明確に分離され、執行系と情報系の責務設計がしやすい。",
+        "monthlyUsers": "非公開",
+        "monthlyApiCalls": "非公開",
+        "githubStars": "N/A",
+        "npmDownloads": "N/A",
+        "marketShare": "グローバル暗号資産APIで高い認知",
+        "adopters": [
+          "個人トレーダー",
+          "クオンツチーム",
+          "暗号資産アプリ事業者"
+        ],
+        "sources": [
+          {
+            "label": "OKX API v5 Docs",
+            "url": "https://www.okx.com/docs-v5/en/"
+          },
+          {
+            "label": "OKX API v5 Trade/Market Sections",
+            "url": "https://www.okx.com/docs-v5/en/"
+          }
+        ],
+        "detail": "取引・照会の境界が明確で、運用監視や権限分離を設計しやすい。"
       }
     }
   ]
