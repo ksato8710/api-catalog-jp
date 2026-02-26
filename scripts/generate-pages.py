@@ -203,9 +203,13 @@ def generate_page(api, categories, all_apis=None):
 <meta property="og:title" content="{name} — APIpedia | 日本語APIカタログ">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="https://apipedia.dev/api/{api["id"]}/">
+<meta property="og:image" content="/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="API Catalog JP">
 <meta property="og:site_name" content="APIPedia">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{name} — APIpedia">
 <meta name="twitter:description" content="{desc}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
